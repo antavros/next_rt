@@ -1,0 +1,30 @@
+header {
+  position: sticky;
+  padding : var(--block-gap) var(--block-gap) 0 var(--block-gap);
+  z-index : var(--header_z-index);
+}
+
+.headBar {
+  display        : flex;
+  flex-direction : row;
+  place-content  : center space-between;
+  place-items    : center center;
+  place-self     : center center;
+  width          : 100%;
+  height         : var(--header-height);
+  background     : var(--color-block_back);
+  padding        : var(--block-gap);
+  backdrop-filter: var(--blur);
+}
+
+.user {
+  display            : flex;
+  flex-direction     : column;
+  place-items        : center center;
+  cursor             : pointer;
+  -webkit-user-select: none;
+  -moz-user-select   : none;
+  -ms-user-select    : none;
+  user-select        : none;
+  padding            : var(--element-gap);
+}

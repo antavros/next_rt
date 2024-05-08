@@ -1,0 +1,28 @@
+#fastNav {
+    display            : flex;
+    flex-direction     : column;
+    position           : fixed;
+    row-gap            : var(--element-gap);
+    bottom             : var(--block-gap);
+    right              : var(--block-gap);
+    z-index            : var(--sidebar_z-index);
+    -webkit-user-select: none;
+    /* Chrome, Safari, Opera */
+    -moz-user-select   : none;
+    /* Firefox */
+    -ms-user-select    : none;
+    /* Internet Explorer/Edge */
+    user-select        : none;
+
+    /* Стандартное свойство */
+    & a {
+        display      : flex;
+        place-content: center center;
+        place-items  : center center;
+        width        : 4dvh;
+        height       : 4dvh;
+        font-size    : 32px;
+        color        : var(--color-border);
+        background   : var(--color-block_back);
+    }
+}

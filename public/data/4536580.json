@@ -1,0 +1,411 @@
+{
+  "id": 4536580,
+  "collections": [],
+  "countries": [
+    {
+      "name": "Россия"
+    }
+  ],
+  "createdAt": "2022-02-24T14:12:11.321Z",
+  "facts": [],
+  "genres": [
+    {
+      "name": "фэнтези"
+    },
+    {
+      "name": "комедия"
+    },
+    {
+      "name": "семейный"
+    },
+    {
+      "name": "приключения"
+    }
+  ],
+  "names": [
+    {
+      "name": "Яга-2020"
+    },
+    {
+      "name": "Баба Яга спасает мир",
+      "language": null,
+      "type": null
+    },
+    {
+      "name": "Baba Yaga spasaet mir",
+      "language": "RU",
+      "type": "Transliteration"
+    }
+  ],
+  "persons": [
+    {
+      "id": 1208251,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1208251.jpg",
+      "name": "Глафира Тарханова",
+      "enName": null,
+      "description": "Марья",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 269766,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_269766.jpg",
+      "name": "Людмила Артемьева",
+      "enName": null,
+      "description": "Баба Яга",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 245734,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_245734.jpg",
+      "name": "Олеся Железняк",
+      "enName": null,
+      "description": "Кикимора",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 231196,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_231196.jpg",
+      "name": "Григорий Сиятвинда",
+      "enName": null,
+      "description": "Кощей",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 1481674,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1481674.jpg",
+      "name": "Алексей Дмитриев",
+      "enName": null,
+      "description": "Леший",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 86525,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_86525.jpg",
+      "name": "Александр Ильин",
+      "enName": null,
+      "description": "Афанаська",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 4542640,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_4542640.jpg",
+      "name": "Савелий Кудряшов",
+      "enName": null,
+      "description": "Сенька",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 101776,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_101776.jpg",
+      "name": "Марат Башаров",
+      "enName": null,
+      "description": "режиссер",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 315887,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_315887.jpg",
+      "name": "Ольга Науменко",
+      "enName": null,
+      "description": "бабушка Сеньки",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 298467,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_298467.jpg",
+      "name": "Ян Цапник",
+      "enName": null,
+      "description": "Иван Додоныч",
+      "profession": "актеры",
+      "enProfession": "actor"
+    },
+    {
+      "id": 1861753,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1861753.jpg",
+      "name": "Игорь Бабаев",
+      "enName": null,
+      "description": null,
+      "profession": "композиторы",
+      "enProfession": "composer"
+    },
+    {
+      "id": 1557058,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1557058.jpg",
+      "name": "Карен Захаров",
+      "enName": null,
+      "description": null,
+      "profession": "режиссеры",
+      "enProfession": "director"
+    },
+    {
+      "id": 1797006,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1797006.jpg",
+      "name": "Владимир Звездочкин",
+      "enName": null,
+      "description": null,
+      "profession": "операторы",
+      "enProfession": "operator"
+    },
+    {
+      "id": 6501298,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_6501298.jpg",
+      "name": "Олег Ефремов",
+      "enName": null,
+      "description": null,
+      "profession": "операторы",
+      "enProfession": "operator"
+    },
+    {
+      "id": 3706298,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_3706298.jpg",
+      "name": "Александр Морозов",
+      "enName": null,
+      "description": null,
+      "profession": "продюсеры",
+      "enProfession": "producer"
+    },
+    {
+      "id": 2878846,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2878846.jpg",
+      "name": "Армен Ананикян",
+      "enName": null,
+      "description": null,
+      "profession": "продюсеры",
+      "enProfession": "producer"
+    },
+    {
+      "id": 3118395,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_3118395.jpg",
+      "name": "Ара Оганесян",
+      "enName": null,
+      "description": null,
+      "profession": "продюсеры",
+      "enProfession": "producer"
+    },
+    {
+      "id": 5585037,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_5585037.jpg",
+      "name": "Юрий Ненев",
+      "enName": null,
+      "description": null,
+      "profession": "редакторы",
+      "enProfession": "writer"
+    },
+    {
+      "id": 1557058,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1557058.jpg",
+      "name": "Карен Захаров",
+      "enName": null,
+      "description": null,
+      "profession": "редакторы",
+      "enProfession": "writer"
+    },
+    {
+      "id": 2878846,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2878846.jpg",
+      "name": "Армен Ананикян",
+      "enName": null,
+      "description": null,
+      "profession": "редакторы",
+      "enProfession": "writer"
+    },
+    {
+      "id": 1562410,
+      "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1562410.jpg",
+      "name": "Сергей Юдаков",
+      "enName": null,
+      "description": null,
+      "profession": "редакторы",
+      "enProfession": "writer"
+    }
+  ],
+  "productionCompanies": [],
+  "seasonsInfo": [],
+  "sequelsAndPrequels": [],
+  "similarMovies": [
+    {
+      "id": 4959134,
+      "name": "По щучьему велению",
+      "alternativeName": null,
+      "enName": null,
+      "type": "movie",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/10900341/b3ed4aa7-c38c-4a35-a505-aaa6372ad9da/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/10900341/b3ed4aa7-c38c-4a35-a505-aaa6372ad9da/x1000"
+      },
+      "rating": {
+        "kp": 7.804,
+        "imdb": 6.3,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": null
+      },
+      "year": 2023
+    },
+    {
+      "id": 976642,
+      "name": "Последний богатырь",
+      "alternativeName": null,
+      "enName": null,
+      "type": "movie",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/662449e2-1341-4e4f-be43-095962d46dcd/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/662449e2-1341-4e4f-be43-095962d46dcd/x1000"
+      },
+      "rating": {
+        "kp": 7.067,
+        "imdb": 6.4,
+        "filmCritics": 0,
+        "russianFilmCritics": 72.7273,
+        "await": null
+      },
+      "year": 2017
+    }
+  ],
+  "spokenLanguages": [],
+  "updatedAt": "2024-02-04T01:00:11.765Z",
+  "imagesInfo": {
+    "framesCount": 0
+  },
+  "budget": {},
+  "fees": {
+    "russia": {
+      "value": 6989525,
+      "currency": "$"
+    }
+  },
+  "premiere": {
+    "russia": "2023-08-03T00:00:00.000Z"
+  },
+  "alternativeName": null,
+  "description": "Любопытный школьник Сенька каким-то чудом попадает в сказочный древний лес. Он скрыт от людских глаз мощным заклятием Бабы Яги, призванным защитить людей и весь мир от дремлющих там темных сил. В лесу явно творится что-то неладное. Тревожные сигналы возвещают, что заклятие больше не действует, и пробуждение зловещего волшебства и давно поверженных врагов — лишь вопрос времени. Чтобы наложить заклятие снова, Яга вынуждена отправиться в современный город на поиск мощнейшего оружия волшебников, дивноцвета. Там ее ожидает встреча с множеством причуд современного мира, а в темном подземелье уже тысячу лет прячется жаждущий мести Кощей Бессмертный, ведь именно Яга помогла одолеть его много веков назад.",
+  "enName": null,
+  "externalId": {
+    "imdb": "tt27775514",
+    "tmdb": 1127580,
+    "kpHD": "ecb1792b3f2445b083341f63a526ef20"
+  },
+  "movieLength": 90,
+  "name": "Баба Яга спасает мир",
+  "poster": {
+    "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/af29bd1d-46a0-451d-bcd8-de9178d15867/orig",
+    "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/af29bd1d-46a0-451d-bcd8-de9178d15867/x1000"
+  },
+  "rating": {
+    "kp": 7.214,
+    "imdb": 0,
+    "filmCritics": 0,
+    "russianFilmCritics": 0,
+    "await": null
+  },
+  "ratingMpaa": null,
+  "shortDescription": "Лесная ведьма попадает в мегаполис, где встречает давнего врага — Кощея. Семейная сказка с любимыми героями",
+  "slogan": null,
+  "technology": {
+    "hasImax": false,
+    "has3D": false
+  },
+  "ticketsOnSale": false,
+  "type": "movie",
+  "typeNumber": 1,
+  "votes": {
+    "kp": 481401,
+    "imdb": 0,
+    "filmCritics": 0,
+    "russianFilmCritics": 0,
+    "await": 3699
+  },
+  "year": 2023,
+  "ageRating": 6,
+  "backdrop": {
+    "url": "https://imagetmdb.com/t/p/original/bsSSWpL6K497MokaUtRe5HuXGfS.jpg",
+    "previewUrl": "https://imagetmdb.com/t/p/w500/bsSSWpL6K497MokaUtRe5HuXGfS.jpg"
+  },
+  "logo": {
+    "url": "https://imagetmdb.com/t/p/original/qd8n5hAUwF3pIpTfvurjWaQD9Q9.png"
+  },
+  "watchability": {
+    "items": [
+      {
+        "name": "Kinopoisk HD",
+        "logo": {
+          "url": "https://yastatic.net/s3/kinopoisk-frontend/hd-www/release/apple-touch-icon-180x180.png"
+        },
+        "url": "https://hd.kinopoisk.ru/?rt=ecb1792b3f2445b083341f63a526ef20"
+      },
+      {
+        "name": "Okko",
+        "logo": {
+          "url": "https://avatars.mds.yandex.net/get-ott/239697/7713e586-17d1-42d1-ac62-53e9ef1e70c3/orig"
+        },
+        "url": "https://okko.tv/movie/baba-jaga-spasaet-mir?utm_medium=referral&utm_source=yandex_search&utm_campaign=new_search_feed"
+      },
+      {
+        "name": "Иви",
+        "logo": {
+          "url": "https://avatars.mds.yandex.net/get-ott/2419418/0dfd1724-848f-4725-9160-abc571f41c11/orig"
+        },
+        "url": "https://www.ivi.ru/watch/515426?utm_source=yandex&utm_medium=wizard"
+      },
+      {
+        "name": "PREMIER",
+        "logo": {
+          "url": "https://avatars.mds.yandex.net/get-ott/239697/0f86e907-9531-47e9-87bd-5101a08d4e30/orig"
+        },
+        "url": "https://premier.one/show/21352?utm_source=yandex&utm_medium=yandex_feed_search&utm_campaign=yandex_feed"
+      },
+      {
+        "name": "Wink",
+        "logo": {
+          "url": "https://avatars.mds.yandex.net/get-ott/1672343/54096cbe-cc3b-41c9-8e44-990ebbca8d61/orig"
+        },
+        "url": "https://wink.ru/media_items/149627265?utm_source=yandex&utm_medium=koldunschick&utm_content=name"
+      }
+    ]
+  },
+  "top10": null,
+  "top250": null,
+  "status": null,
+  "deletedAt": null,
+  "isSeries": false,
+  "seriesLength": null,
+  "totalSeriesLength": null,
+  "audience": [
+    {
+      "count": 2440703,
+      "country": "Россия"
+    }
+  ],
+  "lists": [
+    "box-russia-dollar",
+    "hearing_impairment",
+    "popular-films",
+    "hd"
+  ],
+  "networks": null,
+  "videos": {
+    "trailers": [
+      {
+        "url": "https://www.youtube.com/embed/o93v4xHTAPo",
+        "name": "Баба Яга спасает мир | Трейлер",
+        "site": "youtube",
+        "type": "TRAILER"
+      },
+      {
+        "url": "https://www.youtube.com/embed/o93v4xHTAPo",
+        "name": "Баба Яга спасает мир | Трейлер",
+        "site": "youtube",
+        "type": "TRAILER"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+footer {
+    max-width: 100%;
+    height   : auto;
+    padding  : 0 var(--block-gap) var(--block-gap) var(--block-gap);
+
+    & .footer {
+        display       : flex;
+        flex-direction: column;
+        place-content : center center;
+        place-items   : center center;
+        place-self    : center center;
+        gap           : var(--block-gap);
+        background    : var(--color-block_back);
+
+        & p {
+            color: var(--color-text);
+        }
+
+        & ul {
+            display: flex;
+            gap    : var(--block-gap);
+        }
+    }
+}

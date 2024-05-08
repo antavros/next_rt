@@ -1,0 +1,36 @@
+.kinobox_nav_ul li {
+    color           : white !important;
+    background-color: black !important;
+    border-bottom   : 1px solid #212121 !important;
+}
+
+.kinobox_nav_ul li:hover,
+.menu_button li:hover {
+    background: rgb(26, 26, 26) !important;
+}
+
+.kinobox_nav_ul ul {
+    outline: none !important;
+    border : 1px solid #212121 !important;
+}
+
+.kinobox_nav_button {
+    outline         : solid 4px rgba(0, 0, 0, 0.2);
+    border          : 1px solid #212121 !important;
+    background-color: black !important;
+}
+
+.menu_button ul {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.menu_button li {
+    border    : 1px solid #212121 !important;
+    background: black !important;
+}
+
+.kinobox__message,
+.kinobox__loader,
+.kinobox__wrapper {
+    background-color: black !important;
+}

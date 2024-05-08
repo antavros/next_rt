@@ -1,0 +1,14 @@
+.logo {
+    display            : flex;
+    width              : 12rem;
+    height             : auto;
+    -webkit-user-select: none;
+    -moz-user-select   : none;
+    -ms-user-select    : none;
+    user-select        : none;
+    filter             : drop-shadow(-1px 1px 16px var(--color-purple));
+
+    & :hover {
+        filter: drop-shadow(-1px 1px 18px var(--color-orangered));
+    }
+}

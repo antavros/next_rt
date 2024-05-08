@@ -1,0 +1,48 @@
+button,
+.button,
+.swiper-button-prev,
+.swiper-button-next {
+    display            : flex;
+    place-content      : center center;
+    place-items        : center center;
+    place-self         : center center;
+    border             : var(--border)var(--color-border);
+    box-shadow         : var(--shadow);
+    color              : var(--color-text) !important;
+    background         : var(--color-button-inactive);
+    cursor             : pointer;
+    -webkit-user-select: none;
+    -moz-user-select   : none;
+    -ms-user-select    : none;
+    user-select        : none;
+    backdrop-filter    : var(--blur);
+
+    & span {
+        padding  : var(--element-gap);
+        font-size: 1.5rem;
+    }
+
+    &:hover {
+        scale           : var(--hover-scale);
+        border          : var(--border) var(--color-purple);
+        color           : var(--color-white);
+        background-color: var(--color-button-hover);
+
+        & span,
+        p {
+            color: var(--color-white);
+        }
+    }
+
+    &:active {
+        scale     : var(--active-scale) !important;
+        border    : var(--border)var(--color-white) !important;
+        color     : var(--color-purple) !important;
+        background: var(--color-button-active);
+
+        & span,
+        p {
+            color: var(--color-purple) !important;
+        }
+    }
+}
