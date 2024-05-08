@@ -7,17 +7,17 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react"
 
 import {Preloader} from "./features/preloader/preloader";
-import Base from "./pages/base/base-template";
+import Base from "./app/dashboard/base-template";
 
-const Home  = lazy(() => import("./pages/home/home-template"));
-const Title = lazy(() => import("./pages/title/title-template"));
+const Home  = lazy(() => import("./wait/home/home-template"));
+const Title = lazy(() => import("./app/title/{slug}/title-template"));
 const Search = lazy(() => import("./pages/search/search-template"));
-const Movie = lazy(() => import("./pages/title_type/movie-template"));
-const TvSeries = lazy(() => import("./pages/title_type/tv_series-template"));
-const Cartoon = lazy(() => import("./pages/title_type/cartoon-template"));
-const AnimatedSeries = lazy(() => import("./pages/title_type/animated_series-template"));
-const Anime = lazy(() => import("./pages/title_type/anime-template"));
-const Error404 = lazy(() => import("./pages/errors/error404-template"));
+const Movie = lazy(() => import("./app/title_type/movie/movie-template"));
+const TvSeries = lazy(() => import("./app/title_type/tv-series/tv_series-template"));
+const Cartoon = lazy(() => import("./app/title_type/cartoon/cartoon-template"));
+const AnimatedSeries = lazy(() => import("./app/title_type/animated-series/animated_series-template"));
+const Anime = lazy(() => import("./app/title_type/anime/anime-template"));
+const Error404 = lazy(() => import("./wait/errors/error404-template"));
 import {HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter(
