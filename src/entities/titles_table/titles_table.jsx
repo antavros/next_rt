@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react';
 import { getData, dataProps } from "../../shared/api/api.jsx";
 import { TitleCard } from "../title_card/title_card";

@@ -1,3 +1,7 @@
+'use client'
+
+import Image from 'next/image'
+
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { getData, dataProps } from "../../shared/api/api.jsx";
@@ -61,7 +65,13 @@ export function SwiperTitles({ url }) {
             {
                 titleData.map(details => (
                     <SwiperSlide key={details.id} id={details.id}>
-                        <img className="sw_title_backdrop" src={details.backdrop2} alt={details.name} />
+                        <Image
+                            width={500}
+                            height={500}
+                            className="sw_title_backdrop" 
+                            src={details.backdrop2} 
+                            alt={details.name} 
+                        />
                         <div className="sw_title_overlay">
                             <TitleCard details={details} />
                         </div>

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, createContext, useContext, useMemo } from 'react';
 import '../../entities/button/button.css';
 import './togglers.css';

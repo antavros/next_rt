@@ -1,4 +1,3 @@
-'use server';
 import axios from 'axios';
 import { getDetail } from './data_types';
 import { PropTypes } from 'prop-types';
@@ -12,8 +11,8 @@ const API_limit = `limit=50`;
 const API_page = `page=1`;
 const API_params = `sortField=votes.kp&sortType=-1&notNullFields=poster.url`;
 
-export const API_URL_SWIPER = `/data/API_URL_SWIPER.JSON`;
-export const API_URL_POPULAR = `/data/API_URL_POPULAR.JSON`;
+export const API_URL_SWIPER = `./data/API_URL_SWIPER.JSON`;
+export const API_URL_POPULAR = `./data/API_URL_POPULAR.JSON`;
 // `/data/1267348.json`
 export const API_URL_title = `${API_URL}/`;
 export const API_URL_SEARCH = `${API_URL}/search?${API_limit}&${API_page}&query=`;
@@ -31,6 +30,7 @@ const dataProps = {
 export { dataProps };
 
 getData.propTypes = dataProps;
+const API_KEY = `${process.env.NEXT_PUBLIC_BASE_URL || ''}`;
 
 export async function getData({ url }) {
   const options = {
@@ -38,7 +38,7 @@ export async function getData({ url }) {
     url: url,
     headers: {
       accept: 'application/json',
-      'X-API-KEY': import.meta.env.VITE_API_TOKEN,
+      'X-API-KEY': API_KEY,
     }
   };
 
@@ -49,7 +49,7 @@ export async function getData({ url }) {
   const detailData = (
     await Promise.all(data
       .map(async (title) => {
-        const details = getDetail({ title });
+        const details = await getDetail({ title });
         return { ...details, hasPosters: details.poster && details.poster2 };
       })
       .filter(async (movie) => movie.hasPosters)

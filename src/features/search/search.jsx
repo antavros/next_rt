@@ -1,5 +1,7 @@
+'use client'
+
+import Link from 'next/link'
 import { useState } from 'react';
-import { Link } from "react-router-dom";
 import './search.css';
 
 
@@ -26,7 +28,7 @@ export function Search({ onSearch }) {
         maxLength="99"
         size="10"
       />
-      <Link to={`/search/${searchValue}`}>
+      <Link href={`/search/${searchValue}`}>
         <button type="submit" className="search_button">
           <span className="symbols">search</span>
         </button>

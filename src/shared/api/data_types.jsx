@@ -1,4 +1,3 @@
-'use server';
 import { PropTypes } from 'prop-types';
 
 function getClassByRate(vote) {
@@ -58,7 +57,7 @@ export const detailsProps = {
 };
 
 getDetail.propTypes = detailsProps;
-export function getDetail({ title }) {
+export async function getDetail({ title }) {
     const id = title?.id;
     const type = title?.type;
     const name = title?.name || title?.alternativeName || title?.enName || '';

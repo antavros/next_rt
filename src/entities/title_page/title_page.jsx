@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Preloader } from "../../features/preloader/preloader.jsx";
 // import Player from '../player/player.jsx';
-import { Seo } from "../../shared/seo/seo.jsx";
 import "../../entities/rate/rate.css";
 import "./title_page.css"
 
@@ -12,12 +11,12 @@ export function TitleContainer({ details }) {
 
     return (
         <>
-            <Seo
+            {/* <Seo
                 seoTitle={details.name}
                 seoDescription={details.sDescription}
                 seoOgTitle={details.name}
                 seoOgImage={details.logo || details.poster}
-            />
+            /> */}
             <title>{`${details.name}`}</title>
             <meta name="description" content={`${details.sDescription}`} />
             <meta property="og:title" content={`${details.name}`} />

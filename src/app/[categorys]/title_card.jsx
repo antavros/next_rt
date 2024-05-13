@@ -11,6 +11,9 @@ import { detailsProps } from "../../shared/api/data_types"
 
 TitleCard.propTypes = detailsProps;
 
+export default function Page({ params }: { params: { slug: string } }) {
+    return <div>My Post: {params.slug}</div>
+}
 export function TitleCard({ details }) {
     const [imageLoaded, setImageLoaded] = useState(false);
 

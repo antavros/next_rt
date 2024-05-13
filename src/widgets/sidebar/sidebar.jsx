@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import Link from 'next/link'
 import { Togglers } from '../../features/togglers/togglers';
 import './sidebar.css';
 
@@ -8,54 +8,54 @@ export function Sidebar() {
             <section className='Sidebar'>
                 <nav id="Sidebar" aria-label="Боковое меню навигации" >
                     <ul>
-                        <NavLink to="/" >
+                        <Link href="/" >
                             <li>
                                 <button>
                                     <span className="symbols">Home</span>
                                     <p>Главная</p>
                                 </button>
                             </li>
-                        </NavLink>
-                        <NavLink to="/movie" >
+                        </Link>
+                        <Link href="/movie" >
                             <li>
                                 <button>
                                     <span className="symbols">Movie</span>
                                     <p>Фильмы</p>
                                 </button>
                             </li>
-                        </NavLink>
-                        <NavLink to="/tvseries">
+                        </Link>
+                        <Link href="/tvseries">
                             <li>
                                 <button>
                                     <span className="symbols">Live_Tv</span>
                                     <p>Сериалы</p>
                                 </button>
                             </li>
-                        </NavLink>
-                        <NavLink to="/cartoon">
+                        </Link>
+                        <Link href="/cartoon">
                             <li>
                                 <button>
                                     <span className="symbols">family_star</span>
                                     <p>Мультфильмы</p>
                                 </button>
                             </li>
-                        </NavLink>
-                        <NavLink to="/animatedseries">
+                        </Link>
+                        <Link href="/animatedseries">
                             <li>
                                 <button>
                                     <span className="symbols">bedroom_baby</span>
                                     <p>Мультсериалы</p>
                                 </button>
                             </li>
-                        </NavLink>
-                        <NavLink to="/anime">
+                        </Link>
+                        <Link href="/anime">
                             <li>
                                 <button>
                                     <span className="symbols">language_japanese_kana</span>
                                     <p>Аниме</p>
                                 </button>
                             </li>
-                        </NavLink>
+                        </Link>
                     </ul>
                 </nav>
                 <hr />

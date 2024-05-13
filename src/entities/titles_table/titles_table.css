@@ -4,7 +4,7 @@
   place-self           : center center;
   display              : grid;
   grid-gap             : var(--block-gap);
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   width                : 100%;
   min-height           : 100vh;
 }
