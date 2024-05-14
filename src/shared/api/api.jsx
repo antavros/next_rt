@@ -30,7 +30,7 @@ const dataProps = {
 export { dataProps };
 
 getData.propTypes = dataProps;
-const API_KEY = `${process.env.NEXT_PUBLIC_BASE_URL || ''}`;
+const API_KEY = `${process.env.NEXT_PUBLIC_API_TOKEN}`;
 
 export async function getData({ url }) {
   const options = {

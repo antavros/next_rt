@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getData, API_URL_title } from "../../../shared/api/api.jsx";
-import { TitleContainer } from "../../../entities/title_page/title_page.jsx";
+import { getData, API_URL_title } from "../../shared/api/api.jsx";
+import { TitleContainer } from "../../entities/title_page/title_page.jsx";
 
 export default function Title() {
     const [data, setData] = useState(null);
