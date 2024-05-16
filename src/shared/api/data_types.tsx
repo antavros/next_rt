@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 function getClassByRate(vote) {
     const hue = (vote / 10) * 110;
