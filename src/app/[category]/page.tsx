@@ -1,12 +1,14 @@
+import 
+
 import { TitlesContainer } from "../../entities/titles_table/titles_table";
 import {
+    API_URL_movie,
+    API_URL_tvseries,
+    API_URL_cartoon,
     API_URL_animated_series,
     API_URL_anime,
-    API_URL_cartoon,
-    API_URL_movie,
-    API_URL_series
-} from "../../shared/api/data_types";
-import { getData } from "../../shared/api/api";
+    getData
+} from "../../shared/api/api";
 
 export default async function categoryRender({ params}: { readonly params: { readonly category: string } }){
     const category = params.category.toLowerCase();
@@ -17,7 +19,7 @@ export default async function categoryRender({ params}: { readonly params: { rea
             return <TitlesContainer titleData={data} />
         }
         case "tvseries":{
-            const data = await getData({ url: `${API_URL_series}` });            
+            const data = await getData({ url: `${API_URL_tvseries}` });            
             return <TitlesContainer titleData={data} />
         }     
         case "cartoon":{

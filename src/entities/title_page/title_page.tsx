@@ -1,21 +1,14 @@
 import Image from 'next/image'
+import Head from 'next/head'
 
 // import Player from '../player/player.jsx';
 import "../../entities/rate/rate.css";
 import "./title_page.css"
 
-export function TitleContainer({ details }) {
+export function TitleContainer({ details }: { details: any }) {
 
     return (
         <>
-            {/* <Seo
-                seoTitle={details.name}
-                seoDescription={details.sDescription}
-                seoOgTitle={details.name}
-                seoOgImage={details.logo || details.poster}
-            /> */}
-
-
             <section className="titlePage" id={details.id}>
                 <div className='titlePage_head'>
                     <Image

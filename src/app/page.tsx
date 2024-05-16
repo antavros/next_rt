@@ -1,8 +1,20 @@
 
 import { TitlesContainer } from "../entities/titles_table/titles_table";
 import { SwiperTitles } from "../entities/swiper/swiper";
-import { API_URL_POPULAR, API_URL_SWIPER } from "../shared/api/data_types";
-import { getData } from "../shared/api/api";
+import {
+    API_URL_POPULAR,
+    API_URL_SWIPER,
+    getData
+} from "../shared/api/api";
+
+
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
+    title: 'ГЛАВНАЯ',
+    openGraph: {
+        title: 'ГЛАВНАЯ',
+    },
+}
 
 export default async function Home() {
         const dataSwiper = await getData({ url: API_URL_SWIPER });
@@ -17,9 +29,4 @@ export default async function Home() {
     );
 }
 
-// <Seo
-//     seoTitle='ГЛАВНАЯ'
-//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-//     seoOgTitle='ГЛАВНАЯ'
-//     seoOgImage="/images/LOGO.png"
-// />
+
