@@ -1,7 +1,7 @@
 
 import { TitlesContainer } from "../../../entities/titles_table/titles_table.jsx";
-import { API_URL_SEARCH } from "../../../shared/api/data_types";
-import { getData } from "../../../shared/api/api";
+import { API_URL_SEARCH } from "../../../shared/api/data_types.tsx";
+import { getData } from "../../../shared/api/api.tsx";
 
 export default async function Search({ params }) {
     const searchValue = params.value.toLowerCase();

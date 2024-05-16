@@ -7,7 +7,7 @@ import { useState } from 'react';
 import "../../entities/rate/rate.css";
 import "./title_card.css";
 import { Preloader } from "../../features/preloader/preloader";
-import { detailsProps } from "../../shared/api/data_types"
+import { detailsProps } from "../../shared/api/data_types";
 
 
 

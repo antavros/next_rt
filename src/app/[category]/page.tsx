@@ -5,8 +5,8 @@ import {
     API_URL_cartoon,
     API_URL_movie,
     API_URL_series
-} from "../../shared/api/data_types";
-import { getData } from "../../shared/api/api";
+} from "../../shared/api/data_types.tsx";
+import { getData } from "../../shared/api/api.tsx";
 
 export default async function categoryRender({ params }) {
     const category = params.category.toLowerCase();
