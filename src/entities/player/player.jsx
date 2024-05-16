@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
 const KinoboxPlayer = () => {
-    const params = useParams();
 
     useEffect(() => {
         const script = document.createElement('script');
