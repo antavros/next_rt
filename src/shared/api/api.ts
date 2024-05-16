@@ -10,7 +10,7 @@ export { dataProps };
 getData.propTypes = dataProps;
 const API_KEY = `${process.env.NEXT_PUBLIC_API_TOKEN}`;
 
-export async function getData({ url }) {
+export async function getData({ url }: { readonly url: string }) {
 
   const options = {
     method: 'GET',
