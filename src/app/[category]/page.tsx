@@ -8,15 +8,7 @@ import {
 } from "../../shared/api/data_types";
 import { getData } from "../../shared/api/api";
 
-interface Params {
-    id: string;
-}
-
-interface Props {
-    params: Params;
-}
-
-export default async function categoryRender({ params }) {
+export default async function categoryRender({ params}: { readonly params: { readonly category: string } }){
     const category = params.category.toLowerCase();
 
     switch (category) {

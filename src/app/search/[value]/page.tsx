@@ -3,15 +3,7 @@ import { TitlesContainer } from "../../../entities/titles_table/titles_table.jsx
 import { API_URL_SEARCH } from "../../../shared/api/data_types";
 import { getData } from "../../../shared/api/api";
 
-interface Params {
-    id: string;
-}
-
-interface Props {
-    params: Params;
-}
-
-export default async function Search({ params }) {
+export default async function Search({ params}: { readonly params: { readonly value: string } }) {
     const searchValue = params.value.toLowerCase();
     const data = await getData({ url: `${API_URL_SEARCH}${searchValue}` });
     return (<TitlesContainer titleData={data} />);
