@@ -1,8 +1,15 @@
 import { TitleContainer } from "../../../entities/title_page/title_page.jsx";
-import { getData, API_URL_title } from "../../../shared/api/api.jsx";
+import { getData } from "../../../shared/api/api.tsx";
+import { API_URL_title } from "../../../shared/api/data_types.tsx";
 
-export default function Title({ params }) {
-    console.log(params.id);
-    const data = getData({ url: `${API_URL_title}${params.id}` });
-    return <TitleContainer details={data} />;
-}   
+export default async function TitlePage({ params }) {
+    const id = params.id;
+    const data = await getData({ url: `${API_URL_title}${id}` });
+    console.log(data);
+    return (
+        <>
+            <TitleContainer details={data[0]} />
+            <div>{ `${API_URL_title}${id}` }</div>
+        </>
+    );
+}

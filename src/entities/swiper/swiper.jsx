@@ -1,12 +1,11 @@
+
 'use client'
 
 import Image from 'next/image'
 
-import { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { getData, dataProps } from "../../shared/api/api.jsx";
 import { TitleCard } from "../../entities/title_card/title_card.jsx";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './swiper.css';
 import 'swiper/css';
 import 'swiper/css/a11y';
@@ -22,13 +21,7 @@ import {
     A11y,
 } from 'swiper/modules';
 
-SwiperTitles.propTypes = dataProps;
-export function SwiperTitles({ url }) {
-    const [titleData, setTitleData] = useState([]);
-
-    useEffect(() => {
-        getData({ url }).then((data) => { setTitleData(data); })
-    }, [url]);
+export function SwiperTitles({ titleData }) {
 
     return (
         <Swiper
@@ -63,20 +56,20 @@ export function SwiperTitles({ url }) {
             className="popular_new"
         >
             {
-                titleData.map(details => (
+                (Array.isArray(titleData) && titleData.map(details => (
                     <SwiperSlide key={details.id} id={details.id}>
                         <Image
                             width={500}
                             height={500}
-                            className="sw_title_backdrop" 
-                            src={details.backdrop2} 
-                            alt={details.name} 
+                            className="sw_title_backdrop"
+                            src={details.backdrop2}
+                            alt={details.name}
                         />
                         <div className="sw_title_overlay">
                             <TitleCard details={details} />
                         </div>
                     </SwiperSlide>
-                ))
+                )))
             }
         </Swiper >
     );

@@ -1,21 +1,25 @@
 
 import { TitlesContainer } from "../entities/titles_table/titles_table";
 import { SwiperTitles } from "../entities/swiper/swiper";
-import { API_URL_POPULAR, API_URL_SWIPER } from "../shared/api/api.jsx";
+import { API_URL_POPULAR, API_URL_SWIPER } from "../shared/api/data_types";
+import { getData } from "../shared/api/api";
 
-export default function Home() {
+export default async function Home() {
+        const dataSwiper = await getData({ url: API_URL_SWIPER });
+        const dataTitles = await getData({ url: API_URL_POPULAR });
+
     return (
         <>
-            {/* <Seo
-                seoTitle='ГЛАВНАЯ'
-                seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-                seoOgTitle='ГЛАВНАЯ'
-                seoOgImage="/images/LOGO.png"
-            /> */}
-
-            <SwiperTitles url={API_URL_SWIPER} />
+            <SwiperTitles titleData={dataSwiper} />
             <hr />
-            <TitlesContainer url={API_URL_POPULAR} />
+            <TitlesContainer titleData={dataTitles} />
         </>
     );
 }
+
+// <Seo
+//     seoTitle='ГЛАВНАЯ'
+//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
+//     seoOgTitle='ГЛАВНАЯ'
+//     seoOgImage="/images/LOGO.png"
+// />

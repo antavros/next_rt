@@ -5,23 +5,36 @@ import {
     API_URL_cartoon,
     API_URL_movie,
     API_URL_series
-} from "../../shared/api/api";
+} from "../../shared/api/data_types";
+import { getData } from "../../shared/api/api";
 
-export default function categoryRender({ params }: { params: { category: string } }) {
+export default async function categoryRender({ params }) {
     const category = params.category.toLowerCase();
+
     switch (category) {
-        case "movie":
-            return <TitlesContainer url={API_URL_movie} />
-        case "tvseries":
-            return <TitlesContainer url={API_URL_series} />        
-        case "cartoon":
-            return <TitlesContainer url={API_URL_cartoon} />        
-        case "animatedseries":
-            return <TitlesContainer url={API_URL_animated_series} />;
-        case "anime":
-            return <TitlesContainer url={API_URL_anime} />;
-        default:
+        case "movie":{
+            const data = await getData({ url: `${API_URL_movie}` });
+            return <TitlesContainer titleData={data} />
+        }
+        case "tvseries":{
+            const data = await getData({ url: `${API_URL_series}` });            
+            return <TitlesContainer titleData={data} />
+        }     
+        case "cartoon":{
+            const data = await getData({ url: `${API_URL_cartoon}` });
+            return <TitlesContainer titleData={data} />
+        }    
+        case "animatedseries":{
+            const data = await getData({ url: `${API_URL_animated_series}` });
+            return <TitlesContainer titleData={data} />;
+        }
+        case "anime":{
+            const data = await getData({ url: `${API_URL_anime}` });
+            return <TitlesContainer titleData={data} />;
+        }
+        default:{
             return <div>Неизвестная категория: {category}</div>;
+        }
     }
 }
 

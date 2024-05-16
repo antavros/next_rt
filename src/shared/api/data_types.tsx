@@ -28,6 +28,29 @@ function convertMinutesToHours(minutes) {
     }
 }
 
+
+
+//------------------------------------------------------------------------------------------------------------>
+const currentYear = new Date().getFullYear();
+const pastYear = currentYear - 1;
+const yearRange = `${pastYear}-${currentYear}`;
+
+const API_URL = `https://api.kinopoisk.dev/v1.4/movie`;
+const API_limit = `limit=50`;
+const API_page = `page=1`;
+const API_params = `sortField=votes.kp&sortType=-1&notNullFields=poster.url`;
+
+export const API_URL_SWIPER = `${API_URL}?&lists=popular-films&limit=10&year=${yearRange}&${API_params}`;
+export const API_URL_POPULAR = `${API_URL}?&lists=popular-films&${API_limit}&year=${yearRange}&${API_params}`;
+// `/data/1267348.json`
+export const API_URL_title = `${API_URL}/`;
+export const API_URL_SEARCH = `${API_URL}/search?${API_limit}&${API_page}&query=`;
+export const API_URL_movie = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=movie`;
+export const API_URL_series = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=tv-series`;
+export const API_URL_cartoon = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=cartoon`;
+export const API_URL_animated_series = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=animated-series`;
+export const API_URL_anime = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=anime`;
+
 //------------------------------------------------------------------------------------------------------------>
 
 export const detailsProps = {
