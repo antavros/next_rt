@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 
 interface TitleRating {
     kp?: any;
     imdb?: any;
     rt?: any;
+    averageRating?: ReactNode;
+    average_All?: any;
 }
 
 interface Title {
@@ -23,6 +26,7 @@ interface Title {
     poster?: { previewUrl: any; url: string };
     backdrop?: { previewUrl: any; url: string };
     rating?: TitleRating;
+    vote?: any;
     [key: string]: any;
 }
 
@@ -48,7 +52,7 @@ export const detailsProps = {
         average_imdb: PropTypes.node,
         average_rt: PropTypes.node,
         average_personal: PropTypes.node,
-        average_All: PropTypes.node
+        average_All: PropTypes.node,
     }),
 };
 
@@ -65,7 +69,7 @@ function getClassByRate({ vote }: { vote: any }) {
     };
 }
 
-function convertMinutesToHours({ minutes }: { minutes: any }): string {
+function convertMinutesToHours({ minutes }: { minutes: number }): string {
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
 
@@ -147,15 +151,14 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
         </article> : '';
 
     const average_personal = title?.rating?.imdb ?
-        <article className="personal" style={getClassByRate(title.rating.imdb)}>
+        <article className="personal" style={getClassByRate({ vote: title.rating.imdb })}>
             <h3 className="symbols">account_circle</h3>
             <span>
                 {parseFloat(title.rating.imdb).toFixed(1)}
             </span>
         </article> : '';
 
-    const ratings = [];
-    let average_All: React.ReactNode = '';
+    let ratings = [];
     
     if (title?.rating?.kp) {
         ratings.push(parseFloat(title.rating.kp));
@@ -166,6 +169,7 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
     if (title?.rating?.rt) {
         ratings.push(parseFloat(title.rating.rt));
     }
+    let average_All = null;
     if (ratings.length > 0) {
         const averageRating = ratings.reduce((total, rating) => total + rating, 0) / ratings.length;
 

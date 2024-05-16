@@ -18,7 +18,6 @@ export async function getData({ url }: { readonly url: string }) {
       accept: 'application/json',
       'X-API-KEY': API_KEY,
     },
-    cache: 'force-cache',
     next: {
       revalidate: 3600
     }
@@ -32,14 +31,11 @@ export async function getData({ url }: { readonly url: string }) {
   if (!Array.isArray(data)) throw new Error('Data is not an array');
 
   const detailData = (
-    await Promise.all(data
-      .map(async (title) => {
-        const details = await getDetail({ title });
-        return { ...details, hasPosters: details.poster && details.poster2 };
-      })
-      .filter(async (movie) => movie.hasPosters)
-    )
-  ).filter(Boolean);
+    await Promise.all(data.map(async (title) => {
+      const details = await getDetail({ title });
+      return { ...details, hasPosters: details.poster && details.poster2 };
+    }))
+  ).filter((movie) => movie.hasPosters);
   return detailData;
 }
 
