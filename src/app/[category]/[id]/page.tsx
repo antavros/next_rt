@@ -1,6 +1,6 @@
 import { TitleContainer } from "../../../entities/title_page/title_page.jsx";
-import { API_URL_title } from "../../../shared/api/data_types.tsx";
-import { getData } from "../../../shared/api/api.tsx";
+import { API_URL_title } from "../../../shared/api/data_types";
+import { getData } from "../../../shared/api/api";
 
 export default async function TitlePage({ params }) {
     const id = params.id;
