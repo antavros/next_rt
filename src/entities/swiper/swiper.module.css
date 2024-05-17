@@ -10,11 +10,10 @@
     & .swiper-slide {
       background-color: var(--color-block_back);
 
-      & img {
-        display   : block;
-        width     : 100%;
-        height    : 100%;
-        object-fit: cover;
+      & .swiper-slide img {
+
+        object-fit     : cover;
+        object-position: center;
       }
 
       & .sw_title_overlay {
@@ -55,7 +54,7 @@
   background-color: var(--color-block_back);
   padding         : var(--element-gap);
 
-  & span {
+  & .swiper-pagination-horizontal span {
     background-color: var(--color-white);
     cursor          : pointer;
   }

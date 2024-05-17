@@ -25,9 +25,9 @@
     scale : 0.9;
     border: 0.1rem solid var(--color-white);
 
-    & article,
-    h1,
-    p {
+    & .title article,
+    .title h1,
+    .title p {
       color: var(--color-purple) !important;
     }
   }
@@ -36,9 +36,9 @@
     scale : 0.9;
     border: 0.1rem solid var(--color-white);
 
-    & article,
-    h1,
-    p {
+    & .title article,
+    .title h1,
+    .title p {
       color: var(--color-purple) !important;
     }
   }
@@ -78,13 +78,13 @@
     background     : linear-gradient(to bottom right, var(--color-black), rgba(0, 0, 0, 0.8), var(--color-black));
     backdrop-filter: blur(0.5rem);
 
-    & h2,
-    p {
+    & .title h2,
+    .title p {
       opacity: 1;
     }
   }
 
-  & h2 {
+  & .title h2 {
     color         : var(--color-white);
     font-size     : 1.1rem;
     padding-top   : 1.5rem;
@@ -93,12 +93,12 @@
     text-overflow : ellipsis;
     opacity       : 0;
 
-    & p {
+    & .title p {
       font-size: 80%;
     }
   }
 
-  & p {
+  & .title p {
     font-size    : 0.8rem;
     text-align   : center;
     word-spacing : 0.2rem;

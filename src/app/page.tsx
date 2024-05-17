@@ -1,5 +1,4 @@
-
-import { TitlesContainer } from "../entities/titles_table/titles_table";
+import { TitlesContainer } from "../entities/title/titles_table/titles_table";
 import { SwiperTitles } from "../entities/swiper/swiper";
 import {
     API_URL_POPULAR,

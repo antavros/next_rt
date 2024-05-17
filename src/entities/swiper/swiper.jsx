@@ -3,10 +3,10 @@
 
 import Image from 'next/image'
 
-import { TitleCard } from "../../entities/title_card/title_card";
+import { TitleCard } from "../title/title_card/title_card";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './swiper.css';
+import './swiper.module.css';
 import 'swiper/css';
 import 'swiper/css/a11y';
 import 'swiper/css/keyboard';
@@ -59,8 +59,7 @@ export function SwiperTitles({ titleData }) {
                 (Array.isArray(titleData) && titleData.map(details => (
                     <SwiperSlide key={details.id} id={details.id}>
                         <Image
-                            width={500}
-                            height={500}
+                            fill={true}
                             className="sw_title_backdrop"
                             src={details.backdrop2}
                             alt={details.name}
