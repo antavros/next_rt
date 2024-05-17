@@ -3,7 +3,7 @@
 
 import Image from 'next/image'
 
-import { TitleCard } from "../../entities/title_card/title_card.jsx";
+import { TitleCard } from "../../entities/title_card/title_card";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './swiper.css';
