@@ -127,8 +127,8 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
         </article> : '';
 
     const average_personal = title?.rating?.imdb ?
-        <article className="personal" style={getClassByRate({ vote: title.rating.imdb })}>
-            <h3 className="symbols">account_circle</h3>
+        <article className={RateStyles.personal} style={getClassByRate({ vote: title.rating.imdb })}>
+            <h3 className={RateStyles.symbols}>account_circle</h3>
             <span>
                 {parseFloat(title.rating.imdb).toFixed(1)}
             </span>
