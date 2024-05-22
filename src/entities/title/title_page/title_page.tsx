@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Head from 'next/head'
 
-// import Player from '../player/player.jsx';
-import "../../entities/rate/rate.css";
+// import Player from '../../player/player.jsx';
+import "../rate/rate.css";
 import "./title_page.css"
 
 export function TitleContainer({ details }: { details: any }) {

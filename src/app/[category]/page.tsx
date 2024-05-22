@@ -1,5 +1,5 @@
 
-import { TitlesContainer } from "../../entities/titles_table/titles_table";
+import { TitlesContainer } from "../../entities/title/titles_table/titles_table";
 import {
     API_URL_movie,
     API_URL_tvseries,

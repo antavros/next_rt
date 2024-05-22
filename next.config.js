@@ -1,5 +1,16 @@
 module.exports = {
     images: {
-        domains: ['avatars.mds.yandex.net', 'imagetmdb.com', 'image.openmoviedb.com'],
+        remotePatterns: [
+            {
+                hostname: 'avatars.mds.yandex.net',
+            },
+            {
+                hostname: 'imagetmdb.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'image.openmoviedb.com',
+            },
+        ],
     },
-}; 
+}
