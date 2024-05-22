@@ -1,4 +1,4 @@
-import { TitleContainer } from "../../../entities/title/title_page/title_page";
+import { TitleContainer } from "../../../entities/title_page/title_page";
 import {
     API_URL_title,
     getData
@@ -8,6 +8,7 @@ import Head from 'next/head'
 export default async function TitlePage({ params}: { readonly params: { readonly id: string } }) {
     const id = params.id;
     const data = await getData({ url: `${API_URL_title}${id}` });
+    console.log(data);
     return (
         <>
             {/* <Head>
@@ -17,6 +18,7 @@ export default async function TitlePage({ params}: { readonly params: { readonly
                 <meta name="og:image" content={data.logo || data.poster}></meta>
             </Head> */}
             <TitleContainer details={data[0]} />
+            <div>{ `${API_URL_title}${id}` }</div>
         </>
     );
 }

@@ -73,13 +73,17 @@
   }
 
   & .title_back {
-    position       : absolute;
-    top            : 0;
-    left           : 0;
-    right          : 0;
-    bottom         : 0;
-    object-fit     : cover;
-    object-position: center;
+    position           : absolute;
+    top                : 0;
+    left               : 0;
+    right              : 0;
+    bottom             : 0;
+    width              : 100%;
+    height             : auto;
+    z-index            : -1;
+    background-repeat  : no-repeat;
+    background-position: top 30% right;
+    background-size    : cover;
   }
 
   & .titlePage_shortInfo {
@@ -94,12 +98,9 @@
     gap            : var(--block-gap);
 
     & .title_logo {
-      object-fit     : cover;
-      object-position: center;
-      width          : 18rem;
-      height         : auto;
-      border-radius  : var(--border-radius);
-      z-index        : 999;
+      place-self   : center center;
+      width        : 18rem;
+      border-radius: var(--border-radius);
     }
 
     & h2 {

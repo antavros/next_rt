@@ -25,9 +25,9 @@
     scale : 0.9;
     border: 0.1rem solid var(--color-white);
 
-    & .title article,
-    .title h1,
-    .title p {
+    & article,
+    h1,
+    p {
       color: var(--color-purple) !important;
     }
   }
@@ -36,9 +36,9 @@
     scale : 0.9;
     border: 0.1rem solid var(--color-white);
 
-    & .title article,
-    .title h1,
-    .title p {
+    & article,
+    h1,
+    p {
       color: var(--color-purple) !important;
     }
   }
@@ -78,13 +78,13 @@
     background     : linear-gradient(to bottom right, var(--color-black), rgba(0, 0, 0, 0.8), var(--color-black));
     backdrop-filter: blur(0.5rem);
 
-    & .title h2,
-    .title p {
+    & h2,
+    p {
       opacity: 1;
     }
   }
 
-  & .title h2 {
+  & h2 {
     color         : var(--color-white);
     font-size     : 1.1rem;
     padding-top   : 1.5rem;
@@ -93,12 +93,12 @@
     text-overflow : ellipsis;
     opacity       : 0;
 
-    & .title p {
+    & p {
       font-size: 80%;
     }
   }
 
-  & .title p {
+  & p {
     font-size    : 0.8rem;
     text-align   : center;
     word-spacing : 0.2rem;
