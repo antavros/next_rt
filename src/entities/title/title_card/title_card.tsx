@@ -4,11 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { useState } from 'react';
+import RateStyles from "../../title/rate/rate.module.css";
+import TitleCardStyles from "./title_card.module.css";
 import { Preloader } from "../../../features/preloader/preloader";
 import { detailsProps } from "../../../shared/api/data_types";
 
-import RateStyles from "../../title/rate/rate.module.css";
-import TitleCardStyles from "./title_card.module.css";
 
 
 TitleCard.propTypes = detailsProps;

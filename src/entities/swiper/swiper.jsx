@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { TitleCard } from "../title/title_card/title_card";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import swiperStyle from './swiper.module.css';
+import './swiper.module.css';
 import 'swiper/css';
 import 'swiper/css/a11y';
 import 'swiper/css/keyboard';
@@ -53,18 +53,18 @@ export function SwiperTitles({ titleData }) {
                 },
             }}
             modules={[Autoplay, Keyboard, Navigation, Pagination, A11y]}
-            className={swiperStyle.popular_new}
+            className="popular_new"
         >
             {
                 (Array.isArray(titleData) && titleData.map(details => (
                     <SwiperSlide key={details.id} id={details.id}>
                         <Image
                             fill={true}
-                            className={swiperStyle.sw_title_backdrop}
+                            className="sw_title_backdrop"
                             src={details.backdrop2}
                             alt={details.name}
                         />
-                        <div className={swiperStyle.sw_title_overlay}>
+                        <div className="sw_title_overlay">
                             <TitleCard details={details} />
                         </div>
                     </SwiperSlide>
