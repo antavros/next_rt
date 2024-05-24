@@ -1,4 +1,4 @@
-.title {
+.title_card {
   display            : flex;
   place-content      : center center;
   place-items        : center center;
@@ -6,7 +6,6 @@
   position           : relative;
   min-width          : 15rem;
   min-height         : 22rem;
-  border             : 0.1rem solid var(--color-border);
   -webkit-user-select: none;
   -moz-user-select   : none;
   -ms-user-select    : none;
@@ -14,27 +13,14 @@
   cursor             : pointer;
   overflow           : hidden;
   z-index            : 2;
+  border             : 0.2px solid gray;
 
   &:hover {
-    scale           : 1.03;
-    background-color: var(--color-gray_dark);
-    border-color    : 0.1rem solid var(--color-purple);
+    scale: 1.03;
   }
 
-  &:focus {
-    scale : 0.9;
-    border: 0.1rem solid var(--color-white);
-
-    & article,
-    h1,
-    p {
-      color: var(--color-purple) !important;
-    }
-  }
-
-  &:active {
-    scale : 0.9;
-    border: 0.1rem solid var(--color-white);
+  &:is(:active, :focus) {
+    scale: 0.9;
 
     & article,
     h1,
@@ -44,20 +30,8 @@
   }
 }
 
-.title img {
-  place-items      : center center;
-  max-width        : 100%;
-  max-height       : 100%;
-  place-content    : center;
-  object-fit       : cover;
-  object-position  : center;
-  vertical-align   : middle;
-  font-style       : italic;
-  background-repeat: no-repeat;
-  background-size  : cover;
-}
 
-.title_info {
+.card_info {
   position           : absolute;
   top                : 0;
   left               : 0;
@@ -73,48 +47,48 @@
   -moz-user-select   : text;
   -ms-user-select    : text;
   user-select        : text;
+  background         : rgba(0, 0, 0, 0.8);
+  backdrop-filter    : blur(0.5rem);
 
   &:hover {
     background     : linear-gradient(to bottom right, var(--color-black), rgba(0, 0, 0, 0.8), var(--color-black));
     backdrop-filter: blur(0.5rem);
 
-    & h2,
-    p {
+    & h3,
+    h4 {
       opacity: 1;
     }
   }
 
-  & h2 {
+  & h3 {
     color         : var(--color-white);
     font-size     : 1.1rem;
     padding-top   : 1.5rem;
     padding-bottom: 0.5rem;
     text-align    : center;
     text-overflow : ellipsis;
-    opacity       : 0;
-
-    & p {
-      font-size: 80%;
-    }
+    opacity       : 1;
   }
 
-  & p {
+  & h4 {
+    font-size: 80%;
+  }
+
+  & h4,
+  p {
     font-size    : 0.8rem;
     text-align   : center;
     word-spacing : 0.2rem;
     text-overflow: ellipsis;
-    opacity      : 0;
     color        : var(--color-text);
+    opacity      : 1;
   }
 
-
-
-  & .title_description {
-    font-size     : 0.8rem;
+  & .card_description {
     margin-top    : auto;
     padding-bottom: 0.5rem;
+    font-size     : 0.8rem;
     text-align    : left;
-    text-overflow : ellipsis;
     color         : var(--color-white);
   }
 }

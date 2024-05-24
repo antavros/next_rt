@@ -25,31 +25,31 @@
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter : var(--blur);
 
-    & h3 {
+    & h6 {
       place-content: center center;
       width        : 100%;
       height       : 100%; 
       border-radius: var(--border-radius);
     }
 
-    &.kp h3 {
+    &.kp h6 {
       color: var(--color-orangered);
     }
 
-    &.imdb h3 {
+    &.imdb h6 {
       color: var(--color-yellow);
     }
 
-    &.rt h3 {
+    &.rt h6 {
       color: var(--color-pink);
     }
 
-    &.personal h3 {
+    &.personal h6 {
       color      : var(--color-text);
       font-weight: lighter;
     }
 
-    &.all h3 {
+    &.all h6 {
       color                  : var(--color-text);
       background             : linear-gradient(to bottom, var(--color-purple), var(--color-orangered));
       -moz-background-clip   : text;

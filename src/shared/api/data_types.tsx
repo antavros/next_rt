@@ -104,7 +104,7 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
     const backdrop2 = title?.backdrop?.url ?? '';
     const average_kp = title?.rating?.kp ?
         <article className="kp" style={getClassByRate({ vote: title.rating.kp })}>
-            <h3>КП</h3>
+            <h6>КП</h6>
             <span>
                 {parseFloat(title.rating.kp).toFixed(1)}
             </span>
@@ -112,7 +112,7 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
 
     const average_imdb = title?.rating?.imdb ?
         <article className="imdb" style={getClassByRate({ vote: title.rating.imdb })}>
-            <h3>IMDB</h3>
+            <h6>IMDB</h6>
             <span>
                 {parseFloat(title.rating.imdb).toFixed(1)}
             </span>
@@ -120,7 +120,7 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
 
     const average_rt = title?.rating?.imdb ?
         <article className="rt" style={getClassByRate({ vote: title.rating.imdb })}>
-            <h3>RT</h3>
+            <h6>RT</h6>
             <span>
                 {parseFloat(title.rating.imdb).toFixed(1)}
             </span>
@@ -128,7 +128,7 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
 
     const average_personal = title?.rating?.imdb ?
         <article className="personal" style={getClassByRate({ vote: title.rating.imdb })}>
-            <h3 className="symbols">account_circle</h3>
+            <h6 className="symbols">account_circle</h6>
             <span>
                 {parseFloat(title.rating.imdb).toFixed(1)}
             </span>
@@ -151,7 +151,7 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
 
         average_All = (
             <article className="all" style={getClassByRate({ vote: averageRating })}>
-                <h3>RT</h3>
+                <h6>RT</h6>
                 <span>{averageRating.toFixed(1)}</span>
             </article>
         );

@@ -14,7 +14,7 @@ export function Search({ onSearch }) {
   };
 
   return (
-    <form className="search" id="search" onSubmit={handleSubmit}>
+    <search className="search" id="search" onSubmit={handleSubmit}>
       <input
         className="search_input"
         type="text"
@@ -33,6 +33,6 @@ export function Search({ onSearch }) {
           <span className="symbols">search</span>
         </button>
       </Link>
-    </form>
+    </search>
   );
 }
