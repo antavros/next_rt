@@ -4,8 +4,8 @@
   place-items        : center center;
   place-self         : center center;
   position           : relative;
-  min-width          : 15rem;
-  min-height         : 22rem;
+  min-width          : 100%;
+  min-height         : 100%;
   -webkit-user-select: none;
   -moz-user-select   : none;
   -ms-user-select    : none;
@@ -47,8 +47,6 @@
   -moz-user-select   : text;
   -ms-user-select    : text;
   user-select        : text;
-  background         : rgba(0, 0, 0, 0.8);
-  backdrop-filter    : blur(0.5rem);
 
   &:hover {
     background     : linear-gradient(to bottom right, var(--color-black), rgba(0, 0, 0, 0.8), var(--color-black));

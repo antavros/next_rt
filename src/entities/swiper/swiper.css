@@ -1,6 +1,6 @@
 .swiper {
   width   : 100%;
-  height  : 70svh;
+  height  : 100%;
   overflow: hidden;
 
   & .swiper-wrapper {
@@ -19,8 +19,8 @@
 
       & .sw_title_overlay {
         position        : absolute;
-        width           : 48%;
-        height          : auto;
+        width           : 40%;
+        height          : 100%;
         top             : 0;
         left            : 0;
         background-color: var(--color-block_back);
@@ -30,10 +30,6 @@
           position : relative;
           font-size: 1rem;
           z-index  : 5;
-
-          &:hover {
-            scale: 1;
-          }
         }
       }
     }

@@ -5,6 +5,7 @@
   display              : grid;
   grid-gap             : var(--block-gap);
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-row    : repeat(auto-fit, minmax(22rem, 1fr));
   width                : 100%;
   min-height           : 100vh;
 }
