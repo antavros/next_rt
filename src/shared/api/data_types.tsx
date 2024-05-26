@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 
 interface TitleRating {
-    kp?: ReactNode;
-    imdb?: ReactNode;
-    rt?: ReactNode;
+    rating?: object;
+    kp?: string;
+    imdb?: string;
+    rt?: string;
     averageRating?: ReactNode;
-    average_All?: ReactNode;
+    average_All?: string;
 }
 
 export interface Details {
