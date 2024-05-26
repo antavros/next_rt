@@ -1,60 +1,4 @@
-import PropTypes from 'prop-types';
 import React, { ReactNode } from 'react';
-
-interface TitleRating {
-    kp?: any;
-    imdb?: any;
-    rt?: any;
-    averageRating?: ReactNode;
-    average_All?: any;
-}
-
-interface Title {
-    id?: number;
-    type?: string;
-    name?: string;
-    alternativeName?: string;
-    enName?: string;
-    countries?: string | { name: string }[];
-    year?: any;
-    length?: any;
-    movieLength?: number;
-    genres?: string | { name: string }[]
-    shortDescription?: string;
-    description?: string;
-    logo?: { url: any };
-    poster?: { previewUrl: any; url: string };
-    backdrop?: { previewUrl: any; url: string };
-    rating?: TitleRating;
-    vote?: any;
-    [key: string]: any;
-}
-
-export const detailsProps = {
-    title: PropTypes.node,
-    details: PropTypes.shape({
-        id: PropTypes.number,
-        type: PropTypes.string,
-        name: PropTypes.any,
-        enName: PropTypes.string,
-        countries: PropTypes.string,
-        year: PropTypes.string,
-        length: PropTypes.string,
-        genres: PropTypes.string,
-        sDescription: PropTypes.string,
-        description: PropTypes.string,
-        logo: PropTypes.node,
-        poster: PropTypes.string,
-        poster2: PropTypes.string,
-        backdrop: PropTypes.string,
-        backdrop2: PropTypes.string,
-        average_kp: PropTypes.node,
-        average_imdb: PropTypes.node,
-        average_rt: PropTypes.node,
-        average_personal: PropTypes.node,
-        average_All: PropTypes.node,
-    }),
-};
 
 function getClassByRate({ vote }: { vote: any }) {
     const hue = (vote / 10) * 110;
@@ -84,66 +28,99 @@ function convertMinutesToHours({ minutes }: { minutes: number }): string {
     }
 }
 
-// getDetail.propTypes = detailsProps;
+interface TitleRating {
+    kp?: any;
+    imdb?: any;
+    rt?: any;
+    averageRating?: ReactNode;
+    average_All?: any;
+}
 
-export async function getDetail({ title }: { readonly title: Title }): Promise<Title> {
-    const id = title?.id;
-    const type = title?.type;
-    const name = title?.name ?? title?.alternativeName ?? title?.enName ?? '';
-    const enName = title?.enName ?? title?.alternativeName ?? "";
-    const countries = Array.isArray(title?.countries) ? title.countries.map(country => country.name).join(' ') : title?.countries ?? '';
-    const year = title?.year ?? "...";
-    const length = title?.movieLength ? convertMinutesToHours({ minutes: title.movieLength }) : '';
-    const genres =  Array.isArray(title?.genres) ? title.genres.map(genre => genre.name).join(' ') : title?.countries ?? '';
-    const sDescription = title?.shortDescription ?? '';
-    const description = title?.description ?? '';
-    const logo = title?.logo?.url ?? '';
-    const poster = title?.poster?.previewUrl ?? '';
-    const poster2 = title?.poster?.url ?? '';
-    const backdrop = title?.backdrop?.previewUrl ?? '';
-    const backdrop2 = title?.backdrop?.url ?? '';
-    const average_kp = title?.rating?.kp ?
-        <article className="kp" style={getClassByRate({ vote: title.rating.kp })}>
+export interface Details {
+    data?: any[];
+    persons?: any[];
+    id?: number;
+    type?: string;
+    name?: string;
+    alternativeName?: string;
+    enName?: string;
+    countries?: string | { name: string }[];
+    year?: any;
+    length?: any;
+    movieLength?: number;
+    genres?: string | { name: string }[]
+    sDescription?: string;
+    description?: string;
+    logo?: { url: any };
+    poster?: { previewUrl: any; url: string };
+    poster2?: string;
+    backdrop?: { previewUrl: any; url: string };
+    backdrop2?: string;
+    rating?: TitleRating;
+    vote?: any;
+    [key: string]: any;
+}
+
+export async function getDetail({ details }: { readonly details: Details }): Promise<Details> {
+    const id = details?.id;
+    const type = details?.type;
+    const name = details?.name ?? details?.alternativeName ?? details?.enName ?? '';
+    const enName = details?.enName ?? details?.alternativeName ?? "";
+    const countries = Array.isArray(details?.countries) ? details.countries.map(country => country.name).join(' ') : details?.countries ?? '';
+    const year = details?.year ?? "...";
+    const length = details?.movieLength ? convertMinutesToHours({ minutes: details.movieLength }) : '';
+    const genres =  Array.isArray(details?.genres) ? details.genres.map(genre => genre.name).join(' ') : details?.countries ?? '';
+    const sDescription = details?.shortDescription ?? '';
+    const description = details?.description ?? '';
+    const logo = details?.logo?.url ?? '';
+    const poster = details?.poster?.previewUrl ?? '';
+    const poster2 = details?.poster?.url ?? '';
+    const backdrop = details?.backdrop?.previewUrl ?? '';
+    const backdrop2 = details?.backdrop?.url ?? '';
+    const persons = Array.isArray(details?.persons) ? details.persons : [];
+
+    const average_kp = details?.rating?.kp ?
+        <article className="kp" style={getClassByRate({ vote: details.rating.kp })}>
             <h6>КП</h6>
             <span>
-                {parseFloat(title.rating.kp).toFixed(1)}
+                {parseFloat(details.rating.kp).toFixed(1)}
             </span>
         </article> : '';
 
-    const average_imdb = title?.rating?.imdb ?
-        <article className="imdb" style={getClassByRate({ vote: title.rating.imdb })}>
+    const average_imdb = details?.rating?.imdb ?
+        <article className="imdb" style={getClassByRate({ vote: details.rating.imdb })}>
             <h6>IMDB</h6>
             <span>
-                {parseFloat(title.rating.imdb).toFixed(1)}
+                {parseFloat(details.rating.imdb).toFixed(1)}
             </span>
         </article> : '';
 
-    const average_rt = title?.rating?.imdb ?
-        <article className="rt" style={getClassByRate({ vote: title.rating.imdb })}>
+    const average_rt = details?.rating?.imdb ?
+        <article className="rt" style={getClassByRate({ vote: details.rating.imdb })}>
             <h6>RT</h6>
             <span>
-                {parseFloat(title.rating.imdb).toFixed(1)}
+                {parseFloat(details.rating.imdb).toFixed(1)}
             </span>
         </article> : '';
 
-    const average_personal = title?.rating?.imdb ?
-        <article className="personal" style={getClassByRate({ vote: title.rating.imdb })}>
+    const average_personal = details?.rating?.imdb ?
+        <article className="personal" style={getClassByRate({ vote: details.rating.imdb })}>
             <h6 className="symbols">account_circle</h6>
             <span>
-                {parseFloat(title.rating.imdb).toFixed(1)}
+                {parseFloat(details.rating.imdb).toFixed(1)}
             </span>
         </article> : '';
 
     let ratings = [];
     
-    if (title?.rating?.kp) {
-        ratings.push(parseFloat(title.rating.kp));
+    if (details?.rating?.kp) {
+        ratings.push(parseFloat(details.rating.kp));
     }
-    if (title?.rating?.imdb) {
-        ratings.push(parseFloat(title.rating.imdb));
+    if (details?.rating?.imdb) {
+        ratings.push(parseFloat(details.rating.imdb));
     }
-    if (title?.rating?.rt) {
-        ratings.push(parseFloat(title.rating.rt));
+    if (details?.rating?.rt) {
+        ratings.push(parseFloat(details.rating.rt));
     }
     let average_All = null;
     if (ratings.length > 0) {
@@ -172,10 +149,11 @@ export async function getDetail({ title }: { readonly title: Title }): Promise<T
         poster2,
         backdrop,
         backdrop2,
+        persons,
         average_All,
         average_kp,
         average_imdb,
         average_rt,
         average_personal
-    };
+    } as Details;
 }

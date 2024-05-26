@@ -5,12 +5,9 @@ import Image from 'next/image'
 
 import { useState } from 'react';
 import { Preloader } from "../../../features/preloader/preloader";
-import { detailsProps } from "../../../shared/api/data_types";
 
 import "../../../entities/title/rate/rate.css";
 import "./title_card.css";
-
-TitleCard.propTypes = detailsProps;
 
 export function TitleCard({ details }: { readonly details: any }) {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -20,7 +17,8 @@ export function TitleCard({ details }: { readonly details: any }) {
             {!imageLoaded && <Preloader />}
             <Link href={`/${details.type}/${details.id}`}>
                 <Image
-                    fill={true}
+                    width={256}
+                    height={400}
                     onLoad={() => setImageLoaded(true)}
                     src={details.poster}
                     alt={details.name}

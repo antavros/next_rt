@@ -27,7 +27,9 @@ aside {
                     width        : 100%;
                     gap          : var(--block-gap);
 
-                    & span {
+                    & svg {
+                        width          : 2rem;
+                        height         : 2rem;
                         backdrop-filter: grayscale(30%);
                     }
 

@@ -1,4 +1,7 @@
 import Link from 'next/link'
+
+import { IconHome, IconMovie, IconDeviceTvOld, IconMickey, IconHorseToy, IconTorii } from '@tabler/icons-react';
+
 import { Togglers } from '../../features/togglers/togglers';
 import './sidebar.css';
 
@@ -11,7 +14,7 @@ export function Sidebar() {
                         <Link href="/" >
                             <li>
                                 <button>
-                                    <span className="symbols">Home</span>
+                                    <IconHome stroke={2} />
                                     <p>Главная</p>
                                 </button>
                             </li>
@@ -19,7 +22,7 @@ export function Sidebar() {
                         <Link href="/movie" >
                             <li>
                                 <button>
-                                    <span className="symbols">Movie</span>
+                                    <IconMovie stroke={2} />
                                     <p>Фильмы</p>
                                 </button>
                             </li>
@@ -27,7 +30,7 @@ export function Sidebar() {
                         <Link href="/tvseries">
                             <li>
                                 <button>
-                                    <span className="symbols">Live_Tv</span>
+                                    <IconDeviceTvOld stroke={2} />
                                     <p>Сериалы</p>
                                 </button>
                             </li>
@@ -35,7 +38,7 @@ export function Sidebar() {
                         <Link href="/cartoon">
                             <li>
                                 <button>
-                                    <span className="symbols">family_star</span>
+                                    <IconMickey stroke={2} />
                                     <p>Мультфильмы</p>
                                 </button>
                             </li>
@@ -43,7 +46,7 @@ export function Sidebar() {
                         <Link href="/animatedseries">
                             <li>
                                 <button>
-                                    <span className="symbols">bedroom_baby</span>
+                                    <IconHorseToy stroke={2} />
                                     <p>Мультсериалы</p>
                                 </button>
                             </li>
@@ -51,7 +54,7 @@ export function Sidebar() {
                         <Link href="/anime">
                             <li>
                                 <button>
-                                    <span className="symbols">language_japanese_kana</span>
+                                    <IconTorii stroke={2} />
                                     <p>Аниме</p>
                                 </button>
                             </li>

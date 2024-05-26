@@ -1,6 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import { IconSearch } from '@tabler/icons-react';
+
+
 import { useState } from 'react';
 import './search.css';
 
@@ -30,7 +33,7 @@ export function Search({ onSearch }) {
       />
       <Link href={`/search/${searchValue}`}>
         <button type="submit" className="search_button">
-          <span className="symbols">search</span>
+          <IconSearch stroke={2} />
         </button>
       </Link>
     </search>

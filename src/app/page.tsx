@@ -1,9 +1,8 @@
 
 import { TitlesContainer } from "../entities/title/titles_table/titles_table";
-import { SwiperTitles } from "../entities/swiper/swiper";
+import { SwiperTitles } from "../entities/swiper/swiper_home/swiper_home";
 import {
     API_URL_POPULAR,
-    API_URL_SWIPER,
     getData
 } from "../shared/api/api";
 
@@ -17,12 +16,13 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-        const dataSwiper = await getData({ url: API_URL_SWIPER });
-        const dataTitles = await getData({ url: API_URL_POPULAR });
-
+    const dataTitles = await getData({ url: API_URL_POPULAR });
+    const titlesWithLogo = dataTitles.filter(item => item.logo);
+    const titlesWithBackDrop = titlesWithLogo.filter(item => item.backdrop2);
+    const topTenTitlesWithLogo = titlesWithBackDrop.slice(0, 10);
     return (
         <>
-            <SwiperTitles titleData={dataSwiper} />
+            <SwiperTitles titleData={topTenTitlesWithLogo} />
             <hr />
             <TitlesContainer titleData={dataTitles} />
         </>

@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { getDetail } from './data_types';
 
 //------------------------------------------------------------------------------------------------------------>
@@ -12,7 +13,7 @@ const API_page = `page=1`;
 const API_params = `sortField=votes.kp&sortType=-1&notNullFields=poster.url`;
 
 export const API_URL_SWIPER = `${API_URL}?&lists=popular-films&limit=10&year=${yearRange}&${API_params}`;
-export const API_URL_POPULAR = `${API_URL}?&lists=popular-films&${API_limit}&year=${yearRange}&${API_params}`;
+export const API_URL_POPULAR = `${API_URL}?&lists=popular-films&limit=150&year=${yearRange}&${API_params}`;
 // `/data/1267348.json`
 export const API_URL_title = `${API_URL}/`;
 export const API_URL_SEARCH = `${API_URL}/search?${API_limit}&${API_page}&query=`;
@@ -35,7 +36,7 @@ export async function getData({ url }: { readonly url: string }) {
       'X-API-KEY': API_KEY,
     },
     next: {
-      revalidate: 3600
+      revalidate: 36000
     }
   };
 
@@ -45,8 +46,7 @@ export async function getData({ url }: { readonly url: string }) {
   if (!Array.isArray(data)) throw new Error('Data is not an array');
 
   const detailData = (
-    await Promise.all(data.map(async (title) => {
-      const details = await getDetail({ title });
+    await Promise.all(data.map(async (details) => {
       return { ...details, hasPosters: details.poster && details.poster2 };
     }))
   ).filter((movie) => movie.hasPosters);

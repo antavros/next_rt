@@ -17,9 +17,15 @@ button,
     user-select        : none;
     backdrop-filter    : var(--blur);
 
-    & span {
-        padding  : var(--element-gap);
-        font-size: 1.5rem;
+    & a {
+        color : var(--color-text) !important;
+        height: 24px;
+    }
+
+    & svg {
+        width  : 100%;
+        height : 100%;
+        padding: 15%;
     }
 
     &:hover {
@@ -28,19 +34,19 @@ button,
         color           : var(--color-white);
         background-color: var(--color-button-hover);
 
-        & span,
+        & svg,
         p {
             color: var(--color-white);
         }
     }
 
-    &:active {
+    &:is(:active, :focus) {
         scale     : var(--active-scale) !important;
         border    : var(--border)var(--color-white) !important;
         color     : var(--color-purple) !important;
         background: var(--color-button-active);
 
-        & span,
+        & svg,
         p {
             color: var(--color-purple) !important;
         }

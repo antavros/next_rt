@@ -3,7 +3,7 @@
     flex-direction: row;
     min-width     : 3rem;
     width         : 25rem;
-    height        : auto;
+    min-height    : 3rem;
 
     &:hover {
         scale: var(--hover-scale);
@@ -48,17 +48,19 @@
             }
         }
     }
+}
 
-    & .search_button {
-        width        : 2.5rem;
-        border       : var(--border) var(--color-border);
-        border-radius: 0px 2.5rem 2.5rem 0px;
+.search_button {
+    width        : 3rem;
+    min-height   : 3rem;
+    border       : var(--border) var(--color-border);
+    border-radius: 0px 2.5rem 2.5rem 0px;
 
-        & span {
-            font-size : 1.5rem;
-            text-align: center;
-            color     : var(--color-text);
-        }
-
+    & svg {
+        padding   : 0rem !important;
+        font-size : 100% !important;
+        text-align: center;
+        color     : var(--color-text);
     }
+
 }

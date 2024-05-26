@@ -1,5 +1,7 @@
 'use client'
 
+import { IconArrowBadgeUp, IconArrowBadgeDown, IconArrowBadgeDownFilled  } from '@tabler/icons-react';
+
 import { useEffect, useState } from 'react';
 import './fastNav.css';
 
@@ -28,13 +30,17 @@ export const FastNavigation = () => {
     }, []);
 
     return (
-        <span id="fastNav">
-            <button>
-                {showTopNav && <a href="#body" id="fastNavTop" className="symbols">expand_less</a>}
-            </button>
-            <button>
-                {showBottomNav && <a href="#footer" id="fastNavBottom" className="symbols">expand_more</a>}
-            </button>
-        </span>
+        <button id="fastNav">
+            {showTopNav && (
+                <a href="#body" title="top">
+                    <IconArrowBadgeUp stroke={2} />
+                </a>
+            )}
+            {showBottomNav && (
+                <a href="#footer" title="down">
+                    <IconArrowBadgeDown stroke={2} />
+                </a>
+            )}
+        </button>
     );
 };

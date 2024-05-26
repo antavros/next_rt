@@ -40,20 +40,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({children,}:{ readonly children: React.ReactNode}) {
   return (
     <html lang="ru">
       <Head>
         <meta name="MobileOptimized" content="width" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+        <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
       </Head>
 
-      <body className={inter.className}>
+      <body id="body" className={inter.className}>
         <Header />
           <hr />
           <Sidebar />
