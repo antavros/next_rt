@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { getDetail } from './data_types';
+import { getDetails } from './data_types';
 
 //------------------------------------------------------------------------------------------------------------>
 
@@ -47,8 +47,11 @@ export async function getData({ url }: { readonly url: string }) {
 
   const detailData = (
     await Promise.all(data.map(async (details) => {
-      return { ...details, hasPosters: details.poster && details.poster2 };
+      const detailData = await getDetails({ details });
+      return { ...detailData, hasPosters: detailData.poster && detailData.poster2 };
     }))
   ).filter((movie) => movie.hasPosters);
+  console.log(detailData);
+
   return detailData;
 }

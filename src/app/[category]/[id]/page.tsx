@@ -1,4 +1,4 @@
-import { TitleContainer } from "../../../entities/title/title_page/title_page";
+import { TitleContainer } from "@/entities/title/title_page/title_page";
 import { API_URL_title, getData } from "../../../shared/api/api";
 import { Metadata, ResolvingMetadata } from 'next';
 import Head from 'next/head';

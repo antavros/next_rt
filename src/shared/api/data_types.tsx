@@ -1,5 +1,40 @@
 import React, { ReactNode } from 'react';
 
+interface TitleRating {
+    kp?: ReactNode;
+    imdb?: ReactNode;
+    rt?: ReactNode;
+    averageRating?: ReactNode;
+    average_All?: ReactNode;
+}
+
+export interface Details {
+
+    details?: object;
+    data?: object;
+    persons?: any[];
+    id?: string;
+    type?: string;
+    name?: string;
+    alternativeName?: string;
+    enName?: string;
+    countries?: string | { name: string }[];
+    year?: any;
+    length?: any;
+    movieLength?: number;
+    genres?: string | { name: string }[]
+    sDescription?: string;
+    description?: string;
+    logo?: { url: any };
+    poster?: { previewUrl: any; url: string };
+    poster2?: string;
+    backdrop?: { previewUrl: any; url: string };
+    backdrop2?: string;
+    rating?: TitleRating;
+    vote?: any;
+    [key: string]: any;
+}
+
 function getClassByRate({ vote }: { vote: any }) {
     const hue = (vote / 10) * 110;
     const saturation = 100;
@@ -28,55 +63,26 @@ function convertMinutesToHours({ minutes }: { minutes: number }): string {
     }
 }
 
-interface TitleRating {
-    kp?: any;
-    imdb?: any;
-    rt?: any;
-    averageRating?: ReactNode;
-    average_All?: any;
-}
+export async function getDetails({ details }: { readonly details: Details }): Promise<Details> {
 
-export interface Details {
-    data?: any[];
-    persons?: any[];
-    id?: number;
-    type?: string;
-    name?: string;
-    alternativeName?: string;
-    enName?: string;
-    countries?: string | { name: string }[];
-    year?: any;
-    length?: any;
-    movieLength?: number;
-    genres?: string | { name: string }[]
-    sDescription?: string;
-    description?: string;
-    logo?: { url: any };
-    poster?: { previewUrl: any; url: string };
-    poster2?: string;
-    backdrop?: { previewUrl: any; url: string };
-    backdrop2?: string;
-    rating?: TitleRating;
-    vote?: any;
-    [key: string]: any;
-}
-
-export async function getDetail({ details }: { readonly details: Details }): Promise<Details> {
     const id = details?.id;
     const type = details?.type;
     const name = details?.name ?? details?.alternativeName ?? details?.enName ?? '';
     const enName = details?.enName ?? details?.alternativeName ?? "";
+
     const countries = Array.isArray(details?.countries) ? details.countries.map(country => country.name).join(' ') : details?.countries ?? '';
     const year = details?.year ?? "...";
     const length = details?.movieLength ? convertMinutesToHours({ minutes: details.movieLength }) : '';
     const genres =  Array.isArray(details?.genres) ? details.genres.map(genre => genre.name).join(' ') : details?.countries ?? '';
     const sDescription = details?.shortDescription ?? '';
     const description = details?.description ?? '';
+
     const logo = details?.logo?.url ?? '';
     const poster = details?.poster?.previewUrl ?? '';
     const poster2 = details?.poster?.url ?? '';
     const backdrop = details?.backdrop?.previewUrl ?? '';
     const backdrop2 = details?.backdrop?.url ?? '';
+
     const persons = Array.isArray(details?.persons) ? details.persons : [];
 
     const average_kp = details?.rating?.kp ?
