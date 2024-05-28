@@ -66,14 +66,13 @@ export function SwiperTitles({ titleData }: any) {
                             <section className="swiper_home_Info">
                                 <Image
                                     fill={true}
-                                    src={details.logo || details.poster}
-                                    className={`title_logo`}
+                                    src={details.logo}
                                     alt={details.name}
                                 />
                                 <h1>{details.name}</h1>
                                 <h2>{details.enName}</h2>
                                 <p>{details.countries}</p>
-                                <p className="titlePage_year">{details.year}г {details.length}</p>
+                                <p>{details.year}г {details.length}</p>
                                 <p>{details.genres}</p>
                                 <section className="title_rate">
                                     {details.average_kp}

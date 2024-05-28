@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import "@/entities/title/rate/rate.css";
+import "./titlePage_main.css"
 
 export function TitlePageMain({ details }: { readonly details: any }) {
     return (

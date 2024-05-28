@@ -85,8 +85,11 @@
     }
 
     & .title_rate {
+      display       : flex;
+      flex-direction: row;
       position   : relative;
       padding-top: 1rem;
+      place-content : center space-evenly;
     }
   }
 }

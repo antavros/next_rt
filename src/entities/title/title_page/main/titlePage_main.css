@@ -1,0 +1,20 @@
+.titlePage_mainInfo {
+  position:relative;
+  display       : flex;
+  flex-direction: column;
+  place-content : center center;
+  position      : relative;
+  width         : 100%;
+  height        : auto;
+  padding       : var(--block-gap);
+
+  & .titlePage_description {
+    text-overflow : ellipsis;
+    text-wrap     : pretty;
+    margin-top    : auto;
+    padding-bottom: 2rem;
+    width         : 100%;
+    color         : white;
+  }
+}
+
