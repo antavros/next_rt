@@ -28,6 +28,12 @@ export async function generateMetadata(
     openGraph: {
       title: details.name,
       images: [...images, ...previousImages],
+      description: details.sDescription ?? details.description ?? '',
+    },
+    twitter: {
+      title: details.name,
+      images: [...images, ...previousImages],
+      description: details.sDescription ?? details.description ?? '',
     },
   };
 }
