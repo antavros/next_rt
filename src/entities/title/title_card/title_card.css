@@ -1,19 +1,18 @@
 .title_card {
-  display               : flex;
-  place-content         : center center;
-  place-items           : center center;
-  place-self            : center center;
-  position              : relative;
-  min-width             : 100%;
-  min-height            : 100%;
-  -webkit-user-select   : none;
-  -moz-user-select      : none;
-  -ms-user-select       : none;
-  user-select           : none;
-  cursor                : pointer;
-  overflow              : hidden;
-  z-index               : 2;
-  /* border             : 0.2px solid gray; */
+  display            : flex;
+  place-content      : center center;
+  place-items        : center center;
+  place-self         : center center;
+  position           : relative;
+  min-width          : 100%;
+  min-height         : 100%;
+  -webkit-user-select: none;
+  -moz-user-select   : none;
+  -ms-user-select    : none;
+  user-select        : none;
+  cursor             : pointer;
+  overflow           : hidden;
+  z-index            : 2;
 
   &:hover {
     scale: 1.03;
@@ -29,7 +28,6 @@
     }
   }
 }
-
 
 .card_info {
   position           : absolute;
@@ -62,7 +60,7 @@
   & h3 {
     color         : var(--color-white);
     font-size     : 1.1rem;
-    padding-top   : 1.5rem;
+    padding-top   : 3rem;
     padding-bottom: 0.5rem;
     text-align    : center;
     text-overflow : ellipsis;

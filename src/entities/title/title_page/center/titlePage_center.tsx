@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
 import "@/entities/title/rate/rate.css";
-import "./titlePage_main.css"
+import "./titlePage_center.css"
 
-export function TitlePageMain({ details }: { readonly details: any }) {
+export function TitlePageCenter({ details }: { readonly details: any }) {
     return (
         <div className='titlePage_main'>
             <section className='titlePage_mainInfo'>

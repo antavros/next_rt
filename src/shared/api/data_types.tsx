@@ -65,26 +65,27 @@ function convertMinutesToHours({ minutes }: { minutes: number }): string {
 }
 
 export async function getDetails({ details }: { readonly details: Details }): Promise<Details> {
+    const persons = Array.isArray(details?.persons) ? details.persons : [];
+    const similar = Array.isArray(details?.similarMovies) ? details.similarMovies : [];
 
-    const id = details?.id;
+    const id = details?.id ?? details?.similar?.id ;
     const type = details?.type;
-    const name = details?.name ?? details?.alternativeName ?? details?.enName ?? '';
-    const enName = details?.enName ?? details?.alternativeName ?? "";
+    const name = details?.name ?? details?.alternativeName ?? details?.enName ?? details?.similar?.name ?? '';
+    const enName = details?.enName ?? details?.alternativeName ?? details?.similar?.enName ?? "";
 
     const countries = Array.isArray(details?.countries) ? details.countries.map(country => country.name).join(' ') : details?.countries ?? '';
-    const year = details?.year ?? "...";
+    const year = details?.year ?? details?.similar?.id ?? "...";
     const length = details?.movieLength ? convertMinutesToHours({ minutes: details.movieLength }) : '';
     const genres =  Array.isArray(details?.genres) ? details.genres.map(genre => genre.name).join(' ') : details?.countries ?? '';
     const sDescription = details?.shortDescription ?? '';
     const description = details?.description ?? '';
 
     const logo = details?.logo?.url ?? '';
-    const poster = details?.poster?.previewUrl ?? '';
-    const poster2 = details?.poster?.url ?? '';
+    const poster = details?.poster?.previewUrl ?? details?.similar?.poster?.previewUrl ?? '';
+    const poster2 = details?.poster?.url ?? details?.similar?.poster?.url ?? '';
     const backdrop = details?.backdrop?.previewUrl ?? '';
     const backdrop2 = details?.backdrop?.url ?? '';
 
-    const persons = Array.isArray(details?.persons) ? details.persons : [];
 
     const average_kp = details?.rating?.kp ?
         <article className="kp" style={getClassByRate({ vote: details.rating.kp })}>
@@ -157,6 +158,7 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
         backdrop,
         backdrop2,
         persons,
+        similar,
         average_All,
         average_kp,
         average_imdb,

@@ -1,17 +1,18 @@
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react"
 
-import { Header } from "../widgets/header/header";
-import { Sidebar } from "../widgets/sidebar/sidebar";
-import { Footer } from "../widgets/footer/footer";
-import { FastNavigation } from "../features/fastNav/fastNav";
+import { Header } from "@/widgets/header/header";
+import { Sidebar } from "@/widgets/sidebar/sidebar";
+import { Footer } from "@/widgets/footer/footer";
+import { FastNavigation } from "@/features/fastNav/fastNav";
 import "./globals.css";
 
 import "material-symbols"
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-import type { Viewport } from 'next'
+import Head from 'next/head'
+import type { Metadata, Viewport } from 'next'
 export const viewport: Viewport = {
   themeColor: 'black',
   colorScheme: 'dark',
@@ -21,8 +22,6 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-import Head from 'next/head'
-import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'RATETABLE',
   description: 'Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!',

@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
 import "@/entities/title/rate/rate.css";
-import Style from "./titlePage_head.module.css";
+import Style from "./titlePage_top.module.css";
 
-export function TitlePageHead({ details }: { readonly details: any }) {
+export function TitlePageTop({ details }: { readonly details: any }) {
     return (
         <div className={Style.titlePage_head}>
             <Image
@@ -11,12 +11,14 @@ export function TitlePageHead({ details }: { readonly details: any }) {
                 src={details.backdrop2}
                 className={Style.title_back}
                 alt={details.name}
+                priority={true}
             />
             <section className={Style.titlePage_head_Info}>
                 <Image
                     fill={true}
                     src={details.logo || details.poster}
                     alt={details.name}
+                    priority={true}
                 />
                 <h1>{details.name}</h1>
                 <h2>{details.enName}</h2>

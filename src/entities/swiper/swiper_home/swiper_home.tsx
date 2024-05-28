@@ -62,12 +62,15 @@ export function SwiperTitles({ titleData }: any) {
                                 src={details.backdrop2}
                                 className={`title_back`}
                                 alt={details.name}
+                                priority={true}
                             />
                             <section className="swiper_home_Info">
                                 <Image
                                     fill={true}
                                     src={details.logo}
                                     alt={details.name}
+                                                                    priority={true}
+
                                 />
                                 <h1>{details.name}</h1>
                                 <h2>{details.enName}</h2>

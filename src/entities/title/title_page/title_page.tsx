@@ -1,6 +1,6 @@
-import { TitlePageHead } from './head/titlePage_head';
-import { TitlePageMain } from './main/titlePage_main';
-import { TitlePageFooter } from './footer/titlePage_footer';
+import { TitlePageTop } from './top/titlePage_top';
+import { TitlePageCenter } from './center/titlePage_center';
+import { TitlePageBottom } from './bottom/titlePage_bottom';
 
 import "./title_page.css"
 
@@ -8,11 +8,11 @@ export function TitleContainer({ details }: { readonly details: any }) {
 
     return (
         <section className="titlePage" id={details.id}>
-            <TitlePageHead details={details}/>
+            <TitlePageTop details={details}/>
             <hr />
-            <TitlePageMain details={details} />
+            <TitlePageCenter details={details} />
             <hr />
-            <TitlePageFooter details={details}/>
+            <TitlePageBottom details={details}/>
         </section >
     );
 }
