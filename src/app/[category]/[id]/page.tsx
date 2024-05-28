@@ -30,6 +30,7 @@ export async function generateMetadata(
       description: details.sDescription ?? details.description ?? '',
     },
     twitter: {
+      card: 'summary_large_image',
       title: details.name,
       images: [...images, ...previousImages],
       description: details.sDescription ?? details.description ?? '',
