@@ -81,16 +81,6 @@
 }
 
 @media (max-width: 800px) {
-  .titlePage_head_Info {
-    overflow     : hidden;
-    place-content: end end;
-    width        : 100%;
-
-    & .title_back {
-      object-position: 70%;
-    }
-  }
-
   .titlePage_head::after {
     background: gradient(top to bottom,
         transparent 0%,
@@ -99,5 +89,15 @@
         rgba(0, 0, 0, 0.8) 89%,
         rgba(0, 0, 0, 0.9) 99%,
         rgba(0, 0, 0, 1) 109%);
+  }
+
+  .title_back {
+    object-position: 70%;
+  }
+
+  .titlePage_head_Info {
+    overflow     : hidden;
+    place-content: end end;
+    width        : 100%;
   }
 }

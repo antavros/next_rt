@@ -19,18 +19,19 @@ export async function generateMetadata(
 
   // Ensure that logo and poster are strings and not objects or undefined
   const poster = typeof details.poster === 'string' ? details.poster : '';
+  const images = [poster].filter(Boolean) as string[];
 
   return {
     title: details.name,
     description: details.sDescription ?? details.description ?? '',
     openGraph: {
       title: details.name,
-      images: [...poster, ...previousImages],
+      images: [...images, ...previousImages],
       description: details.sDescription ?? details.description ?? '',
     },
     twitter: {
       title: details.name,
-      images: [...poster, ...previousImages],
+      images: [...images, ...previousImages],
       description: details.sDescription ?? details.description ?? '',
     },
   };
