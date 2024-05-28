@@ -31,8 +31,6 @@ export const metadata: Metadata = {
   keywords: 'фильмы новинки кинофильмы кинотеатр 2020 2021 2022 просмотр видеоролики',
   openGraph: {
     title: 'RATETABLE',
-    images: '/images/LOGO.png',
-    description: 'Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!',
     siteName: 'RATETABLE',
     locale: 'ru_RU',
     type: 'article',

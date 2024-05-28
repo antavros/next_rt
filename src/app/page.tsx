@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     title: 'ГЛАВНАЯ',
     openGraph: {
         title: 'ГЛАВНАЯ',
+        images: '/images/LOGO.png',
+        description: 'Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!',
     },
 }
 
