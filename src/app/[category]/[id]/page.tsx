@@ -18,21 +18,19 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   // Ensure that logo and poster are strings and not objects or undefined
-  const logo = typeof details.logo === 'string' ? details.logo : '';
   const poster = typeof details.poster === 'string' ? details.poster : '';
-  const images = [logo, poster].filter(Boolean) as string[];
 
   return {
     title: details.name,
     description: details.sDescription ?? details.description ?? '',
     openGraph: {
       title: details.name,
-      images: [...images, ...previousImages],
+      images: [...poster, ...previousImages],
       description: details.sDescription ?? details.description ?? '',
     },
     twitter: {
       title: details.name,
-      images: [...images, ...previousImages],
+      images: [...poster, ...previousImages],
       description: details.sDescription ?? details.description ?? '',
     },
   };
