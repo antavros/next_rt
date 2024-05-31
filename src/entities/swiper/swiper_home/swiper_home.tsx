@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import {
+    FreeMode,
     Autoplay,
     Keyboard,
     Navigation,
@@ -24,6 +25,7 @@ export function SwiperTitles({ titleData }: any) {
         <Swiper
             navigation={true}
             centeredSlides={true}
+            freeMode={false}
             spaceBetween={10}
             speed={600}
             loop={true}
@@ -34,7 +36,7 @@ export function SwiperTitles({ titleData }: any) {
                 clickable: true,
             }}
             autoplay={{
-                delay: 3500,
+                delay: 22500,
                 disableOnInteraction: true,
             }}
             breakpoints={{
@@ -48,7 +50,7 @@ export function SwiperTitles({ titleData }: any) {
                     slidesPerView: 2,
                 },
             }}
-            modules={[Autoplay, Keyboard, Navigation, Pagination]}
+            modules={[FreeMode, Autoplay, Keyboard, Navigation, Pagination]}
             className="popular_new"
         >
             {
@@ -67,7 +69,8 @@ export function SwiperTitles({ titleData }: any) {
                                     fill={true}
                                     src={details.logo}
                                     alt={details.name}
-                                    priority={true}
+                                                                    priority={true}
+
                                 />
                                 <h1>{details.name}</h1>
                                 <h2>{details.enName}</h2>

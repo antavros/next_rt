@@ -27,10 +27,8 @@ export interface Details {
     sDescription?: string;
     description?: string;
     logo?: { url: any };
-    poster?: { poster: any; previewUrl: string; url: string };
-    poster2?: { poster: any; previewUrl: string; url: string };
-    poster3?: { poster: any; previewUrl: string; url: string };
-    poster4?: { poster: any; previewUrl: string; url: string };
+    poster?: { previewUrl: any; url: string };
+    poster2?: string;
     backdrop?: { previewUrl: any; url: string };
     backdrop2?: string;
     rating?: TitleRating;
@@ -71,25 +69,20 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
     const similar = Array.isArray(details?.similarMovies) ? details.similarMovies : [];
 
     const id = details?.id ?? details?.similar?.id ;
-    const type = details?.type ?? details?.similar?.type;
+    const type = details?.type;
     const name = details?.name ?? details?.alternativeName ?? details?.enName ?? details?.similar?.name ?? '';
-    const enName = details?.enName ?? details?.alternativeName ?? details?.similar?.enName ?? details?.similar?.alternativeName ?? "";
+    const enName = details?.enName ?? details?.alternativeName ?? details?.similar?.enName ?? "";
 
     const countries = Array.isArray(details?.countries) ? details.countries.map(country => country.name).join(' ') : details?.countries ?? '';
-    const year = details?.year ?? details?.similar?.year ?? "...";
+    const year = details?.year ?? details?.similar?.id ?? "...";
     const length = details?.movieLength ? convertMinutesToHours({ minutes: details.movieLength }) : '';
     const genres =  Array.isArray(details?.genres) ? details.genres.map(genre => genre.name).join(' ') : details?.countries ?? '';
     const sDescription = details?.shortDescription ?? '';
     const description = details?.description ?? '';
 
     const logo = details?.logo?.url ?? '';
-
-    const poster = details?.poster?.previewUrl ?? '';
-    const poster2 = details?.poster?.url ?? '';
-
-    const poster3 = poster?.previewUrl ?? '';
-    const poster4 = details.poster.url ?? '';
-
+    const poster = details?.poster?.previewUrl ?? details?.similar?.poster?.previewUrl ?? '';
+    const poster2 = details?.poster?.url ?? details?.similar?.poster?.url ?? '';
     const backdrop = details?.backdrop?.previewUrl ?? '';
     const backdrop2 = details?.backdrop?.url ?? '';
 
@@ -149,8 +142,6 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
         );
     }
     return {
-        persons,
-        similar,
         id,
         type,
         name,
@@ -164,10 +155,10 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
         logo,
         poster,
         poster2,
-        poster3,
-        poster4,
         backdrop,
         backdrop2,
+        persons,
+        similar,
         average_All,
         average_kp,
         average_imdb,

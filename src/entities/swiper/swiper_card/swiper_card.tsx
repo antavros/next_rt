@@ -1,12 +1,11 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-
+import { TitleCard } from '@/entities/title/title_card/title_card';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './swiper_card.css';
+import Style from './swiper_card.module.css';
 import 'swiper/css';
+import 'swiper/css/a11y';
 import 'swiper/css/keyboard';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -18,59 +17,50 @@ import {
     Pagination,
 } from 'swiper/modules';
 
-export function SwiperCard({ details }: any) {
-    return (
-        <Swiper
-            navigation={true}
-            centeredSlides={true}
-            spaceBetween={10}
-            speed={600}
-            loop={true}
-            grabCursor={true}
-            keyboard={true}
-            slidesPerView={2}
-            pagination={{
-                clickable: true,
-            }}
-            autoplay={{
-                delay: 22500,
-                disableOnInteraction: true,
-            }}
-            breakpoints={{
-                100: {
-                    slidesPerView: 1,
-                },
-                600: {
-                    slidesPerView: 1,
-                },
-                1024: {
-                    slidesPerView: 2,
-                },
-            }}
-            modules={[Autoplay, Keyboard, Navigation, Pagination]}
-            className="popular_new"
-        >
-            {
-                (Array.isArray(details) && details.map(details => (
-                    <SwiperSlide key={details.id} id={details.id}>
-                        <Image
-                            width={256}
-                            height={400}
-                            src={details.poster4}
-                            alt={details.name}
-                            priority={true}
-                        />
-                        <Link className='swiper_Card' href={`/${details.type}/${details.id}`}>
-                            <section className="swiper_Card_Info">
-                                <h1>{details.name}</h1>
-                                <h2>{details.enName}</h2>
-                                <p>{details.year}г</p>
+export function SwiperCard({ titleData }: any) {
 
-                            </section>
-                        </Link >
-                    </SwiperSlide>
-                )))
-            }
-        </Swiper >
+    return (
+        <section className={Style.swiper_card_wrapper}>
+            <Swiper
+                navigation={true}
+                centeredSlides={true}
+                spaceBetween={5}
+                speed={600}
+                loop={true}
+                grabCursor={true}
+                keyboard={true}
+                slidesPerView={2}
+                pagination={{
+                    clickable: true,
+                }}
+                autoplay={{
+                    delay: 22500,
+                    disableOnInteraction: true,
+                }}
+                breakpoints={{
+                    100: {
+                        slidesPerView: 1,
+                    },
+                    600: {
+                        slidesPerView: 1,
+                    },
+                    1024: {
+                        slidesPerView: 2,
+                    },
+                }}
+                modules={[Autoplay, Keyboard, Navigation, Pagination]}
+                className="popular_new"
+            >
+                {
+                    (Array.isArray(titleData) && titleData.map(details => (
+                        <SwiperSlide key={details.id} id={details.id}>
+                            <div className='swiper_card'>
+                                <TitleCard details={details} />
+                            </div>
+                        </SwiperSlide>
+                    )))
+                }
+            </Swiper >
+        </section>
     );
 }

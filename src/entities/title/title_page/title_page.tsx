@@ -8,10 +8,10 @@ export function TitleContainer({ details }: { readonly details: any }) {
 
     return (
         <section className="titlePage" id={details.id}>
-            {/* <TitlePageTop details={details}/>
+            <TitlePageTop details={details}/>
             <hr />
             <TitlePageCenter details={details} />
-            <hr /> */}
+            <hr />
             <TitlePageBottom details={details}/>
         </section >
     );
