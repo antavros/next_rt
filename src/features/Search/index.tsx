@@ -8,10 +8,10 @@ import { useState } from 'react';
 import './style.css';
 
 
-export function Search({ onSearch }) {
+export function Search({ onSearch }: any) {
   const [searchValue, setSearchValue] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     onSearch(searchValue);
   };
@@ -27,12 +27,12 @@ export function Search({ onSearch }) {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         required
-        minLength="1"
-        maxLength="99"
-        size="10"
+        minLength={1}
+        maxLength={99}
+        size={10}
       />
       <Link href={`/search/${searchValue}`}>
-        <button type="submit" className="search_button">
+        <button type="submit" className="search_button" title='Найти'>
           <IconSearch stroke={2} />
         </button>
       </Link>

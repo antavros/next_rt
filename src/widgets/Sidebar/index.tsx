@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { IconHome, IconMovie, IconDeviceTvOld, IconMickey, IconHorseToy, IconTorii } from '@tabler/icons-react';
 
-import { Togglers } from '@/features/Togglers/togglers';
+import { Togglers } from '@/features/Togglers';
 import './style.css';
 
 export function Sidebar() {

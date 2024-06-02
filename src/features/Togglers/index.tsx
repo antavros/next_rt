@@ -1,17 +1,36 @@
 'use client'
 
-import { useState, useEffect, createContext, useContext, useMemo } from 'react';
+import { useState, useEffect, createContext, useContext, useMemo, ReactNode, FC } from 'react';
 import '@/features/Button/style.css';
-import './togglers.css';
+import './style.css';
 
-// Create contexts for each toggle
-const ThemeContext = createContext();
-const SidebarHideContext = createContext();
-const SidebarPositionContext = createContext();
+// Интерфейсы для контекстов
+interface ThemeContextProps {
+    isDarkMode: boolean;
+    setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-// Theme toggle component
-function ThemeToggle() {
-    const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
+interface SidebarHideContextProps {
+    isSidebarHidden: boolean;
+    setIsSidebarHidden: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface SidebarPositionContextProps {
+    sidebarPosition: 'left' | 'right';
+    setSidebarPosition: React.Dispatch<React.SetStateAction<'left' | 'right'>>;
+}
+
+// Создание контекстов
+const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+const SidebarHideContext = createContext<SidebarHideContextProps | undefined>(undefined);
+const SidebarPositionContext = createContext<SidebarPositionContextProps | undefined>(undefined);
+
+// Компонент для переключения темы
+const ThemeToggle: FC = () => {
+    const themeContext = useContext(ThemeContext);
+    if (!themeContext) throw new Error("ThemeToggle must be used within a ThemeProvider");
+
+    const { isDarkMode, setIsDarkMode } = themeContext;
 
     const toggleTheme = () => {
         setIsDarkMode(prevMode => !prevMode);
@@ -24,11 +43,14 @@ function ThemeToggle() {
             </span>
         </button>
     );
-}
+};
 
-// Sidebar toggle component
-function SidebarToggle() {
-    const { setIsSidebarHidden } = useContext(SidebarHideContext);
+// Компонент для переключения боковой панели
+const SidebarToggle: FC = () => {
+    const sidebarHideContext = useContext(SidebarHideContext);
+    if (!sidebarHideContext) throw new Error("SidebarToggle must be used within a SidebarHideProvider");
+
+    const { isSidebarHidden, setIsSidebarHidden } = sidebarHideContext;
 
     const toggleSidebar = () => {
         setIsSidebarHidden(prevHidden => !prevHidden);
@@ -39,14 +61,17 @@ function SidebarToggle() {
             <span className="symbols">menu_open</span>
         </button>
     );
-}
+};
 
-// Sidebar position toggle component
-function SidebarPositionToggle() {
-    const { setSidebarPosition } = useContext(SidebarPositionContext);
+// Компонент для переключения позиции боковой панели
+const SidebarPositionToggle: FC = () => {
+    const sidebarPositionContext = useContext(SidebarPositionContext);
+    if (!sidebarPositionContext) throw new Error("SidebarPositionToggle must be used within a SidebarPositionProvider");
+
+    const { sidebarPosition, setSidebarPosition } = sidebarPositionContext;
 
     const toggleSidebarPosition = () => {
-        setSidebarPosition(prevPosition => prevPosition === 'right' ? 'left' : 'right');
+        setSidebarPosition(prevPosition => (prevPosition === 'right' ? 'left' : 'right'));
     };
 
     return (
@@ -54,35 +79,25 @@ function SidebarPositionToggle() {
             <span className="symbols">chrome_reader_mode</span>
         </button>
     );
-}
+};
 
-export function Togglers() {
-    const [isDarkMode, setIsDarkMode] = useState(() => {
+// Компонент обертка для всех переключателей
+export const Togglers: FC = () => {
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+    const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
+    const [sidebarPosition, setSidebarPosition] = useState<'left' | 'right'>('left');
+
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             const savedDarkMode = localStorage.getItem('darkMode');
-            return savedDarkMode ? JSON.parse(savedDarkMode) : false;
-        } else {
-            return false;
-        }
-    });
-
-    const [isSidebarHidden, setIsSidebarHidden] = useState(() => {
-        if (typeof window !== 'undefined') {
             const savedSidebarHidden = localStorage.getItem('sidebarHidden');
-            return savedSidebarHidden ? JSON.parse(savedSidebarHidden) : false;
-        } else {
-            return false;
-        }
-    });
-
-    const [sidebarPosition, setSidebarPosition] = useState(() => {
-        if (typeof window !== 'undefined') {
             const savedSidebarPosition = localStorage.getItem('sidebarPosition');
-            return savedSidebarPosition ? JSON.parse(savedSidebarPosition) : 'left';
-        } else {
-            return 'left';
+
+            if (savedDarkMode !== null) setIsDarkMode(JSON.parse(savedDarkMode));
+            if (savedSidebarHidden !== null) setIsSidebarHidden(JSON.parse(savedSidebarHidden));
+            if (savedSidebarPosition !== null) setSidebarPosition(JSON.parse(savedSidebarPosition));
         }
-    });
+    }, []);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -101,16 +116,15 @@ export function Togglers() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             localStorage.setItem('sidebarHidden', JSON.stringify(isSidebarHidden));
-            // Применяем класс для скрытия боковой панели при изменении состояния
             const asideElement = document.querySelector('aside');
             const toggleElement = document.querySelector('.toggle_sidebar');
             if (asideElement) {
                 if (isSidebarHidden) {
                     asideElement.classList.add('sidebar_hide');
-                    toggleElement.classList.add('flipped');
+                    if (toggleElement) toggleElement.classList.add('flipped');
                 } else {
                     asideElement.classList.remove('sidebar_hide');
-                    toggleElement.classList.remove('flipped');
+                    if (toggleElement) toggleElement.classList.remove('flipped');
                 }
             }
         }
@@ -123,7 +137,7 @@ export function Togglers() {
             const toggleElement = document.querySelector('.move_sidebar');
             if (asideElement) {
                 asideElement.style.float = sidebarPosition;
-                toggleElement.classList.toggle('flipped');
+                if (toggleElement) toggleElement.classList.toggle('flipped');
                 if (sidebarPosition === 'right') {
                     asideElement.style.paddingRight = 'var(--block-gap)';
                     asideElement.style.paddingLeft = '0';
@@ -135,7 +149,7 @@ export function Togglers() {
         }
     }, [sidebarPosition]);
 
-    // Memoize the context value to prevent unnecessary re-renders
+    // Мемоизация значений контекста для предотвращения ненужных перерисовок
     const contextValue = useMemo(() => ({
         isDarkMode,
         setIsDarkMode,
@@ -143,13 +157,13 @@ export function Togglers() {
         setIsSidebarHidden,
         sidebarPosition,
         setSidebarPosition
-    }), [isDarkMode, setIsDarkMode, isSidebarHidden, setIsSidebarHidden, sidebarPosition, setSidebarPosition]);
+    }), [isDarkMode, isSidebarHidden, sidebarPosition]);
 
     return (
         <ThemeContext.Provider value={contextValue}>
             <SidebarHideContext.Provider value={{ isSidebarHidden, setIsSidebarHidden }}>
                 <SidebarPositionContext.Provider value={{ sidebarPosition, setSidebarPosition }}>
-                    <section className={`togglers`}>
+                    <section className="togglers">
                         <ThemeToggle />
                         <SidebarToggle />
                         <SidebarPositionToggle />
@@ -158,4 +172,4 @@ export function Togglers() {
             </SidebarHideContext.Provider>
         </ThemeContext.Provider>
     );
-}
+};
