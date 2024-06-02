@@ -1,0 +1,15 @@
+.titlePage {
+  position      : relative;
+  display       : flex;
+  flex-direction: column;
+  place-content : center center;
+  place-items   : center center;
+  place-self    : center center;
+  min-height    : 25rem;
+  padding       : 0 var(--block-gap) 0 var(--block-gap);
+  z-index       : var(--main_z-index);
+  max-width     : 100%;
+  gap           : var(--block-gap);
+  min-height    : 100svh;
+  overflow      : hidden;
+}

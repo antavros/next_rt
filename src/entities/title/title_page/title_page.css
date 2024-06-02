@@ -1,8 +1,0 @@
-.titlePage {
-  display       : flex;
-  flex-direction: column;
-  overflow      : hidden;
-  gap           : var(--block-gap);
-  min-height    : 100svh;
-  overflow: hidden;
-}

@@ -51,7 +51,5 @@ export async function getData({ url }: { readonly url: string }) {
       return { ...detailData, hasPosters: detailData.poster && detailData.poster2 };
     }))
   ).filter((movie) => movie.hasPosters);
-  console.log(detailData);
-
   return detailData;
 }

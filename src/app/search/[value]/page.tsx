@@ -1,9 +1,9 @@
 
-import { TitlesContainer } from "../../../entities/title/titles_table/titles_table";
+import { TitleTable } from "@/entities/Title/Table";
 import {
     API_URL_SEARCH,
     getData
-} from "../../../shared/api/api";
+} from "@/shared/api/api";
 
 import type { Metadata } from 'next'
 export const metadata: Metadata = {
@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 export default async function Search({ params}: { readonly params: { readonly value: string } }) {
     const searchValue = params.value.toLowerCase();
     const data = await getData({ url: `${API_URL_SEARCH}${searchValue}` });
-    return (<TitlesContainer titleData={data} />);
+    return (<TitleTable titleData={data} />);
 }

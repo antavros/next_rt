@@ -1,0 +1,71 @@
+.swiper {
+  max-width: 60vw;
+  width    : 100%;
+  display  : block;
+
+  & .swiper-wrapper {
+    max-width: 100%;
+
+    & .swiper-slide {
+      width           : 100%;
+      max-width       : 250px;
+      max-height      : 400px;
+      background-color: var(--color-block_back);
+      z-index         : -2;
+    }
+  }
+}
+
+.swiper_person {
+  position: relative;
+  height  : 400px;
+  width   : 250px;
+  overflow: hidden;
+
+  & img {
+    z-index: -1;
+  }
+
+  & .swiper_person_Info {
+    position      : absolute !important;
+    display       : flex;
+    flex-direction: column;
+    top           : 100%;
+    width         : 250px;
+    height        : 400px;
+    gap           : var(--block-gap);
+    z-index       : 2;
+
+    & h1 {
+      padding-top  : 1rem;
+      font-size    : 150%;
+      text-overflow: ellipsis;
+      color        : var(--color-white);
+    }
+
+    & h2 {
+      font-size     : 100%;
+      padding-bottom: 1rem;
+      color         : var(--color-text);
+    }
+
+    & p {
+      font-size    : 90%;
+      text-overflow: ellipsis;
+      color        : var(--color-text);
+    }
+
+    & .title_rate {
+      position   : relative;
+      width      : 100%;
+      padding-top: 1rem;
+    }
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: flex;
+  width  : auto;
+  height : auto;
+}

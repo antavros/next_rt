@@ -1,0 +1,57 @@
+.swiper_person {
+  display   : inline-block;
+  max-height: 410px;
+  width     : 100%;
+}
+
+.swiper_person_wrapper {
+  height  : 400px;
+  width   : 250px;
+  overflow: hidden;
+}
+
+.swiper_person_wrapper::after {
+  content         : "";
+  position        : absolute;
+  top             : 0;
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 40%);
+}
+
+.swiper_person_wrapper img {
+  z-index: -1;
+}
+
+.swiper_person_Info {
+  position      : absolute !important;
+  display       : flex;
+  flex-direction: column;
+  place-content : center end;
+  place-items   : center center;
+  place-self    : center center;
+  height        : 400px;
+  width         : 250px;
+  bottom        : var(--block-gap);
+  left          : 0;
+  right         : 0;
+  z-index       : 2;
+}
+
+.swiper_person_Info h3 {
+  font-size    : 120%;
+  text-overflow: ellipsis;
+  color        : var(--color-white);
+}
+
+.swiper_person_Info h4 {
+  color         : var(--color-text);
+  padding-bottom: var(--block-gap);
+}
+
+.swiper_person_Info p {
+  font-size    : 90%;
+  text-overflow: ellipsis;
+  color        : var(--color-text);
+}
