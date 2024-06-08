@@ -16,6 +16,7 @@
 }
 
 .description p {
+  text-indent  : 1rem;
   text-overflow: ellipsis;
   text-wrap    : pretty;
   color        : white;
@@ -23,15 +24,32 @@
 }
 
 .persons {
-  width           : 100%;
+  width           : auto;
   place-content   : center center;
   padding         : 0 2rem 2rem 2rem;
   background-color: var(--color-block_back);
 }
 
 .persons article {
-  padding-left: 1.5rem;
-  color       : var(--color-text);
+  padding: 0 0 0.5rem 1.5rem;
+  color  : var(--color-text);
+}
+
+.persons article:first-letter {
+  text-transform: uppercase;
+}
+
+.persons p {
+  text-indent: 1rem;
+  color      : white;
+}
+
+.persons button {
+  padding: 0.5rem
+}
+
+.persons ul {
+  padding: 0.5rem
 }
 
 .actors {

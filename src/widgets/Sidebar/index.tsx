@@ -27,7 +27,7 @@ export function Sidebar() {
                                 </button>
                             </li>
                         </Link>
-                        <Link href="/tvseries">
+                        <Link href="/tv-series">
                             <li>
                                 <button>
                                     <IconDeviceTvOld stroke={2} />
@@ -43,7 +43,7 @@ export function Sidebar() {
                                 </button>
                             </li>
                         </Link>
-                        <Link href="/animatedseries">
+                        <Link href="/animated-series">
                             <li>
                                 <button>
                                     <IconHorseToy stroke={2} />

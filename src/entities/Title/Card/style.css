@@ -83,6 +83,7 @@
 
   & .card_description {
     margin-top    : auto;
+    text-indent   : 1rem;
     padding-bottom: 0.5rem;
     font-size     : 0.8rem;
     text-align    : left;

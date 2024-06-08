@@ -20,7 +20,7 @@ export default async function categoryRender({
       const data = await getData({ url: `${API_URL_movie}` });
       return <TitleTable details={data} />;
     }
-    case "tvseries": {
+    case "tv-series": {
       const data = await getData({ url: `${API_URL_tvseries}` });
       return <TitleTable details={data} />;
     }
@@ -28,7 +28,7 @@ export default async function categoryRender({
       const data = await getData({ url: `${API_URL_cartoon}` });
       return <TitleTable details={data} />;
     }
-    case "animatedseries": {
+    case "animated-series": {
       const data = await getData({ url: `${API_URL_animated_series}` });
       return <TitleTable details={data} />;
     }

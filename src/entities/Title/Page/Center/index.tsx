@@ -20,7 +20,7 @@ export function TitlePageCenter({ details }: Details) {
             typeName = "фильмом";
             break;
         }
-        case "tvseries": {
+        case "tv-series": {
             typeName = "сериалом";
             break;
         }
@@ -28,7 +28,7 @@ export function TitlePageCenter({ details }: Details) {
             typeName = "мультфильмом";
             break;
         }
-        case "animatedseries": {
+        case "animated-series": {
             typeName = "мультсериалом";
             break;
         }
@@ -43,20 +43,22 @@ export function TitlePageCenter({ details }: Details) {
 
     return (
         <div className={`${style.center} center`}>
+            {/* {details.trailers ? ( */}
             <section className={style.videos}>
                 <SwiperCardTrailer details={details} />
                 {/* <Player details={details} /> */}
             </section>
+
             <section className={style.description}>
                 <h5>Описание</h5>
                 <p>{details?.description}</p>
             </section>
-            <section className={style.actors}>
-                <SwiperCardPerson details={filteredPersonsActor} />
-            </section>
             <section className={style.persons}>
                 <h5>Над {typeName} работали</h5>
                 <ExpandableListPerson persons={details?.person} />
+            </section>
+            <section className={style.actors}>
+                <SwiperCardPerson details={filteredPersonsActor} />
             </section>
         </div >
     );
