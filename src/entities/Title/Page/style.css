@@ -6,10 +6,15 @@
   place-items   : center center;
   place-self    : center center;
   min-height    : 25rem;
-  padding       : 0 var(--block-gap) 0 var(--block-gap);
+  padding       : var(--block-gap);
   z-index       : var(--main_z-index);
-  max-width     : 100%;
+  width         : 100%;
   gap           : var(--block-gap);
-  min-height    : 100svh;
   overflow      : hidden;
+
+  & h5 {
+    text-align: left;
+    font-size : 2vh;
+    padding   : 1vh;
+  }
 }

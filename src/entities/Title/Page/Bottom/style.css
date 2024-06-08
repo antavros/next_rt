@@ -1,9 +1,0 @@
-.titlePage_bottom {
-    position      : relative;
-    display       : block;
-    flex-direction: column;
-    place-content : center center;
-    place-items   : center center;
-    place-self    : center center;
-    overflow      : hidden;
-}

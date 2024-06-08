@@ -1,60 +1,63 @@
 
-import { SwiperCardPerson } from "@/entities/Swiper/Card/Persons";
+import Link from 'next/link';
+
+import { SwiperCardPerson } from "./Swiper/Person";
+import { SwiperCardTrailer } from "./Swiper/Trailer";
+import { ExpandableListPerson } from "./List/Person";
 
 import "@/entities/Title/Rate/style.css";
-import "./style.css";
+import style from "./style.module.css";
 
-export function TitlePageCenter({ details }: { readonly details: any }) {
-        const filteredPersonsActor = details.persons.filter((person : any) => person.enProfession === 'actor');
-    const filteredPersonsDirector = details.persons.filter((person : any) => person.enProfession === 'director');
-    const filteredPersonsWriter = details.persons.filter((person : any) => person.enProfession === 'writer');
-    const filteredPersonsComposer = details.persons.filter((person : any) => person.enProfession === 'composer');
-    const filteredPersons = details.persons.filter((person : any) => !['actor', 'director', 'writer','composer'].includes(person.enProfession));
+import { Details } from '@/shared/api/lib';
 
-    // "profession": "актеры",
-    // "enProfession": "actor"
+export function TitlePageCenter({ details }: Details) {
+    const filteredPersonsActor = details?.person.filter((person: any) => person.enProfession === 'actor');
+    const category = details.type.toLowerCase();
+    let typeName: string;
 
-    // "profession": "композиторы",
-    // "enProfession": "composer"
+    switch (category) {
+        case "movie": {
+            typeName = "фильмом";
+            break;
+        }
+        case "tvseries": {
+            typeName = "сериалом";
+            break;
+        }
+        case "cartoon": {
+            typeName = "мультфильмом";
+            break;
+        }
+        case "animatedseries": {
+            typeName = "мультсериалом";
+            break;
+        }
+        case "anime": {
+            typeName = "аниме";
+            break;
+        }
+        default: {
+            typeName = "тайтлом";
+        }
+    }
 
-    // "profession": "художники",
-    // "enProfession": "designer"
-    
-    // "profession": "режиссеры",
-    // "enProfession": "director"
-    
-    // "profession": "монтажеры",
-    // "enProfession": "editor"
-    
-    // "profession": "операторы",
-    // "enProfession": "operator"
-    
-    // "profession": "продюсеры",
-    // "enProfession": "producer"
-    
-    // "profession": "редакторы",
-    // "enProfession": "writer"
     return (
-        <section className='main'>
-            <section className='mainInfo'>
-                <section className="description">
-                    <h5>ОПИСАНИЕ</h5>
-                    <p>{details.description}</p>
-                </section>
-                <section className="persons">
-                    <h5>РЕЖИССЕРЫ</h5>
-                    <h5>КОМПОЗИТОРЫ</h5>
-                    <h5>АКТЕРЫ</h5>
-                    <SwiperCardPerson details={filteredPersonsActor}/>
-                </section>
-                <section className="video">
-                    <h5>ТРЕЙЛЕРЫ</h5>
-                    <h5>ПРОСМОТР</h5>
-                    <div className='player'>
-                        {/* <Player details={details} /> */}
-                    </div>
-                </section>
+        <div className={`${style.center} center`}>
+            <section className={style.videos}>
+                <SwiperCardTrailer details={details} />
+                {/* <Player details={details} /> */}
             </section>
-        </section >
+            <section className={style.description}>
+                <h5>Описание</h5>
+                <p>{details?.description}</p>
+            </section>
+            <section className={style.actors}>
+                <SwiperCardPerson details={filteredPersonsActor} />
+            </section>
+            <section className={style.persons}>
+                <h5>Над {typeName} работали</h5>
+                <ExpandableListPerson persons={details?.person} />
+            </section>
+        </div >
     );
 }

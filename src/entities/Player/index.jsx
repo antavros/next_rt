@@ -18,7 +18,12 @@ const KinoboxPlayer = () => {
         };
     }, []);
 
-    return <div className="kinobox_player"></div>;
+    return (
+        <>
+            <h5>Просмотр</h5>
+            <div className="kinobox_player"></div>
+        </>
+    );
 }
 
 export default KinoboxPlayer;

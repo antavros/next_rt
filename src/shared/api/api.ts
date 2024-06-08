@@ -48,7 +48,7 @@ export async function getData({ url }: { readonly url: string }) {
   const detailData = (
     await Promise.all(data.map(async (details) => {
       const detailData = await getDetails({ details });
-      return { ...detailData, hasPosters: detailData.poster && detailData.poster2 };
+      return { ...detailData, hasPosters: detailData.poster };
     }))
   ).filter((movie) => movie.hasPosters);
   return detailData;

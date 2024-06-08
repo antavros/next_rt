@@ -1,20 +1,9 @@
 .swiper {
+    width: 85.5vw !important;
 
     & .swiper-wrapper {
-
         & .swiper-slide {
-            background-color: var(--color-block_back);
-            z-index         : -2;
-        }
-    }
-}
 
-.mainInfo {
-    & .swiper-wrapper {
-        width: 80svw;
-
-        & .swiper-slide {
-            width           : 250px;
             background-color: var(--color-block_back);
             z-index         : -2;
         }
@@ -29,6 +18,7 @@
     height          : 4rem;
     overflow        : hidden;
     background-color: var(--color-border);
+    z-index         : 3;
 
     &::after {
         font-size  : 1.5rem;
@@ -44,6 +34,7 @@
     right           : 0 !important;
     background-color: var(--color-block_back);
     padding         : var(--element-gap);
+    z-index         : 3;
 
     & span {
         background-color: var(--color-white);

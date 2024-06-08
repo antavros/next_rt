@@ -11,6 +11,9 @@ module.exports = {
                 protocol: 'https',
                 hostname: 'image.openmoviedb.com',
             },
+            {
+                hostname: 'st.kp.yandex.net',
+            },
         ],
     },
 }

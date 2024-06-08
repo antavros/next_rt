@@ -1,6 +1,5 @@
 .logo {
-    display            : flex;
-    width              : 12rem;
+    width              : auto;
     height             : auto;
     -webkit-user-select: none;
     -moz-user-select   : none;

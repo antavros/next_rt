@@ -1,19 +1,32 @@
 import Image from 'next/image'
 
 import "@/entities/Title/Rate/style.css";
-import Style from "./style.module.css";
+import style from "./style.module.css";
 
 export function TitlePageTop({ details }: { readonly details: any }) {
+
     return (
-        <div className={Style.titlePage_head}>
-            <Image
-                fill={true}
-                src={details.backdrop2}
-                className={Style.title_back}
-                alt={details.name}
-                priority={true}
-            />
-            <section className={Style.titlePage_head_Info}>
+        <div className={style.titlePage_head}>
+            {details.backdrop ? (
+                <Image
+                    fill={true}
+                    src={details.backdrop}
+                    className={style.title_back}
+                    alt={details.name}
+                    priority={true}
+                />
+            ) : (
+                <iframe
+                    width="100%"
+                    height="100%"
+                    className={style.title_back}
+                    src={details.trailers[0].url}
+                    title={details.trailers.name}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                />
+            )}
+            <div className={style.titlePage_head_Info}>
                 <Image
                     width={1920}
                     height={1080}
@@ -26,13 +39,13 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                 <p>{details.countries}</p>
                 <p>{details.year}г {details.length}</p>
                 <p>{details.genres}</p>
-                <section className={`${Style.title_rate} title_rate`}>
+                <section className={`${style.title_rate} title_rate`}>
                     {details.average_kp}
                     {details.average_imdb}
                     {details.average_All}
                     {details.average_personal}
                 </section>
-            </section>
+            </div>
         </div>
     );
 }

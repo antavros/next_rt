@@ -7,12 +7,11 @@ import "./style.css"
 export function TitleContainer({ details }: { readonly details: any }) {
 
     return (
-        <section className="titlePage" id={details.id}>
-            <TitlePageTop details={details}/>
+        <section className="titlePage">
+            <TitlePageTop details={details} />
             <hr />
             <TitlePageCenter details={details} />
-            <hr />
-            <TitlePageBottom details={details}/>
+            <TitlePageBottom details={details} />
         </section >
     );
 }

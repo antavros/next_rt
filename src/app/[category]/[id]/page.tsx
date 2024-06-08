@@ -3,48 +3,40 @@ import Head from "next/head";
 
 import { TitleContainer } from "@/entities/Title/Page";
 import { API_URL_title, getData } from "@/shared/api/api";
-
-type TitlePageProps = {
-  params: { readonly id: string };
-};
+import { Details } from "@/shared/api/lib";
 
 export async function generateMetadata(
-  { params }: TitlePageProps,
+  { params }: { readonly params: Details },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = params.id;
   const data = await getData({ url: `${API_URL_title}${id}` });
   const details = data[0];
-
   const previousImages = (await parent).openGraph?.images || [];
-
-  // Ensure that logo and poster are strings and not objects or undefined
-  const poster = typeof details.poster === "string" ? details.poster : "";
-  const images = [poster].filter(Boolean) as string[];
+  const poster = details?.poster?.url ?? details?.poster?.previewUrl ?? '';
 
   return {
     title: details.name,
     description: details.sDescription ?? details.description ?? "",
     openGraph: {
       title: details.name,
-      images: [...images, ...previousImages],
+      images: [...poster, ...previousImages],
       description: details.sDescription ?? details.description ?? "",
     },
     twitter: {
       card: "summary_large_image",
       title: details.name,
-      images: [...images, ...previousImages],
+      images: [...poster, ...previousImages],
       description: details.sDescription ?? details.description ?? "",
     },
   };
 }
 
-export default async function TitlePage({ params }: TitlePageProps) {
+export default async function TitlePage({ params }: { readonly params: Details }) {
+
   const id = params.id;
   const data = await getData({ url: `${API_URL_title}${id}` });
   const details = data[0];
-
-  // Ensure that logo and poster are strings and not objects or undefined
   const logo = typeof details.logo === "string" ? details.logo : "";
   const poster = typeof details.poster === "string" ? details.poster : "";
   const image = logo || poster;

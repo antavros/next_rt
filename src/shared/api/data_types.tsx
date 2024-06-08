@@ -1,40 +1,6 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-interface TitleRating {
-    rating?: object;
-    kp?: string;
-    imdb?: string;
-    rt?: string;
-    averageRating?: ReactNode;
-    average_All?: string;
-}
-
-export interface Details {
-
-    details?: object;
-    data?: object;
-    persons?: any[];
-    id?: string;
-    type?: string;
-    name?: string;
-    alternativeName?: string;
-    enName?: string;
-    countries?: string | { name: string }[];
-    year?: any;
-    length?: any;
-    movieLength?: number;
-    genres?: string | { name: string }[]
-    sDescription?: string;
-    description?: string;
-    logo?: { url: any };
-    poster?: { previewUrl: any; url: string };
-    poster2?: string;
-    backdrop?: { previewUrl: any; url: string };
-    backdrop2?: string;
-    rating?: TitleRating;
-    vote?: any;
-    [key: string]: any;
-}
+import { Details } from '@/shared/api/lib';
 
 function getClassByRate({ vote }: { vote: any }) {
     const hue = (vote / 10) * 110;
@@ -65,27 +31,25 @@ function convertMinutesToHours({ minutes }: { minutes: number }): string {
 }
 
 export async function getDetails({ details }: { readonly details: Details }): Promise<Details> {
-    const persons = Array.isArray(details?.persons) ? details.persons : [];
+    const person = Array.isArray(details?.persons) ? details.persons : [];
     const similar = Array.isArray(details?.similarMovies) ? details.similarMovies : [];
+    const trailers = Array.isArray(details?.videos?.trailers) ? details.videos.trailers : [];
 
-    const id = details?.id ?? details?.similar?.id ;
+    const id = details?.id;
     const type = details?.type;
-    const name = details?.name ?? details?.alternativeName ?? details?.enName ?? details?.similar?.name ?? '';
-    const enName = details?.enName ?? details?.alternativeName ?? details?.similar?.enName ?? "";
+    const name = details?.name ?? details?.alternativeName ?? details?.enName ?? '';
+    const enName = details?.enName ?? details?.alternativeName ?? "";
 
     const countries = Array.isArray(details?.countries) ? details.countries.map(country => country.name).join(' ') : details?.countries ?? '';
-    const year = details?.year ?? details?.similar?.id ?? "...";
+    const year = details?.year ?? "...";
     const length = details?.movieLength ? convertMinutesToHours({ minutes: details.movieLength }) : '';
-    const genres =  Array.isArray(details?.genres) ? details.genres.map(genre => genre.name).join(' ') : details?.countries ?? '';
+    const genres = Array.isArray(details?.genres) ? details.genres.map(genre => genre.name).join(' ') : details?.countries ?? '';
     const sDescription = details?.shortDescription ?? '';
     const description = details?.description ?? '';
 
     const logo = details?.logo?.url ?? '';
-    const poster = details?.poster?.previewUrl ?? details?.similar?.poster?.previewUrl ?? '';
-    const poster2 = details?.poster?.url ?? details?.similar?.poster?.url ?? '';
-    const backdrop = details?.backdrop?.previewUrl ?? '';
-    const backdrop2 = details?.backdrop?.url ?? '';
-
+    const poster = details?.poster?.url ?? details?.poster?.previewUrl ?? '';
+    const backdrop = details?.backdrop?.url ?? details?.backdrop?.previewUrl ?? '';
 
     const average_kp = details?.rating?.kp ?
         <article className="kp" style={getClassByRate({ vote: details.rating.kp })}>
@@ -120,7 +84,7 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
         </article> : '';
 
     let ratings = [];
-    
+
     if (details?.rating?.kp) {
         ratings.push(parseFloat(details.rating.kp));
     }
@@ -141,6 +105,7 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
             </article>
         );
     }
+
     return {
         id,
         type,
@@ -154,15 +119,14 @@ export async function getDetails({ details }: { readonly details: Details }): Pr
         description,
         logo,
         poster,
-        poster2,
         backdrop,
-        backdrop2,
-        persons,
+        person,
         similar,
+        trailers,
         average_All,
         average_kp,
         average_imdb,
         average_rt,
         average_personal
-    } as Details;
+    };
 }

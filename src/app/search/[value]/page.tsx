@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function Search({ params}: { readonly params: { readonly value: string } }) {
+export default async function Search({ params }: { readonly params: { readonly value: string } }) {
     const searchValue = params.value.toLowerCase();
     const data = await getData({ url: `${API_URL_SEARCH}${searchValue}` });
     return (<TitleTable titleData={data} />);

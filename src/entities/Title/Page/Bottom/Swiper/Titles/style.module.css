@@ -1,16 +1,16 @@
-.swiper_person {
+.swiper_title {
   display   : inline-block;
   max-height: 410px;
   width     : 100%;
 }
 
-.swiper_person_wrapper {
+.swiper_title_wrapper {
   height  : 400px;
-  width   : 250px;
+  width   : 256px;
   overflow: hidden;
 }
 
-.swiper_person_wrapper::after {
+.swiper_title_wrapper::after {
   content         : "";
   position        : absolute;
   top             : 0;
@@ -20,11 +20,21 @@
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 40%);
 }
 
-.swiper_person_wrapper img {
+.swiper_title_wrapper img {
   z-index: -1;
 }
+.swiper_slide {
+  width : 260px !important;
+  height: 400px !important;
+  height: auto;
+}
 
-.swiper_person_Info {
+.swiper_slide img {
+  width : 260px !important;
+  height: 400px !important;
+  height: auto;
+}
+.swiper_title_Info {
   position      : absolute !important;
   display       : flex;
   flex-direction: column;
@@ -32,25 +42,25 @@
   place-items   : center center;
   place-self    : center center;
   height        : 400px;
-  width         : 250px;
+  width         : 256px;
   bottom        : var(--block-gap);
   left          : 0;
   right         : 0;
   z-index       : 2;
 }
 
-.swiper_person_Info h3 {
+.swiper_title_Info h3 {
   font-size    : 120%;
   text-overflow: ellipsis;
   color        : var(--color-white);
 }
 
-.swiper_person_Info h4 {
+.swiper_title_Info h4 {
   color         : var(--color-text);
   padding-bottom: var(--block-gap);
 }
 
-.swiper_person_Info p {
+.swiper_title_Info p {
   font-size    : 90%;
   text-overflow: ellipsis;
   color        : var(--color-text);

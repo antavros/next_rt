@@ -7,11 +7,12 @@ export function Logo() {
     return (
         <Link href="/">
             <Image
-                width={500}
-                height={500}
-                className="logo" 
-                src="/images/LOGO.png" 
-                alt="RATETABLE" 
+                width={200}
+                height={70}
+                className="logo"
+                src="/images/LOGO.png"
+                alt="RATETABLE"
+                priority={true}
             />
         </Link>
     );

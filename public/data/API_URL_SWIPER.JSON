@@ -1,0 +1,761 @@
+{
+  "docs": [
+    {
+      "id": 4959134,
+      "countries": [
+        {
+          "name": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "name": "фэнтези"
+        },
+        {
+          "name": "приключения"
+        },
+        {
+          "name": "семейный"
+        }
+      ],
+      "names": [
+        {
+          "name": "По щучьему велению"
+        }
+      ],
+      "alternativeName": null,
+      "description": "Если ты идешь на рыбалку — будь готов к тому, что вытянешь рыбу своей мечты, волшебную Щуку, которая может исполнить три любых твоих желания. Только Емеля спустил два желания на ветер, а третье решил приберечь. Поэтому, чтобы добиться руки царской дочери Анфисы, придется ему действовать без волшебной силы, самому. А помогать ему будет Щука, которая без своей шкурки предстает обычной девушкой Василисой. Вместе им предстоит найти скатерть-самобранку, встретиться с Котом Баюном, отправиться в мрачное царство Кощея и понять, что настоящее чудо — это быть с тем, кого любишь.",
+      "enName": null,
+      "movieLength": 115,
+      "name": "По щучьему велению",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/10900341/b3ed4aa7-c38c-4a35-a505-aaa6372ad9da/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/10900341/b3ed4aa7-c38c-4a35-a505-aaa6372ad9da/x1000"
+      },
+      "rating": {
+        "kp": 7.793,
+        "imdb": 6.3,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": null
+      },
+      "ratingMpaa": null,
+      "shortDescription": "Чудо-рыба помогает непутевому Емеле завоевать сердце царской дочери. Сказочный хит с Никитой Кологривым",
+      "status": null,
+      "ticketsOnSale": false,
+      "type": "movie",
+      "typeNumber": 1,
+      "votes": {
+        "kp": 1030221,
+        "imdb": 467,
+        "filmCritics": 0,
+        "russianFilmCritics": 2,
+        "await": 6685
+      },
+      "year": 2023,
+      "ageRating": 6,
+      "backdrop": {
+        "url": "https://avatars.mds.yandex.net/get-ott/2439731/2a0000018c5052530175e3a474d96e4e5bcf/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-ott/2439731/2a0000018c5052530175e3a474d96e4e5bcf/x1000"
+      },
+      "logo": {
+        "url": null
+      },
+      "top10": null,
+      "top250": null,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null
+    },
+    {
+      "status": null,
+      "rating": {
+        "kp": 7.562,
+        "imdb": 7.7,
+        "filmCritics": 8.1,
+        "russianFilmCritics": 90,
+        "await": null
+      },
+      "votes": {
+        "kp": 519763,
+        "imdb": 314992,
+        "filmCritics": 372,
+        "russianFilmCritics": 10,
+        "await": 67693
+      },
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/tfw5LKySp7uEYJ3CUuD4TKx3s8y.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/tfw5LKySp7uEYJ3CUuD4TKx3s8y.jpg"
+      },
+      "movieLength": 169,
+      "id": 1267348,
+      "type": "movie",
+      "name": "Джон Уик 4",
+      "description": "Оставляя за собой горы трупов, Джон Уик продолжает скрываться от всевозможных наёмных убийц, и теперь охоту на него возглавляет молодой и честолюбивый член Правления по имени Маркиз. Два управляющих отелями «Континенталь» в Нью-Йорке и Осаке, решившие по старой дружбе помочь своенравному киллеру, уже жестоко за это поплатились, но внезапно Джон узнаёт способ выбраться из этой, казалось бы, безвыходной ситуации.",
+      "year": 2023,
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/62c1301b-c913-4b3c-af87-74934ae1ec93/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/62c1301b-c913-4b3c-af87-74934ae1ec93/x1000"
+      },
+      "genres": [
+        {
+          "name": "боевик"
+        },
+        {
+          "name": "триллер"
+        },
+        {
+          "name": "криминал"
+        }
+      ],
+      "countries": [
+        {
+          "name": "США"
+        },
+        {
+          "name": "Германия"
+        }
+      ],
+      "typeNumber": 1,
+      "alternativeName": "John Wick: Chapter 4",
+      "enName": "John Wick 4",
+      "names": [
+        {
+          "name": "Джон Уик 4"
+        },
+        {
+          "name": "John Wick: Chapter 4"
+        },
+        {
+          "name": "Джон Уик: Часть 4",
+          "language": "RU",
+          "type": null
+        },
+        {
+          "name": "Джон Уік 4",
+          "language": "UA",
+          "type": null
+        },
+        {
+          "name": "John Wick: 4. felvonás - Hagakure",
+          "language": "HU",
+          "type": null
+        },
+        {
+          "name": "John Wick 4",
+          "language": "US",
+          "type": null
+        },
+        {
+          "name": "JW4",
+          "language": "US",
+          "type": null
+        },
+        {
+          "name": "ジョン・ウィック チャプター4",
+          "language": "JP",
+          "type": null
+        },
+        {
+          "name": "ジョン・ウィック: チャプター4",
+          "language": "JP",
+          "type": null
+        },
+        {
+          "name": "ジョン・ウィック4",
+          "language": "JP",
+          "type": null
+        },
+        {
+          "name": "John Wick 4: Hagakure",
+          "language": "US",
+          "type": "working title"
+        },
+        {
+          "name": "Džons Viks 4",
+          "language": "LV",
+          "type": null
+        },
+        {
+          "name": "จอห์น วิค 4 : แรงกว่านรก",
+          "language": "TH",
+          "type": null
+        },
+        {
+          "name": "John Wick : Chapitre 4",
+          "language": "FR",
+          "type": null
+        },
+        {
+          "name": "John Wick 4",
+          "language": "LT",
+          "type": null
+        },
+        {
+          "name": "殺神John Wick 4",
+          "language": "HK",
+          "type": null
+        },
+        {
+          "name": "존 윅 4",
+          "language": "KR",
+          "type": null
+        },
+        {
+          "name": "존 윅: 챕터 4",
+          "language": "KR",
+          "type": null
+        },
+        {
+          "name": "ג'ון וויק: חלק 4",
+          "language": "IL",
+          "type": null
+        },
+        {
+          "name": "John Wick: Capítulo 4",
+          "language": "PT",
+          "type": null
+        },
+        {
+          "name": "ジョン・ウィック：チャプター4",
+          "language": "JP",
+          "type": null
+        },
+        {
+          "name": "ジョン・ウィック コンセクエンス",
+          "language": "JP",
+          "type": null
+        },
+        {
+          "name": "جان ویک ۴",
+          "language": "IR",
+          "type": null
+        },
+        {
+          "name": "捍衛任務4",
+          "language": "TW",
+          "type": null
+        },
+        {
+          "name": "جون ويك - الفصل الرابع",
+          "language": "IQ",
+          "type": "أكشن - مغامرات"
+        },
+        {
+          "name": "John Wick - 4. felvonás",
+          "language": "HU",
+          "type": null
+        },
+        {
+          "name": "Sát Thủ John Wick: Phần 4",
+          "language": "VN",
+          "type": null
+        },
+        {
+          "name": "John Wick: Consequences",
+          "language": "JP",
+          "type": null
+        },
+        {
+          "name": "john wick chapitre 4",
+          "language": "CA",
+          "type": null
+        },
+        {
+          "name": "john wick: chapitre 4",
+          "language": "FR",
+          "type": null
+        },
+        {
+          "name": "John Wick 4 - Baba Yaga (2023)",
+          "language": "BR",
+          "type": null
+        },
+        {
+          "name": "John Wick։ Chapter 4",
+          "language": "US",
+          "type": null
+        }
+      ],
+      "ratingMpaa": "r",
+      "shortDescription": "Чтобы обрести свободу, киллер-изгой бросает вызов Правлению кланов. Самая зрелищная часть стильной экшен-саги",
+      "ticketsOnSale": false,
+      "ageRating": 18,
+      "logo": {
+        "url": "https://imagetmdb.com/t/p/original/3x4ez877ElQXe78K1FzTYtmfGqA.png"
+      },
+      "top10": null,
+      "top250": null,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null
+    },
+    {
+      "id": 4536580,
+      "countries": [
+        {
+          "name": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "name": "фэнтези"
+        },
+        {
+          "name": "комедия"
+        },
+        {
+          "name": "семейный"
+        },
+        {
+          "name": "приключения"
+        }
+      ],
+      "names": [
+        {
+          "name": "Яга-2020"
+        },
+        {
+          "name": "Баба Яга спасает мир",
+          "language": null,
+          "type": null
+        },
+        {
+          "name": "Baba Yaga spasaet mir",
+          "language": "RU",
+          "type": "Transliteration"
+        }
+      ],
+      "alternativeName": null,
+      "description": "Любопытный школьник Сенька каким-то чудом попадает в сказочный древний лес. Он скрыт от людских глаз мощным заклятием Бабы Яги, призванным защитить людей и весь мир от дремлющих там темных сил. В лесу явно творится что-то неладное. Тревожные сигналы возвещают, что заклятие больше не действует, и пробуждение зловещего волшебства и давно поверженных врагов — лишь вопрос времени. Чтобы наложить заклятие снова, Яга вынуждена отправиться в современный город на поиск мощнейшего оружия волшебников, дивноцвета. Там ее ожидает встреча с множеством причуд современного мира, а в темном подземелье уже тысячу лет прячется жаждущий мести Кощей Бессмертный, ведь именно Яга помогла одолеть его много веков назад.",
+      "enName": null,
+      "movieLength": 90,
+      "name": "Баба Яга спасает мир",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/af29bd1d-46a0-451d-bcd8-de9178d15867/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/af29bd1d-46a0-451d-bcd8-de9178d15867/x1000"
+      },
+      "rating": {
+        "kp": 7.215,
+        "imdb": 0,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": null
+      },
+      "ratingMpaa": null,
+      "shortDescription": "Лесная ведьма попадает в мегаполис, где встречает давнего врага — Кощея. Семейная сказка с любимыми героями",
+      "ticketsOnSale": false,
+      "type": "movie",
+      "typeNumber": 1,
+      "votes": {
+        "kp": 491127,
+        "imdb": 0,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": 3699
+      },
+      "year": 2023,
+      "ageRating": 6,
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/bsSSWpL6K497MokaUtRe5HuXGfS.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/bsSSWpL6K497MokaUtRe5HuXGfS.jpg"
+      },
+      "logo": {
+        "url": "https://imagetmdb.com/t/p/original/qd8n5hAUwF3pIpTfvurjWaQD9Q9.png"
+      },
+      "top10": null,
+      "top250": null,
+      "status": null,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null
+    },
+    {
+      "id": 5394690,
+      "name": "Иван Васильевич меняет всё",
+      "alternativeName": null,
+      "enName": null,
+      "names": [
+        {
+          "name": "Иван Васильевич меняет всё!",
+          "language": "RU",
+          "type": "Russian title on kinopoisk"
+        },
+        {
+          "name": "Иван Васильевич меняет всё",
+          "$set": {
+            "language": "RU",
+            "type": "Russian title on kinopoisk"
+          }
+        }
+      ],
+      "type": "movie",
+      "typeNumber": 1,
+      "year": 2023,
+      "description": "Шурик пытается с помощью машины времени вернуть домой царя Ивана Грозного. Но VPN, на котором работает чудо-машина, постоянно ломается и перемещает горе-изобретателя и царя в разные страны и времена.",
+      "shortDescription": "Шурик и Иван Грозный путешествуют по эпохам на барахлящей чудо-машине. Хулиганская комедия с камео суперзвезд",
+      "status": null,
+      "rating": {
+        "kp": 6.526,
+        "imdb": 4.4,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": null
+      },
+      "votes": {
+        "kp": 489189,
+        "imdb": 450,
+        "filmCritics": 0,
+        "russianFilmCritics": 1,
+        "await": 7723
+      },
+      "movieLength": 106,
+      "totalSeriesLength": null,
+      "seriesLength": null,
+      "ratingMpaa": null,
+      "ageRating": 18,
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/0d357941-77df-4aa2-b1b0-0f608887a2b9/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/0d357941-77df-4aa2-b1b0-0f608887a2b9/x1000"
+      },
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/yGtB1Z54jMuMoIGH0ByY8gCEcOS.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/yGtB1Z54jMuMoIGH0ByY8gCEcOS.jpg"
+      },
+      "genres": [
+        {
+          "name": "комедия"
+        },
+        {
+          "name": "фантастика"
+        },
+        {
+          "name": "приключения"
+        }
+      ],
+      "countries": [
+        {
+          "name": "Россия"
+        }
+      ],
+      "ticketsOnSale": false,
+      "top10": 5,
+      "top250": null,
+      "isSeries": false,
+      "releaseYears": [],
+      "logo": {
+        "url": "https://imagetmdb.com/t/p/original/lPtEcwN79Tp9r4Qi2JCfXQ36mID.png",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/lPtEcwN79Tp9r4Qi2JCfXQ36mID.png"
+      }
+    },
+    {
+      "id": 5129252,
+      "names": [
+        {
+          "name": "Беспринципные в деревне"
+        },
+        {
+          "name": "Besprintsipnyye v Derevne",
+          "language": "RU",
+          "type": "Transliteration"
+        }
+      ],
+      "genres": [
+        {
+          "name": "комедия"
+        }
+      ],
+      "countries": [
+        {
+          "name": "Россия"
+        }
+      ],
+      "releaseYears": [],
+      "alternativeName": null,
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/oDWj8HeSNeUiXvNw6hCcrESMd5T.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/oDWj8HeSNeUiXvNw6hCcrESMd5T.jpg"
+      },
+      "description": "Отставному генералу Хадякову стукнуло 60 лет, и он решает отпраздновать юбилей не на Патриках, а в настоящей русской деревне — с полным погружением, праздничной трапезой, баней, рыбалкой и деревенским спа. Приглашены все любимые герои, но праздник идёт не по плану. Жители Патриков умудряются настроить против себя местных жителей, переругаться между собой и остаться без пропитания.",
+      "enName": null,
+      "movieLength": 86,
+      "name": "Беспринципные в деревне",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/d68d8ae2-ec3d-47f6-9991-7aba20890e0e/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/d68d8ae2-ec3d-47f6-9991-7aba20890e0e/x1000"
+      },
+      "rating": {
+        "kp": 6.475,
+        "imdb": 0,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": null
+      },
+      "ratingMpaa": null,
+      "shortDescription": "Как жители Патриарших устроятся в русской глубинке? Новые приключения любимых героев",
+      "top10": null,
+      "top250": null,
+      "type": "movie",
+      "typeNumber": 1,
+      "votes": {
+        "kp": 472499,
+        "imdb": 0,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": 15490
+      },
+      "year": 2023,
+      "ageRating": 18,
+      "status": null,
+      "ticketsOnSale": false,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null,
+      "logo": {
+        "url": null
+      }
+    },
+    {
+      "id": 4958668,
+      "countries": [
+        {
+          "name": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "name": "драма"
+        }
+      ],
+      "names": [
+        {
+          "name": "Триггер. Фильм"
+        },
+        {
+          "name": "Trigger. Film",
+          "language": "RU",
+          "type": "Transliteration"
+        }
+      ],
+      "alternativeName": null,
+      "description": "После драматичных событий — бывшая жена осуждена за убийство, отец неизлечимо болен, возлюбленная ушла — Артём Стрелецкий решает начать всё заново: переезжает к морю, туда, где сам был счастлив в детстве, устраивается работать барменом и знакомится с Майей, которая тоже психолог. Она и поможет Стрелецкому посмотреть на себя с другого ракурса и проработать собственные триггеры.",
+      "enName": null,
+      "movieLength": 99,
+      "name": "Триггер. Фильм",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/10671298/5859a0e6-b3e0-444a-949e-844079332f85/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/10671298/5859a0e6-b3e0-444a-949e-844079332f85/x1000"
+      },
+      "rating": {
+        "kp": 5.971,
+        "imdb": 0,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": null
+      },
+      "ratingMpaa": null,
+      "shortDescription": "Стрелецкий сбегает из Москвы, но прошлое не желает его отпускать. Продолжение истории психолога-провокатора",
+      "status": null,
+      "ticketsOnSale": false,
+      "type": "movie",
+      "typeNumber": 1,
+      "votes": {
+        "kp": 389191,
+        "imdb": 0,
+        "filmCritics": 0,
+        "russianFilmCritics": 0,
+        "await": 141571
+      },
+      "year": 2023,
+      "ageRating": 18,
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/uyyzogcm5hob1sBRb4jQMkDLT0.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/uyyzogcm5hob1sBRb4jQMkDLT0.jpg"
+      },
+      "logo": {
+        "url": null
+      },
+      "top10": 8,
+      "top250": null,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null
+    },
+    {
+      "id": 4632862,
+      "alternativeName": "Long ma jing shen",
+      "countries": [
+        {
+          "name": "Китай"
+        }
+      ],
+      "description": "В прошлом востребованный гонконгский каскадёр Ло Чжилун уже давно не снимается, а зарабатывает тем, что вместе с верным конём по кличке Огонёк фотографируется с туристами. Когда коллекторы решают забрать жеребца за долги, Ло и Огонёк дают им отпор — видео схватки попадает в интернет, и вот уже ветерана снова зовут в кино. Казалось, что жизнь наладилась, но теперь права на коня заявляет коллекционер лошадей, который выкупил компанию, три года назад подарившую Чжилуну Огонька. Поскольку денег на адвоката нет, Ло решает наладить отношения с дочерью-студенткой юрфака, с которой он не общался несколько лет.",
+      "enName": null,
+      "genres": [
+        {
+          "name": "драма"
+        },
+        {
+          "name": "комедия"
+        },
+        {
+          "name": "боевик"
+        }
+      ],
+      "movieLength": 126,
+      "name": "Кунг-фу жеребец",
+      "names": [
+        {
+          "name": "Кунг-фу жеребец"
+        },
+        {
+          "name": "Long ma jing shen"
+        },
+        {
+          "name": "Ride On",
+          "language": "US",
+          "type": "English"
+        },
+        {
+          "name": "Обережно, кінь",
+          "language": "UA",
+          "type": null
+        },
+        {
+          "name": "龍馬精神",
+          "language": "TW",
+          "type": "動作,劇情"
+        },
+        {
+          "name": "Ride On - Die zweite Chance",
+          "language": "DE",
+          "type": null
+        }
+      ],
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/b79effc2-518e-4992-8241-fff34eb6f4ca/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/b79effc2-518e-4992-8241-fff34eb6f4ca/x1000"
+      },
+      "rating": {
+        "kp": 7.98,
+        "imdb": 6.3,
+        "filmCritics": 5.7,
+        "russianFilmCritics": 100,
+        "await": null
+      },
+      "ratingMpaa": null,
+      "shortDescription": "Каскадер защищает своего коня от коллекторов и становится звездой интернета. Комедийный боевик с Джеки Чаном",
+      "status": null,
+      "ticketsOnSale": false,
+      "type": "movie",
+      "typeNumber": 1,
+      "votes": {
+        "kp": 380581,
+        "imdb": 4719,
+        "filmCritics": 31,
+        "russianFilmCritics": 3,
+        "await": 1397
+      },
+      "year": 2023,
+      "ageRating": 12,
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/hhr4sXsR6k4BYMEfzVdKT39hn1x.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/hhr4sXsR6k4BYMEfzVdKT39hn1x.jpg"
+      },
+      "logo": {
+        "url": "https://imagetmdb.com/t/p/original/1LdsKeiwYCyyz0r3XUJE1dSv0JC.png"
+      },
+      "top10": null,
+      "top250": null,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null
+    },
+    {
+      "id": 4922959,
+      "countries": [
+        {
+          "name": "Франция"
+        }
+      ],
+      "genres": [
+        {
+          "name": "драма"
+        },
+        {
+          "name": "боевик"
+        }
+      ],
+      "names": [
+        {
+          "name": "Догмен"
+        },
+        {
+          "name": "DogMan"
+        },
+        {
+          "name": "Dogman",
+          "language": null,
+          "type": null
+        },
+        {
+          "name": "Dogman: Vida Inquebrantable",
+          "language": "MX",
+          "type": null
+        },
+        {
+          "name": "狗神",
+          "language": "CN",
+          "type": null
+        }
+      ],
+      "ageRating": 18,
+      "alternativeName": "Dogman",
+      "backdrop": {
+        "url": "https://imagetmdb.com/t/p/original/fSfC3WJUYNtY7giAbJATwo0sHCb.jpg",
+        "previewUrl": "https://imagetmdb.com/t/p/w500/fSfC3WJUYNtY7giAbJATwo0sHCb.jpg"
+      },
+      "description": "Попавшегося полиции странного мужчину в инвалидной коляске, у которого в фургоне обнаружили стаю разнопородных собак, а в месте его проживания — несколько трупов, допрашивает психиатр-криминалист. Тот охотно рассказывает о своём трудном детстве: как жестокий отец посадил его в клетку к псам, из-за чего у мальчика развилась с животными невероятная эмоциональная связь — теперь собаки в точности выполняют все его приказы.",
+      "enName": null,
+      "logo": {
+        "url": "https://imagetmdb.com/t/p/original/lYTgz3c6yba3c3SKbauqpMleL7U.png"
+      },
+      "movieLength": 113,
+      "name": "Догмен",
+      "poster": {
+        "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/740fe2d6-0813-470a-8ca0-38cda5ba2303/orig",
+        "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/740fe2d6-0813-470a-8ca0-38cda5ba2303/x1000"
+      },
+      "rating": {
+        "kp": 7.808,
+        "imdb": 6.7,
+        "filmCritics": 5.5,
+        "russianFilmCritics": 50,
+        "await": null
+      },
+      "ratingMpaa": "r",
+      "shortDescription": "Парень в инвалидном кресле расправляется с врагами с помощью верных псов. Мощная криминальная драма Люка Бессона",
+      "status": null,
+      "ticketsOnSale": false,
+      "type": "movie",
+      "typeNumber": 1,
+      "votes": {
+        "kp": 263827,
+        "imdb": 5766,
+        "filmCritics": 25,
+        "russianFilmCritics": 4,
+        "await": 1404
+      },
+      "year": 2023,
+      "top10": null,
+      "top250": null,
+      "isSeries": false,
+      "seriesLength": null,
+      "totalSeriesLength": null
+    }
+  ],
+  "total": 13,
+  "limit": 13,
+  "page": 1,
+  "pages": 1
+}
