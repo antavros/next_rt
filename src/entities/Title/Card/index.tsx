@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useState } from 'react';
 import { Preloader } from "@/features/PreLoader";
 
-import "@/entities/Title/Rate/style.css";
+import { TitleRate } from "@/entities/Title/Rate/";
 import "./style.css";
 
 export function TitleCard({ details }: { readonly details: any }) {
@@ -24,10 +24,7 @@ export function TitleCard({ details }: { readonly details: any }) {
                     alt={details.name}
                 />
                 <section className="card_info">
-                    <section className="title_rate">
-                        {details.average_All}
-                        {details.average_personal}
-                    </section>
+                    < TitleRate personal={details.average_imdb} rt={details.average_kp} />
                     <h3>{details.name}</h3>
                     <h4>{details.enName}</h4>
                     <p>{details.countries}</p>

@@ -13,8 +13,13 @@
   overflow      : hidden;
 
   & h5 {
-    text-align: left;
-    font-size : 2vh;
-    padding   : 1vh;
+    display         : flex;
+    flex-direction  : row;
+    width           : max-content;
+    text-align      : left;
+    font-size       : 2vh;
+    padding         : 0.6rem;
+    margin-bottom   : 1rem;
+    background-color: var(--color-purple);
   }
 }

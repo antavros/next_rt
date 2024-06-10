@@ -23,45 +23,89 @@
 .swiper_title_wrapper img {
   z-index: -1;
 }
+
 .swiper_slide {
   width : 260px !important;
   height: 400px !important;
   height: auto;
 }
 
-.swiper_slide img {
+.swiper_title_img {
   width : 260px !important;
   height: 400px !important;
   height: auto;
 }
+
 .swiper_title_Info {
-  position      : absolute !important;
+  position      : absolute;
+  top           : 0;
+  left          : 0;
   display       : flex;
   flex-direction: column;
-  place-content : center end;
+  place-content : center space-between;
   place-items   : center center;
   place-self    : center center;
-  height        : 400px;
-  width         : 256px;
-  bottom        : var(--block-gap);
-  left          : 0;
-  right         : 0;
+  min-width     : 100%;
+  min-height    : 100%;
+  padding       : var(--block-gap);
   z-index       : 2;
 }
 
-.swiper_title_Info h3 {
+.swiper_title_wrapper img {
+  z-index: -1;
+}
+
+.swiper_slide {
+  width : 260px !important;
+  height: 400px !important;
+  height: auto;
+}
+
+.swiper_title_img {
+  width : 260px !important;
+  height: 400px !important;
+  height: auto;
+}
+
+.swiper_title_Info {
+  position      : absolute;
+  top           : 0;
+  left          : 0;
+  display       : flex;
+  flex-direction: column;
+  place-content : center space-between;
+  place-items   : center center;
+  min-width     : 100%;
+  min-height    : 100%;
+  padding       : var(--block-gap);
+  z-index       : 2;
+}
+
+.swiper_title_Info div h3 {
+  text-align   : center;
   font-size    : 120%;
   text-overflow: ellipsis;
   color        : var(--color-white);
 }
 
-.swiper_title_Info h4 {
+.swiper_title_Info div h4 {
+  text-align    : center;
+  font-size     : 90%;
   color         : var(--color-text);
   padding-bottom: var(--block-gap);
 }
 
-.swiper_title_Info p {
+.swiper_title_Info div p {
+  text-align   : center;
   font-size    : 90%;
   text-overflow: ellipsis;
   color        : var(--color-text);
+}
+
+.swiper_title_Info section {
+  min-width    : 100%;
+  min-height   : 100%;
+  place-content: center space-between;
+  padding      : 0;
+  gap          : 0.3rem;
 }

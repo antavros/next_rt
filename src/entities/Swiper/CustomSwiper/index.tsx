@@ -12,10 +12,8 @@ import {
 } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/free-mode';
 import 'swiper/css/keyboard';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 import '@/entities/Swiper/style.css';
 
@@ -33,15 +31,12 @@ export function CustomSwiper({ style, object, renderSlide }: CustomSwiper) {
         Autoplay,
         Keyboard,
         Navigation,
-        Pagination,
       ]}
-      pagination={{
-        clickable: true,
-      }}
       autoplay={{
         delay: 22500,
         disableOnInteraction: true,
       }}
+      rewind={true}
       speed={600}
       spaceBetween={16}
       slidesPerView={`auto`}

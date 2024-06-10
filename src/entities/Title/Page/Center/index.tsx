@@ -1,11 +1,8 @@
-
-import Link from 'next/link';
-
 import { SwiperCardPerson } from "./Swiper/Person";
 import { SwiperCardTrailer } from "./Swiper/Trailer";
 import { ExpandableListPerson } from "./List/Person";
+import { Player } from "@/entities/Player";
 
-import "@/entities/Title/Rate/style.css";
 import style from "./style.module.css";
 
 import { Details } from '@/shared/api/lib';
@@ -43,23 +40,26 @@ export function TitlePageCenter({ details }: Details) {
 
     return (
         <div className={`${style.center} center`}>
-            {/* {details.trailers ? ( */}
-            <section className={style.videos}>
-                <SwiperCardTrailer details={details} />
-                {/* <Player details={details} /> */}
-            </section>
-
             <section className={style.description}>
                 <h5>Описание</h5>
                 <p>{details?.description}</p>
+            </section>
+            {details.trailers.length > 0 && (
+                <section className={style.trailer}>
+                    <SwiperCardTrailer details={details} />
+                </section>
+            )}
+            <section className={style.player}>
+                <Player details={details.id} />
+            </section>
+            <section className={style.actors}>
+                <SwiperCardPerson details={filteredPersonsActor} />
             </section>
             <section className={style.persons}>
                 <h5>Над {typeName} работали</h5>
                 <ExpandableListPerson persons={details?.person} />
             </section>
-            <section className={style.actors}>
-                <SwiperCardPerson details={filteredPersonsActor} />
-            </section>
+
         </div >
     );
 }

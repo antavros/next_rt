@@ -28,7 +28,7 @@ export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
     <section>
       {Object.keys(groupByProfession).map(profession => {
         const isExpanded = expandedProfessions[profession] || false;
-        const visiblePersons = isExpanded ? groupByProfession[profession] : groupByProfession[profession].slice(0, 1);
+        const visiblePersons = isExpanded ? groupByProfession[profession] : groupByProfession[profession].slice(0, 2);
 
         return (
           <article key={profession}>
@@ -42,7 +42,7 @@ export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
                 </li>
               ))}
             </ul>
-            {groupByProfession[profession].length > 1 && (
+            {groupByProfession[profession].length > 2 && (
               <button onClick={() => toggleExpand(profession)}>
                 {isExpanded ? 'Свернуть' : 'Показать всех'}
               </button>

@@ -51,12 +51,23 @@
   z-index       : 2;
 }
 
-.titlePage_head_Info img {
+.titlePage_head_Info p:last-child {
+  width        : 75%;
+  font-size    : 1rem;
+  text-indent  : 1rem;
+  text-overflow: ellipsis;
+  text-align   : left;
+  text-wrap    : pretty;
+  color        : white;
+  padding-left : 1.5rem;
+}
+
+.title_logo {
   position  : relative !important;
   width     : auto !important;
   height    : auto !important;
-  max-width : 80% !important;
-  max-height: 60% !important;
+  max-width : 70% !important;
+  max-height: 50% !important;
 }
 
 .titlePage_head_Info h1 {
@@ -77,13 +88,6 @@
   font-size    : 90%;
   text-overflow: ellipsis;
   color        : var(--color-text);
-}
-
-.title_rate {
-  position     : relative;
-  padding      : 2rem;
-  gap          : 1rem;
-  place-content: end center;
 }
 
 @media (max-width: 800px) {

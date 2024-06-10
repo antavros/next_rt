@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { TitleRate } from "@/entities/Title/Rate/";
 import { CustomSwiper } from '@/entities/Swiper/CustomSwiper';
 import { Details } from '@/shared/api/lib';
 
@@ -17,15 +18,21 @@ export function SwiperCardTitle({ details }: Details) {
       <Image
         width={260}
         height={400}
+        className={style.swiper_title_img}
         src={similar.poster.url}
         alt={similar.name}
         priority={true}
       />
       <section className={style.swiper_title_Info}>
-        <h3>{similar.name}</h3>
-        <h4>{similar.enName || similar.alternativeName}</h4>
-        <p>{similar.year}г</p>
-        <p>{similar.description}</p>
+        < TitleRate personal={similar?.rating?.imdb} rt={similar?.rating?.kp} />
+        <div>
+          <h3>{similar.name}</h3>
+          <h4>{similar.enName || similar.alternativeName}</h4>
+          {similar.year !== undefined && similar.year.length > 0 && (
+            <p>{similar.year}г.</p>
+          )}
+          <p>{similar.description}</p>
+        </div>
       </section>
     </Link>
   );

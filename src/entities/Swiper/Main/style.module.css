@@ -16,12 +16,12 @@
   right   : 0;
   bottom  : 0;
   background-image: radial-gradient(circle farthest-side at 85% 0%,
-      transparent 60%,
-      rgba(0, 0, 0, 0.5) 69%,
-      rgba(0, 0, 0, 0.6) 79%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.7) 63%,
+      rgba(0, 0, 0, 0.75) 79%,
       rgba(0, 0, 0, 0.8) 89%,
-      rgba(0, 0, 0, 0.9) 99%,
-      rgba(0, 0, 0, 1) 109%);
+      rgba(0, 0, 0, 0.85) 99%,
+      rgba(0, 0, 0, 9) 109%);
   z-index: 0;
 }
 
@@ -42,19 +42,18 @@
   place-self    : center center;
   text-align    : center;
   padding       : 1rem;
-  width         : 35%;
+  width         : 40%;
   height        : 100%;
   bottom        : 0;
   left          : 0;
   z-index       : 2;
 }
 
-.swiper_home_Info img {
-  position  : relative !important;
-  width     : auto !important;
-  height    : auto !important;
-  max-width : 80% !important;
-  max-height: auto !important;
+.title_logo {
+  position : relative !important;
+  width    : auto !important;
+  height   : auto !important;
+  max-width: 80%;
 }
 
 .swiper_home_Info h1 {
@@ -75,15 +74,6 @@
   font-size    : 90%;
   text-overflow: ellipsis;
   color        : var(--color-text);
-}
-
-.title_rate {
-  display       : flex;
-  flex-direction: row;
-  position      : relative;
-  padding-top   : 1rem;
-  gap           : 1rem;
-  place-content : center center;
 }
 
 @media (max-width: 1200px) {

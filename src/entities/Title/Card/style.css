@@ -90,3 +90,11 @@
     color         : var(--color-white);
   }
 }
+
+.title_rate {
+  display       : flex;
+  flex-direction: row;
+  width         : 100%;
+  border-radius : var(--border-radius);
+  z-index       : 3;
+}

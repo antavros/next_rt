@@ -1,9 +1,8 @@
 .bottom {
-    position        : relative;
-    display         : flex;
-    flex-direction  : column;
-    width           : 100%;
-    place-self      : center center;
-    padding         : 0 2rem 2rem 2rem;
-    background-color: var(--color-block_back);
+    position      : relative;
+    display       : flex;
+    flex-direction: column;
+    width         : 100%;
+    place-self    : center center;
+    padding       : 1rem;
 }

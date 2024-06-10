@@ -24,6 +24,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "RATETABLE",
+  metadataBase: new URL('https://ratetable.vercel.app'),
   description:
     "Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!",
   icons: "/images/LOGO.svg",

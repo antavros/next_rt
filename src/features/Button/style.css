@@ -40,7 +40,7 @@ button,
         }
     }
 
-    &:is(:active, :focus) {
+    &:is(:active) {
         scale     : var(--active-scale) !important;
         border    : var(--border)var(--color-white) !important;
         color     : var(--color-purple) !important;

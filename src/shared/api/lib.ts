@@ -38,7 +38,7 @@ export interface Details extends SwiperOptions {
         swiper_info: string;
     };
     href?: string | null;
-
+    Kinobox?: any;
     className?: string;
     params?: { readonly id: string };
     option?: any;

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { TitleRate } from "@/entities/Title/Rate/";
 
 import {
     Swiper,
@@ -26,8 +27,6 @@ import '../style.css';
 import style from './style.module.css';
 
 export function SwiperMain({ details }: any) {
-    console.log(details)
-
     return (
         <Swiper
             breakpoints={{
@@ -91,6 +90,7 @@ export function SwiperMain({ details }: any) {
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 quality={100}
                                 priority={true}
+                                className={style.title_logo}
                                 src={details.logo}
                                 alt={details.name}
                             />
@@ -99,12 +99,7 @@ export function SwiperMain({ details }: any) {
                             <p>{details.countries}</p>
                             <p>{details.year}г {details.length}</p>
                             <p>{details.genres}</p>
-                            <section className={`${style.title_rate} title_rate`}>
-                                {details.average_kp}
-                                {details.average_imdb}
-                                {details.average_All}
-                                {details.average_personal}
-                            </section>
+                            < TitleRate kp={details.average_kp} imdb={details.average_imdb} personal={details.average_imdb} rt={details.average_kp} />
                         </section>
                     </Link >
                 </SwiperSlide>

@@ -1,6 +1,9 @@
 'use client'
 
-import { useState, useEffect, createContext, useContext, useMemo, ReactNode, FC } from 'react';
+import { IconSun, IconMoon, IconLayoutSidebarRightExpand, IconBoxAlignRight } from '@tabler/icons-react';
+
+
+import { useState, useEffect, createContext, useContext, useMemo, FC } from 'react';
 import '@/features/Button/style.css';
 import './style.css';
 
@@ -38,9 +41,7 @@ const ThemeToggle: FC = () => {
 
     return (
         <button className="toggle_theme" onClick={toggleTheme}>
-            <span className={isDarkMode ? 'symbols dark' : 'symbols light'}>
-                {isDarkMode ? 'dark_mode' : 'light_mode'}
-            </span>
+            {isDarkMode ? <IconMoon stroke={2} /> : <IconSun stroke={2} />}
         </button>
     );
 };
@@ -58,7 +59,7 @@ const SidebarToggle: FC = () => {
 
     return (
         <button className="toggle_sidebar" onClick={toggleSidebar}>
-            <span className="symbols">menu_open</span>
+            <IconLayoutSidebarRightExpand stroke={2} />
         </button>
     );
 };
@@ -76,7 +77,7 @@ const SidebarPositionToggle: FC = () => {
 
     return (
         <button className="move_sidebar" onClick={toggleSidebarPosition}>
-            <span className="symbols">chrome_reader_mode</span>
+            <IconBoxAlignRight stroke={2} />
         </button>
     );
 };

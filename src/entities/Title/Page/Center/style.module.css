@@ -11,7 +11,7 @@
   width           : 100%;
   place-content   : center center;
   color           : white;
-  padding         : 0 2rem 2rem 2rem;
+  padding         : 1rem;
   background-color: var(--color-block_back);
 }
 
@@ -26,7 +26,7 @@
 .persons {
   width           : auto;
   place-content   : center center;
-  padding         : 0 2rem 2rem 2rem;
+  padding         : 1rem;
   background-color: var(--color-block_back);
 }
 
@@ -53,15 +53,22 @@
 }
 
 .actors {
-  width           : 100%;
-  place-self      : center center;
-  padding         : 0 2rem 2rem 2rem;
-  background-color: var(--color-block_back);
+  width     : 100%;
+  place-self: center center;
+  padding   : 1rem;
 }
 
-.videos {
+.trailer {
+  width     : 100%;
+  place-self: center center;
+  padding   : 1rem;
+}
+
+.player {
+  display         : flex;
+  flex-direction  : column;
+  position        : relative;
   width           : 100%;
-  place-self      : center center;
-  padding         : 0 2rem 2rem 2rem;
   background-color: var(--color-block_back);
+  padding         : 1rem;
 }

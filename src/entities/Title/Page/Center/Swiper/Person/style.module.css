@@ -39,11 +39,6 @@
   color        : var(--color-white);
 }
 
-.swiper_person_Info h4 {
-  color         : var(--color-text);
-  padding-bottom: var(--block-gap);
-}
-
 .swiper_person_Info p {
   font-size    : 90%;
   text-overflow: ellipsis;

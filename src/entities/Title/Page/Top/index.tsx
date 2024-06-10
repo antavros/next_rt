@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import "@/entities/Title/Rate/style.css";
+import { TitleRate } from "@/entities/Title/Rate/";
 import style from "./style.module.css";
 
 export function TitlePageTop({ details }: { readonly details: any }) {
@@ -30,6 +30,8 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                 <Image
                     width={1920}
                     height={1080}
+                    className={style.title_logo}
+
                     src={details.logo || details.poster}
                     alt={details.name}
                     priority={true}
@@ -39,12 +41,8 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                 <p>{details.countries}</p>
                 <p>{details.year}г {details.length}</p>
                 <p>{details.genres}</p>
-                <section className={`${style.title_rate} title_rate`}>
-                    {details.average_kp}
-                    {details.average_imdb}
-                    {details.average_All}
-                    {details.average_personal}
-                </section>
+                < TitleRate kp={details.average_kp} imdb={details.average_imdb} personal={details.average_imdb} rt={details.average_kp} />
+
             </div>
         </div>
     );

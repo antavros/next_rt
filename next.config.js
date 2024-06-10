@@ -8,7 +8,6 @@ module.exports = {
                 hostname: 'imagetmdb.com',
             },
             {
-                protocol: 'https',
                 hostname: 'image.openmoviedb.com',
             },
             {

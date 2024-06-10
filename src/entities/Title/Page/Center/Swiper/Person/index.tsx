@@ -23,7 +23,6 @@ export function SwiperCardPerson({ details }: Details) {
       />
       <section className={style.swiper_person_Info}>
         <h3>{person.name}</h3>
-        <h4>{person.profession}</h4>
         <p>{person.description}</p>
       </section>
     </Link >

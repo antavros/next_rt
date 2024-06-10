@@ -1,7 +1,6 @@
+
 import { cache } from 'react';
 import { getDetails } from './data_types';
-
-//------------------------------------------------------------------------------------------------------------>
 
 const currentYear = new Date().getFullYear();
 const pastYear = currentYear - 1;
@@ -22,8 +21,6 @@ export const API_URL_tvseries = `${API_URL}?${API_limit}&${API_page}&${API_param
 export const API_URL_cartoon = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=cartoon`;
 export const API_URL_animated_series = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=animated-series`;
 export const API_URL_anime = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=anime`;
-
-//------------------------------------------------------------------------------------------------------------>
 
 export async function getData({ url }: { readonly url: string }) {
 

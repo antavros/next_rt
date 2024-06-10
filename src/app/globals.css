@@ -109,7 +109,7 @@
   padding-inline          : 0;
   padding-inline-start    : 0;
   padding-inline-end      : 0;
-  transition              : all 0.5s;
+  transition              : all 0.5s ease;
   border-radius           : var(--border-radius);
 }
 
