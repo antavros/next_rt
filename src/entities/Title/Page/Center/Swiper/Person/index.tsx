@@ -15,8 +15,8 @@ export function SwiperCardPerson({ details }: Details) {
   const renderSlide = (person: any) => (
     <Link className={style.swiper_person_wrapper} href={`/person/${person.id}`}>
       <Image
-        width={256}
-        height={400}
+        width={220}
+        height={330}
         src={person.photo}
         alt={person.name}
         priority={true}

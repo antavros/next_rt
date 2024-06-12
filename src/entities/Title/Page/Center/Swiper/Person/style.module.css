@@ -1,12 +1,6 @@
 .swiper_slide {
-  width : 260px !important;
-  height: 400px !important;
-}
-
-.swiper_slide img {
-  width : 260px !important;
-  height: 400px !important;
-  height: auto;
+  width : 220px !important;
+  height: 330px !important;
 }
 
 .swiper_person_wrapper::after {
@@ -25,8 +19,8 @@
   flex-direction: column;
   place-content : center end;
   place-items   : center center;
-  height        : 400px;
-  width         : 250px;
+  width         : 220px;
+  height        : 330px;
   bottom        : var(--block-gap);
   left          : 0;
   right         : 0;

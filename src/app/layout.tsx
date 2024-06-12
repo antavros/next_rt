@@ -53,8 +53,7 @@ export default function RootLayout({
 }) {
 
   return (
-    <React.StrictMode>
-        <html lang="ru">
+      <html lang="ru">
         <body id="body" className={ubuntu.className}>
           <Providers>
 
@@ -71,8 +70,7 @@ export default function RootLayout({
             <Analytics />
           </Providers>
 
-          </body>
-        </html>
-    </React.StrictMode>
+        </body>
+      </html>
   );
 }

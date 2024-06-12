@@ -45,8 +45,8 @@ export function CustomSwiper({ style, object, renderSlide }: CustomSwiper) {
       navigation={true}
       keyboard={true}
     >
-      {object.map((object: any) => (
-        <SwiperSlide className={style} key={object.name}>
+      {object.map((object: any, index: number) => (
+        <SwiperSlide className={style} key={index}>
           {renderSlide(object)}
         </SwiperSlide>
       ))}

@@ -30,8 +30,8 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
 
   const getPageNumbers = () => {
     const pageNumbers = [];
-    const startPage = Math.max(1, page - 3);
-    const endPage = Math.min(pagination.pages, page + 3);
+    const startPage = Math.max(1, page - 2);
+    const endPage = Math.min(pagination.pages, page + 2);
 
     if (startPage > 1) {
       pageNumbers.push(1);

@@ -5,12 +5,11 @@
   place-content : center center;
   place-items   : center center;
   place-self    : center center;
-  min-height    : 25rem;
   padding       : var(--block-gap);
   z-index       : var(--main_z-index);
   width         : 100%;
+  height        : 100%;
   gap           : var(--block-gap);
-  overflow      : hidden;
 
   & h5 {
     display         : flex;
@@ -18,9 +17,9 @@
     width           : max-content;
     text-align      : left;
     font-weight     : bold;
-    font-size       : 1rem;
+    font-size       : 1.5rem;
     padding         : 0.6rem;
     margin-bottom   : 1rem;
-    background-color: var(--color-purple);
+    background-color: var(--color-block_back);
   }
 }

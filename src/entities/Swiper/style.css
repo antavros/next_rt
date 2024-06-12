@@ -1,15 +1,13 @@
 .swiper {
-    width: 85.5vw !important;
-    overflow: visible !important;
+    width   : 100% !important;
 
     & .swiper-wrapper {
-            overflow: visible !important;
+
         & .swiper-slide {
 
             background-color: var(--color-block_back);
             z-index         : -2;
             border-radius   : var(--border-radius);
-            overflow        : hidden;
         }
     }
 }

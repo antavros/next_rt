@@ -1,13 +1,5 @@
 .swiper_title {
-  display   : inline-block;
-  max-height: 410px;
-  width     : 100%;
-}
-
-.swiper_title_wrapper {
-  height  : 400px;
-  width   : 256px;
-  overflow: hidden;
+  width: 100%;
 }
 
 .swiper_title_wrapper::after {

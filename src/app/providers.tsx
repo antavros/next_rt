@@ -1,5 +1,7 @@
 'use client'
 
+import React from "react";
+
 import {
   isServer,
   QueryClient,
@@ -33,9 +35,11 @@ export default function Providers({ children }: any) {
   const queryClient = getQueryClient()
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </React.StrictMode>
   )
 }
