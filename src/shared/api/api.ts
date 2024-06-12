@@ -1,5 +1,6 @@
 
-import { cache } from 'react';
+
+
 import { getDetails } from './data_types';
 
 const currentYear = new Date().getFullYear();
@@ -22,7 +23,7 @@ export const API_URL_cartoon = `${API_URL}?${API_limit}&${API_page}&${API_params
 export const API_URL_animated_series = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=animated-series`;
 export const API_URL_anime = `${API_URL}?${API_limit}&${API_page}&${API_params}&type=anime`;
 
-export async function getData({ url }: { readonly url: string }) {
+export async function getData({ url }: any) {
 
   const API_KEY = `${process.env.NEXT_PUBLIC_API_TOKEN}`;
 
@@ -39,7 +40,9 @@ export async function getData({ url }: { readonly url: string }) {
 
   const response = await fetch(url, options);
   const responseData = await response.json();
+
   const details = await getDetails({ details: responseData });
 
   return details;
 }
+

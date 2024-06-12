@@ -53,24 +53,22 @@ export default function RootLayout({
 }) {
 
   return (
-      <html lang="ru">
-        <body id="body" className={ubuntu.className}>
-          <Providers>
-
-            <Header />
-            <Sidebar />
-            <main>
-              <hr />
-              {children}
-            </main>
+    <html lang="ru">
+      <body id="body" className={ubuntu.className}>
+        <Providers>
+          <Header />
+          <Sidebar />
+          <main>
             <hr />
-            <Footer />
-            <FastNavigation />
-            <SpeedInsights />
-            <Analytics />
-          </Providers>
-
-        </body>
-      </html>
+            {children}
+          </main>
+          <hr />
+          <Footer />
+          <FastNavigation />
+          <SpeedInsights />
+          <Analytics />
+        </Providers>
+      </body>
+    </html>
   );
 }

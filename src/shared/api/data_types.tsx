@@ -16,7 +16,7 @@ const convertMinutesToHours = ({ minutes }: { minutes: number }): string => {
 }
 
 export async function getDetails({ details }: { readonly details: any }): Promise<{ data: Details[], pagination: { total: number, limit: number, page: number, pages: number } }> {
-    const docs = Array.isArray(details.docs) ? details.docs : [details];
+    const docs = Array.isArray(details?.docs) ? details?.docs : [details];
 
     const detailData = await Promise.all(docs.map(async (doc: any) => {
         const person = Array.isArray(doc?.persons) ? doc.persons : [];
