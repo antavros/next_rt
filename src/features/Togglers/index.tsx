@@ -1,6 +1,6 @@
 'use client'
 
-import { IconSun, IconMoon, IconLayoutSidebarRightExpand, IconBoxAlignRight } from '@tabler/icons-react';
+import { IconSun, IconMoon, IconLayoutSidebarRightExpand } from '@tabler/icons-react';
 
 
 import { useState, useEffect, createContext, useContext, useMemo, FC } from 'react';
@@ -18,15 +18,9 @@ interface SidebarHideContextProps {
     setIsSidebarHidden: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface SidebarPositionContextProps {
-    sidebarPosition: 'left' | 'right';
-    setSidebarPosition: React.Dispatch<React.SetStateAction<'left' | 'right'>>;
-}
-
 // Создание контекстов
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 const SidebarHideContext = createContext<SidebarHideContextProps | undefined>(undefined);
-const SidebarPositionContext = createContext<SidebarPositionContextProps | undefined>(undefined);
 
 // Компонент для переключения темы
 const ThemeToggle: FC = () => {
@@ -51,7 +45,7 @@ const SidebarToggle: FC = () => {
     const sidebarHideContext = useContext(SidebarHideContext);
     if (!sidebarHideContext) throw new Error("SidebarToggle must be used within a SidebarHideProvider");
 
-    const { isSidebarHidden, setIsSidebarHidden } = sidebarHideContext;
+    const { setIsSidebarHidden } = sidebarHideContext;
 
     const toggleSidebar = () => {
         setIsSidebarHidden(prevHidden => !prevHidden);
@@ -64,39 +58,18 @@ const SidebarToggle: FC = () => {
     );
 };
 
-// Компонент для переключения позиции боковой панели
-const SidebarPositionToggle: FC = () => {
-    const sidebarPositionContext = useContext(SidebarPositionContext);
-    if (!sidebarPositionContext) throw new Error("SidebarPositionToggle must be used within a SidebarPositionProvider");
-
-    const { sidebarPosition, setSidebarPosition } = sidebarPositionContext;
-
-    const toggleSidebarPosition = () => {
-        setSidebarPosition(prevPosition => (prevPosition === 'right' ? 'left' : 'right'));
-    };
-
-    return (
-        <button className="move_sidebar" onClick={toggleSidebarPosition}>
-            <IconBoxAlignRight stroke={2} />
-        </button>
-    );
-};
-
 // Компонент обертка для всех переключателей
 export const Togglers: FC = () => {
     const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
     const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
-    const [sidebarPosition, setSidebarPosition] = useState<'left' | 'right'>('left');
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const savedDarkMode = localStorage.getItem('darkMode');
             const savedSidebarHidden = localStorage.getItem('sidebarHidden');
-            const savedSidebarPosition = localStorage.getItem('sidebarPosition');
 
             if (savedDarkMode !== null) setIsDarkMode(JSON.parse(savedDarkMode));
             if (savedSidebarHidden !== null) setIsSidebarHidden(JSON.parse(savedSidebarHidden));
-            if (savedSidebarPosition !== null) setSidebarPosition(JSON.parse(savedSidebarPosition));
         }
     }, []);
 
@@ -131,46 +104,21 @@ export const Togglers: FC = () => {
         }
     }, [isSidebarHidden]);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('sidebarPosition', JSON.stringify(sidebarPosition));
-            const asideElement = document.querySelector('aside');
-            const toggleElement = document.querySelector('.move_sidebar');
-            if (asideElement) {
-                asideElement.style.float = sidebarPosition;
-                if (toggleElement) toggleElement.classList.toggle('flipped');
-                if (sidebarPosition === 'right') {
-                    asideElement.style.paddingRight = 'var(--block-gap)';
-                    asideElement.style.paddingLeft = '0';
-                } else {
-                    asideElement.style.paddingRight = '0';
-                    asideElement.style.paddingLeft = 'var(--block-gap)';
-                }
-            }
-        }
-    }, [sidebarPosition]);
-
-    // Мемоизация значений контекста для предотвращения ненужных перерисовок
     const contextValue = useMemo(() => ({
         isDarkMode,
         setIsDarkMode,
         isSidebarHidden,
         setIsSidebarHidden,
-        sidebarPosition,
-        setSidebarPosition
-    }), [isDarkMode, isSidebarHidden, sidebarPosition]);
+    }), [isDarkMode, isSidebarHidden]);
 
     return (
         <ThemeContext.Provider value={contextValue}>
-            <SidebarHideContext.Provider value={{ isSidebarHidden, setIsSidebarHidden }}>
-                <SidebarPositionContext.Provider value={{ sidebarPosition, setSidebarPosition }}>
-                    <section className="togglers">
-                        <ThemeToggle />
-                        <SidebarToggle />
-                        <SidebarPositionToggle />
-                    </section>
-                </SidebarPositionContext.Provider>
+            <SidebarHideContext.Provider value={contextValue}>
+                <section className="togglers">
+                    <ThemeToggle />
+                    <SidebarToggle />
+                </section>
             </SidebarHideContext.Provider>
         </ThemeContext.Provider>
     );
-};
+}

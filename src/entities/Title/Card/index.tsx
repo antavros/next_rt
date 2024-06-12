@@ -24,7 +24,10 @@ export function TitleCard({ details }: { readonly details: any }) {
                     alt={details.name}
                 />
                 <section className="card_info">
-                    < TitleRate personal={details.average_imdb} rt={details.average_kp} />
+                    < TitleRate
+                        personal={details.average_imdb}
+                        rt={details.average_kp}
+                    />
                     <h3>{details.name}</h3>
                     <h4>{details.enName}</h4>
                     <p>{details.countries}</p>

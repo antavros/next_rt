@@ -1,19 +1,18 @@
+import React from 'react';
 import { TitleCard } from "@/entities/Title/Card";
+import { Details } from '@/shared/api/lib';
 import "./style.css";
 
-export function TitleTable({ details }: any) {
+export const TitleTable: React.FC<Details> = ({ details }) => {
 
   return (
     <section className="titles">
-      {
-        (Array.isArray(details) && details.map((details) => (
-          <TitleCard
-            key={details.id}
-            details={details}
-          />
-        )))
-      }
+      {details.map((detail: any) => (
+        <TitleCard
+          key={detail.id}
+          details={detail}
+        />
+      ))}
     </section>
   );
 }
-

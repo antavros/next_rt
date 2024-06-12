@@ -1,5 +1,5 @@
+import { Pagination } from '@/features/Pagination';
 
-import { TitleTable } from "@/entities/Title/Table";
 import {
     API_URL_SEARCH,
     getData
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Search({ params }: { readonly params: { readonly value: string } }) {
     const searchValue = params.value.toLowerCase();
-    const data = await getData({ url: `${API_URL_SEARCH}${searchValue}` });
-    return (<TitleTable titleData={data} />);
+    const details = await getData({ url: `${API_URL_SEARCH}${searchValue}` });
+
+    return <Pagination pagination={details.pagination} />;
 }

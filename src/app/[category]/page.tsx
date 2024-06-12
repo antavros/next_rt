@@ -1,4 +1,4 @@
-import { TitleTable } from "@/entities/Title/Table";
+import { Pagination } from '@/features/Pagination';
 import {
   API_URL_movie,
   API_URL_tvseries,
@@ -8,33 +8,31 @@ import {
   getData,
 } from "@/shared/api/api";
 
-export default async function categoryRender({
-  params,
-}: {
-  readonly params: { readonly category: string };
-}) {
+export default async function categoryRender({ params }: { readonly params: { readonly category: string }; }) {
+
+
   const category = params.category.toLowerCase();
 
   switch (category) {
     case "movie": {
-      const data = await getData({ url: `${API_URL_movie}` });
-      return <TitleTable details={data} />;
+      const details = await getData({ url: `${API_URL_movie}` });
+      return <Pagination pagination={details.pagination} />;
     }
     case "tv-series": {
-      const data = await getData({ url: `${API_URL_tvseries}` });
-      return <TitleTable details={data} />;
+      const details = await getData({ url: `${API_URL_tvseries}` });
+      return <Pagination pagination={details.pagination} />;
     }
     case "cartoon": {
-      const data = await getData({ url: `${API_URL_cartoon}` });
-      return <TitleTable details={data} />;
+      const details = await getData({ url: `${API_URL_cartoon}` });
+      return <Pagination pagination={details.pagination} />;
     }
     case "animated-series": {
-      const data = await getData({ url: `${API_URL_animated_series}` });
-      return <TitleTable details={data} />;
+      const details = await getData({ url: `${API_URL_animated_series}` });
+      return <Pagination pagination={details.pagination} />;
     }
     case "anime": {
-      const data = await getData({ url: `${API_URL_anime}` });
-      return <TitleTable details={data} />;
+      const details = await getData({ url: `${API_URL_anime}` });
+      return <Pagination pagination={details.pagination} />;
     }
     default: {
       return <div>Неизвестная категория: {category}</div>;

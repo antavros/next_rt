@@ -18,7 +18,6 @@
 
 .kinobox_nav_ul ul {
     outline: none !important;
-    border : 1px solid #212121 !important;
 }
 
 .kinobox_nav_button {
@@ -210,8 +209,8 @@
     max-height   : calc(100% - 120px);
     overflow-y   : auto;
     border-radius: 3px 0 0 3px;
-    box-shadow   : 0 1px 2px #00000055;
-    outline      : solid 4px #00000033;
+    box-shadow   : none !important;
+    outline      : none!important;
     transition   : right .1s linear
 }
 

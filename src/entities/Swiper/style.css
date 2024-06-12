@@ -1,7 +1,9 @@
 .swiper {
     width: 85.5vw !important;
+    overflow: visible !important;
 
     & .swiper-wrapper {
+            overflow: visible !important;
         & .swiper-slide {
 
             background-color: var(--color-block_back);

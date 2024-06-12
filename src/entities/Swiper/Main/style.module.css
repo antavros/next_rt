@@ -1,7 +1,7 @@
 .swiper_home {
-  width      : 100% !important;
-  height     : auto;
-  /* overflow: visible; */
+  width   : 100% !important;
+  height  : auto;
+  overflow: hidden !important;
 }
 
 .swiper_home_wrapper {

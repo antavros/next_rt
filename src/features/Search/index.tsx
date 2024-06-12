@@ -1,23 +1,29 @@
 'use client'
 
-import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation';
 import { IconSearch } from '@tabler/icons-react';
-
-
 import { useState } from 'react';
 import './style.css';
 
+interface SearchProps {
+  onSearch?: (value: string) => void; // Сделаем onSearch необязательной функцией
+}
 
-export function Search({ onSearch }: any) {
+export function Search({ onSearch }: SearchProps) {
   const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    onSearch(searchValue);
+    if (onSearch) {
+      onSearch(searchValue);
+    }
+    router.push(`/search/${searchValue}`); // Перенаправляем пользователя на страницу поиска
   };
 
   return (
-    <search className="search" id="search" onSubmit={handleSubmit}>
+    <form className="search" id="search" onSubmit={handleSubmit}>
       <input
         className="search_input"
         type="text"
@@ -31,11 +37,9 @@ export function Search({ onSearch }: any) {
         maxLength={99}
         size={10}
       />
-      <Link href={`/search/${searchValue}`}>
-        <button type="submit" className="search_button" title='Найти'>
-          <IconSearch stroke={2} />
-        </button>
-      </Link>
-    </search>
+      <button type="submit" className="search_button" title='Найти'>
+        <IconSearch stroke={2} />
+      </button>
+    </form>
   );
 }

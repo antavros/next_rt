@@ -1,7 +1,7 @@
 header {
-  position: sticky;
-  padding : var(--block-gap) var(--block-gap) 0 var(--block-gap);
-  z-index : var(--header_z-index);
+  position     : sticky;
+  z-index      : var(--header_z-index);
+  border-radius: 0;
 }
 
 .headBar {
@@ -14,6 +14,7 @@ header {
   height         : var(--header-height);
   background     : var(--color-block_back);
   padding        : var(--block-gap);
+  border-radius  : 0;
   backdrop-filter: var(--blur);
 }
 

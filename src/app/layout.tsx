@@ -1,18 +1,12 @@
+import React from "react";
+
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
-import { Header } from "@/widgets/Header";
-import { Sidebar } from "@/widgets/Sidebar";
-import { Footer } from "@/widgets/Footer";
-import { FastNavigation } from "@/features/NavArrow";
-import "./globals.css";
+import Providers from './providers'
 
-import "material-symbols";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
-
-import Head from "next/head";
 import type { Metadata, Viewport } from "next";
+
 export const viewport: Viewport = {
   themeColor: "black",
   colorScheme: "dark",
@@ -40,30 +34,45 @@ export const metadata: Metadata = {
   },
 };
 
+import { Ubuntu } from "next/font/google";
+const ubuntu = Ubuntu({
+  weight: ['400', '700'],
+  subsets: ['latin', 'cyrillic'],
+});
+
+import { Header } from "@/widgets/Header";
+import { Sidebar } from "@/widgets/Sidebar";
+import { Footer } from "@/widgets/Footer";
+import { FastNavigation } from "@/features/NavArrow";
+import "./globals.css";
+
 export default function RootLayout({
   children,
 }: {
   readonly children: React.ReactNode;
 }) {
-  return (
-    <html lang="ru">
-      <Head>
-        <meta name="MobileOptimized" content="width" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-      </Head>
 
-      <body id="body" className={inter.className}>
-        <Header />
-        <hr />
-        <Sidebar />
-        <main>{children}</main>
-        <hr />
-        <Footer />
-        <FastNavigation />
-        <SpeedInsights />
-        <Analytics />
-      </body>
-    </html>
+  return (
+    <React.StrictMode>
+        <html lang="ru">
+        <body id="body" className={ubuntu.className}>
+          <Providers>
+
+            <Header />
+            <Sidebar />
+            <main>
+              <hr />
+              {children}
+            </main>
+            <hr />
+            <Footer />
+            <FastNavigation />
+            <SpeedInsights />
+            <Analytics />
+          </Providers>
+
+          </body>
+        </html>
+    </React.StrictMode>
   );
 }

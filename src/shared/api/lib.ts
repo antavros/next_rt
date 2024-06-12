@@ -42,6 +42,7 @@ export interface Details extends SwiperOptions {
     className?: string;
     params?: { readonly id: string };
     option?: any;
+    responseData?: any[];
 
     data?: any;
     details?: any;
@@ -53,7 +54,7 @@ export interface Details extends SwiperOptions {
 
     [key: string]: any;
     index?: number;
-    id?: number;
+    id?: any;
     type?: string;
 
     name?: string;
@@ -73,6 +74,11 @@ export interface Details extends SwiperOptions {
 
     rating?: TitleRating;
     vote?: any;
+
+    total?: number;
+    limit?: number;
+    page?: number;
+    pages?: number;
 }
 
 

@@ -57,10 +57,7 @@
     border-radius: 0px 2.5rem 2.5rem 0px;
 
     & svg {
-        padding   : 0rem !important;
-        font-size : 100% !important;
-        text-align: center;
-        color     : var(--color-text);
+        padding: 0.4rem !important;
     }
 
 }

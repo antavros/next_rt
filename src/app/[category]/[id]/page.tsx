@@ -1,3 +1,5 @@
+'use server'
+
 import { Metadata, ResolvingMetadata } from "next";
 
 import { TitleContainer } from "@/entities/Title/Page";
@@ -10,7 +12,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.id;
   const data = await getData({ url: `${API_URL_title}${id}` });
-  const details = data[0];
+  const details = data.data[0];
   const previousImages = (await parent).openGraph?.images || [];
   const poster = details?.poster?.url ?? details?.poster?.previewUrl ?? '';
   console.log(poster)
@@ -36,12 +38,9 @@ export async function generateMetadata(
 export default async function TitlePage({ params }: { readonly params: Details }) {
 
   const id = params.id;
-  const data = await getData({ url: `${API_URL_title}${id}` });
-  const details = data[0];
+  const details = await getData({ url: `${API_URL_title}${id}` });
 
   return (
-    <>
-      <TitleContainer details={details} />
-    </>
+    <TitleContainer details={details.data[0]} />
   );
 }

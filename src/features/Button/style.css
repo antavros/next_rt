@@ -8,7 +8,7 @@ button,
     place-self         : center center;
     border             : var(--border)var(--color-border);
     box-shadow         : var(--shadow);
-    color              : var(--color-text) !important;
+    color              : var(--color-text);
     background         : var(--color-button-inactive);
     cursor             : pointer;
     -webkit-user-select: none;
@@ -23,12 +23,13 @@ button,
     }
 
     & svg {
-        width  : 100%;
-        height : 100%;
-        padding: 15%;
+        width  : 3dvh;
+        height : 3dvh;
+        color  : var(--color-white);
+        padding: 0.2rem;
     }
 
-    &:hover {
+    &:is(:hover, :focus) {
         scale           : var(--hover-scale);
         border          : var(--border) var(--color-purple);
         color           : var(--color-white);
@@ -43,7 +44,7 @@ button,
     &:is(:active) {
         scale     : var(--active-scale) !important;
         border    : var(--border)var(--color-white) !important;
-        color     : var(--color-purple) !important;
+        color     : var(--color-white) !important;
         background: var(--color-button-active);
 
         & svg,

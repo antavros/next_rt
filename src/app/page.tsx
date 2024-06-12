@@ -14,15 +14,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const dataTitles = await getData({ url: API_URL_POPULAR });
-  const titlesWithLogo = dataTitles.filter((item) => item.logo);
+  const details = await getData({ url: API_URL_POPULAR });
+  const titlesWithLogo = details.data.filter((item) => item.logo);
   const titlesWithBackDrop = titlesWithLogo.filter((item) => item.backdrop);
   const topTenTitlesWithLogo = titlesWithBackDrop.slice(0, 10);
   return (
     <>
       <SwiperMain details={topTenTitlesWithLogo} />
       <hr />
-      <TitleTable details={dataTitles} />
+      <TitleTable details={details.data} />
     </>
   );
 }

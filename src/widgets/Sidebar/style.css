@@ -1,9 +1,10 @@
 aside {
-    position  : sticky;
-    float     : left;
-    width     : auto;
-    z-index   : var(--sidebar_z-index);
-    transition: all 0.1s;
+    position     : sticky;
+    float        : left;
+    z-index      : var(--sidebar_z-index);
+    background   : var(--color-block_back);
+    border-radius: 0 0 var(--border-radius) 0;
+    padding      : 0;
 }
 
 .Sidebar {
@@ -12,30 +13,29 @@ aside {
     place-content  : center center;
     place-items    : center center;
     place-self     : center center;
-    padding        : var(--element-gap);
-    background     : var(--color-block_back);
     backdrop-filter: var(--blur);
     overflow       : hidden;
+    width          : 100%;
+    border-radius  : 0 0 var(--border-radius) 0;
+    padding        : 0rem 0 1rem 2vh;
 
     & nav {
         & ul {
             & li {
-                gap: var(--block-gap);
+                & a {
+                    & button {
+                        place-content: center start;
+                        width        : 100%;
+                        gap          : var(--block-gap);
+                        background   : transparent;
+                        box-shadow   : none;
+                        padding      : 0.5rem 1.5rem 0.5rem 0.5rem;
+                        border-radius: var(--border-radius) 0 0 var(--border-radius);
 
-                & button {
-                    place-content: center start;
-                    width        : 100%;
-                    gap          : var(--block-gap);
-
-                    & svg {
-                        width          : 2rem;
-                        height         : 2rem;
-                        backdrop-filter: grayscale(30%);
-                    }
-
-                    & p {
-                        font-size : 1.8svh;
-                        transition: font-size 0.1s;
+                        & p {
+                            font-size: 2vh;
+                            color    : var(--color-white);
+                        }
                     }
                 }
             }
@@ -43,41 +43,12 @@ aside {
     }
 }
 
-#Sidebar a.active {
-
-    place-content: end end;
-    place-items  : end end;
-    place-self   : end end;
-
-    & nav {
-        place-content: end end;
-        place-items  : end end;
-        place-self   : end end;
-
-    }
-
-    & ul {
-        place-content: end end;
-        place-items  : end end;
-        place-self   : end end;
-
-
-    }
-
-    & li {
-        place-content: end end;
-        place-items  : end end;
-        place-self   : end end;
-        gap          : var(--block-gap);
-
-
-    }
-
+.Sidebar a.active {
     & button {
-        scale     : var(--active-scale) !important;
+        scale     : var(--hover-scale);
         border    : var(--border)var(--color-white) !important;
         color     : var(--color-white) !important;
-        background: var(--color-button-active) !important;
+        background: var(--color-purple) !important;
     }
 }
 
@@ -92,14 +63,14 @@ aside {
         & nav {
             & ul {
                 & li {
-
                     & button {
                         place-content: center center !important;
                         gap          : 0 !important;
+                        padding      : 0.5rem;
 
                         & p {
-                            font-size : 0 !important;
-                            transition: font-size 0.1s;
+                            display  : none !important;
+                            font-size: 0 !important;
                         }
                     }
                 }
@@ -107,12 +78,6 @@ aside {
         }
     }
 }
-
-.sidebar_move {
-    float: right;
-}
-
-
 
 @media (max-width: 600px) {
     header .logo {
@@ -126,12 +91,13 @@ aside {
     }
 
     aside {
-        position: fixed;
-        bottom  : 0 !important;
-        right   : 0 !important;
-        left    : 0 !important;
-        padding : var(--block-gap) !important;
-        width   : 100%;
+        position     : fixed;
+        bottom       : 0 !important;
+        right        : 0 !important;
+        left         : 0 !important;
+        padding      : var(--block-gap) 0 0 0 !important;
+        width        : 100%;
+        border-radius: 0 !important;
 
         & hr {
             display: none;
@@ -142,7 +108,7 @@ aside {
             flex-wrap     : wrap;
             flex-direction: row;
             width         : 100%;
-            padding       : var(--element-gap);
+            padding       : 0 !important;
 
             & .togglers {
                 display: none;
@@ -154,14 +120,17 @@ aside {
                     flex-direction: row;
 
                     & li {
-                        gap: 11px;
-
                         & button {
                             place-content: center center;
-                            width        : 100%;
+                            place-items  : center center;
+                            place-self   : center center;
+                            width        : auto;
+
+                            border-radius: var(--border-radius) var(--border-radius) 0 0;
+                            padding      : 1rem;
 
                             & p {
-                                font-size: 0px !important;
+                                display: none !important;
                             }
                         }
                     }
