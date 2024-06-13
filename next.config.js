@@ -1,5 +1,7 @@
 module.exports = {
     images: {
+        unoptimized: true,
+
         remotePatterns: [
             {
                 hostname: 'avatars.mds.yandex.net',
