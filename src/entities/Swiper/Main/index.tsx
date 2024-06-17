@@ -77,8 +77,8 @@ export function SwiperMain({ details }: any) {
                     <SwiperSlide key={details.id} virtualIndex={index}>
                         <Link className={style.swiper_home_wrapper} href={`/${details.type}/${details.id}`}>
                             <Image
-                                width={1920}
-                                height={1080}
+                                width={1280}
+                                height={720}
                                 quality={100}
                                 priority={true}
                                 src={details.backdrop}
@@ -87,8 +87,8 @@ export function SwiperMain({ details }: any) {
                             />
                             <section className={style.swiper_home_Info}>
                                 <Image
-                                    width={1920}
-                                    height={1080}
+                                    width={1280}
+                                    height={720}
                                     quality={100}
                                     priority={true}
                                     className={style.title_logo}
