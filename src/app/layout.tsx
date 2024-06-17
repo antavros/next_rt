@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ratetable.vercel.app'),
   description: "Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!",
   icons: "/images/LOGO.svg",
-  publisher: "index, follow",
+  robots: "index, follow",
   creator: "antavros",
   keywords: "фильмы новинки кинофильмы кинотеатр 2020 2021 2022 просмотр видеоролики",
   openGraph: {

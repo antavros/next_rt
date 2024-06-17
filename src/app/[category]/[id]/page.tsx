@@ -16,6 +16,7 @@ async function fetchDetailsAndMetadata(id: string, parent: ResolvingMetadata): P
 
   const metadata: Metadata = {
     title: details.name,
+    metadataBase: new URL('https://ratetable.vercel.app'),
     description: details.sDescription ?? details.description ?? "",
     openGraph: {
       title: details.name,
