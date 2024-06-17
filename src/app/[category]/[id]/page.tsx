@@ -12,7 +12,7 @@ async function fetchDetailsAndMetadata(id: string, parent: ResolvingMetadata): P
   const data = await getData({ url: `${API_URL_title}${id}` });
   const details = data.data[0];
   const previousImages = (await parent).openGraph?.images || [];
-  const poster = details?.poster?.url ?? details?.poster?.previewUrl ?? '';
+  const poster = details?.poster ?? '';
 
   const metadata: Metadata = {
     title: details.name,
