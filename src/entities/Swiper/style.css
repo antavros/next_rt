@@ -1,13 +1,31 @@
+.swiperContainer {
+    display    : flex;
+    flex-flow  : row wrap;
+    width      : 100%;
+    height     : 100%;
+    flex-basis : 0;
+    flex-grow  : 1;
+    flex-shrink: 2;
+}
+
 .swiper {
-    width   : 100% !important;
+    width   : 100%;
+    height  : 100%;
+    overflow: hidden;
 
     & .swiper-wrapper {
 
         & .swiper-slide {
-
             background-color: var(--color-block_back);
             z-index         : -2;
             border-radius   : var(--border-radius);
+
+            & img {
+                display   : block;
+                width     : 100%;
+                height    : 100%;
+                object-fit: cover;
+            }
         }
     }
 }

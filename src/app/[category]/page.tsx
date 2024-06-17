@@ -1,76 +1,69 @@
+'use server';
+
+import { TitleTable } from "@/entities/Title/Table";
 import { Pagination } from '@/features/Pagination';
+import { getData } from "@/shared/api/api";
 import {
   API_URL_movie,
   API_URL_tvseries,
   API_URL_cartoon,
   API_URL_animated_series,
   API_URL_anime,
-  getData,
-} from "@/shared/api/api";
+} from "@/shared/api/url";
 
-export default async function categoryRender({ params }: { readonly params: { readonly category: string }; }) {
+import type { Metadata, ResolvingMetadata } from "next";
 
-
-  const category = params.category.toLowerCase();
-
-  switch (category) {
-    case "movie": {
-      const details = await getData({ url: `${API_URL_movie}` });
-      return <Pagination pagination={details.pagination} />;
-    }
-    case "tv-series": {
-      const details = await getData({ url: `${API_URL_tvseries}` });
-      return <Pagination pagination={details.pagination} />;
-    }
-    case "cartoon": {
-      const details = await getData({ url: `${API_URL_cartoon}` });
-      return <Pagination pagination={details.pagination} />;
-    }
-    case "animated-series": {
-      const details = await getData({ url: `${API_URL_animated_series}` });
-      return <Pagination pagination={details.pagination} />;
-    }
-    case "anime": {
-      const details = await getData({ url: `${API_URL_anime}` });
-      return <Pagination pagination={details.pagination} />;
-    }
-    default: {
-      return <div>Неизвестная категория: {category}</div>;
-    }
+// Функция для получения URL и имени категории
+function getCategoryDetails(category: string): { url: string, name: string } {
+  switch (category.toLowerCase()) {
+    case "movie":
+      return { url: API_URL_movie, name: "Фильмы" };
+    case "tv-series":
+      return { url: API_URL_tvseries, name: "Сериалы" };
+    case "cartoon":
+      return { url: API_URL_cartoon, name: "Мультфильмы" };
+    case "animated-series":
+      return { url: API_URL_animated_series, name: "Мултсериалы" };
+    case "anime":
+      return { url: API_URL_anime, name: "Аниме" };
+    default:
+      throw new Error(`Unknown category: ${category}`);
   }
 }
 
-// <Seo
-//     seoTitle='МУЛЬТСЕРИАЛЫ'
-//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-//     seoOgTitle='МУЛЬТСЕРИАЛЫ'
-//     seoOgImage="/images/LOGO.png"
-// />
+// Функция для получения данных категории и метаданных
+async function fetchCategoryDetailsAndMetadata(category: string, page: string = '1'): Promise<{ details: any; metadata: Metadata }> {
+  const { url, name } = getCategoryDetails(category);
+  const response = await getData({ url: `${url}&page=${page}` });
 
-//<Seo
-//     seoTitle='АНИМЕ'
-//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-//     seoOgTitle='АНИМЕ'
-//     seoOgImage="/images/LOGO.png"
-// />
+  const metadata: Metadata = {
+    title: name.toUpperCase(),
+    openGraph: {
+      title: name.toUpperCase(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: name.toUpperCase(),
+    },
+  };
 
-// <Seo
-//     seoTitle='МУЛЬТФИЛЬМЫ'
-//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-//     seoOgTitle='МУЛЬТФИЛЬМЫ'
-//     seoOgImage="/images/LOGO.png"
-// />
+  return { details: response, metadata };
+}
 
-//<Seo
-//     seoTitle='ФИЛЬМЫ'
-//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-//     seoOgTitle='ФИЛЬМЫ'
-//     seoOgImage="/images/LOGO.png"
-// />
+// Генерация метаданных для страниц категорий
+export async function generateMetadata({ params }: { readonly params: { readonly category: string } }, parent: ResolvingMetadata): Promise<Metadata> {
+  const { metadata } = await fetchCategoryDetailsAndMetadata(params.category);
+  return metadata;
+}
 
-//<Seo
-//     seoTitle='СЕРИАЛЫ'
-//     seoDescription="RATETABLE - фильмы, мультфильмы и аниме"
-//     seoOgTitle='СЕРИАЛЫ'
-//     seoOgImage="/images/LOGO.png"
-// />
+// Рендеринг страницы категорий
+export default async function categoryRender({ searchParams, params }: { readonly params: any; searchParams: { [key: string]: string } }) {
+  const page = searchParams['page'] ?? '1';
+  const { details } = await fetchCategoryDetailsAndMetadata(params.category, page);
+  return (
+    <>
+      <TitleTable details={details.data} />
+      <Pagination pagination={details.pagination} />
+    </>
+  );
+}

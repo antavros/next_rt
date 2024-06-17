@@ -1,9 +1,14 @@
 .kinobox_player {
-    width     : 80vw;
+    width     : 50vw;
     place-self: center center;
 }
 
-
+@media (max-width: 1200px) {
+    .kinobox_player {
+        width     : 100%;
+        place-self: center center;
+    }
+}
 
 .kinobox_nav_ul li {
     color           : white !important;
@@ -210,7 +215,7 @@
     overflow-y   : auto;
     border-radius: 3px 0 0 3px;
     box-shadow   : none !important;
-    outline      : none!important;
+    outline      : none !important;
     transition   : right .1s linear
 }
 

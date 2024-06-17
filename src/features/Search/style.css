@@ -1,7 +1,7 @@
 .search {
     display       : flex;
     flex-direction: row;
-    min-width     : 3rem;
+    min-width     : 2.5rem;
     width         : 25rem;
     min-height    : 3rem;
 
@@ -9,7 +9,8 @@
         scale: var(--hover-scale);
 
         & .search_button {
-            background-color: var(--color-gray_dark);
+            scale           : none;
+            background-color: var(--color-purple);
             border-color    : var(--color-purple);
 
             & span {

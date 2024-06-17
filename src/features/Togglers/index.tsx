@@ -1,7 +1,7 @@
 'use client'
 
 import { IconSun, IconMoon, IconLayoutSidebarRightExpand } from '@tabler/icons-react';
-
+import { FastNavigation } from "@/features/NavArrow";
 
 import { useState, useEffect, createContext, useContext, useMemo, FC } from 'react';
 import '@/features/Button/style.css';
@@ -117,6 +117,7 @@ export const Togglers: FC = () => {
                 <section className="togglers">
                     <ThemeToggle />
                     <SidebarToggle />
+                    <FastNavigation />
                 </section>
             </SidebarHideContext.Provider>
         </ThemeContext.Provider>

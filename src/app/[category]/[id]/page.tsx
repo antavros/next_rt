@@ -1,46 +1,49 @@
-'use server'
+'use server';
 
-import { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
 import { TitleContainer } from "@/entities/Title/Page";
-import { API_URL_title, getData } from "@/shared/api/api";
+import { getData } from "@/shared/api/api";
+import { API_URL_title } from "@/shared/api/url";
 import { Details } from "@/shared/api/lib";
 
-export async function generateMetadata(
-  { params }: { readonly params: Details },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const id = params.id;
+// Функция для извлечения данных и генерации метаданных
+async function fetchDetailsAndMetadata(id: string, parent: ResolvingMetadata): Promise<{ details: any, metadata: Metadata }> {
   const data = await getData({ url: `${API_URL_title}${id}` });
   const details = data.data[0];
   const previousImages = (await parent).openGraph?.images || [];
   const poster = details?.poster?.url ?? details?.poster?.previewUrl ?? '';
-  console.log(poster)
 
-  return {
+  const metadata: Metadata = {
     title: details.name,
-    metadataBase: new URL('https://ratetable.vercel.app'),
     description: details.sDescription ?? details.description ?? "",
     openGraph: {
       title: details.name,
-      images: [...poster, ...previousImages],
+      images: [poster, ...previousImages],
       description: details.sDescription ?? details.description ?? "",
     },
     twitter: {
       card: "summary_large_image",
       title: details.name,
-      images: [...poster, ...previousImages],
+      images: [poster, ...previousImages],
       description: details.sDescription ?? details.description ?? "",
     },
   };
+
+  return { details, metadata };
 }
 
-export default async function TitlePage({ params }: { readonly params: Details }) {
-
+// Используем асинхронную функцию для генерации метаданных
+export async function generateMetadata({ params }: { readonly params: Details }, parent: ResolvingMetadata): Promise<Metadata> {
   const id = params.id;
-  const details = await getData({ url: `${API_URL_title}${id}` });
+  const { metadata } = await fetchDetailsAndMetadata(id, parent);
+  return metadata;
+}
 
-  return (
-    <TitleContainer details={details.data[0]} />
-  );
+// Главный компонент страницы
+export default async function TitlePage({ params }: { readonly params: Details }) {
+  const id = params.id;
+  const { details } = await fetchDetailsAndMetadata(id, {} as ResolvingMetadata);
+
+  return <TitleContainer details={details} />;
 }

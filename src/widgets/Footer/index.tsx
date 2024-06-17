@@ -14,7 +14,6 @@ export function Footer() {
                 </ul>
                 <p>2024 © All Rights Reserved</p>
             </section>
-
         </footer>
     );
 }

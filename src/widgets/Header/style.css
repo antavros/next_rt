@@ -1,21 +1,26 @@
 header {
-  position     : sticky;
-  z-index      : var(--header_z-index);
-  border-radius: 0;
+  position       : sticky;
+  top            : 0;
+  display        : flex;
+  flex           : 1 1 100%;
+  width          : 100%;
+  height         : var(--header-height);
+  border-radius  : 0 0 var(--border-radius) 0;
+  backdrop-filter: var(--blur);
+  background     : var(--color-block_back);
+  z-index        : var(--header_z-index);
 }
 
 .headBar {
-  display        : flex;
-  flex-direction : row;
-  place-content  : center space-between;
-  place-items    : center center;
-  place-self     : center center;
-  width          : 100%;
-  height         : var(--header-height);
-  background     : var(--color-block_back);
-  padding        : var(--block-gap);
-  border-radius  : 0;
-  backdrop-filter: var(--blur);
+  display       : flex;
+  flex-direction: row;
+  place-content : center space-between;
+  place-items   : center center;
+  place-self    : center center;
+  gap           : var(--block-gap);
+  width         : 100%;
+  padding       : var(--block-gap);
+  border-radius : 0;
 }
 
 .user {
@@ -27,5 +32,6 @@ header {
   -moz-user-select   : none;
   -ms-user-select    : none;
   user-select        : none;
-  padding            : var(--element-gap);
+  font-size          : 0.9rem;
+  padding            : 1rem;
 }

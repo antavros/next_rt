@@ -16,6 +16,7 @@ export function Header() {
                 <Link href="/profile">
                     <button className="user">
                         <IconLogin stroke={2} />
+                        Войти
                     </button>
                 </Link>
             </section >

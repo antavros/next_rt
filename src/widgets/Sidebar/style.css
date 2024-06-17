@@ -1,36 +1,44 @@
 aside {
-    position     : sticky;
-    float        : left;
-    z-index      : var(--sidebar_z-index);
-    background   : var(--color-block_back);
-    border-radius: 0 0 var(--border-radius) 0;
-    padding      : 0;
+    display        : flex;
+    flex           : 0 0 auto;
+    justify-self   : center;
+    justify-items  : start;
+    width          : auto;
+    z-index        : var(--sidebar_z-index);
+    backdrop-filter: var(--blur);
+    background     : var(--color-block_back);
+    border-radius  : 0;
 }
 
 .Sidebar {
-    display        : flex;
-    flex-direction : column;
-    place-content  : center center;
-    place-items    : center center;
-    place-self     : center center;
-    backdrop-filter: var(--blur);
-    overflow       : hidden;
-    width          : 100%;
-    border-radius  : 0 0 var(--border-radius) 0;
-    padding        : 0rem 0 1rem 2vh;
+    display       : flex;
+    flex-direction: column;
+    position      : sticky;
+    top           : var(--header-height);
+    place-content : end end;
+    place-self    : start end;
+    place-items   : end end;
+    overflow      : hidden;
+    border-radius : 0 0 var(--border-radius) 0;
+    padding       : 0rem 0 0.8rem 0.8rem;
 
     & nav {
         & ul {
+            display       : flex;
+            flex-direction: column;
+            gap           : 0.4rem;
+
             & li {
                 & a {
                     & button {
-                        place-content: center start;
-                        width        : 100%;
-                        gap          : var(--block-gap);
-                        background   : transparent;
-                        box-shadow   : none;
-                        padding      : 0.5rem 1.5rem 0.5rem 0.5rem;
-                        border-radius: var(--border-radius) 0 0 var(--border-radius);
+                        place-content  : center start;
+                        width          : 100%;
+                        gap            : var(--block-gap);
+                        background     : transparent !important;
+                        box-shadow     : none;
+                        padding        : 0.3rem 1rem 0.3rem 0.3rem;
+                        border-radius  : var(--border-radius) 0 0 var(--border-radius);
+                        backdrop-filter: none;
 
                         & p {
                             font-size: 2vh;
@@ -54,8 +62,6 @@ aside {
 
 .sidebar_hide {
     & .Sidebar {
-        width: auto;
-
         & .togglers {
             flex-direction: column;
         }
@@ -66,7 +72,7 @@ aside {
                     & button {
                         place-content: center center !important;
                         gap          : 0 !important;
-                        padding      : 0.5rem;
+                        padding      : 0.3rem;
 
                         & p {
                             display  : none !important;
@@ -80,13 +86,19 @@ aside {
 }
 
 @media (max-width: 600px) {
+    .pagination {
+        bottom    : 5rem !important;
+        flex-flow : column nowrap !important;
+        place-self: end end !important;
+    }
+
     header .logo {
         display: none;
     }
 
     .search {
         &:hover {
-            scale: 1;
+            scale: none;
         }
     }
 
@@ -108,7 +120,10 @@ aside {
             flex-wrap     : wrap;
             flex-direction: row;
             width         : 100%;
-            padding       : 0 !important;
+            padding       : 0.2rem 0 0rem 0rem !important;
+            place-content : center center !important;
+            place-items   : center center !important;
+            place-self    : center center !important;
 
             & .togglers {
                 display: none;
@@ -119,6 +134,7 @@ aside {
                     display       : flex;
                     flex-direction: row;
 
+
                     & li {
                         & button {
                             place-content: center center;
@@ -127,7 +143,7 @@ aside {
                             width        : auto;
 
                             border-radius: var(--border-radius) var(--border-radius) 0 0;
-                            padding      : 1rem;
+                            padding      : 0.4rem;
 
                             & p {
                                 display: none !important;

@@ -1,4 +1,11 @@
 footer {
+    display        : flex;
+    flex           : 1 1 100%;
+    width          : 100%;
+    backdrop-filter: var(--blur);
+    background     : var(--color-block_back);
+    border-radius  : 0 var(--border-radius) 0 0;
+    z-index        : var(--footer_z-index);
 
     & .footer {
         display       : flex;
@@ -7,13 +14,13 @@ footer {
         height        : 100%;
         place-content : center center;
         place-items   : center center;
-        place-self    : center center;
         gap           : var(--block-gap);
         padding       : 1rem;
-        background    : var(--color-block_back);
+        z-index       : var(--footer_z-index);
 
         & button {
-            padding: 0.5rem;
+            padding: 0.8rem;
+            width  : 100%;
         }
 
         & p {
@@ -21,8 +28,10 @@ footer {
         }
 
         & ul {
-            display: flex;
-            gap    : var(--block-gap);
+            display       : flex;
+            flex-direction: column;
+            gap           : 0.3rem;
+
         }
     }
 }

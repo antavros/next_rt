@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { API_URL_SEARCH, getData } from '@/shared/api/api';
-import { TitleTable } from "@/entities/Title/Table";
-import { Preloader } from '@/features/PreLoader';
+import { IconChevronRight, IconChevronLeft } from '@tabler/icons-react';
+
+
+import React from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import "./style.css";
 
 interface PaginationProps {
@@ -16,17 +17,9 @@ interface PaginationProps {
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
-  const [details, setDetails] = useState<any>(null);
-  const [page, setPage] = useState(pagination.page);
-
-  useEffect(() => {
-    const fetchDetails = async () => {
-      const searchValue = ''; // Set the search value according to your logic
-      const data = await getData({ url: `${API_URL_SEARCH}${searchValue}&page=${page}` });
-      setDetails(data);
-    };
-    fetchDetails();
-  }, [page]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const page = parseInt(searchParams.get('page') ?? '1', 10);
 
   const getPageNumbers = () => {
     const pageNumbers = [];
@@ -56,40 +49,36 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
 
   const handlePageChange = (pageNum: number) => {
     if (pageNum !== page && pageNum > 0 && pageNum <= pagination.pages) {
-      setPage(pageNum);
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('page', pageNum.toString());
+      router.push(`${window.location.pathname}?${urlParams.toString()}`);
     }
   };
 
   const pageNumbers = getPageNumbers();
-
-  if (!details) return <Preloader />;
-
   return (
-    <>
-      <TitleTable details={details.data} />
-      <div className="pagination">
-        <button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
-          Назад
-        </button>
-        {pageNumbers.map((pageNum, index) =>
-          typeof pageNum === 'number' ? (
-            <button
-              key={index}
-              onClick={() => handlePageChange(pageNum)}
-              className={page === pageNum ? 'active' : ''}
-            >
-              {pageNum}
-            </button>
-          ) : (
-            <span key={index} className="ellipsis">
-              {pageNum}
-            </span>
-          )
-        )}
-        <button onClick={() => handlePageChange(page + 1)} disabled={page === pagination.pages}>
-          Вперед
-        </button>
-      </div>
-    </>
+    <div className="pagination">
+      <button className="pagNavButton" onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
+        <IconChevronLeft stroke={2} />
+      </button>
+      {pageNumbers.map((pageNum, index) =>
+        typeof pageNum === 'number' ? (
+          <button
+            key={pageNum}
+            onClick={() => handlePageChange(pageNum)}
+            className={page === pageNum ? 'active' : ''}
+          >
+            {pageNum}
+          </button>
+        ) : (
+          <span key={`p${index}`} className="ellipsis">
+            {pageNum}
+          </span>
+        )
+      )}
+      <button className="pagNavButton" onClick={() => handlePageChange(page + 1)} disabled={page === pagination.pages}>
+        <IconChevronRight stroke={2} />
+      </button>
+    </div>
   );
 };

@@ -1,7 +1,5 @@
 #fastNav {
-    position           : fixed;
-    bottom             : var(--block-gap);
-    right              : var(--block-gap);
+    position           : relative;
     z-index            : 999;
     -webkit-user-select: none;
     -moz-user-select   : none;

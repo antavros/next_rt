@@ -12,14 +12,13 @@
   gap           : var(--block-gap);
 
   & h5 {
-    display         : flex;
-    flex-direction  : row;
-    width           : max-content;
-    text-align      : left;
-    font-weight     : bold;
-    font-size       : 1.5rem;
-    padding         : 0.6rem;
-    margin-bottom   : 1rem;
-    background-color: var(--color-block_back);
+    display       : flex;
+    flex-direction: row;
+    width         : max-content;
+    text-align    : left;
+    font-weight   : bold;
+    font-size     : 1.5rem;
+    padding       : 0.6rem;
+    margin-bottom : 1rem;
   }
 }

@@ -29,7 +29,7 @@ button,
         padding: 0.2rem;
     }
 
-    &:is(:hover, :focus) {
+    &:is(:hover) {
         scale           : var(--hover-scale);
         border          : var(--border) var(--color-purple);
         color           : var(--color-white);

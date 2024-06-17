@@ -1,14 +1,18 @@
 .titles {
-  place-content        : center center;
-  place-items          : center center;
-  place-self           : center center;
-  display              : grid;
-  padding              : var(--block-gap);
+  /* display              : grid;
   grid-gap             : 1rem;
   grid-template-columns: repeat(auto-fill, 16rem);
-  grid-auto-rows       : 25rem;
-  width                : 100%;
-  min-height           : 100vh;
+  grid-auto-rows       : 25rem; */
+  display      : flex;
+  flex-wrap    : wrap;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  gap          : 1rem;
+  min-height   : 100vh;
+  width        : auto;
+  padding      : var(--block-gap);
+
 
   & .title_rate {
     position     : absolute;

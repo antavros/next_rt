@@ -9,17 +9,16 @@ interface SearchProps {
   onSearch?: (value: string) => void; // Сделаем onSearch необязательной функцией
 }
 
-export function Search({ onSearch }: SearchProps) {
+export function Search({ onSearch }: (value: string) => void) {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
-  const pathname = usePathname();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (onSearch) {
       onSearch(searchValue);
     }
-    router.push(`/search/${searchValue}`); // Перенаправляем пользователя на страницу поиска
+    router.push(`/search?page=1&query=${searchValue}`);
   };
 
   return (
