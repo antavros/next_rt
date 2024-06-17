@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { IconSearch } from '@tabler/icons-react';
 import { useState } from 'react';
 import './style.css';
@@ -9,11 +9,11 @@ interface SearchProps {
   onSearch?: (value: string) => void; // Сделаем onSearch необязательной функцией
 }
 
-export function Search({ onSearch }: (value: string) => void) {
+export function Search({ onSearch }: SearchProps) {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (onSearch) {
       onSearch(searchValue);
