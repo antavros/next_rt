@@ -1,8 +1,6 @@
 'use client';
 
 import { IconChevronRight, IconChevronLeft } from '@tabler/icons-react';
-
-
 import React from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import "./style.css";
@@ -17,12 +15,14 @@ interface PaginationProps {
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Если нет параметров пагинации, не показываем компонент
   if (!pagination) {
     return null;
   }
 
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const page = parseInt(searchParams.get('page') ?? '1', 10);
 
   const getPageNumbers = () => {
