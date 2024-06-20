@@ -24,7 +24,7 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                     width="100%"
                     height="100%"
                     className={style.title_back}
-                    src={details.trailers[0].url}
+                    src={details?.trailers[0]?.url}
                     title={details.trailers.name}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

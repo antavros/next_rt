@@ -97,7 +97,7 @@ export function SwiperMain({ details }: any) {
                                 <Image
                                     width={1280}
                                     height={720}
-
+                                    onLoad={() => setImageLoaded(true)}
                                     quality={25}
                                     priority={true}
                                     className={style.title_logo}

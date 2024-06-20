@@ -18,19 +18,17 @@ export const metadata: Metadata = {
   icons: "/images/LOGO.svg",
   robots: "index, follow",
   creator: "antavros",
-  keywords: "фильмы новинки кинофильмы кинотеатр 2020 2021 2022 просмотр видеоролики",
+  keywords: "antavros ratetable rate table аниме сериалы мультсериалы фильмы новинки кинофильмы кинотеатр 2020 2021 2022 2024 просмотр видеоролики",
   openGraph: {
     title: "RATETABLE",
     siteName: "RATETABLE",
     locale: "ru_RU",
-    images: "/images/LOGO.png",
     type: "article",
     description: "Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!",
   },
   twitter: {
     card: "summary_large_image",
     title: "RATETABLE",
-    images: "/images/LOGO.png",
     description: "Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!",
   },
 };

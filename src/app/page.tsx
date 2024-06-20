@@ -13,9 +13,11 @@ async function fetchDetailsAndMetadata(): Promise<{ details: any[], metadata: Me
     title: "ГЛАВНАЯ",
     openGraph: {
       title: "ГЛАВНАЯ",
+      images: "/images/LOGO.png",
     },
     twitter: {
       title: "ГЛАВНАЯ",
+      images: "/images/LOGO.png",
     },
   };
 

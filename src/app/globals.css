@@ -163,7 +163,6 @@ body {
   max-width    : 100%;
   min-width    : 70vw;
   min-height   : 100vh;
-  justify-self : center;
   justify-items: end;
 }
 
