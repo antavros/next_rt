@@ -1,14 +1,30 @@
 .logo {
-    width              : 20vh;
-    height             : auto;
+    width              : auto;
+    height             : var(--header-height);
+    cursor             : pointer;
+    place-content      : center center;
+    place-self         : center center;
     -webkit-user-select: none;
     -moz-user-select   : none;
     -ms-user-select    : none;
     user-select        : none;
-    padding-left: 1rem;
-    filter             : drop-shadow(-1px 1px 16px var(--color-purple));
+    filter             : drop-shadow(-1px 1px 16px rgba(85, 0, 255, 0.9));
+
+    & img {
+        display            : block;
+        width              : auto;
+        height             : 100%;
+        object-fit         : cover;
+        transition-behavior: normal;
+    }
+
+    & .logo2 {
+        display: none;
+        width  : auto;
+        height : 100%;
+    }
 
     & :hover {
-        filter: drop-shadow(-1px 1px 18px var(--color-orangered));
+        filter: drop-shadow(-1px 1px 13px rgb(255, 255, 255, 0.1));
     }
 }

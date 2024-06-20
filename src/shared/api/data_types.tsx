@@ -36,11 +36,16 @@ export async function getDetails({ details }: { readonly details: any }): Promis
         const description = doc?.description ?? '';
 
         const logo = doc?.logo?.url ?? '';
-        const poster = doc?.poster?.url ?? '';
+        const poster = doc?.poster?.previewUrl ?? doc?.poster?.url ?? '';
         const backdrop = doc?.backdrop?.url ?? '';
 
         const average_kp = doc?.rating?.kp ?? '';
         const average_imdb = doc?.rating?.imdb ?? '';
+
+        const photo = doc?.photo ?? '';
+        const sex = doc?.sex ?? '';
+        const age = doc?.age ?? '';
+
 
         return {
             id,
@@ -61,6 +66,9 @@ export async function getDetails({ details }: { readonly details: any }): Promis
             trailers,
             average_kp,
             average_imdb,
+            photo,
+            sex,
+            age,
             hasPosters: !!poster
         };
     }));

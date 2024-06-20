@@ -2,16 +2,9 @@
     display       : flex;
     flex-direction: row;
     place-content : center center;
-    place-items   : center center;
-    place-self    : center center;
-    gap           : var(--element-gap);
     width         : 100%;
-
-    & button {
-        & span {
-            font-size: 0.9rem;
-        }
-    }
+    height        : auto;
+    gap           : var(--element-gap);
 }
 
 .flipped {

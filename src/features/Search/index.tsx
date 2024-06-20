@@ -1,12 +1,12 @@
 'use client'
-
-import { useRouter } from 'next/navigation';
-import { IconSearch } from '@tabler/icons-react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { IconSearch } from '@tabler/icons-react';
 import './style.css';
 
 interface SearchProps {
-  onSearch?: (value: string) => void; // Сделаем onSearch необязательной функцией
+  onSearch?: (value: string) => void;
 }
 
 export function Search({ onSearch }: SearchProps) {
@@ -36,7 +36,7 @@ export function Search({ onSearch }: SearchProps) {
         maxLength={99}
         size={10}
       />
-      <button type="submit" className="search_button" title='Найти'>
+      <button type="submit" title='Найти'>
         <IconSearch stroke={2} />
       </button>
     </form>

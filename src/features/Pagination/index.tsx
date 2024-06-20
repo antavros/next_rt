@@ -17,6 +17,10 @@ interface PaginationProps {
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
+  if (!pagination) {
+    return null;
+  }
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get('page') ?? '1', 10);

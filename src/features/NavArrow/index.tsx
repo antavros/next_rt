@@ -1,9 +1,8 @@
 'use client'
 
-import { IconArrowBadgeUp, IconArrowBadgeDown, IconArrowBadgeDownFilled  } from '@tabler/icons-react';
-
 import { useEffect, useState } from 'react';
-import './style.css';
+
+import { IconChevronsUp, IconChevronsDown } from '@tabler/icons-react';
 
 export const FastNavigation = () => {
     const [showTopNav, setShowTopNav] = useState(false);
@@ -30,17 +29,17 @@ export const FastNavigation = () => {
     }, []);
 
     return (
-        <button id="fastNav">
+        <>
             {showTopNav && (
-                <a href="#body" title="top">
-                    <IconArrowBadgeUp stroke={2} />
+                <a href="#body" title="top" className="button">
+                    <IconChevronsUp stroke={2} />
                 </a>
             )}
             {showBottomNav && (
-                <a href="#footer" title="down">
-                    <IconArrowBadgeDown stroke={2} />
+                <a href="#footer" title="down" className="button">
+                    <IconChevronsDown stroke={2} />
                 </a>
             )}
-        </button>
+        </>
     );
 };

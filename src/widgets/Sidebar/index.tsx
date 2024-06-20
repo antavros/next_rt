@@ -3,8 +3,19 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-import { IconHome, IconMovie, IconDeviceTvOld, IconMickey, IconHorseToy, IconTorii } from '@tabler/icons-react';
+import {
+    IconHome,
+    IconMovie,
+    IconDeviceTvOld,
+    IconMickey,
+    IconHorseToy,
+    IconTorii,
+    IconUsers,
+    IconCards,
+    IconUserCircle,
+} from '@tabler/icons-react';
 
+import { Logo } from '@/entities/Logo';
 import { Togglers } from '@/features/Togglers';
 import './style.css';
 
@@ -16,55 +27,62 @@ export function Sidebar() {
     return (
         <aside>
             <section className='Sidebar'>
-                <hr />
-                <nav className="1" id="Sidebar" aria-label="Боковое меню навигации" >
+                <Logo />
+                <nav id="Sidebar" aria-label="Боковое меню навигации" >
+                    <section className="user">
+                        <Link href="/profile" className="button">
+                            <IconUserCircle stroke={2} />
+                            <h6>Войти</h6>
+                        </Link>
+                    </section>
+                    <hr />
                     <ul>
-                        <li className="nav-item nav-itemC nav-active">
-                            <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/" >
-                                <button>
-                                    <IconHome stroke={2} />
-                                    <p>Главная</p>
-                                </button>
+                        <li>
+                            <Link className={`button link ${pathname === '/' ? 'active' : ''}`} href="/" >
+                                <IconHome stroke={2} />
+                                <h6>Главная</h6>
                             </Link>
                         </li>
                         <li>
-                            <Link className={`link ${isActive('/movie')}`} href="/movie?page=1" >
-                                <button>
-                                    <IconMovie stroke={2} />
-                                    <p>Фильмы</p>
-                                </button>
+                            <Link className={`button link ${isActive('/movie')} `} href="/movie?page=1" >
+                                <IconMovie stroke={2} />
+                                <h6>Фильмы</h6>
                             </Link>
                         </li>
                         <li>
-                            <Link className={`link ${isActive('/tv-series')}`} href="/tv-series?page=1">
-                                <button>
-                                    <IconDeviceTvOld stroke={2} />
-                                    <p>Сериалы</p>
-                                </button>
+                            <Link className={`button link ${isActive('/tv-series')}`} href="/tv-series?page=1">
+                                <IconDeviceTvOld stroke={2} />
+                                <h6>Сериалы</h6>
                             </Link>
                         </li>
                         <li>
-                            <Link className={`link ${isActive('/cartoon')}`} href="/cartoon?page=1">
-                                <button>
-                                    <IconMickey stroke={2} />
-                                    <p>Мультфильмы</p>
-                                </button>
+                            <Link className={`button link ${isActive('/cartoon')}`} href="/cartoon?page=1">
+                                <IconMickey stroke={2} />
+                                <h6>Мультфильмы</h6>
                             </Link>
                         </li>
                         <li>
-                            <Link className={`link ${isActive('/animated-series')}`} href="/animated-series?page=1">
-                                <button>
-                                    <IconHorseToy stroke={2} />
-                                    <p>Мультсериалы</p>
-                                </button>
+                            <Link className={`button link ${isActive('/animated-series')}`} href="/animated-series?page=1">
+                                <IconHorseToy stroke={2} />
+                                <h6>Мультсериалы</h6>
                             </Link>
                         </li>
                         <li>
-                            <Link className={`link ${isActive('/anime')}`} href="/anime?page=1">
-                                <button>
-                                    <IconTorii stroke={2} />
-                                    <p>Аниме</p>
-                                </button>
+                            <Link className={`button link ${isActive('/anime')}`} href="/anime?page=1">
+                                <IconTorii stroke={2} />
+                                <h6>Аниме</h6>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`button link ${isActive('/list')}`} href="/list?page=1">
+                                <IconCards stroke={2} />
+                                <h6>Коллекции</h6>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className={`button link ${isActive('/person')}`} href="/person?page=1">
+                                <IconUsers stroke={2} />
+                                <h6>Персоны</h6>
                             </Link>
                         </li>
                     </ul>

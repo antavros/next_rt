@@ -1,86 +1,133 @@
 aside {
     display        : flex;
     flex           : 0 0 auto;
-    justify-self   : center;
-    justify-items  : start;
-    width          : auto;
-    z-index        : var(--sidebar_z-index);
+    width          : 15rem;
+    height         : auto;
+    border-radius  : 0;
     backdrop-filter: var(--blur);
     background     : var(--color-block_back);
-    border-radius  : 0;
+    z-index        : var(--sidebar_z-index);
 }
 
 .Sidebar {
+    position      : sticky;
+    top           : 0;
     display       : flex;
     flex-direction: column;
-    position      : sticky;
-    top           : var(--header-height);
-    place-content : end end;
-    place-self    : start end;
-    place-items   : end end;
+    place-content : center start;
+    place-self    : start center;
+    width         : 100%;
+    height        : 100vh;
+    border-radius : 0;
     overflow      : hidden;
-    border-radius : 0 0 var(--border-radius) 0;
-    padding       : 0rem 0 0.8rem 0.8rem;
+
+    & .logo1 {
+        padding: 0.3rem;
+    }
 
     & nav {
-        & ul {
+        display       : flex;
+        flex-direction: column;
+        border-radius : 0;
+        width         : 100%;
+
+        & .user {
             display       : flex;
             flex-direction: column;
-            gap           : 0.4rem;
+            place-content : center center;
+            place-self    : center center;
+            cursor        : pointer;
+            height        : var(--header-height);
+
+            & a {
+                gap           : 0.2rem;
+                display       : flex;
+                flex-direction: column;
+                padding       : 0.6rem;
+
+                & svg {
+                    width : 2rem;
+                    height: 2rem;
+                }
+
+                & h6 {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        & ul {
+            gap          : 0.1rem;
+            padding-left : 1.5rem;
+            border-radius: 0;
+            overflow     : hidden;
 
             & li {
-                & a {
-                    & button {
-                        place-content  : center start;
-                        width          : 100%;
-                        gap            : var(--block-gap);
-                        background     : transparent !important;
-                        box-shadow     : none;
-                        padding        : 0.3rem 1rem 0.3rem 0.3rem;
-                        border-radius  : var(--border-radius) 0 0 var(--border-radius);
-                        backdrop-filter: none;
+                width        : 100%;
+                border-radius: 0;
 
-                        & p {
-                            font-size: 2vh;
-                            color    : var(--color-white);
-                        }
+                & a {
+                    width          : 100%;
+                    place-content  : center start;
+                    padding        : 0.5rem !important;
+                    border-radius  : 22px 0 0 22px;
+                    box-shadow     : none;
+                    backdrop-filter: none;
+                    background     : transparent;
+                    overflow       : hidden;
+
+                    & svg {
+                        color: var(--color-white);
+                    }
+
+                    & h6 {
+                        font-size   : 1;
+                        padding-left: var(--block-gap);
+                        overflow    : hidden;
+                        color       : var(--color-white);
                     }
                 }
             }
         }
     }
-}
 
-.Sidebar a.active {
-    & button {
-        scale     : var(--hover-scale);
-        border    : var(--border)var(--color-white) !important;
-        color     : var(--color-white) !important;
-        background: var(--color-purple) !important;
+    & a.active {
+        scale     : 110%;
+        padding   : 0.7rem 1rem 0.7rem 1rem;
+        color     : var(--color-white);
+        background: var(--color-purple);
     }
 }
 
 .sidebar_hide {
+    width: 5.5rem;
+
     & .Sidebar {
-        & .togglers {
-            flex-direction: column;
+        & .logo {
+            & .logo1 {
+                display: none;
+            }
+
+            & .logo2 {
+                display: block;
+                padding: 0.8rem;
+            }
         }
 
         & nav {
             & ul {
                 & li {
-                    & button {
-                        place-content: center center !important;
-                        gap          : 0 !important;
-                        padding      : 0.3rem;
-
-                        & p {
-                            display  : none !important;
-                            font-size: 0 !important;
+                    & a {
+                        & h6 {
+                            font-size: 0;
                         }
                     }
                 }
             }
+        }
+
+        & .togglers {
+            flex-direction: column;
         }
     }
 }
@@ -92,24 +139,21 @@ aside {
         place-self: end end !important;
     }
 
-    header .logo {
-        display: none;
-    }
-
-    .search {
+    header .search {
         &:hover {
-            scale: none;
+            scale: 104%;
         }
     }
 
-    aside {
-        position     : fixed;
-        bottom       : 0 !important;
-        right        : 0 !important;
-        left         : 0 !important;
-        padding      : var(--block-gap) 0 0 0 !important;
-        width        : 100%;
-        border-radius: 0 !important;
+    aside,
+    .sidebar_hide {
+        position: sticky;
+        bottom  : 0 !important;
+        right   : 0 !important;
+        left    : 0 !important;
+        order   : 5;
+        width   : 100%;
+        height  : auto !important;
 
         & hr {
             display: none;
@@ -117,35 +161,51 @@ aside {
 
         & .Sidebar {
             display       : flex;
-            flex-wrap     : wrap;
             flex-direction: row;
             width         : 100%;
-            padding       : 0.2rem 0 0rem 0rem !important;
-            place-content : center center !important;
-            place-items   : center center !important;
-            place-self    : center center !important;
+            height        : auto;
 
-            & .togglers {
+
+            & .logo {
                 display: none;
             }
 
+            & .togglers {
+                display       : flex;
+                width         : auto;
+                flex-direction: row;
+                padding       : 0.2rem;
+
+                & button {
+                    display: none;
+                }
+            }
+
             & nav {
+                flex-direction: row;
+                width         : auto;
+
+                & .user {
+                    padding: 0.2rem;
+
+                    & h6 {
+                        font-size: 0;
+                    }
+                }
+
                 & ul {
                     display       : flex;
                     flex-direction: row;
-
+                    padding-left  : 0;
+                    padding-top   : 1.5rem;
 
                     & li {
-                        & button {
-                            place-content: center center;
-                            place-items  : center center;
-                            place-self   : center center;
-                            width        : auto;
-
+                        & a {
+                            place-items  : start center !important;
+                            height       : 100% !important;
                             border-radius: var(--border-radius) var(--border-radius) 0 0;
-                            padding      : 0.4rem;
 
-                            & p {
+                            & h6 {
                                 display: none !important;
                             }
                         }

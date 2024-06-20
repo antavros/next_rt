@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 
 import type { Metadata, Viewport } from "next";
 
@@ -43,6 +43,7 @@ const ubuntu = Ubuntu({
 
 import Providers from './providers'
 
+import { Preloader } from "@/features/PreLoader";
 import { Header } from "@/widgets/Header";
 import { Sidebar } from "@/widgets/Sidebar";
 import { Footer } from "@/widgets/Footer";
@@ -52,16 +53,20 @@ export default function RootLayout({ children, }: { readonly children: ReactNode
 
   return (
     <html lang="ru">
-      <body id="body" className={ubuntu.className}>
+      <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
-          <Header />
           <Sidebar />
-          <main>
+          <span className="content">
+            <Header />
             <hr />
-            {children}
+            <main>
+              <Suspense fallback={<Preloader />}>
+                {children}
+              </Suspense>
+            </main>
             <hr />
-          </main>
-          <Footer />
+            <Footer />
+          </span>
         </Providers>
       </body>
     </html>

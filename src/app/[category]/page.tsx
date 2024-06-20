@@ -4,46 +4,47 @@ import { TitleTable } from "@/entities/Title/Table";
 import { Pagination } from '@/features/Pagination';
 import { getData } from "@/shared/api/api";
 import {
-  API_URL_movie,
-  API_URL_tvseries,
-  API_URL_cartoon,
-  API_URL_animated_series,
-  API_URL_anime,
+  ApiUrl_Title_Movie,
+  ApiUrl_Title_TvSeries,
+  ApiUrl_Title_Cartoon,
+  ApiUrl_Title_AniSeries,
+  ApiUrl_Title_Anime,
 } from "@/shared/api/url";
 
 import type { Metadata, ResolvingMetadata } from "next";
 
 // Функция для получения URL и имени категории
-function getCategoryDetails(category: string): { url: string, name: string } {
-  switch (category.toLowerCase()) {
+function getCategoryDetails(category: string): { url?: string, name?: string } {
+  switch (category) {
     case "movie":
-      return { url: API_URL_movie, name: "Фильмы" };
+      return { url: ApiUrl_Title_Movie, name: "Фильмы" };
     case "tv-series":
-      return { url: API_URL_tvseries, name: "Сериалы" };
+      return { url: ApiUrl_Title_TvSeries, name: "Сериалы" };
     case "cartoon":
-      return { url: API_URL_cartoon, name: "Мультфильмы" };
+      return { url: ApiUrl_Title_Cartoon, name: "Мультфильмы" };
     case "animated-series":
-      return { url: API_URL_animated_series, name: "Мултсериалы" };
+      return { url: ApiUrl_Title_AniSeries, name: "Мултсериалы" };
     case "anime":
-      return { url: API_URL_anime, name: "Аниме" };
-    default:
-      throw new Error(`Unknown category: ${category}`);
+      return { url: ApiUrl_Title_Anime, name: "Аниме" };
+    default: {
+      return { name: "404" };
+    }
   }
 }
 
 // Функция для получения данных категории и метаданных
 async function fetchCategoryDetailsAndMetadata(category: string, page: string = '1'): Promise<{ details: any; metadata: Metadata }> {
   const { url, name } = getCategoryDetails(category);
-  const response = await getData({ url: `${url}&page=${page}` });
+  const response = url ? await getData({ url: `${url}&page=${page}` }) : null;
 
   const metadata: Metadata = {
-    title: name.toUpperCase(),
+    title: name,
     openGraph: {
-      title: name.toUpperCase(),
+      title: name,
     },
     twitter: {
       card: "summary_large_image",
-      title: name.toUpperCase(),
+      title: name,
     },
   };
 
@@ -62,8 +63,8 @@ export default async function categoryRender({ searchParams, params }: { readonl
   const { details } = await fetchCategoryDetailsAndMetadata(params.category, page);
   return (
     <>
-      <TitleTable details={details.data} />
-      <Pagination pagination={details.pagination} />
+      <TitleTable details={details?.data} />
+      <Pagination pagination={details?.pagination} />
     </>
   );
 }

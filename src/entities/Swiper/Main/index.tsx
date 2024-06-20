@@ -2,7 +2,10 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+
 import { TitleRate } from "@/entities/Title/Rate/";
+import { useState } from 'react';
+import { Preloader } from "@/features/PreLoader";
 
 import {
     Swiper,
@@ -27,8 +30,10 @@ import '../style.css';
 import style from './style.module.css';
 
 export function SwiperMain({ details }: any) {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
-        <div className="swiperContainer" >
+        <div className={style.swiperContainer} >
             <Swiper
                 breakpoints={{
                     100: {
@@ -76,11 +81,14 @@ export function SwiperMain({ details }: any) {
                 {(details.map((details: any, index: any) => (
                     <SwiperSlide key={details.id} virtualIndex={index}>
                         <Link className={style.swiper_home_wrapper} href={`/${details.type}/${details.id}`}>
+                            {!imageLoaded && <Preloader />}
+
                             <Image
                                 width={1280}
                                 height={720}
-                                quality={100}
+                                quality={25}
                                 priority={true}
+                                onLoad={() => setImageLoaded(true)}
                                 src={details.backdrop}
                                 className={style.title_back}
                                 alt={details.name}
@@ -89,7 +97,8 @@ export function SwiperMain({ details }: any) {
                                 <Image
                                     width={1280}
                                     height={720}
-                                    quality={100}
+
+                                    quality={25}
                                     priority={true}
                                     className={style.title_logo}
                                     src={details.logo}

@@ -1,6 +1,12 @@
-.swiper_home {}
-
-.swiper_home_wrapper {}
+.swiperContainer {
+  display    : flex;
+  flex-flow  : row wrap;
+  width      : 100%;
+  height     : 100%;
+  flex-basis : 0;
+  flex-grow  : 1;
+  flex-shrink: 2;
+}
 
 .swiper_home_wrapper::after {
   content : "";
@@ -41,11 +47,12 @@
 }
 
 .title_logo {
-  display   : block;
-  width     : auto !important;
-  height    : auto !important;
-  object-fit: cover;
-  max-width : 80%;
+  display      : block;
+  width        : auto !important;
+  height       : auto !important;
+  object-fit   : cover;
+  max-width    : 80%;
+  border-radius: 0 !important;
 }
 
 .swiper_home_Info h1 {
@@ -70,7 +77,7 @@
 
 @media (max-width: 1200px) {
   .swiper_home {
-    height: 90vh;
+    height: 70dvh !important;
   }
 
   .swiper_home .title_back {
@@ -89,7 +96,8 @@
     width     : auto !important;
     height    : auto !important;
     object-fit: cover;
-    max-width : 50%;
+    max-width : auto;
+    max-height: 20%;
   }
 }
 
@@ -101,11 +109,13 @@
     padding-bottom: 2rem;
   }
 
+
   .title_logo {
     display   : block;
     width     : auto !important;
     height    : auto !important;
     object-fit: cover;
-    max-width : 50%;
+    max-width : auto;
+    max-height: 20%;
   }
 }

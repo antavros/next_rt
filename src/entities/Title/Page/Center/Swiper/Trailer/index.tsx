@@ -1,5 +1,6 @@
 'use client'
 
+
 import { CustomSwiper } from '@/entities/Swiper/CustomSwiper';
 import { Details } from '@/shared/api/lib';
 
@@ -11,6 +12,7 @@ export function SwiperCardTrailer({ details }: Details) {
 
   const renderSlide = (trailer: any) => (
     <iframe
+
       width="340"
       height="200"
       className={style.trailer}

@@ -2,22 +2,9 @@
     display       : flex;
     flex-direction: row;
     min-width     : 2.5rem;
-    width         : 25rem;
-    min-height    : 3rem;
-
-    &:hover {
-        scale: var(--hover-scale);
-
-        & .search_button {
-            scale           : none;
-            background-color: var(--color-purple);
-            border-color    : var(--color-purple);
-
-            & span {
-                color: var(--color-white);
-            }
-        }
-    }
+    width         : 100%;
+    max-width     : 30rem;
+    height        : 3rem;
 
     & input {
         width         : 100%;
@@ -31,34 +18,39 @@
         background    : rgba(0, 0, 0, 0.3) !important;
         box-shadow    : var(--shadow);
 
-
-
-        &:focus {
-            &::placeholder {
-                opacity: 0;
-            }
-        }
-
-        &:hover {
+        &:is(:hover, :focus, :active) {
             background-color: var(--color-gray_dark);
             border-color    : var(--color-purple);
-            color           : var(--color-white);
 
             &::placeholder {
                 opacity: 0;
             }
         }
     }
-}
 
-.search_button {
-    width        : 3rem;
-    min-height   : 3rem;
-    border       : var(--border) var(--color-border);
-    border-radius: 0px 2.5rem 2.5rem 0px;
-
-    & svg {
-        padding: 0.4rem !important;
+    & button {
+        width        : 3rem;
+        min-height   : 3rem;
+        border-radius: 0px 2.5rem 2.5rem 0px;
     }
 
+    &:is(:hover, :focus, :active) {
+        scale: 110%;
+        color: var(--color-white);
+
+        & input {
+            color: var(--color-white);
+
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+
+        & button {
+            scale           : none;
+            color           : var(--color-white);
+            background-color: var(--color-purple);
+            border-color    : var(--color-purple);
+        }
+    }
 }

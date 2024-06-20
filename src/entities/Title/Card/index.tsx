@@ -22,6 +22,8 @@ export function TitleCard({ details }: { readonly details: any }) {
                     onLoad={() => setImageLoaded(true)}
                     src={details.poster}
                     alt={details.name}
+                    quality={25}
+                    loading={'lazy'}
                 />
                 <section className="card_info">
                     < TitleRate

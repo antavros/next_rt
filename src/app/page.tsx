@@ -1,12 +1,12 @@
 import { TitleTable } from "@/entities/Title/Table";
 import { SwiperMain } from "@/entities/Swiper/Main";
-import { API_URL_POPULAR } from "@/shared/api/url";
+import { ApiUrl_Title_Popular } from "@/shared/api/url";
 import { getData } from "@/shared/api/api";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 // Функция для извлечения данных и генерации метаданных
 async function fetchDetailsAndMetadata(): Promise<{ details: any[], metadata: Metadata }> {
-  const data = await getData({ url: API_URL_POPULAR });
+  const data = await getData({ url: ApiUrl_Title_Popular });
   const details = data.data;
 
   const metadata: Metadata = {

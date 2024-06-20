@@ -7,12 +7,19 @@ export function Footer() {
     return (
         <footer id="footer">
             <section className="footer">
-                <Logo />
                 <ul>
-                    <li><Link href="/about"><button><p>О нас</p></button></Link></li>
-                    <li><Link href="/contacts"><button><p>Контакты</p></button></Link></li>
+                    <li>
+                        <Link href="/about" className="button">
+                            О нас
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/contacts" className="button">
+                            Контакты
+                        </Link>
+                    </li>
                 </ul>
-                <p>2024 © All Rights Reserved</p>
+                <Logo />
             </section>
         </footer>
     );

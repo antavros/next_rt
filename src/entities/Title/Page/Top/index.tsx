@@ -1,10 +1,13 @@
+'use client';
+
 import Image from 'next/image'
+
+import { Preloader } from "@/features/PreLoader";
 
 import { TitleRate } from "@/entities/Title/Rate/";
 import style from "./style.module.css";
 
 export function TitlePageTop({ details }: { readonly details: any }) {
-
     return (
         <div className={style.titlePage_head}>
             {details.backdrop ? (
@@ -13,6 +16,7 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                     src={details.backdrop}
                     className={style.title_back}
                     alt={details.name}
+                    quality={25}
                     priority={true}
                 />
             ) : (
@@ -31,7 +35,7 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                     width={1920}
                     height={1080}
                     className={style.title_logo}
-
+                    quality={25}
                     src={details.logo || details.poster}
                     alt={details.name}
                     priority={true}

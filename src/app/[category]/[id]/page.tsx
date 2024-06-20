@@ -4,12 +4,12 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 import { TitleContainer } from "@/entities/Title/Page";
 import { getData } from "@/shared/api/api";
-import { API_URL_title } from "@/shared/api/url";
+import { ApiUrl_Title_Page } from "@/shared/api/url";
 import { Details } from "@/shared/api/lib";
 
 // Функция для извлечения данных и генерации метаданных
 async function fetchDetailsAndMetadata(id: string, parent: ResolvingMetadata): Promise<{ details: any, metadata: Metadata }> {
-  const data = await getData({ url: `${API_URL_title}${id}` });
+  const data = await getData({ url: `${ApiUrl_Title_Page}${id}` });
   const details = data.data[0];
   const previousImages = (await parent).openGraph?.images || [];
   const poster = details?.poster ?? '';

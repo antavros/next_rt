@@ -1,0 +1,23 @@
+.error {
+  display         : flex;
+  flex-direction  : column;
+  place-content   : center center;
+  place-self      : center center;
+  place-items     : center center;
+  background-color: var(--color-block_back);
+  min-height      : 100%;
+  padding         : 2rem;
+
+  & h2 {
+    text-align: center;
+    font-size : 2rem;
+    color     : white;
+  }
+
+  & div {
+    display       : flex;
+    flex-direction: row;
+    gap           : 1rem;
+    padding       : 1rem;
+  }
+}
