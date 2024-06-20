@@ -6,28 +6,6 @@
     max-width     : 30rem;
     height        : 3rem;
 
-    & input {
-        width         : 100%;
-        height        : auto;
-        margin-right  : 0.2rem;
-        text-align    : center;
-        vertical-align: middle;
-        color         : var(--color-text);
-        border        : var(--border) var(--color-border);
-        border-radius : 2.5rem 0px 0px 2.5rem;
-        background    : rgba(0, 0, 0, 0.3) !important;
-        box-shadow    : var(--shadow);
-
-        &:is(:hover, :focus, :active) {
-            background-color: var(--color-gray_dark);
-            border-color    : var(--color-purple);
-
-            &::placeholder {
-                opacity: 0;
-            }
-        }
-    }
-
     & button {
         width        : 3rem;
         min-height   : 3rem;
@@ -51,6 +29,29 @@
             color           : var(--color-white);
             background-color: var(--color-purple);
             border-color    : var(--color-purple);
+        }
+    }
+}
+
+.search input {
+    width         : 100%;
+    height        : auto;
+    margin-right  : 0.2rem;
+    text-align    : center;
+    vertical-align: middle;
+    color         : var(--color-text);
+    border        : var(--border) var(--color-border);
+    border-radius : 2.5rem 0px 0px 2.5rem;
+    background    : rgba(0, 0, 0, 0.3) !important;
+    box-shadow    : var(--shadow);
+
+    &:is(:hover, :focus, :active) {
+        background-color: var(--color-gray_dark);
+        border-color    : var(--color-purple);
+        color           : var(--color-white);
+
+        &::placeholder {
+            opacity: 0;
         }
     }
 }

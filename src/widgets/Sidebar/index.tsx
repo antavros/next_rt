@@ -86,8 +86,8 @@ export function Sidebar() {
                             </Link>
                         </li>
                     </ul>
+                    <hr />
                 </nav>
-                <hr />
                 <Togglers />
             </section>
         </aside >
