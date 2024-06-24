@@ -41,10 +41,9 @@ const ubuntu = Ubuntu({
 
 import Providers from './providers'
 
-import { Preloader } from "@/features/PreLoader";
-import { Header } from "@/widgets/Header";
-import { Sidebar } from "@/widgets/Sidebar";
-import { Footer } from "@/widgets/Footer";
+import { Header } from "@/components/widgets/Header";
+import { Sidebar } from "@/components/widgets/Sidebar";
+import { Footer } from "@/components/widgets/Footer";
 import "./globals.css";
 
 export default function RootLayout({ children, }: { readonly children: ReactNode; }) {
@@ -54,17 +53,15 @@ export default function RootLayout({ children, }: { readonly children: ReactNode
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
           <Sidebar />
-          <span className="content">
+          <div className="content">
             <Header />
             <hr />
             <main>
-              <Suspense fallback={<Preloader />}>
                 {children}
-              </Suspense>
             </main>
             <hr />
             <Footer />
-          </span>
+          </div>
         </Providers>
       </body>
     </html>

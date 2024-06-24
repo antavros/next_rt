@@ -36,6 +36,7 @@
   --main_z-index         : 1;
 }
 
+
 /* --------------------------------------------------------------- */
 
 * {
@@ -65,6 +66,7 @@
   transition              : all 320ms ease;
   border-radius           : var(--border-radius);
   transition-behavior     : allow-discrete;
+  text-overflow           : ellipsis;
 }
 
 img,

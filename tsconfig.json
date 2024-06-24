@@ -36,7 +36,7 @@
     ".next/types/**/*.ts",
     "src/shared/api/api.ts",
     "src/shared/api/data_types.tsx"
-, "src/entities/Player/index.tsx", "src/app/providers.tsx"  ],
+, "src/entities/Player/index.tsx", "src/app/providers.tsx", "src/app/user/profile/page.js"  ],
   "exclude": [
     "node_modules"
   ]

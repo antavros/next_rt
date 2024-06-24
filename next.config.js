@@ -23,6 +23,18 @@ module.exports = {
             {
                 hostname: 'st.kp.yandex.net',
             },
+            {
+                protocol: 'https',
+                hostname: 'avatars.githubusercontent.com'
+            },
+            {
+                protocol: 'https',
+                hostname: 'avatar.vercel.sh'
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com'
+            }
         ],
     },
 }

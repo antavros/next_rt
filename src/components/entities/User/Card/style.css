@@ -1,0 +1,7 @@
+.userCard {
+  display       : flex;
+  flex-direction: column;
+  place-content : center center;
+  place-self    : center center;
+  height        : auto;
+}

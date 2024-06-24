@@ -1,0 +1,18 @@
+.signinButton {
+  display       : flex;
+  flex-direction: row;
+  place-content : center center;
+  place-items   : center center;
+  place-self    : center center;
+
+
+  & svg {
+    width  : 2rem;
+    height : 2rem;
+    padding: 0.1rem;
+  }
+
+  & h6 {
+    font-size: 1rem;
+  }
+}

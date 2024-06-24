@@ -1,0 +1,68 @@
+button,
+.button,
+.swiper-button-prev,
+.swiper-button-next {
+    display            : flex;
+    flex-direction     : row;
+    place-content      : center center;
+    place-items        : center center;
+    place-self         : center center;
+    border             : none;
+    border-radius      : 5rem;
+    box-shadow         : var(--shadow);
+    color              : var(--color-text);
+    background         : var(--color-button-inactive);
+    cursor             : pointer;
+    width              : auto;
+    height             : auto;
+    -webkit-user-select: none;
+    -moz-user-select   : none;
+    -ms-user-select    : none;
+    user-select        : none;
+    gap                : 0.2rem;
+    padding            : 0.5rem;
+    backdrop-filter    : var(--blur);
+    transition         : color 2ms ease !important;
+
+    & svg {
+        width     : 1.5rem;
+        height    : 1.5rem;
+        transition: color 2ms ease !important;
+    }
+
+    & h6 {
+        font-size    : 0.8rem;
+        color        : var(--color-text);
+        text-overflow: ellipsis;
+        white-space  : nowrap;
+        overflow     : hidden;
+    }
+
+    &:hover {
+        scale           : 110%;
+        color           : var(--color-white);
+        background-color: var(--color-button-hover);
+
+        & svg {
+            color: var(--color-white);
+        }
+
+        & h6 {
+            color: var(--color-white);
+        }
+    }
+
+    &:active {
+        scale     : 95%;
+        color     : var(--color-orangered);
+        background: var(--color-purple);
+
+        & svg {
+            color: var(--color-orangered);
+        }
+
+        & h6 {
+            color: var(--color-orangered);
+        }
+    }
+}

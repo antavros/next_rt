@@ -1,18 +1,25 @@
-'use client';
+import React, { ReactNode, Suspense } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 
-import React from 'react';
-import ThemeProvider from '@/shared/context/ThemeContext';
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Analytics } from "@vercel/analytics/react";
+import { SessionProvider } from 'next-auth/react';
+import ThemeProvider from '@/components/shared/context/Theme';
+
+import { Preloader } from '@/components/features/PreLoader';
 
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+
   return (
     <React.StrictMode>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
-      <SpeedInsights />
-      <Analytics />
+      <SessionProvider>
+        <ThemeProvider>
+          <Suspense fallback={<Preloader />}>
+            {children}
+          </Suspense>
+        </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
+      </SessionProvider>
     </React.StrictMode>
   );
 };

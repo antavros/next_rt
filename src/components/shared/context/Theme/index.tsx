@@ -1,0 +1,138 @@
+"use client"
+
+import React, { useState, useEffect, useMemo, createContext, FC } from 'react';
+
+interface ThemeContextProps {
+  isDarkMode: boolean;
+  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface SidebarHideContextProps {
+  isSidebarHidden: boolean;
+  setIsSidebarHidden: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface HeaderVisibilityContextProps {
+  lastScrollY: number;
+  setLastScrollY: React.Dispatch<React.SetStateAction<number>>;
+}
+
+// Создание контекстов
+export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+export const SidebarHideContext = createContext<SidebarHideContextProps | undefined>(undefined);
+export const HeaderVisibilityContext = createContext<HeaderVisibilityContextProps | undefined>(undefined);
+
+// Функция для получения начальной темы
+const getInitialTheme = () => {
+  if (typeof window !== 'undefined') {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : false;
+  }
+  return false;
+};
+
+// Установка начальной темы до загрузки контента
+if (typeof window !== 'undefined') {
+  const isDarkMode = getInitialTheme();
+  const bodyElement = document.querySelector('body');
+  if (bodyElement) {
+    bodyElement.classList.add(isDarkMode ? 'dark_mode' : 'light_mode');
+  }
+}
+
+const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);
+  const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
+  const [themeInitialized, setThemeInitialized] = useState<boolean>(false);
+  const [lastScrollY, setLastScrollY] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedSidebarHidden = localStorage.getItem('sidebarHidden');
+      if (savedSidebarHidden !== null) setIsSidebarHidden(JSON.parse(savedSidebarHidden));
+      setThemeInitialized(true); // Установка флага завершения инициализации темы
+
+      // Снятие класса not_initialized после инициализации темы
+      const bodyElement = document.querySelector('body');
+      if (bodyElement) {
+        bodyElement.classList.remove('not_initialized');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+      const bodyElement = document.querySelector('body');
+      if (bodyElement) {
+        if (isDarkMode) {
+          bodyElement.classList.add('dark_mode');
+          bodyElement.classList.remove('light_mode');
+        } else {
+          bodyElement.classList.add('light_mode');
+          bodyElement.classList.remove('dark_mode');
+        }
+      }
+    }
+  }, [isDarkMode]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('sidebarHidden', JSON.stringify(isSidebarHidden));
+      const asideElement = document.querySelector('aside');
+      const toggleElement = document.querySelector('.toggle_sidebar');
+      if (asideElement) {
+        if (isSidebarHidden) {
+          asideElement.classList.add('sidebar_hide');
+          if (toggleElement) toggleElement.classList.add('flipped');
+        } else {
+          asideElement.classList.remove('sidebar_hide');
+          if (toggleElement) toggleElement.classList.remove('flipped');
+        }
+      }
+    }
+  }, [isSidebarHidden]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const bodyElement = document.querySelector('body');
+      if (currentScrollY > lastScrollY) {
+        // Скроллим вниз
+        bodyElement?.classList.add('hidden');
+        bodyElement?.classList.remove('visible');
+      } else {
+        // Скроллим вверх
+        bodyElement?.classList.add('visible');
+        bodyElement?.classList.remove('hidden');
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
+  const themeContextValue = useMemo(() => ({ isDarkMode, setIsDarkMode }), [isDarkMode]);
+  const sidebarHideContextValue = useMemo(() => ({ isSidebarHidden, setIsSidebarHidden }), [isSidebarHidden]);
+  const headerVisibilityContextValue = useMemo(() => ({ lastScrollY, setLastScrollY }), [lastScrollY]);
+
+  if (!themeInitialized) {
+    return null; // Не рендерим контент до завершения инициализации темы
+  }
+
+  return (
+    <ThemeContext.Provider value={themeContextValue}>
+      <SidebarHideContext.Provider value={sidebarHideContextValue}>
+        <HeaderVisibilityContext.Provider value={headerVisibilityContextValue}>
+          {children}
+        </HeaderVisibilityContext.Provider>
+      </SidebarHideContext.Provider>
+    </ThemeContext.Provider>
+  );
+};
+
+export default ThemeProvider;

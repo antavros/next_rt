@@ -1,7 +1,7 @@
-import { TitleTable } from "@/entities/Title/Table";
-import { SwiperMain } from "@/entities/Swiper/Main";
-import { ApiUrl_Title_Popular } from "@/shared/api/url";
-import { getData } from "@/shared/api/api";
+import { TitleTable } from "@/components/entities/Title/Table";
+import { SwiperMain } from "@/components/entities/Swiper/Main";
+import { ApiUrl_Title_Popular } from "@/components/shared/api/url";
+import { getData } from "@/components/shared/api/api";
 import type { Metadata } from "next";
 
 // Функция для извлечения данных и генерации метаданных
