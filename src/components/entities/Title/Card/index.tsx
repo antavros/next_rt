@@ -17,13 +17,13 @@ export function TitleCard({ details }: { readonly details: any }) {
             {!imageLoaded && <Preloader />}
             <Link href={`/title/${details.type}/${details.id}`}>
                 <Image
+                    onLoad={() => setImageLoaded(true)}
                     width={256}
                     height={400}
-                    onLoad={() => setImageLoaded(true)}
-                    src={details.poster}
-                    alt={details.name}
                     quality={25}
                     loading={'lazy'}
+                    src={details.poster}
+                    alt={details.name}
                 />
                 <section className="card_info">
                     < TitleRate
@@ -35,7 +35,7 @@ export function TitleCard({ details }: { readonly details: any }) {
                     <p>{details.countries}</p>
                     <p>{details.year}г {details.length}</p>
                     <p>{details.genres}</p>
-                    <p className="card_description">{details.sDescription}</p>
+                    <p>{details.sDescription}</p>
                 </section>
             </Link >
         </article>

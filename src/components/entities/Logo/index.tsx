@@ -9,20 +9,20 @@ export function Logo() {
             <Image
                 width={200}
                 height={70}
-                className="logo1"
-                src="/images/LOGO.png"
-                alt="RATETABLE"
                 quality={25}
                 priority={true}
+                id="logo1"
+                alt="RATETABLE"
+                src="/images/LOGO.png"
             />
             <Image
                 width={200}
                 height={200}
-                className="logo2"
-                src="/images/LOGO.svg"
-                alt="RATETABLE"
                 quality={25}
                 priority={true}
+                id="logo2"
+                alt="RATETABLE"
+                src="/images/LOGO.svg"
             />
         </Link>
     );

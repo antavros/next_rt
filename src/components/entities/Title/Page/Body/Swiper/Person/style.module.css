@@ -27,7 +27,7 @@
   z-index       : 2;
 }
 
-.swiper_person_Info h3 {
+.swiper_person_Info h4 {
   font-size    : 120%;
   text-overflow: ellipsis;
   color        : var(--color-white);

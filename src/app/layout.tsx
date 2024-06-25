@@ -55,11 +55,9 @@ export default function RootLayout({ children, }: { readonly children: ReactNode
           <Sidebar />
           <div className="content">
             <Header />
-            <hr />
             <main>
                 {children}
             </main>
-            <hr />
             <Footer />
           </div>
         </Providers>

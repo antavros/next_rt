@@ -7,17 +7,17 @@
   background-color: var(--color-block_back);
   min-height      : 100%;
   padding         : 2rem;
+}
 
-  & h2 {
-    text-align: center;
-    font-size : 2rem;
-    color     : white;
-  }
+.error h2 {
+  text-align: center;
+  font-size : 2rem;
+  color     : white;
+}
 
-  & div {
-    display       : flex;
-    flex-direction: row;
-    gap           : 1rem;
-    padding       : 1rem;
-  }
+.error div {
+  display       : flex;
+  flex-direction: row;
+  gap           : 1rem;
+  padding       : 1rem;
 }

@@ -36,9 +36,6 @@
   --main_z-index         : 1;
 }
 
-
-/* --------------------------------------------------------------- */
-
 * {
   font-family             : 'Ubuntu', sans-serif;
   -webkit-box-sizing      : border-box;
@@ -143,17 +140,12 @@ body {
   visibility: hidden;
 }
 
-.visible {
-  & header {
-    top: 0;
-  }
+.visible header {
+  top: 0;
 }
 
-.hidden {
-  & header {
-    top: -100px;
-  }
-
+.hidden header {
+  top: -100px;
 }
 
 .content {
@@ -176,7 +168,7 @@ main {
   height       : 100%;
   place-content: center center;
   min-height   : 73vh;
-  padding      : 0 var(--block-gap) 0 var(--block-gap);
+  padding      : 1rem;
   z-index      : var(--main_z-index);
 }
 
@@ -184,6 +176,5 @@ hr {
   width           : 100%;
   height          : 0.1rem;
   border          : none;
-  margin          : var(--block-gap) 0 var(--block-gap) 0;
   background-image: linear-gradient(270deg, transparent .17%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, transparent);
 }

@@ -10,7 +10,8 @@ import style from './style.module.css';
 
 export function SwiperCardPerson({ details }: Details) {
 
-  const object = details || [];
+  const filteredPersonsActor = details?.person.filter((person: any) => person.enProfession === 'actor');
+  const object = filteredPersonsActor || [];
 
   const renderSlide = (person: any) => (
     <Link className={style.swiper_person_wrapper} href={`/title/person/${person.id}`}>
@@ -22,20 +23,17 @@ export function SwiperCardPerson({ details }: Details) {
         priority={true}
       />
       <section className={style.swiper_person_Info}>
-        <h3>{person.name}</h3>
+        <h4>{person.name}</h4>
         <p>{person.description}</p>
       </section>
     </Link >
   );
 
   return (
-    <>
-      <h5>Актеры</h5>
       <CustomSwiper
         style={style.swiper_slide}
         object={object}
         renderSlide={renderSlide}
       />
-    </>
   );
 }

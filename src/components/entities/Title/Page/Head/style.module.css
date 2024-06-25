@@ -1,4 +1,4 @@
-.titlePage_head {
+.head {
   display       : inline flex;
   width         : 100%;
   min-height    : 100%;
@@ -8,7 +8,7 @@
   pointer-events: none !important;
 }
 
-.titlePage_head::after {
+.head::after {
   content       : "";
   position      : absolute;
   pointer-events: none !important;
@@ -36,30 +36,36 @@
   border        : none !important;
 }
 
-.titlePage_head_Info {
-  display       : inline flex;
-  flex-direction: column;
-  position      : absolute;
-  place-content : center center;
-  place-items   : center center;
-  place-self    : center center;
-  text-align    : center;
-  pointer-events: auto !important;
-  padding       : 1rem;
-  width         : 40%;
-  height        : 100%;
-  z-index       : 24221;
+.head_Info {
+  display        : inline flex;
+  flex-direction : column;
+  position       : absolute;
+  place-content  : center center;
+  place-items    : center center;
+  place-self     : center center;
+  text-align     : center;
+  pointer-events : auto !important;
+  padding        : 1rem;
+  width          : 40%;
+  height         : 100%;
+  z-index        : 24221;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
 }
 
-.titlePage_head_Info p:last-child {
-  width        : 75%;
-  font-size    : 1rem;
-  text-indent  : 1rem;
-  text-overflow: ellipsis;
-  text-align   : left;
-  text-wrap    : pretty;
-  color        : white;
-  padding-left : 1.5rem;
+.head_Info p:last-child {
+  width          : 75%;
+  font-size      : 1rem;
+  text-indent    : 1rem;
+  text-overflow  : ellipsis;
+  text-align     : left;
+  text-wrap      : pretty;
+  color          : white;
+  padding-left   : 1.5rem;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
 }
 
 .title_logo {
@@ -70,20 +76,20 @@
   max-height: 50% !important;
 }
 
-.titlePage_head_Info h1 {
+.head_Info h1 {
   padding-top  : 1rem;
   font-size    : 150%;
   text-overflow: ellipsis;
   color        : var(--color-white);
 }
 
-.titlePage_head_Info h2 {
+.head_Info h2 {
   font-size     : 100%;
   padding-bottom: 1rem;
   color         : var(--color-text);
 }
 
-.titlePage_head_Info p {
+.head_Info p {
   place-self   : center center;
   font-size    : 90%;
   text-overflow: ellipsis;
@@ -91,7 +97,7 @@
 }
 
 @media (max-width: 800px) {
-  .titlePage_head::after {
+  .head::after {
     background: gradient(top to bottom,
         transparent 0%,
         rgba(0, 0, 0, 0.5) 69%,
@@ -105,7 +111,7 @@
     object-position: 70%;
   }
 
-  .titlePage_head_Info {
+  .head_Info {
     overflow     : hidden;
     place-content: end end;
     width        : 100%;

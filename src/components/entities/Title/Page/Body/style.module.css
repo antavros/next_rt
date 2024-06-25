@@ -1,10 +1,28 @@
-.center {
+.body {
   display       : flex;
   flex-direction: column;
   position      : relative;
   width         : 100%;
   place-content : center center;
   gap           : 1rem;
+}
+
+.block {
+  width           : 100%;
+  place-self      : center center;
+  padding         : 1rem;
+  background-color: var(--color-block_back);
+}
+
+.block h3 {
+  display       : flex;
+  flex-direction: row;
+  width         : max-content;
+  text-align    : left;
+  font-weight   : bold;
+  font-size     : 1.5rem;
+  padding       : 0.6rem;
+  margin-bottom : 1rem;
 }
 
 .description {
@@ -21,6 +39,10 @@
     rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
     rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
     rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+  text-align     : justify;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
 }
 
 .description p {
@@ -74,10 +96,9 @@
 }
 
 .player {
-  display         : flex;
-  flex-direction  : column;
-  position        : relative;
-  width           : 100%;
-  background-color: var(--color-block_back);
-  padding         : 1rem;
+  display       : flex;
+  flex-direction: column;
+  position      : relative;
+  width         : 100%;
+  padding       : 1rem;
 }

@@ -1,15 +1,11 @@
-'use client';
-
 import Image from 'next/image'
-
-import { Preloader } from "@/components/features/PreLoader";
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
 import style from "./style.module.css";
 
-export function TitlePageTop({ details }: { readonly details: any }) {
+export function TitlePageHead({ details }: { readonly details: any }) {
     return (
-        <div className={style.titlePage_head}>
+        <div className={style.head}>
             {details.backdrop ? (
                 <Image
                     fill={true}
@@ -30,7 +26,7 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                     allowFullScreen
                 />
             )}
-            <div className={style.titlePage_head_Info}>
+            <div className={style.head_Info}>
                 <Image
                     width={1920}
                     height={1080}
@@ -46,7 +42,6 @@ export function TitlePageTop({ details }: { readonly details: any }) {
                 <p>{details.year}г {details.length}</p>
                 <p>{details.genres}</p>
                 < TitleRate kp={details.average_kp} imdb={details.average_imdb} personal={details.average_imdb} rt={details.average_kp} />
-
             </div>
         </div>
     );

@@ -1,17 +1,15 @@
-import { TitlePageTop } from './Top';
-import { TitlePageCenter } from './Center';
-import { TitlePageBottom } from './Bottom';
+import { TitlePageHead } from './Head';
+import { TitlePageBody } from './Body';
 
 import "./style.css"
 
-export function TitleContainer({ details }: { readonly details: any }) {
+export function TitlePage({ details }: { readonly details: any }) {
 
     return (
         <section className="titlePage">
-            <TitlePageTop details={details} />
+            <TitlePageHead details={details} />
             <hr />
-            <TitlePageCenter details={details} />
-            <TitlePageBottom details={details} />
+            <TitlePageBody details={details} />
         </section >
     );
 }

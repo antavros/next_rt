@@ -2,7 +2,7 @@
 
 import type { Metadata, ResolvingMetadata } from "next";
 
-import { TitleContainer } from "@/components/entities/Title/Page";
+import { TitlePage } from "@/components/entities/Title/Page";
 import { getData } from "@/components/shared/api/api";
 import { ApiUrl_Title_Page } from "@/components/shared/api/url";
 import { Details } from "@/components/shared/api/lib";
@@ -42,9 +42,9 @@ export async function generateMetadata({ params }: { readonly params: Details },
 }
 
 // Главный компонент страницы
-export default async function TitlePage({ params }: { readonly params: Details }) {
+export default async function TitlePageRender({ params }: { readonly params: Details }) {
   const id = params.id;
   const { details } = await fetchDetailsAndMetadata(id, {} as ResolvingMetadata);
 
-  return <TitleContainer details={details} />;
+  return <TitlePage details={details} />;
 }

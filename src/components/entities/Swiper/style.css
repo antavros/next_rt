@@ -2,25 +2,22 @@
     width   : 100%;
     height  : 100%;
     overflow: hidden;
-
-    & .swiper-wrapper {
-        & .swiper-slide {
-            background-color: var(--color-block_back);
-            z-index         : -2;
-            border-radius   : var(--border-radius);
-            overflow        : hidden;
-
-            & img {
-                display      : block;
-                width        : 100%;
-                height       : 100%;
-                object-fit   : cover;
-                border-radius: var(--border-radius);
-            }
-        }
-    }
 }
 
+.swiper .swiper-slide {
+    background-color: var(--color-block_back);
+    z-index         : -2;
+    border-radius   : var(--border-radius);
+    overflow        : hidden;
+}
+
+.swiper-slide img {
+    display      : block;
+    width        : 100%;
+    height       : 100%;
+    object-fit   : cover;
+    border-radius: var(--border-radius);
+}
 
 .swiper-button-prev,
 .swiper-button-next {
@@ -31,12 +28,13 @@
     overflow        : hidden;
     background-color: var(--color-border);
     z-index         : 3;
+}
 
-    &::after {
-        font-size  : 1.5rem;
-        font-weight: bold;
-        color      : rgb(255, 255, 255, 0.6);
-    }
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size  : 1.5rem;
+    font-weight: bold;
+    color      : rgb(255, 255, 255, 0.6);
 }
 
 .swiper-pagination-horizontal {
@@ -47,9 +45,9 @@
     background-color: var(--color-block_back);
     padding         : var(--element-gap);
     z-index         : 3;
+}
 
-    & span {
-        background-color: var(--color-white);
-        cursor          : pointer;
-    }
+.swiper-pagination-horizontal span {
+    background-color: var(--color-white);
+    cursor          : pointer;
 }

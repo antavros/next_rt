@@ -7,114 +7,97 @@ aside {
     backdrop-filter: var(--blur);
     background     : var(--color-block_back);
     z-index        : var(--sidebar_z-index);
-
-    & .Sidebar {
-        position      : sticky;
-        top           : 0;
-        display       : flex;
-        flex-direction: column;
-        place-content : center start;
-        place-self    : start center;
-        width         : 100%;
-        height        : 100vh;
-        border-radius : 0;
-        overflow      : hidden;
-
-        & .logo1 {
-            padding: 0.3rem;
-        }
-
-        & nav {
-            display       : flex;
-            flex-direction: column;
-            border-radius : 0;
-            width         : 100%;
-
-            & ul {
-                gap          : 0.1rem;
-                padding-left : 1.5rem;
-                border-radius: 0;
-                overflow     : hidden;
-
-                & li {
-                    width        : 100%;
-                    border-radius: 0;
-
-                    & a {
-                        width          : 100%;
-                        place-content  : center start;
-                        padding        : 0.5rem !important;
-                        border-radius  : 22px 0 0 22px;
-                        box-shadow     : none;
-                        backdrop-filter: none;
-                        background     : transparent;
-                        overflow       : hidden;
-
-                        & svg {
-                            color: var(--color-white);
-                        }
-
-                        & h6 {
-                            font-size   : 1;
-                            padding-left: var(--block-gap);
-                            overflow    : hidden;
-                            color       : var(--color-white);
-                        }
-                    }
-                }
-            }
-        }
-
-        & a.active {
-            scale     : 110%;
-            padding   : 0.7rem 1rem 0.7rem 1rem;
-            color     : var(--color-white);
-            background: var(--color-purple);
-        }
-    }
 }
+
+.Sidebar {
+    position      : sticky;
+    top           : 0;
+    display       : flex;
+    flex-direction: column;
+    place-content : center start;
+    place-self    : start center;
+    width         : 100%;
+    height        : 100vh;
+    border-radius : 0;
+    overflow      : hidden;
+}
+
+.Sidebar nav {
+    display       : flex;
+    flex-direction: column;
+    border-radius : 0;
+    width         : 100%;
+}
+
+.Sidebar nav ul {
+    gap          : 0.1rem;
+    padding-left : 1.5rem;
+    border-radius: 0;
+    overflow     : hidden;
+}
+
+.Sidebar nav ul li {
+    width        : 100%;
+    border-radius: 0;
+}
+
+.Sidebar nav ul a {
+    width          : 100%;
+    place-content  : center start;
+    padding        : 0.5rem !important;
+    border-radius  : 22px 0 0 22px;
+    box-shadow     : none;
+    backdrop-filter: none;
+    background     : transparent;
+    overflow       : hidden;
+}
+
+.Sidebar nav ul svg {
+    color: var(--color-white);
+}
+
+.Sidebar nav ul h6 {
+    font-size   : 1;
+    padding-left: var(--block-gap);
+    overflow    : hidden;
+    color       : var(--color-white);
+}
+
+.Sidebar nav ul a.active {
+    scale     : 110%;
+    padding   : 0.7rem 1rem 0.7rem 1rem;
+    color     : var(--color-white);
+    background: var(--color-purple);
+}
+
+
 
 .sidebar_hide {
     width: 5.5rem;
+}
 
-    & .Sidebar {
-        & .logo {
-            & .logo1 {
-                display: none;
-            }
+.sidebar_hide #logo1 {
+    display: none;
+}
 
-            & .logo2 {
-                display: block;
-                padding: 0.8rem;
-            }
-        }
+.sidebar_hide #logo2 {
+    display: block;
+}
 
-        & nav {
-            & .user {
-                & .signin {
-                    gap: 0;
-                }
+.sidebar_hide .signin {
+    gap: 0;
+}
 
-                & h6 {
-                    font-size: 0;
-                }
-            }
+.sidebar_hide h6 {
+    font-size: 0;
+}
 
-            & ul {
-                & li {
-                    & a {
-                        & h6 {
-                            font-size: 0;
-                        }
-                    }
-                }
-            }
-        }
+.sidebar_hide h6 {
+    font-size: 0;
+}
 
-        & .togglers {
-            flex-direction: column;
-        }
-    }
+.sidebar_hide .togglers {
+    flex-direction: column;
 }
 
 @media (max-width: 600px) {

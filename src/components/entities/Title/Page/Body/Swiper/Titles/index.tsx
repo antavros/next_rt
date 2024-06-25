@@ -39,7 +39,6 @@ export function SwiperCardTitle({ details }: Details) {
 
   return (
     <>
-      <h5>Похожие</h5>
       <CustomSwiper
         style={style.swiper_slide}
         object={similar}

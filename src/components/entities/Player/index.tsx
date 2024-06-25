@@ -38,9 +38,6 @@ export const Player: React.FC<Details> = ({ details }) => {
     }, [details]);
 
     return (
-        <>
-            <h5>Просмотр</h5>
             <div className="kinobox_player"></div>
-        </>
     );
 };

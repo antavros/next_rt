@@ -1,8 +1,0 @@
-.bottom {
-    position      : relative;
-    display       : flex;
-    flex-direction: column;
-    width         : 100%;
-    place-self    : center center;
-    padding       : 1rem;
-}
