@@ -45,37 +45,35 @@ export function TitlePageBody({ details }: Details) {
 
   return (
     <div className={style.body}>
-      <section className={style.block}>
-        <h3>Описание</h3>
-        <p>{details?.description}</p>
-      </section>
       {details.trailers.length > 0 && (
-        <section className={style.block}>
+        <section className={`${style.block} ${style.trailers}`}>
+          <h3>Трейлеры</h3>
           <SwiperCardTrailer details={details} />
         </section>
       )}
+      <section className={`${style.block} ${style.description}`}>
+        <h3>Описание</h3>
+        <p>{details?.description}</p>
+      </section>
+      <section className={`${style.block} ${style.actors}`}>
+        <h3>Актеры</h3>
+        <SwiperCardPerson details={details} />
+      </section>
       {status && (status as any) === "authenticated" ? (
-        <section className={style.block}>
+        <section className={`${style.block} ${style.player}`}>
           <h3>Просмотр</h3>
           <Player details={details.id} />
         </section>
       ) : null}
-      <section className={style.block}>
-        <h3>Актеры</h3>
-        <SwiperCardPerson details={details} />
-      </section>
-      <section className={style.block}>
+      <section className={`${style.block} ${style.persons}`}>
         <h3>Над {typeName} работали</h3>
         <ExpandableListPerson persons={details?.person} />
       </section>
       {details.similar.length > 0 && (
-        <>
-          <hr />
-          <div className={`${style.bottom}`}>
-            <h3>Похожие</h3>
-            <SwiperCardTitle details={details} />
-          </div>
-        </>
+        <section className={`${style.block} ${style.similar}`}>
+          <h3>Похожие</h3>
+          <SwiperCardTitle details={details} />
+        </section>
       )}
     </div>
   );

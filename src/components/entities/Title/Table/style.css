@@ -1,24 +1,19 @@
 .titles {
-  /* display              : grid;
-  grid-gap             : 1rem;
-  grid-template-columns: repeat(auto-fill, 16rem);
-  grid-auto-rows       : 25rem; */
   display      : flex;
   flex-wrap    : wrap;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
-  gap          : 1rem;
+  gap          : 0.5rem;
   min-height   : 100vh;
   width        : auto;
-  padding      : var(--block-gap);
+  padding-top      : 1rem;
+}
 
-
-  & .title_rate {
-    position     : absolute;
-    place-content: center space-between;
-    padding      : var(--element-gap);
-    top          : 0.2rem;
-    gap          : 0.3rem;
-  }
+.titles .title_rate {
+  position     : absolute;
+  place-content: center space-between;
+  padding      : var(--element-gap);
+  top          : 0.2rem;
+  gap          : 0.3rem;
 }

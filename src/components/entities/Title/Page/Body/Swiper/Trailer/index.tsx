@@ -30,7 +30,6 @@ export function SwiperCardTrailer({ details }: Details) {
 
   return (
     <>
-      <h5>Трейлеры</h5>
       <CustomSwiper
         style={style.swiper_slide_trailer}
         object={object}

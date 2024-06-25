@@ -47,7 +47,7 @@
 .card_info:hover {
   opacity        : 1;
   background     : linear-gradient(to bottom right, var(--color-black), rgba(0, 0, 0, 0.8), var(--color-black));
-  backdrop-filter: var(--blur);
+  backdrop-filter: blur(6px);
 }
 
 .card_info:hover h3 {
@@ -86,11 +86,14 @@
 }
 
 .card_info p:last-child {
-  text-align     : left;
+  width          : 100%;
   color          : var(--color-white);
   margin-top     : auto;
   padding-bottom : 1rem;
-  text-align     : justify;
+  text-indent    : 1rem;
+  text-overflow  : ellipsis;
+  text-wrap      : pretty;
+  text-align     : left;
   -webkit-hyphens: auto;
   -ms-hyphens    : auto;
   hyphens        : auto;

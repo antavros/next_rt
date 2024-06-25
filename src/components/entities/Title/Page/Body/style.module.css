@@ -8,97 +8,47 @@
 }
 
 .block {
+  display         : flex;
+  flex-direction  : column;
   width           : 100%;
+  height          : 100%;
   place-self      : center center;
   padding         : 1rem;
   background-color: var(--color-block_back);
 }
 
 .block h3 {
-  display       : flex;
-  flex-direction: row;
-  width         : max-content;
-  text-align    : left;
-  font-weight   : bold;
-  font-size     : 1.5rem;
-  padding       : 0.6rem;
-  margin-bottom : 1rem;
+  width        : max-content;
+  text-align   : left;
+  font-weight  : bold;
+  font-size    : 1.5rem;
+  padding      : 0.3rem;
+  margin-bottom: 1rem;
 }
 
-.description {
-  width           : 100%;
-  place-content   : center center;
-  color           : white;
-  padding         : 1rem;
-  background-color: var(--color-block_back);
-  box-shadow      :
-    rgba(100, 100, 100, 0.2) 0px 4px 6px -1px,
-    rgba(100, 100, 100, 0.14) 0px 6px 7px 0px,
-    rgba(100, 100, 100, 0.12) 0px 3px 12px 0px;
-  box-shadow:
-    rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
-    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
-    rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
-  text-align     : justify;
-  -webkit-hyphens: auto;
-  -ms-hyphens    : auto;
-  hyphens        : auto;
-}
-
-.description p {
-  text-indent  : 1rem;
-  text-overflow: ellipsis;
-  text-wrap    : pretty;
-  color        : white;
-  padding-left : 1.5rem;
-}
-
-.persons {
-  width           : 100%;
-  height          : 100%;
-  place-content   : center center;
-  padding         : 1rem;
-  background-color: var(--color-block_back);
-}
-
-.persons article {
-  padding: 0 0 0.5rem 1.5rem;
-  color  : var(--color-text);
-}
-
-.persons article:first-letter {
-  text-transform: uppercase;
-}
-
-.persons p {
-  text-indent: 1rem;
-  color      : white;
-}
-
-.persons button {
-  padding: 0.5rem
-}
-
-.persons ul {
-  padding: 0.5rem
-}
-
-.actors {
-  width     : 100%;
-  place-self: center center;
-  padding   : 1rem;
-}
-
-.trailer {
-  width     : 100%;
-  place-self: center center;
-  padding   : 1rem;
+.trailers,
+.actors,
+.similar {
+  background-color: transparent;
 }
 
 .player {
-  display       : flex;
-  flex-direction: column;
-  position      : relative;
-  width         : 100%;
-  padding       : 1rem;
+  width: min-content;
+}
+
+.persons {
+  width      : min-content;
+  place-items: center center;
+}
+
+.description p {
+  place-content  : center center;
+  text-indent    : 1rem;
+  text-overflow  : ellipsis;
+  text-align     : justify;
+  text-wrap      : pretty;
+  color          : white;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
 }

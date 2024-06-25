@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import { Details, Person } from '@/components/shared/api/lib';
 
+import "./style.css";
+
 export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
   const [expandedProfessions, setExpandedProfessions] = useState<Record<string, boolean>>({});
 
@@ -25,7 +27,7 @@ export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
   };
 
   return (
-    <section>
+    <section className="persons_list">
       {Object.keys(groupByProfession).map(profession => {
         const isExpanded = expandedProfessions[profession] || false;
         const visiblePersons = isExpanded ? groupByProfession[profession] : groupByProfession[profession].slice(0, 2);

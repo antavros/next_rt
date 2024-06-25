@@ -18,32 +18,27 @@ export function SwiperCardTitle({ details }: Details) {
       <Image
         width={260}
         height={400}
-        className={style.swiper_title_img}
         src={similar.poster.url}
         alt={similar.name}
         priority={true}
       />
       <section className={style.swiper_title_Info}>
-        < TitleRate personal={similar?.rating?.imdb} rt={similar?.rating?.kp} />
-        <div>
-          <h3>{similar.name}</h3>
-          <h4>{similar.enName || similar.alternativeName}</h4>
-          {similar.year !== undefined && similar.year.length > 0 && (
-            <p>{similar.year}г.</p>
-          )}
-          <p>{similar.description}</p>
-        </div>
+        <TitleRate personal={similar?.rating?.imdb} rt={similar?.rating?.kp} />
+        <h3>{similar.name}</h3>
+        <h4>{similar.enName || similar.alternativeName}</h4>
+        {similar.year !== undefined && similar.year.length > 0 && (
+          <p>{similar.year}г.</p>
+        )}
+        <p>{similar.description}</p>
       </section>
     </Link>
   );
 
   return (
-    <>
-      <CustomSwiper
-        style={style.swiper_slide}
-        object={similar}
-        renderSlide={renderSlide}
-      />
-    </>
+    <CustomSwiper
+      style={style.swiper_slide}
+      object={similar}
+      renderSlide={renderSlide}
+    />
   );
 }

@@ -1,7 +1,3 @@
-.swiper_title {
-  width: 100%;
-}
-
 .swiper_title_wrapper::after {
   content         : "";
   position        : absolute;
@@ -14,15 +10,12 @@
 
 .swiper_title_wrapper img {
   z-index: -1;
+  width  : 260px;
+  height : 400px;
+  height : auto;
 }
 
 .swiper_slide {
-  width : 260px !important;
-  height: 400px !important;
-  height: auto;
-}
-
-.swiper_title_img {
   width : 260px !important;
   height: 400px !important;
   height: auto;
@@ -34,70 +27,35 @@
   left          : 0;
   display       : flex;
   flex-direction: column;
-  place-content : center space-between;
-  place-items   : center center;
-  place-self    : center center;
-  min-width     : 100%;
-  min-height    : 100%;
+  place-content : center start;
+  width         : 100%;
+  height        : 100%;
   padding       : var(--block-gap);
   z-index       : 2;
+  overflow      : hidden;
 }
 
-.swiper_title_wrapper img {
-  z-index: -1;
+.swiper_title_Info section {
+  width        : 100%;
+  place-content: center space-between;
 }
 
-.swiper_slide {
-  width : 260px !important;
-  height: 400px !important;
-  height: auto;
-}
-
-.swiper_title_img {
-  width : 260px !important;
-  height: 400px !important;
-  height: auto;
-}
-
-.swiper_title_Info {
-  position      : absolute;
-  top           : 0;
-  left          : 0;
-  display       : flex;
-  flex-direction: column;
-  place-content : center space-between;
-  place-items   : center center;
-  min-width     : 100%;
-  min-height    : 100%;
-  padding       : var(--block-gap);
-  z-index       : 2;
-}
-
-.swiper_title_Info div h3 {
+.swiper_title_wrapper .swiper_title_Info h3 {
+  width        : 100%;
+  margin-top   : auto;
+  margin-bottom: 0;
+  font-size    : 1rem;
   text-align   : center;
-  font-size    : 120%;
+  overflow     : hidden;
   text-overflow: ellipsis;
   color        : var(--color-white);
 }
 
-.swiper_title_Info div h4 {
-  text-align    : center;
-  font-size     : 90%;
-  color         : var(--color-text);
+.swiper_title_wrapper .swiper_title_Info h4,
+.swiper_title_wrapper .swiper_title_Info p {
   padding-bottom: var(--block-gap);
-}
-
-.swiper_title_Info div p {
-  text-align   : center;
-  font-size    : 90%;
-  text-overflow: ellipsis;
-  color        : var(--color-text);
-}
-
-.swiper_title_Info section {
-  min-width    : 100%;
-  min-height   : 100%;
-  place-content: center space-between;
-  padding      : 0;
-  gap          : 0.3rem;
+  font-size     : 0.8rem;
+  text-align    : center;
+  text-overflow : ellipsis;
+  color         : var(--color-text);
 }
