@@ -7,7 +7,12 @@ import authConfig from "./auth.config"
 
 const prisma = new PrismaClient()
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut 
+} = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
     generateSessionToken: () => {
