@@ -1,5 +1,3 @@
-module.exports = nextConfig;
-
 module.exports = {
   experimental: {
     reactCompiler: true,
