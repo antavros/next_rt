@@ -14,6 +14,7 @@ import {
   IconCards,
 } from '@tabler/icons-react';
 
+import { Togglers } from '@/components/features/Togglers';
 import { UserCard } from "@/components/entities/User/Card"
 import { Logo } from '@/components/entities/Logo';
 import './style.css';
@@ -83,6 +84,7 @@ export function Sidebar() {
             </li>
           </ul>
           <hr />
+          <Togglers />
         </nav>
       </section >
     </aside >

@@ -8,11 +8,11 @@ import { UserAvatar } from "./Avatar"
 import "./style.css";
 
 export const UserCard: React.FC = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <section className="userCard">
-      {status && (status as any) === "authenticated" ? (
+      {session ? (
         <UserAvatar />
       ) : (
         <SignButton />

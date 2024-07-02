@@ -13,7 +13,7 @@ import style from "./style.module.css";
 import { Details } from "@/components/shared/api/lib";
 
 export function TitlePageBody({ details }: Details) {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   const category = details.type.toLowerCase();
   let typeName: string;
@@ -59,7 +59,7 @@ export function TitlePageBody({ details }: Details) {
         <h3>Актеры</h3>
         <SwiperCardPerson details={details} />
       </section>
-      {status && (status as any) === "authenticated" ? (
+      {session ? (
         <section className={`${style.block} ${style.player}`}>
           <h3>Просмотр</h3>
           <Player details={details.id} />

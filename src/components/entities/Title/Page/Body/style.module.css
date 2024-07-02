@@ -36,6 +36,12 @@
   width: min-content;
 }
 
+@media (max-width: 1200px) {
+  .player {
+    width: 100%;
+  }
+}
+
 .persons {
   width      : min-content;
   place-items: center center;

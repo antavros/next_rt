@@ -19,7 +19,6 @@ aside {
   width         : 100%;
   height        : 100vh;
   border-radius : 0;
-  overflow      : hidden;
 }
 
 .Sidebar nav {
@@ -27,12 +26,13 @@ aside {
   flex-direction: column;
   border-radius : 0;
   width         : 100%;
+  overflow      : hidden;
 }
 
 .Sidebar nav ul {
   gap          : 0.1rem;
-  padding-left : 1.5rem;
   border-radius: 0;
+  padding      : 1rem 0 1rem 1.5rem;
   overflow     : hidden;
 }
 
@@ -88,11 +88,7 @@ aside {
   gap: 0;
 }
 
-.sidebar_hide h6 {
-  font-size: 0;
-}
-
-.sidebar_hide h6 {
+.sidebar_hide ul h6 {
   font-size: 0;
 }
 
@@ -107,6 +103,7 @@ aside {
     place-self: end end !important;
   }
 
+
   aside,
   .sidebar_hide {
     position: sticky;
@@ -116,63 +113,53 @@ aside {
     order   : 5;
     width   : 100%;
     height  : auto !important;
+  }
 
-    & .Sidebar {
-      display       : flex;
-      flex-direction: row;
-      width         : 100%;
-      height        : auto;
+  .Sidebar {
+    display       : flex;
+    flex-direction: row;
+    width         : 100%;
+    height        : auto;
+  }
 
-      & hr {
-        display: none;
-      }
+  .Sidebar hr {
+    display: none;
+  }
 
-      & .logo {
-        display: none;
-      }
+  .Sidebar .logo {
+    display: none;
+  }
 
-      & .togglers {
-        display       : flex;
-        width         : auto;
-        flex-direction: row;
-        padding       : 0.2rem;
+  .Sidebar .togglers {
+    display       : flex;
+    width         : auto;
+    flex-direction: row;
+    padding       : 0.2rem;
+  }
 
-        & button {
-          display: none;
-        }
-      }
+  .Sidebar .togglers button {
+    display: none;
+  }
 
-      & nav {
-        flex-direction: row;
-        width         : auto;
+  .Sidebar nav {
+    flex-direction: row;
+    width         : auto;
+  }
 
-        & .user {
-          padding: 0.2rem;
+  .Sidebar nav ul {
+    display       : flex;
+    flex-direction: row;
+    padding-left  : 0;
+    padding-top   : 1.5rem;
+  }
 
-          & h6 {
-            font-size: 0;
-          }
-        }
+  .Sidebar nav ul a {
+    place-items  : start center !important;
+    height       : 100% !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
 
-        & ul {
-          display       : flex;
-          flex-direction: row;
-          padding-left  : 0;
-          padding-top   : 1.5rem;
-
-          & li {
-            & a {
-              place-items  : start center !important;
-              height       : 100% !important;
-              border-radius: var(--border-radius) var(--border-radius) 0 0;
-
-              & h6 {
-                display: none !important;
-              }
-            }
-          }
-        }
-      }
-    }
+  .Sidebar nav ul h6 {
+    display: none !important;
   }
 }

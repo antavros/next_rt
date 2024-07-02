@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { Logo } from "@/components/entities/Logo";
+import { IconUsers, IconAddressBook } from '@tabler/icons-react';
+
 import "./style.css";
 
 export function Footer() {
@@ -11,12 +13,14 @@ export function Footer() {
         <section className="footer">
           <ul>
             <li>
-              <Link href="/about" className="button">
+              <Link href="/user/policy" className="button">
+                <IconUsers stroke={2} />
                 О нас
               </Link>
             </li>
             <li>
-              <Link href="/contacts" className="button">
+              <Link href="/user/policy" className="button">
+                <IconAddressBook stroke={2} />
                 Контакты
               </Link>
             </li>

@@ -1,9 +1,12 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
-    "name" TEXT,
-    "email" TEXT NOT NULL,
+    "role" TEXT,
+    "name" TEXT NOT NULL,
+    "email" TEXT,
     "emailVerified" TIMESTAMP(3),
+    "username" TEXT,
+    "password" TEXT,
     "image" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -66,7 +69,13 @@ CREATE TABLE "Authenticator" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Authenticator_credentialID_key" ON "Authenticator"("credentialID");
