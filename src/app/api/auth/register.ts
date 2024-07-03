@@ -3,8 +3,8 @@ import { registerUser } from "@/components/shared/auth/auth";
 import { z, ZodError } from "zod";
 
 const registerSchema = z.object({
-  email: z.string().email("Некорректный email"),
   password: z.string().min(8, "Пароль должен быть не менее 8 символов"),
+  email: z.string().email("Некорректный email"),
   name: z.string().min(1, "Имя не должно быть пустым"),
 });
 
@@ -12,7 +12,7 @@ const registerHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     try {
       const data = registerSchema.parse(req.body);
-      const user = await registerUser(data.email, data.password, data.name);
+      const user = await registerUser(data.password, data.email, data.name);
       res.status(200).json(user);
     } catch (error) {
       if (error instanceof ZodError) {

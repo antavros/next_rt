@@ -6,14 +6,14 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 
 import { IconUserCircle, IconSettings } from '@tabler/icons-react';
-import { SignButton } from "@/components/entities/User/Card/SignButton"
+import { SignButton } from "@/components/entities/User/SignButton"
 
 import "./style.css";
 
 
 export const UserAvatar: React.FC = () => {
   const { data: session } = useSession();
-  const [dropDown, setDropDown] = useState(true);
+  const [dropDown, setDropDown] = useState(false);
 
   return (
     <>

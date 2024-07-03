@@ -55,7 +55,9 @@
   }
 
   &:is(:focus, :hover, :active) {
-    scale: 1;
+    & .avatarName {
+      scale: 1;
+    }
   }
 }
 
@@ -69,7 +71,7 @@
   backdrop-filter : var(--blur);
   box-shadow      : 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index         : 99999;
-  top             : 11rem;
+  top             : 11.5rem;
   left            : 4rem;
   overflow        : hidden;
 }

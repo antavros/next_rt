@@ -2,9 +2,16 @@
   display         : flex;
   flex-flow       : row wrap;
   place-content   : start center;
+  width           : 100%;
   padding         : 1rem;
   gap             : 1rem;
   background-color: var(--color-block_back);
+
+  & p {
+    place-content: center center;
+    place-self   : center center;
+    place-items  : center center;
+  }
 
   & div {
     display       : flex;
@@ -12,7 +19,10 @@
     gap           : 1rem;
 
     &:last-child {
-      width: 100%;
+      place-content: center center;
+      place-self   : center center;
+      place-items  : center center;
+      width        : 100%;
     }
   }
 

@@ -1,12 +1,13 @@
 .togglers {
-    display       : flex;
-    flex-direction: row;
-    place-content : center center;
-    width         : 100%;
-    height        : auto;
-    gap           : var(--element-gap);
+  display       : flex;
+  flex-direction: row;
+  place-content : center center;
+  width         : 100%;
+  height        : auto;
+  gap           : var(--element-gap);
+  padding       : 1rem;
 }
 
 .flipped {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }

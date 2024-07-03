@@ -6,23 +6,14 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { ZodError } from "zod";
-import { signInSchema } from "@/components/lib/zod";
+import { signInSchema } from "./zod";
 
 const prisma = new PrismaClient();
 
-const getUserFromDb = async (
-  password: string,
-  nameOrEmail?: string,
-  email?: string,
-  login?: string
-) => {
+const getUserFromDb = async (password: string, email: string) => {
   const user = await prisma.user.findFirst({
     where: {
-      OR: [
-        ...(nameOrEmail ? [{ email: nameOrEmail }, { name: nameOrEmail }] : []),
-        ...(email ? [{ email: email }] : []),
-        ...(login ? [{ name: login }] : []),
-      ],
+      OR: [{ email: email }, { password: password }],
     },
   });
 
@@ -33,18 +24,10 @@ const getUserFromDb = async (
   }
 };
 
-const checkUserExists = async (
-  nameOrEmail?: string,
-  email?: string,
-  login?: string
-) => {
+const checkUserExists = async (password: string, email: string) => {
   const user = await prisma.user.findFirst({
     where: {
-      OR: [
-        ...(nameOrEmail ? [{ email: nameOrEmail }, { name: nameOrEmail }] : []),
-        ...(email ? [{ email: email }] : []),
-        ...(login ? [{ name: login }] : []),
-      ],
+      OR: [{ email: email }, { password: password }],
     },
   });
   return user;
@@ -52,15 +35,15 @@ const checkUserExists = async (
 
 export const registerUser = async (
   password: string,
-  login?: string,
-  email?: string
+  email: string,
+  login?: string
 ) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = await prisma.user.create({
     data: {
       password: hashedPassword,
-      name: (login ?? "").trim(),
-      email: (login ?? "").trim(),
+      email: email,
+      name: login,
     },
   });
   return user;
@@ -92,26 +75,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
     Credentials({
       credentials: {
-        nameOrEmail: { label: "nameOrEmail", type: "text" },
+        password: { label: "password", type: "password" },
         login: { label: "login", type: "text" },
         email: { label: "email", type: "email" },
-        password: { label: "password", type: "password" },
       },
       authorize: async (credentials) => {
         try {
-          const { nameOrEmail, login, email, password } =
-            await signInSchema.parseAsync(credentials);
-          const user = await getUserFromDb(password, nameOrEmail, email, login);
+          const { password, email, login } = await signInSchema.parseAsync(
+            credentials
+          );
+          const user = await getUserFromDb(password, email);
           if (!user) {
-            const existingUser = await checkUserExists(
-              nameOrEmail,
-              email,
-              login
-            );
+            const existingUser = await checkUserExists(password, email);
             if (existingUser) {
               throw new Error("Invalid password");
             } else {
-              const newUser = await registerUser(password, login, email);
+              const newUser = await registerUser(password, email, login);
               return newUser;
             }
           }
@@ -125,4 +104,32 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    jwt({ token, trigger, session }) {
+      if (trigger === "update") {
+        if (session?.name) {
+          token.name = session.name;
+        }
+        if (session?.email) {
+          token.email = session.email;
+        }
+        if (session?.image) {
+          token.picture = session.image;
+        }
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token?.name) {
+        session.user.name = token.name;
+      }
+      if (token?.email) {
+        session.user.email = token.email;
+      }
+      if (token?.picture) {
+        session.user.image = token.picture;
+      }
+      return session;
+    },
+  },
 });

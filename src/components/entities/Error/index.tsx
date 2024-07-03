@@ -9,7 +9,7 @@ interface ErrorRenderProps {
   onClick: () => void;
 }
 
-export function ErrorRender({ onClick }: ErrorRenderProps) {
+export function ErrorPage({ onClick }: ErrorRenderProps) {
   return (
     <div className="error">
       <h2>Что-то пошло не так!</h2>

@@ -70,7 +70,9 @@ aside {
   background: var(--color-purple);
 }
 
-
+.sidebar_hide .avatarName {
+  display: none;
+}
 
 .sidebar_hide {
   width: 5.5rem;
