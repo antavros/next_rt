@@ -30,13 +30,14 @@
     "target": "ES2017"
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/shared/api/api.ts",
-    "src/shared/api/data_types.tsx"
-, "src/entities/Player/index.tsx", "src/app/providers.tsx", "src/app/user/profile/page.js", "src/lib/password.js", "src/app/api/user/route.js"  ],
+    ".next/types/*",
+    "next-env.d.ts",
+    "src/app/*",
+    "src/components/*",
+    ".next/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
