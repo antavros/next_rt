@@ -5,7 +5,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { TitlePage } from "@/components/entities/Title/Page";
 import { getData } from "@/components/shared/api/api";
 import { ApiUrl_Title_Page } from "@/components/shared/api/url";
-import { Details } from "../../../../../types/next-title";
+import { Details } from "../../../../components/shared/api/next-title";
 
 // Функция для извлечения данных и генерации метаданных
 async function fetchDetailsAndMetadata(id: string, parent: ResolvingMetadata): Promise<{ details: any, metadata: Metadata }> {

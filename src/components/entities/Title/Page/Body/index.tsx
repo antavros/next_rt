@@ -15,7 +15,7 @@ import { Player } from "@/components/entities/Player";
 
 import style from "./style.module.css";
 
-import { Details } from "../../../../../../types/next-title";
+import { Details } from "../../../../shared/api/next-title";
 
 export function TitlePageBody({ details }: Details) {
   const { data: session } = useSession();

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { Details } from '../../../../../../../../types/next-title';
+import { Details } from '../../../../../../shared/api/next-title';
 
 import "./style.css";
 

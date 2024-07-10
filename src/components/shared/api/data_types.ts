@@ -1,4 +1,4 @@
-import { Details } from "../../../../types/next-title";
+import { Details } from "./next-title";
 
 const convertMinutesToHours = ({ minutes }: { minutes: number }): string => {
   const hours = Math.floor(minutes / 60);

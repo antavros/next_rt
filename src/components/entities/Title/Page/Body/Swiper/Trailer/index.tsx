@@ -1,7 +1,7 @@
 'use client'
 
 import { CustomSwiper } from '@/components/entities/Swiper/CustomSwiper';
-import { Details } from '../../../../../../../../types/next-title';
+import { Details } from '../../../../../../shared/api/next-title';
 
 import style from './style.module.css';
 
