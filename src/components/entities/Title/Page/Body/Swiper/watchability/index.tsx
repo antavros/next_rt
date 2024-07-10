@@ -1,32 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { TitleRate } from "@/components/entities/Title/Rate/";
 import { CustomSwiper } from '@/components/entities/Swiper/CustomSwiper';
 import { Details } from '../../../../../../../../types/next-title';
 import style from './style.module.css';
 
-export function SwiperCardTitle({ details }: Details) {
+export function SwiperWatchability({ details }: Details) {
   if (!details || !Array.isArray(details)) {
     return null; // обработка пустого состояния или некорректных данных
   }
+  const option = { direction: 'vertical' };
 
   const renderSlide = (item: any) => (
-    <Link href={`/title/${item?.type}/${item?.id}`}>
+    <Link href={`${item?.url}`}>
       <div className={style.swiper_title_wrapper}>
         <Image
-          width={260}
-          height={400}
-          src={item?.poster?.url || '/images/placeholder.webp'}
+          width={190}
+          height={190}
+          src={item?.logo?.url || '/images/placeholder.webp'}
           alt={item?.name}
           priority={true}
         />
         <section className={style.swiper_title_Info}>
-          <TitleRate personal={item?.rating?.imdb} rt={item?.rating?.kp} />
           <h3>{item?.name}</h3>
-          <h4>{item?.enName || item?.alternativeName}</h4>
-          {item?.year && item?.year.length > 0 && <p>{item?.year}г.</p>}
-          <p>{item?.description}</p>
         </section>
       </div>
     </Link>
@@ -37,6 +33,7 @@ export function SwiperCardTitle({ details }: Details) {
       style={style.swiper_slide}
       object={details}
       renderSlide={renderSlide}
+      option={option}
     />
   );
 }

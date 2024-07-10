@@ -20,10 +20,11 @@ import '@/components/entities/Swiper/style.css';
 interface CustomSwiper {
   style: any;
   object: any[];
+  option?: any;
   renderSlide: (object: any) => JSX.Element;
 }
 
-export function CustomSwiper({ style, object, renderSlide }: CustomSwiper) {
+export function CustomSwiper({ style, object, renderSlide, option }: CustomSwiper) {
 
   return (
     <Swiper
@@ -40,10 +41,15 @@ export function CustomSwiper({ style, object, renderSlide }: CustomSwiper) {
       speed={600}
       spaceBetween={16}
       slidesPerView={`auto`}
+      centerInsufficientSlides={true}
+      centeredSlidesBounds={true}
       slidesPerGroupAuto={true}
       grabCursor={true}
-      navigation={true}
+      navigation={{
+        lockClass: 'hideSwiperButton',
+      }}
       keyboard={true}
+      {...option}
     >
       {object.map((object: any, index: number) => (
         <SwiperSlide className={style} key={`${index}slide`}>

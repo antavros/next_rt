@@ -1,4 +1,6 @@
-import React, { ReactNode, Suspense } from 'react';
+"use client"
+
+import React, { Suspense, StrictMode } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -10,7 +12,7 @@ import { Preloader } from '@/components/features/PreLoader';
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
-    <React.StrictMode>
+    <StrictMode>
       <SessionProvider>
         <ThemeProvider>
           <Suspense fallback={<Preloader />}>
@@ -20,7 +22,7 @@ const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <SpeedInsights />
         <Analytics />
       </SessionProvider>
-    </React.StrictMode>
+    </StrictMode>
   );
 };
 

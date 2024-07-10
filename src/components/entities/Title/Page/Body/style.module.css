@@ -1,10 +1,11 @@
 .body {
-  display       : flex;
-  flex-direction: column;
-  position      : relative;
-  width         : 100%;
-  place-content : center center;
-  gap           : 1rem;
+  display      : flex;
+  flex-flow    : column nowrap;
+  position     : relative;
+  width        : 100%;
+  place-content: center center;
+  overflow     : hidden;
+  gap          : 1rem;
 }
 
 .block {
@@ -26,35 +27,142 @@
   margin-bottom: 1rem;
 }
 
-.trailers,
+.add {
+  display      : flex;
+  flex-flow    : row wrap;
+  position     : relative;
+  place-content: start center;
+  width        : 100%;
+}
+
 .actors,
+.trailers,
+.chapters,
+.watchability,
 .similar {
+  display         : flex;
+  width           : auto !important;
+  max-width       : 100%;
+  height          : auto !important;
+  max-height      : 100%;
   background-color: transparent;
 }
+
+.watchability,
+.actors {
+  height       : auto !important;
+  max-height   : 70rem;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : start center;
+}
+
+.trailers {
+  width        : auto !important;
+  max-width    : 50rem;
+  overflow     : hidden;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+}
+
+.details {
+  display      : flex;
+  flex-flow    : row wrap;
+  position     : relative;
+  width        : 100%;
+  height       : min-content;
+  place-content: start center;
+  place-items  : start start;
+  place-self   : start start;
+  gap          : 1rem;
+  overflow     : hidden;
+}
+
+.details span {
+  display      : flex;
+  flex-flow    : column nowrap;
+  position     : relative;
+  width        : min-content;
+  place-content: start start;
+  place-items  : start start;
+  place-self   : start start;
+  gap          : 1rem;
+  overflow     : hidden;
+}
+
+.details span span {
+  display  : flex;
+  flex-flow: row nowrap;
+  position : relative;
+  width    : auto;
+  gap      : 1rem;
+  overflow : hidden;
+}
+
+.person {
+  display   : flex;
+  flex-flow : column wrap;
+  width     : min-content;
+  place-self: start start;
+}
+
+.details span span span {
+  display  : flex;
+  flex-flow: column nowrap;
+  position : relative;
+  width    : auto;
+  gap      : 1rem;
+  overflow : hidden;
+}
+
+.detailsList {
+  display  : flex;
+  flex-flow: column wrap;
+  width    : max-content;
+}
+
+.description {
+  display  : flex;
+  flex-flow: column wrap;
+  width    : auto;
+}
+
+.description p {
+  font-size      : medium;
+  text-indent    : 1rem;
+  text-overflow  : ellipsis;
+  text-align     : auto;
+  text-wrap      : pretty;
+  color          : white;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
+}
+
 
 .player {
   width: min-content;
 }
 
 @media (max-width: 1200px) {
+  .details span {
+    place-content: center center;
+    place-items  : center center;
+    place-self   : center center;
+  }
+
+  .details span span {
+    flex-flow: column nowrap;
+  }
+
+  .details span span span {
+    place-content: center center;
+    place-items  : center center;
+    place-self   : center center;
+  }
+
   .player {
     width: 100%;
   }
-}
-
-.persons {
-  width      : min-content;
-  place-items: center center;
-}
-
-.description p {
-  place-content  : center center;
-  text-indent    : 1rem;
-  text-overflow  : ellipsis;
-  text-align     : justify;
-  text-wrap      : pretty;
-  color          : white;
-  -webkit-hyphens: auto;
-  -ms-hyphens    : auto;
-  hyphens        : auto;
 }

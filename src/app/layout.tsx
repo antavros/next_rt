@@ -1,4 +1,4 @@
-import React, { ReactNode, Suspense } from "react";
+import React, { ReactNode } from "react";
 
 import type { Metadata, Viewport } from "next";
 

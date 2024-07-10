@@ -1,21 +1,21 @@
 'use client'
 
 import React, { useState } from 'react';
-
-import { Details, Person } from '@/components/shared/api/lib';
+import Link from 'next/link'
+import { Details, Person } from '../../../../../../../../types/next-title';
+import { IconChevronUp, IconChevronDown } from '@tabler/icons-react';
 
 import "./style.css";
 
 export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
   const [expandedProfessions, setExpandedProfessions] = useState<Record<string, boolean>>({});
 
-  const groupByProfession = persons
-    .filter((person: any) => person.profession !== "актеры")
+  const groupByProfession = persons?.filter((person: any) => person?.profession !== "актеры")
     .reduce((acc: { [key: string]: Person[] }, person: Person) => {
-      if (!acc[person.profession]) {
-        acc[person.profession] = [];
+      if (!acc[person?.profession]) {
+        acc[person?.profession] = [];
       }
-      acc[person.profession].push(person);
+      acc[person?.profession].push(person);
       return acc;
     }, {});
 
@@ -28,27 +28,39 @@ export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
 
   return (
     <section className="persons_list">
-      {Object.keys(groupByProfession).map(profession => {
+      {groupByProfession && Object.keys(groupByProfession)?.map(profession => {
         const isExpanded = expandedProfessions[profession] || false;
         const visiblePersons = isExpanded ? groupByProfession[profession] : groupByProfession[profession].slice(0, 2);
-
         return (
           <article key={profession}>
-            <h4>{profession}</h4>
+            <span>
+              {groupByProfession[profession].length > 2 ? (
+                <button onClick={() => toggleExpand(profession)}>
+                  {isExpanded ? (
+                    <>
+                      <IconChevronUp stroke={2} />
+                      <h6>{profession}</h6>
+                    </>
+                  ) : (
+                    <>
+                      <IconChevronDown stroke={2} />
+                      <h6>{profession}</h6>
+                    </>
+                  )}
+                </button>
+              ) : (
+                <h4>{profession}</h4>
+              )}
+            </span>
             <ul>
               {visiblePersons.map((person: any) => (
-                <li key={person.id}>
-                  <a href={`/title/person/${person.id}`}>
-                    <p>{person.name}</p>
-                  </a>
+                <li key={person?.id}>
+                  <Link href={`/title/person/${person?.id}`}>
+                    <h6>{person?.name ? person?.name : person?.enName}</h6>
+                  </Link>
                 </li>
               ))}
             </ul>
-            {groupByProfession[profession].length > 2 && (
-              <button onClick={() => toggleExpand(profession)}>
-                {isExpanded ? 'Свернуть' : 'Показать всех'}
-              </button>
-            )}
           </article>
         );
       })}

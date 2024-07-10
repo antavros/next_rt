@@ -1,3 +1,5 @@
+"use server"
+
 import { TitleTable } from "@/components/entities/Title/Table";
 import { SwiperMain } from "@/components/entities/Swiper/Main";
 import { ApiUrl_Title_Popular } from "@/components/shared/api/url";

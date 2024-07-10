@@ -4,7 +4,11 @@
   overflow: hidden;
 }
 
-.swiper .swiper-slide {
+.swiper .swiper-wrapper {
+  place-items: center center;
+}
+
+.swiper .swiper-wrapper .swiper-slide {
   width           : auto;
   height          : 100%;
   background-color: var(--color-block_back);
@@ -12,6 +16,8 @@
   border-radius   : var(--border-radius);
   overflow        : hidden;
 }
+
+
 
 .swiper-slide img {
   display      : block;
@@ -39,6 +45,10 @@
   color      : rgb(255, 255, 255, 0.6);
 }
 
+.hideSwiperButton {
+  display: none;
+}
+
 .swiper-pagination-horizontal {
   display         : flex;
   place-self      : center center;
@@ -48,6 +58,7 @@
   padding         : var(--element-gap);
   z-index         : 3;
 }
+
 
 .swiper-pagination-horizontal span {
   background-color: var(--color-white);

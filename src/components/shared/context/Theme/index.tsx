@@ -31,15 +31,6 @@ const getInitialTheme = () => {
   return false;
 };
 
-// Установка начальной темы до загрузки контента
-if (typeof window !== 'undefined') {
-  const isDarkMode = getInitialTheme();
-  const bodyElement = document.querySelector('body');
-  if (bodyElement) {
-    bodyElement.classList.add(isDarkMode ? 'dark_mode' : 'light_mode');
-  }
-}
-
 const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);
   const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
@@ -61,7 +52,7 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (themeInitialized && typeof window !== 'undefined') {
       localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
       const bodyElement = document.querySelector('body');
       if (bodyElement) {
@@ -74,10 +65,10 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
         }
       }
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, themeInitialized]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (themeInitialized && typeof window !== 'undefined') {
       localStorage.setItem('sidebarHidden', JSON.stringify(isSidebarHidden));
       const asideElement = document.querySelector('aside');
       const toggleElement = document.querySelector('.toggle_sidebar');
@@ -91,29 +82,31 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
         }
       }
     }
-  }, [isSidebarHidden]);
+  }, [isSidebarHidden, themeInitialized]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const bodyElement = document.querySelector('body');
-      if (currentScrollY > lastScrollY) {
-        // Скроллим вниз
-        bodyElement?.classList.add('hidden');
-        bodyElement?.classList.remove('visible');
-      } else {
-        // Скроллим вверх
-        bodyElement?.classList.add('visible');
-        bodyElement?.classList.remove('hidden');
-      }
-      setLastScrollY(currentScrollY);
-    };
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        const bodyElement = document.querySelector('body');
+        if (currentScrollY > lastScrollY) {
+          // Скроллим вниз
+          bodyElement?.classList.add('hidden');
+          bodyElement?.classList.remove('visible');
+        } else {
+          // Скроллим вверх
+          bodyElement?.classList.add('visible');
+          bodyElement?.classList.remove('hidden');
+        }
+        setLastScrollY(currentScrollY);
+      };
 
-    window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
   }, [lastScrollY]);
 
   const themeContextValue = useMemo(() => ({ isDarkMode, setIsDarkMode }), [isDarkMode]);

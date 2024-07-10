@@ -105,6 +105,10 @@ input:-webkit-autofill:focus {
   user-select        : none;
 }
 
+a:visited {
+  color: rgb(186, 186, 186);
+}
+
 html {
   scroll-behavior : smooth;
   scrollbar-color : var(--color-purple) var(--color-black);

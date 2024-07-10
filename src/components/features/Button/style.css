@@ -2,27 +2,26 @@ button,
 .button,
 .swiper-button-prev,
 .swiper-button-next {
-  display               : flex;
-  flex-direction        : row;
-  place-content         : center center;
-  place-items           : center center;
-  place-self            : center center;
-  border                : none;
-  border-radius         : 5rem;
-  /* box-shadow         : var(--shadow); */
-  color                 : var(--color-text);
-  cursor                : pointer;
-  width                 : auto;
-  height                : auto;
-  -webkit-user-select   : none;
-  -moz-user-select      : none;
-  -ms-user-select       : none;
-  user-select           : none;
-  gap                   : 0.2rem;
-  padding               : 0.5rem;
-  background            : var(--color-button-inactive);
-  backdrop-filter       : var(--blur);
-  transition            : color 2ms ease !important;
+  display            : flex;
+  flex-direction     : row;
+  place-content      : center;
+  place-items        : center;
+  place-self         : center;
+  border             : none;
+  border-radius      : 5rem;
+  color              : var(--color-text);
+  cursor             : pointer;
+  width              : auto;
+  height             : auto;
+  -webkit-user-select: none;
+  -moz-user-select   : none;
+  -ms-user-select    : none;
+  user-select        : none;
+  gap                : 0.2rem;
+  padding            : 0.5rem;
+  background         : var(--color-button-inactive);
+  backdrop-filter    : var(--blur);
+  transition         : color 2ms ease !important;
 
   & svg {
     width : 1.5rem;
@@ -33,6 +32,7 @@ button,
     font-size    : 0.8rem;
     color        : var(--color-text);
     text-overflow: ellipsis;
+    text-align   : center;
     white-space  : nowrap;
     overflow     : hidden;
   }
@@ -43,7 +43,7 @@ button,
 
     & svg,
     h6 {
-      scale: 110%;
+      scale: 105%;
       color: var(--color-white);
     }
   }

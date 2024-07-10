@@ -1,19 +1,15 @@
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
-<<<<<<<< HEAD:prisma/migrations/20240630193626_main/migration.sql
-    "role" TEXT,
-    "name" TEXT NOT NULL,
-    "email" TEXT,
-========
     "name" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT,
->>>>>>>> c76cce3b4cec4b5d0d4658089a3f9d48b18be515:prisma/migrations/20240627112641_main/migration.sql
     "emailVerified" TIMESTAMP(3),
-    "username" TEXT,
-    "password" TEXT,
     "image" TEXT,
+    "role" "Role" NOT NULL DEFAULT 'USER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -75,13 +71,7 @@ CREATE TABLE "Authenticator" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
-
--- CreateIndex
-CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Authenticator_credentialID_key" ON "Authenticator"("credentialID");
