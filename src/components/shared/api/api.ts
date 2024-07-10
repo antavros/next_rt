@@ -16,6 +16,7 @@ export async function getData({ url }: any) {
       "X-API-KEY": API_KEY,
     },
     next: {
+      cache: "force-cache",
       revalidate: 1209600,
     },
   };

@@ -1,10 +1,7 @@
-const path = require("path");
+import("next").NextConfig;
 
-module.exports = {
-  webpack: (config) => {
-    config.resolve.alias["@"] = path.resolve(__dirname, "src");
-    return config;
-  },
+const nextConfig = {
+  reactStrictMode: true,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -35,3 +32,5 @@ module.exports = {
     ],
   },
 };
+
+module.exports = nextConfig;
