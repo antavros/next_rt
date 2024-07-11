@@ -10,34 +10,34 @@ import { TitleRate } from "@/components/entities/Title/Rate/";
 import "./style.css";
 
 export function TitleCard({ details }: { readonly details: any }) {
-    const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-    return (
-        <article className="title_card" id={details.id}>
-            {!imageLoaded && <Preloader />}
-            <Link href={`/title/${details.type}/${details.id}`}>
-                <Image
-                    onLoad={() => setImageLoaded(true)}
-                    width={256}
-                    height={400}
-                    quality={25}
-                    loading={'lazy'}
-                    src={details.poster}
-                    alt={details.name}
-                />
-                <section className="card_info">
-                    < TitleRate
-                        personal={details.average_imdb}
-                        rt={details.average_kp}
-                    />
-                    <h3>{details.name}</h3>
-                    <h4>{details.enName}</h4>
-                    <p>{details.countries}</p>
-                    <p>{details.year}г {details.length}</p>
-                    <p>{details.genres}</p>
-                    <p>{details.sDescription}</p>
-                </section>
-            </Link >
-        </article>
-    );
+  return (
+    <article className="title_card" id={details.id}>
+      {!imageLoaded && <Preloader />}
+      <Link href={`/title/${details.type}/${details.id}`} prefetch={false}>
+        <Image
+          onLoad={() => setImageLoaded(true)}
+          width={256}
+          height={400}
+          quality={25}
+          loading={'lazy'}
+          src={details.poster}
+          alt={details.name}
+        />
+        <section className="card_info">
+          < TitleRate
+            personal={details.average_imdb}
+            rt={details.average_kp}
+          />
+          <h3>{details.name}</h3>
+          <h4>{details.enName}</h4>
+          <p>{details.countries}</p>
+          <p>{details.year}г {details.length}</p>
+          <p>{details.genres}</p>
+          <p>{details.sDescription}</p>
+        </section>
+      </Link >
+    </article>
+  );
 }

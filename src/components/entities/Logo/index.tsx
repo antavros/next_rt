@@ -4,26 +4,26 @@ import Image from 'next/image'
 import './style.css';
 
 export function Logo() {
-    return (
-        <Link href="/" className="logo">
-            <Image
-                width={200}
-                height={70}
-                quality={25}
-                priority={true}
-                id="logo1"
-                alt="RATETABLE"
-                src="/images/LOGO.png"
-            />
-            <Image
-                width={200}
-                height={200}
-                quality={25}
-                priority={true}
-                id="logo2"
-                alt="RATETABLE"
-                src="/images/LOGO.svg"
-            />
-        </Link>
-    );
+  return (
+    <Link href="/" className="logo" prefetch={false}>
+      <Image
+        width={200}
+        height={70}
+        quality={25}
+        priority={true}
+        id="logo1"
+        alt="RATETABLE"
+        src="/images/LOGO.png"
+      />
+      <Image
+        width={200}
+        height={200}
+        quality={25}
+        priority={true}
+        id="logo2"
+        alt="RATETABLE"
+        src="/images/LOGO.svg"
+      />
+    </Link>
+  );
 }

@@ -12,7 +12,7 @@ export function SwiperWatchability({ details }: Details) {
   const option = { direction: 'vertical' };
 
   const renderSlide = (item: any) => (
-    <Link href={`${item?.url}`}>
+    <Link href={`${item?.url}`} prefetch={false}>
       <div className={style.swiper_title_wrapper}>
         <Image
           width={190}
