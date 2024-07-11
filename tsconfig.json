@@ -18,7 +18,6 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -26,25 +25,9 @@
   },
   "include": [
     "next-env.d.ts",
-    "*.ts",
-    "*.tsx",
-    "*.js",
-    "*.jsx",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    "**/**/*.ts",
-    "**/**/*.tsx",
-    "**/**/*.js",
-    "**/**/*.jsx",
-    "**/**/**/*.ts",
-    "**/**/**/*.tsx",
-    "**/**/**/*.js",
-    "**/**/**/*.jsx",
     ".next/types/**/*.ts",
-    "src/components/shared/api/api.ts",
-    "src/components/shared/api/data_types.tsx",
     "src/app/providers.tsx",
     "src/app/user/profile/page.js",
     "src/app/api/user/route.js"

@@ -1,7 +1,7 @@
-import("next").NextConfig;
-
-const nextConfig = {
-  reactStrictMode: true,
+module.exports = {
+  experimental: {
+    reactCompiler: true,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -32,5 +32,3 @@ const nextConfig = {
     ],
   },
 };
-
-module.exports = nextConfig;

@@ -98,7 +98,7 @@ aside {
   flex-direction: column;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .pagination {
     bottom    : 5rem !important;
     flex-flow : column nowrap !important;
