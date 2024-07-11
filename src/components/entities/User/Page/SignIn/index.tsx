@@ -173,7 +173,7 @@ export function SignInPage() {
         />
         Вход с аккаунтом Google
       </button>
-      <Link href="/user/policy" className="policy">
+      <Link href="/user/policy" className="policy" prefetch={false}>
         Политика конфиденциальности
       </Link>
     </section>

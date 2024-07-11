@@ -14,7 +14,7 @@ export function ErrorPage({ onClick }: ErrorRenderProps) {
     <div className="error">
       <h2>Что-то пошло не так!</h2>
       <div>
-        <Link href="/" className="button">
+        <Link href="/" className="button" prefetch={false}>
           <IconHome stroke={2} />
           Главная
         </Link>

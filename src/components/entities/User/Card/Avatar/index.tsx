@@ -39,11 +39,11 @@ export const UserAvatar: React.FC = () => {
       </button >
       {dropDown ? (
         < div className="avatarMenu">
-          <Link href="/user/profile" className="button">
+          <Link href="/user/profile" className="button" prefetch={false}>
             <IconUserCircle stroke={2} />
             <h6>Профиль</h6>
           </Link>
-          <Link href="/user/settings" className="button">
+          <Link href="/user/settings" className="button" prefetch={false}>
             <IconSettings stroke={2} />
             <h6>Настройки</h6>
           </Link>

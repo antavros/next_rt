@@ -17,7 +17,7 @@ export async function getData({ url }: any) {
     },
     next: {
       cache: "force-cache",
-      revalidate: 1209600,
+      revalidate: 9991209600,
     },
   };
 

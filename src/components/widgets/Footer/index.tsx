@@ -13,13 +13,13 @@ export function Footer() {
         <section className="footer">
           <ul>
             <li>
-              <Link href="/user/policy" className="button">
+              <Link href="/user/policy" className="button" prefetch={false}>
                 <IconUsers stroke={2} />
                 О нас
               </Link>
             </li>
             <li>
-              <Link href="/user/policy" className="button">
+              <Link href="/user/policy" className="button" prefetch={false}>
                 <IconAddressBook stroke={2} />
                 Контакты
               </Link>
