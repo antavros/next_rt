@@ -1,8 +1,9 @@
 .swiper_slide_trailer {
-  width  : 372px;
-  height : 232px;
+  width  : 400px;
+  height : auto;
   padding: 1rem;
 }
+
 
 .trailer {
   border: none !important;

@@ -24,7 +24,7 @@ export function SignInPage() {
   });
 
   if (session) {
-    redirect(`/user/profile`)
+    redirect(`/profile`)
   }
 
   const handlePasswordChange = (e: any) => {
@@ -140,6 +140,7 @@ export function SignInPage() {
           {isRegistering ? 'Зарегистрироваться' : 'Войти'}
         </button>
       </form>
+      {error && <p className="error">{error}</p>}
       {passwordValidations.visible ? (
         <div id="message">
           <h3>Пароль должен содержать следующее:</h3>

@@ -1,7 +1,7 @@
 module.exports = {
-  experimental: {
-    reactCompiler: true,
-  },
+  // experimental: {
+  //   reactCompiler: true,
+  // },
   images: {
     unoptimized: true,
     remotePatterns: [

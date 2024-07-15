@@ -81,7 +81,7 @@ export function SwiperMain({ details }: any) {
         {!imageLoaded && <Preloader />}
         {(details.map((details: any, index: any) => (
           <SwiperSlide key={details.id} virtualIndex={index}>
-            <Link className={style.swiper_home_wrapper} href={`/title/${details.type}/${details.id}`} prefetch={false}>
+            <Link className={style.swiper_home_wrapper} href={`/${details.type}/${details.id}`} prefetch={false}>
               <Image
                 width={1280}
                 height={720}

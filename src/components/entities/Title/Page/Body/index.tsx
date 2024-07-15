@@ -71,16 +71,23 @@ export function TitlePageBody({ details }: Details) {
 
   return (
     <div className={style.body}>
+
       <section className={`${style.details}`} >
-        {details && details?.watchability && details?.watchability.length > 0 ? (
-          <section className={`${style.block} ${style.watchability}`}>
-            <h3>Где смотреть {typeName4}</h3>
-            <SwiperWatchability details={details?.watchability} />
-          </section>
-        ) : null}
+
         <span>
-          <span>
-            <span>
+          {details && details?.watchability && details?.watchability.length > 0 ? (
+            <section className={`${style.block} ${style.watchability}`}>
+              <h3>Где смотреть {typeName4}</h3>
+              <SwiperWatchability details={details?.watchability} />
+            </section>
+          ) : null}
+        </span>
+
+        <span>
+
+          <span className={style.d}>
+            
+            <span className={style.e}>
               <section className={`${style.block} ${style.detailsList}`}>
                 <h3>О {typeName2}</h3>
                 <DetailsList details={details} />
@@ -90,11 +97,13 @@ export function TitlePageBody({ details }: Details) {
                 <p>{details?.description}</p>
               </section>
             </span>
+
             <section className={`${style.block} ${style.person}`}>
               <h3>Над {typeName} работали</h3>
               <ExpandableListPerson persons={details?.person} />
             </section>
           </span>
+
           {details?.trailers?.length > 0 && (
             <section className={`${style.block} ${style.trailers}`}>
               <h3>Трейлеры</h3>
@@ -102,17 +111,26 @@ export function TitlePageBody({ details }: Details) {
             </section>
           )}
         </span>
-        <section className={`${style.block} ${style.actors}`}>
-          <h3>Актеры</h3>
-          <SwiperCardPerson details={details} />
-        </section>
+
+        <span>
+          <section className={`${style.block} ${style.actors}`}>
+            <h3>Актеры</h3>
+            <SwiperCardPerson details={details} />
+          </section>
+        </span>
       </section>
+
+
+
       {session ? (
         <section className={`${style.block} ${style.player}`}>
           <h3>Просмотр</h3>
           <Player details={details?.id} />
         </section>
       ) : null}
+
+
+
       <section className={`${style.add}`}>
         {details && details?.chapters && details?.chapters?.length > 0 ? (
           <section className={`${style.block} ${style.chapters}`}>
@@ -127,6 +145,7 @@ export function TitlePageBody({ details }: Details) {
           </section>
         )}
       </section>
+
     </div>
   );
 }

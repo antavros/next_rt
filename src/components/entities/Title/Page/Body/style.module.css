@@ -19,12 +19,11 @@
 }
 
 .block h3 {
-  width        : max-content;
-  text-align   : left;
-  font-weight  : bold;
-  font-size    : 1.5rem;
-  padding      : 0.3rem;
-  margin-bottom: 1rem;
+  width      : max-content;
+  text-align : left;
+  font-weight: bold;
+  font-size  : 1.5rem;
+  padding    : 0 1rem 1rem 1rem;
 }
 
 .add {
@@ -51,19 +50,33 @@
 .watchability,
 .actors {
   height       : auto !important;
-  max-height   : 70rem;
+  max-height   : 69.5rem;
   place-content: center center;
   place-items  : center center;
   place-self   : start center;
 }
 
 .trailers {
-  width        : auto !important;
-  max-width    : 50rem;
-  overflow     : hidden;
+  display      : flex;
+  width        : auto;
+  max-width    : 58rem;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
+}
+
+.trailers h2 {
+  width        : 400px;
+  padding      : 0 1rem 1rem 1rem;
+  font-size    : 1rem;
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+}
+
+.trailers button {
+  backdrop-filter: none;
+  border-radius  : 0;
 }
 
 .details {
@@ -71,49 +84,37 @@
   flex-flow    : row wrap;
   position     : relative;
   width        : 100%;
-  height       : min-content;
-  place-content: start center;
-  place-items  : start start;
-  place-self   : start start;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
   gap          : 1rem;
-  overflow     : hidden;
 }
 
 .details span {
   display      : flex;
   flex-flow    : column nowrap;
-  position     : relative;
-  width        : min-content;
-  place-content: start start;
-  place-items  : start start;
-  place-self   : start start;
+  flex         : auto auto 33%;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : start center;
   gap          : 1rem;
-  overflow     : hidden;
 }
 
-.details span span {
+.details .d {
   display  : flex;
-  flex-flow: row nowrap;
-  position : relative;
-  width    : auto;
-  gap      : 1rem;
-  overflow : hidden;
+  flex-flow: row wrap;
+  width    : min-content;
+}
+
+.details .e {
+  display  : flex;
+  flex-flow: column nowrap;
 }
 
 .person {
   display   : flex;
   flex-flow : column wrap;
-  width     : min-content;
   place-self: start start;
-}
-
-.details span span span {
-  display  : flex;
-  flex-flow: column nowrap;
-  position : relative;
-  width    : auto;
-  gap      : 1rem;
-  overflow : hidden;
 }
 
 .detailsList {
@@ -125,7 +126,6 @@
 .description {
   display  : flex;
   flex-flow: column wrap;
-  width    : auto;
 }
 
 .description p {

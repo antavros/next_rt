@@ -1,6 +1,6 @@
 import "./style.css"
 
-export default function PolicyPage() {
+export default function PolicyRender() {
   return (
     <div className="block">
       <section>

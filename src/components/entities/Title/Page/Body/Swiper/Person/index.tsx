@@ -15,7 +15,7 @@ export function SwiperCardPerson({ details }: Details) {
   const option = { direction: 'vertical' };
 
   const renderSlide = (person: any) => (
-    <Link className={style.swiper_person_wrapper} href={`/title/person/${person.id}`} prefetch={false}>
+    <Link className={style.swiper_person_wrapper} href={`/person/${person.id}`} prefetch={false}>
       <Image
         width={220}
         height={330}

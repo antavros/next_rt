@@ -1,0 +1,80 @@
+.settings {
+  display         : flex;
+  flex-flow       : column wrap;
+  place-content   : start center;
+  place-items     : center center;
+  place-self      : center center;
+  width           : auto;
+  padding         : 1rem;
+  gap             : 1rem;
+  background-color: var(--color-block_back);
+
+  & h1 {
+    width     : max-content;
+    font-size : 2rem;
+    text-align: center;
+  }
+
+  & div {
+    display       : flex;
+    flex-direction: row wrap;
+    gap           : 1rem;
+    width         : auto;
+  }
+
+  & .settings_column {
+    display  : flex;
+    flex-flow: column nowrap;
+  }
+
+  & .settings_block {
+    display         : flex;
+    flex-flow       : column nowrap;
+    gap             : 1rem;
+    padding         : 1rem;
+    background-color: var(--color-block_back);
+    width           : auto;
+
+    & span {
+      gap       : 0.5rem;
+      place-self: center center;
+      display   : flex;
+      flex-flow : row wrap;
+    }
+
+    & h2 {
+      text-align   : start;
+      font-size    : 1rem;
+      color        : white;
+      place-content: center center;
+      place-self   : center center;
+    }
+
+    & input {
+      text-align    : center;
+      vertical-align: middle;
+      color         : var(--color-text);
+      border        : var(--border) var(--color-border);
+      border-radius : 5rem;
+      background    : rgba(0, 0, 0, 0.3) !important;
+      box-shadow    : var(--shadow);
+
+      &:is(:hover, :focus, :active) {
+        background-color: var(--color-gray_dark);
+        border-color    : var(--color-purple);
+        color           : var(--color-white);
+
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  & .avatar {
+    & img {
+      place-self   : center center;
+      border-radius: 15rem;
+    }
+  }
+}

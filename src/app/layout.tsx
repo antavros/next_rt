@@ -56,7 +56,7 @@ export default function RootLayout({ children, }: { readonly children: ReactNode
           <div className="content">
             <Header />
             <main>
-                {children}
+              {children}
             </main>
             <Footer />
           </div>

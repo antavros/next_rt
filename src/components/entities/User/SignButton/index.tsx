@@ -15,7 +15,7 @@ export const SignButton: React.FC = () => {
 
   return (
     !session ? (
-      <Link href="/user/signin" className="button signinButton">
+      <Link href="/signin" className="button signinButton">
         <IconLogin stroke={2} />
         <h6>Войти</h6>
       </Link>

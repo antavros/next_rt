@@ -49,6 +49,23 @@ export function CustomSwiper({ style, object, renderSlide, option }: CustomSwipe
         lockClass: 'hideSwiperButton',
       }}
       keyboard={true}
+      breakpoints={{
+        100: {
+          slidesPerView: 1,
+        },
+        600: {
+          slidesPerView: 1,
+        },
+        1024: {
+          slidesPerView: 1,
+        },
+        1500: {
+          slidesPerView: 1,
+        },
+        1550: {
+          slidesPerView: 2,
+        },
+      }}
       {...option}
     >
       {object.map((object: any, index: number) => (

@@ -1,4 +1,4 @@
-"use client"
+"use server"
 
 import React, { Suspense, StrictMode } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';

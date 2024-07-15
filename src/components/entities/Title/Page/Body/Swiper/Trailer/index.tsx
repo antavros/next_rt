@@ -1,30 +1,37 @@
-'use client'
+'use client';
 
 import { CustomSwiper } from '@/components/entities/Swiper/CustomSwiper';
-import { Details } from '../../../../../../shared/api/next-title';
+import { Details } from '@/components/shared/api/next-title';
+import { YouTubeEmbed } from '@next/third-parties/google';
 
 import style from './style.module.css';
 
 export function SwiperCardTrailer({ details }: Details) {
 
-  const trailers = details.trailers || [];
+  const trailers = details?.trailers || [];
 
   const object = trailers.filter((trailer: any, index: any, self: any) =>
     index === self.findIndex((t: any) => t.url === trailer.url)
   );
 
-  const renderSlide = (trailer: any) => (
-    <iframe
-      width="340"
-      height="200"
-      className={style.trailer}
-      src={trailer.url}
-      title={trailer.name}
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
-  );
+  const extractVideoId: (url: string) => string | null = (url: string) => {
+    const match = /embed\/([a-zA-Z0-9_-]+)/.exec(url);
+    return match ? match[1] : null;
+  };
+
+  const renderSlide = (object: any) => {
+    const videoId = extractVideoId(object?.url);
+    return (
+      <>
+        <h2 title={object.name}>{object.name}</h2>
+        <YouTubeEmbed
+          videoid={videoId}
+          width={400}
+          params="controls=0"
+        />
+      </>
+    );
+  };
 
   return (
     <CustomSwiper
