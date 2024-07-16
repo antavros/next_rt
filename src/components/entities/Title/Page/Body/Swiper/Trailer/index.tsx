@@ -24,11 +24,13 @@ export function SwiperCardTrailer({ details }: Details) {
     return (
       <>
         <h2 title={object.name}>{object.name}</h2>
-        <YouTubeEmbed
-          videoid={videoId}
-          width={400}
-          params="controls=0"
-        />
+        {videoId && (
+          <YouTubeEmbed
+            videoid={videoId}
+            width={400}
+            params="controls=0"
+          />
+        )}
       </>
     );
   };
