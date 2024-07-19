@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from "next";
 import { TitlePage } from "@/components/entities/Title/Page";
-import { fetchDetailsAndMetadata, allowedCategories } from "@/components/shared/api/utils";
+import { fetchDetailsAndMetadata, markTitleVisited } from "@/components/shared/api/utils";
 
 // Используем асинхронную функцию для генерации метаданных
 export async function generateMetadata({ params }: { readonly params: { readonly id: string } }, parent: ResolvingMetadata): Promise<Metadata> {
@@ -16,7 +16,13 @@ export async function generateMetadata({ params }: { readonly params: { readonly
 export default async function TitlePageRender({ params }: { readonly params: { readonly id: string, readonly category: string } }) {
   const id = params.id;
   const category = params.category;
-
+  const allowedCategories = [
+    "movie",
+    "tv-series",
+    "cartoon",
+    "animated-series",
+    "anime",
+  ];
   // Проверка, является ли категория допустимой
   if (!allowedCategories.includes(category)) {
     return null;
@@ -30,6 +36,6 @@ export default async function TitlePageRender({ params }: { readonly params: { r
     redirect(`/${details.type}/${id}`);
     return;
   }
-
+  await markTitleVisited(id);
   return <TitlePage details={details} />;
 }

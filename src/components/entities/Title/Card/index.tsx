@@ -1,16 +1,24 @@
 'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-
+import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Preloader } from "@/components/features/PreLoader";
+import { toggleFavourite, rateTitle } from '@/components/shared/api/utils';
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
 import "./style.css";
 
 export function TitleCard({ details }: { readonly details: any }) {
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleFavouriteClick = async () => {
+    await toggleFavourite(details.id);
+  };
+
+  const handleRatingChange = async (newRating: number) => {
+    await rateTitle(details.id, newRating);
+  };
 
   return (
     <article className="title_card" id={details.id}>
@@ -26,10 +34,16 @@ export function TitleCard({ details }: { readonly details: any }) {
           alt={details.name}
         />
         <section className="card_info">
-          < TitleRate
-            personal={details.average_imdb}
-            rt={details.average_kp}
+          <TitleRate
+            personal={details.personal_rating}
+            kp={details.kp_rating}
+            imdb={details.imdb_rating}
+            rt={details.rt_rating}
+            onRateChange={handleRatingChange} // Добавляем обработчик изменения рейтинга
           />
+          <button onClick={handleFavouriteClick}>
+            {details.favourite ? 'Remove from Favourite' : 'Add to Favourite'}
+          </button>
           <h3>{details.name}</h3>
           <h4>{details.enName}</h4>
           <p>{details.countries}</p>
@@ -37,7 +51,7 @@ export function TitleCard({ details }: { readonly details: any }) {
           <p>{details.genres}</p>
           <p>{details.sDescription}</p>
         </section>
-      </Link >
+      </Link>
     </article>
   );
 }

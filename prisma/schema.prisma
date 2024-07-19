@@ -1,58 +1,91 @@
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 generator client {
   provider = "prisma-client-js"
 }
 
+enum Role {
+  USER
+  ADMIN
+  OWNER
+}
+
 model User {
-  id            String          @id @default(cuid())
+  id            String      @id @default(cuid())
+  role          Role        @default(USER)
   name          String?
-  email         String          @unique
+  email         String      @unique
   password      String?
   emailVerified DateTime?
   image         String?
-  titles        Title[]
-  profile       Profile?
-  role          Role            @default(USER)
+  bio           String?
+  lists         List[]
+  userTitles    UserTitle[]
   sessions      Session[]
   accounts      Account[]
-  Authenticator Authenticator[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-enum Role {
-  USER
-  ADMIN
-}
+model List {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  ownerId     String
+  owner       User        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  titles      ListTitle[]
 
-model Profile {
-  id     String @id @default(cuid())
-  bio    String
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Title {
-  id         String     @id @default(cuid())
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
-  title      String
-  published  Boolean    @default(false)
-  author     User       @relation(fields: [authorId], references: [id])
-  authorId   String
-  categories Category[]
+  id          String      @id @default(cuid())
+  name        String
+  engname     String
+  description String?
+  image       String?
+  userTitles  UserTitle[]
+  listTitles  ListTitle[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model Category {
-  id    String  @id @default(cuid())
-  name  String
-  posts Title[]
+model UserTitle {
+  id        String  @id @default(cuid())
+  userId    String
+  titleId   String
+  rating    Int?
+  viewed    Boolean @default(false)
+  favourite Boolean @default(false)
+  visited   Boolean @default(false)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     Title   @relation(fields: [titleId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, titleId])
+}
+
+model ListTitle {
+  id      String @id @default(cuid())
+  listId  String
+  titleId String
+  list    List   @relation(fields: [listId], references: [id], onDelete: Cascade)
+  title   Title  @relation(fields: [titleId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([listId, titleId])
 }
 
 model Account {
@@ -92,20 +125,4 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
-}
-
-// Optional for WebAuthn support
-model Authenticator {
-  credentialID         String  @unique
-  userId               String
-  providerAccountId    String
-  credentialPublicKey  String
-  counter              Int
-  credentialDeviceType String
-  credentialBackedUp   Boolean
-  transports           String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([userId, credentialID])
 }
