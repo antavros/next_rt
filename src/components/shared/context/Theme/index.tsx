@@ -12,15 +12,9 @@ interface SidebarHideContextProps {
   setIsSidebarHidden: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface HeaderVisibilityContextProps {
-  lastScrollY: number;
-  setLastScrollY: React.Dispatch<React.SetStateAction<number>>;
-}
-
 // Создание контекстов
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 export const SidebarHideContext = createContext<SidebarHideContextProps | undefined>(undefined);
-export const HeaderVisibilityContext = createContext<HeaderVisibilityContextProps | undefined>(undefined);
 
 // Функция для получения начальной темы
 const getInitialTheme = () => {
@@ -111,7 +105,6 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const themeContextValue = useMemo(() => ({ isDarkMode, setIsDarkMode }), [isDarkMode]);
   const sidebarHideContextValue = useMemo(() => ({ isSidebarHidden, setIsSidebarHidden }), [isSidebarHidden]);
-  const headerVisibilityContextValue = useMemo(() => ({ lastScrollY, setLastScrollY }), [lastScrollY]);
 
   if (!themeInitialized) {
     return null; // Не рендерим контент до завершения инициализации темы
@@ -120,9 +113,7 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <ThemeContext.Provider value={themeContextValue}>
       <SidebarHideContext.Provider value={sidebarHideContextValue}>
-        <HeaderVisibilityContext.Provider value={headerVisibilityContextValue}>
           {children}
-        </HeaderVisibilityContext.Provider>
       </SidebarHideContext.Provider>
     </ThemeContext.Provider>
   );

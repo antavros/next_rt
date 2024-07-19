@@ -1,57 +1,71 @@
+.searchContainer {
+  width  : 100%;
+  height : auto;
+  padding: 0.5rem;
+
+  &:is(:hover, :focus, :active) {
+    width   : 22rem;
+    position: sticky;
+    top     : 0;
+    color   : var(--color-white);
+  }
+}
+
 .search {
-    display       : flex;
-    flex-direction: row;
-    min-width     : 2.5rem;
-    width         : 100%;
-    max-width     : 30rem;
-    height        : 3rem;
+  display       : flex;
+  flex-direction: row;
+  min-width     : 2.5rem;
+  width         : 100%;
+  max-width     : 30rem;
+  height        : 3rem;
+
+  & button {
+    width        : 3rem;
+    min-height   : 3rem;
+    border-radius: 2.5rem 0px 0px 2.5rem;
+  }
+
+  &:is(:hover, :focus, :active) {
+    color: var(--color-white);
+
+    & input {
+      color      : var(--color-white);
+      border     : 0.15rem solid var(--color-purple);
+      border-left: 0;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
 
     & button {
-        width        : 3rem;
-        min-height   : 3rem;
-        border-radius: 0px 2.5rem 2.5rem 0px;
+      scale           : none;
+      color           : var(--color-white);
+      background-color: var(--color-purple);
+      border-color    : var(--color-purple);
     }
-
-    &:is(:hover, :focus, :active) {
-        scale: 110%;
-        color: var(--color-white);
-
-        & input {
-            color: var(--color-white);
-
-            &::placeholder {
-                opacity: 0;
-            }
-        }
-
-        & button {
-            scale           : none;
-            color           : var(--color-white);
-            background-color: var(--color-purple);
-            border-color    : var(--color-purple);
-        }
-    }
+  }
 }
 
 .search input {
-    width         : 100%;
-    height        : auto;
-    margin-right  : 0.2rem;
-    text-align    : center;
-    vertical-align: middle;
-    color         : var(--color-text);
-    border        : var(--border) var(--color-border);
-    border-radius : 2.5rem 0px 0px 2.5rem;
-    background    : rgba(0, 0, 0, 0.3) !important;
-    box-shadow    : var(--shadow);
+  width         : 100%;
+  height        : auto;
+  margin-right  : 0.2rem;
+  text-align    : center;
+  vertical-align: middle;
+  color         : var(--color-text);
+  border        : 0 solid var(--color-purple);
+  border-left   : 0;
+  border-radius : 0 2.5rem 2.5rem 0;
+  background    : rgba(0, 0, 0, 0.3) !important;
+  box-shadow    : var(--shadow);
 
-    &:is(:hover, :focus, :active) {
-        background-color: var(--color-gray_dark);
-        border-color    : var(--color-purple);
-        color           : var(--color-white);
+  &:is(:hover, :focus, :active) {
+    background: rgba(0, 0, 0, 0.9) !important;
+    color     : var(--color-white);
 
-        &::placeholder {
-            opacity: 0;
-        }
+    &::placeholder {
+      opacity: 0;
     }
+  }
 }

@@ -22,24 +22,26 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   return (
-    <form className="search" id="search" onSubmit={handleSubmit}>
-      <input
-        className="search_input"
-        type="text"
-        id="search_input"
-        name="search"
-        placeholder="ПОИСК"
-        autoComplete="on"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-        required
-        minLength={1}
-        maxLength={99}
-        size={10}
-      />
-      <button type="submit" title='Найти'>
-        <IconSearch stroke={2} />
-      </button>
-    </form>
+    <div className="searchContainer">
+      <form className="search" id="search" onSubmit={handleSubmit}>
+        <button type="submit" title='Найти'>
+          <IconSearch stroke={2} />
+        </button>
+        <input
+          className="search_input"
+          type="text"
+          id="search_input"
+          name="search"
+          placeholder="ПОИСК"
+          autoComplete="on"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          required
+          minLength={1}
+          maxLength={99}
+          size={10}
+        />
+      </form>
+    </div>
   );
 }

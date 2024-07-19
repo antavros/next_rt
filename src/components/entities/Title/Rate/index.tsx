@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { IconUserCircle } from '@tabler/icons-react';
+import React, { useState } from "react";
+import Image from "next/image";
+import { IconUserCircle } from "@tabler/icons-react";
 import style from "./style.module.css";
-import { rateTitle } from '@/components/shared/api/utils';
+import { rateTitle } from "@/components/shared/api/clientUtils";
 
 interface RatingProps {
   personal?: number;
@@ -27,7 +27,13 @@ function getClassByRate({ vote }: { vote: number }) {
   };
 }
 
-export const TitleRate: React.FC<RatingProps> = ({ kp, imdb, rt, personal, onRateChange }) => {
+export const TitleRate: React.FC<RatingProps> = ({
+  kp,
+  imdb,
+  rt,
+  personal,
+  onRateChange,
+}) => {
   const [userRating, setUserRating] = useState<number | null>(null);
 
   const handleRateChange = async (newRating: number) => {
@@ -43,12 +49,18 @@ export const TitleRate: React.FC<RatingProps> = ({ kp, imdb, rt, personal, onRat
   if (rt) ratings.push(rt);
   if (personal) ratings.push(personal);
 
-  const averageRating = ratings.length > 0 ? ratings.reduce((total, rating) => total + rating, 0) / ratings.length : null;
+  const averageRating =
+    ratings.length > 0
+      ? ratings.reduce((total, rating) => total + rating, 0) / ratings.length
+      : null;
 
   return (
     <section className={`${style.title_rate} title_rate`}>
       {averageRating !== null && (
-        <article className={style.rt} style={getClassByRate({ vote: averageRating })}>
+        <article
+          className={style.rt}
+          style={getClassByRate({ vote: averageRating })}
+        >
           <Image fill={true} src="/images/RT.webp" alt="RT" priority={true} />
           <span>{averageRating.toFixed(1)}</span>
         </article>
@@ -66,7 +78,10 @@ export const TitleRate: React.FC<RatingProps> = ({ kp, imdb, rt, personal, onRat
         </article>
       )}
       {personal !== undefined && personal > 0 && (
-        <article className={style.personal} style={getClassByRate({ vote: personal })}>
+        <article
+          className={style.personal}
+          style={getClassByRate({ vote: personal })}
+        >
           <IconUserCircle stroke={2} />
           <span>{personal.toFixed(1)}</span>
         </article>
@@ -79,7 +94,7 @@ export const TitleRate: React.FC<RatingProps> = ({ kp, imdb, rt, personal, onRat
           name="rating"
           min="1"
           max="10"
-          value={userRating ?? ''}
+          value={userRating ?? ""}
           onChange={(e) => handleRateChange(Number(e.target.value))}
         />
       </div>

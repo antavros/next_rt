@@ -1,10 +1,13 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { Preloader } from "@/components/features/PreLoader";
-import { toggleFavourite, rateTitle } from '@/components/shared/api/utils';
+import {
+  toggleFavourite,
+  rateTitle,
+} from "@/components/shared/api/clientUtils";
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
 import "./style.css";
@@ -29,7 +32,7 @@ export function TitleCard({ details }: { readonly details: any }) {
           width={256}
           height={400}
           quality={25}
-          loading={'lazy'}
+          loading={"lazy"}
           src={details.poster}
           alt={details.name}
         />
@@ -42,12 +45,14 @@ export function TitleCard({ details }: { readonly details: any }) {
             onRateChange={handleRatingChange} // Добавляем обработчик изменения рейтинга
           />
           <button onClick={handleFavouriteClick}>
-            {details.favourite ? 'Remove from Favourite' : 'Add to Favourite'}
+            {details.favourite ? "Remove from Favourite" : "Add to Favourite"}
           </button>
           <h3>{details.name}</h3>
           <h4>{details.enName}</h4>
           <p>{details.countries}</p>
-          <p>{details.year}г {details.length}</p>
+          <p>
+            {details.year}г {details.length}
+          </p>
           <p>{details.genres}</p>
           <p>{details.sDescription}</p>
         </section>
