@@ -18,7 +18,7 @@ export function Search({ onSearch }: SearchProps) {
     if (onSearch) {
       onSearch(searchValue);
     }
-    router.push(`/title/search?page=1&query=${searchValue}`);
+    router.push(`/search?page=1&query=${searchValue}`);
   };
 
   return (

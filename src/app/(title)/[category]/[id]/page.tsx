@@ -1,12 +1,9 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
+import { redirect } from "next/navigation";
 import { TitlePage } from "@/components/entities/Title/Page";
-import {
-  fetchDetailsAndMetadata,
-  markTitleVisited,
-} from "@/components/shared/api/clientUtils";
+import { fetchDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 
 // Используем асинхронную функцию для генерации метаданных
 export async function generateMetadata(
@@ -49,6 +46,5 @@ export default async function TitlePageRender({
     redirect(`/${details.type}/${id}`);
     return;
   }
-  await markTitleVisited(id);
   return <TitlePage details={details} />;
 }

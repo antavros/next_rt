@@ -11,14 +11,6 @@ import {
 } from "@/components/shared/api/url";
 import type { Metadata, ResolvingMetadata } from "next";
 
-export const allowedCategories = [
-  "movie",
-  "tv-series",
-  "cartoon",
-  "animated-series",
-  "anime",
-];
-
 export async function getCategoryDetails(
   category: string
 ): Promise<{ url?: string; name?: string }> {

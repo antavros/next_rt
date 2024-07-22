@@ -2,7 +2,7 @@
 
 import { TitleTable } from "@/components/entities/Title/Table";
 import { Pagination } from "@/components/features/Pagination";
-import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/clientUtils";
+import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata, ResolvingMetadata } from "next";
 
 // Генерация метаданных для страниц категорий
