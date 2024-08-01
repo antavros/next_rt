@@ -1,9 +1,9 @@
 button {
   display            : flex;
   flex-direction     : row;
-  place-content      : center;
-  place-items        : center;
-  place-self         : center;
+  place-content      : center center;
+  place-items        : center center;
+  place-self         : center center;
   border             : none;
   border-radius      : 5rem;
   color              : var(--color-text);
@@ -20,7 +20,7 @@ button {
   backdrop-filter    : var(--blur);
 }
 
-button a svg {
+button svg {
   width : 1.5rem;
   height: 1.5rem;
 }

@@ -64,14 +64,14 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
     if (themeInitialized && typeof window !== 'undefined') {
       localStorage.setItem('sidebarHidden', JSON.stringify(isSidebarHidden));
-      const asideElement = document.querySelector('aside');
+      const headerElement = document.querySelector("header");
       const toggleElement = document.querySelector('.toggle_sidebar');
-      if (asideElement) {
+      if (headerElement) {
         if (isSidebarHidden) {
-          asideElement.classList.add('sidebar_hide');
+          headerElement.classList.add('sidebar_hide');
           if (toggleElement) toggleElement.classList.add('flipped');
         } else {
-          asideElement.classList.remove('sidebar_hide');
+          headerElement.classList.remove('sidebar_hide');
           if (toggleElement) toggleElement.classList.remove('flipped');
         }
       }

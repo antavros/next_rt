@@ -1,29 +1,42 @@
-'use client'
+"use client";
 
-import React from 'react';
-import Link from 'next/link'
-import { useSession, signOut } from 'next-auth/react';
+import React from "react";
+import { useSession, signOut } from "next-auth/react";
+import { Button, Item } from "@/components/features/Button";
 
-import {
-  IconLogin,
-  IconLogout,
-} from '@tabler/icons-react';
+import { IconLogin, IconLogout } from "@tabler/icons-react";
 import "./style.css";
 
 export const SignButton: React.FC = () => {
   const { data: session } = useSession();
 
-  return (
-    !session ? (
-      <Link href="/signin" className="button signinButton">
-        <IconLogin stroke={2} />
-        <h6>Войти</h6>
-      </Link>
-    ) : (
-      <button onClick={() => signOut()} className="signinButton">
-        <IconLogout stroke={2} />
-        <h6>Выйти</h6>
-      </button>
-    )
+  const buttonItemsLogin: Item[] = [
+    {
+      type: "button",
+      title: "Войти",
+      name: "Войти",
+      url: "/signin",
+      className: "signinButton",
+      svg: <IconLogin stroke={2} />,
+    },
+  ];
+
+  const buttonItemsLogout: Item[] = [
+    {
+      type: "button",
+      title: "Выйти",
+      name: "Выйти",
+      className: "signinButton",
+      onClick: () => {
+        signOut();
+      },
+      svg: <IconLogout stroke={2} />,
+    },
+  ];
+
+  return !session ? (
+    <Button items={buttonItemsLogin} />
+  ) : (
+    <Button items={buttonItemsLogout} />
   );
 };

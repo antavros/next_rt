@@ -1,63 +1,59 @@
-.avatarContainer {
+.avatarButton {
+  display        : flex;
+  flex-direction : column;
+  place-content  : center center;
+  place-items    : center center;
+  place-self     : center center;
+  padding        : 0;
+  border-radius  : 0;
+  white-space    : nowrap;
+  overflow       : hidden;
+  width          : auto;
+  height         : max-content;
   background     : none !important;
   backdrop-filter: none !important;
   box-shadow     : none !important;
+}
 
-  & .avatarButton {
-    display       : flex;
-    flex-direction: column;
-    place-content : center center;
-    place-items   : center center;
-    place-self    : center center;
-    padding       : 0;
-    border-radius : 0;
-    white-space   : nowrap;
-    overflow      : hidden;
-    width         : auto;
-    height        : auto;
+.avatarGradient {
+  display         : flex;
+  width           : 4rem;
+  height          : 4rem;
+  place-content   : center center;
+  place-items     : center center;
+  place-self      : center center;
+  border          : 3px solid transparent;
+  background-image: linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
+  border-radius   : 5rem;
+}
 
-    .avatarGradient {
-      display         : flex;
-      width           : 4rem;
-      height          : 4rem;
-      place-content   : center center;
-      place-items     : center center;
-      place-self      : center center;
-      border          : 3px solid transparent;
-      background-image: linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
-      border-radius   : 5rem;
+.avatarGradient img {
+  width        : 3.5rem;
+  height       : 3.5rem;
+  object-fit   : cover;
+  border-radius: 5rem;
+  z-index      : 9999;
+}
 
-      & img {
-        width        : 3.5rem;
-        height       : 3.5rem;
-        object-fit   : cover;
-        border-radius: 5rem;
-        z-index      : 9999;
-      }
+.avatarGradient svg {
+  width : 3.5rem;
+  height: 3.5rem;
+  color : var(--color-white);
+}
 
-      & svg {
-        width : 3.5rem;
-        height: 3.5rem;
-        color : var(--color-white);
-      }
-    }
 
-    & h6 {
-      padding      : 0.3rem 0;
-      text-align   : center;
-      font-size    : 0.9rem;
-      color        : var(--color-white);
-      text-overflow: ellipsis;
-      white-space  : nowrap;
-      overflow     : hidden;
-    }
-  }
+.avatarButton h6 {
+  padding      : 0.3rem 0;
+  text-align   : center;
+  font-size    : 0.9rem;
+  color        : var(--color-white);
+  text-overflow: ellipsis;
+  white-space  : nowrap;
+  overflow     : hidden;
+}
 
-  &:is(:focus, :hover, :active) {
-    & .avatarName {
-      scale: 1;
-    }
-  }
+.avatarButton h6:is(:focus, :hover, :active) {
+  scale: 1;
 }
 
 .avatarMenu {

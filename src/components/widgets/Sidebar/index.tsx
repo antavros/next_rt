@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-
 import {
   IconHome,
   IconMovie,
@@ -13,94 +12,79 @@ import {
   IconCards,
 } from "@tabler/icons-react";
 import { Search } from "@/components/features/Search";
-
 import { Togglers } from "@/components/features/Togglers";
 import { UserCard } from "@/components/entities/User/Card";
 import { Logo } from "@/components/entities/Logo";
 import { Button } from "@/components/features/Button";
-
 import "./style.css";
 
 export function Sidebar() {
   const pathname = usePathname();
-  const isActive = (href: string) => {
-    return pathname.startsWith(href) ? "active" : "";
-  };
+  const isActive = (href: string) => (pathname === href ? "active" : "");
 
   const buttonItems = [
     {
+      name: "Главная",
       url: "/",
-      type: "button",
-      className: `button link ${pathname === "/" ? "active" : ""}`,
-      onClick: () => { },
+      className: isActive("/"),
+      onClick: () => {},
       svg: <IconHome stroke={2} />,
-      name: "Главная"
     },
     {
+      name: "Фильмы",
       url: "/movie?page=1",
-      type: "button",
-      className: `button link ${isActive("/movie")}`,
-      onClick: () => { },
+      className: isActive("/movie"),
+      onClick: () => {},
       svg: <IconMovie stroke={2} />,
-      name: "Фильмы"
     },
     {
+      name: "Сериалы",
       url: "/tv-series?page=1",
-      type: "button",
-      className: `button link ${isActive("/tv-series")}`,
-      onClick: () => { },
+      className: isActive("/tv-series"),
+      onClick: () => {},
       svg: <IconDeviceTvOld stroke={2} />,
-      name: "Сериалы"
     },
     {
+      name: "Мультфильмы",
       url: "/cartoon?page=1",
-      type: "button",
-      className: `button link ${isActive("/cartoon")}`,
-      onClick: () => { },
+      className: isActive("/cartoon"),
+      onClick: () => {},
       svg: <IconMickey stroke={2} />,
-      name: "Мультфильмы"
     },
     {
+      name: "Мультсериалы",
       url: "/animated-series?page=1",
-      type: "button",
-      className: `button link ${isActive("/animated-series")}`,
-      onClick: () => { },
+      className: isActive("/animated-series"),
+      onClick: () => {},
       svg: <IconHorseToy stroke={2} />,
-      name: "Мультсериалы"
     },
     {
+      name: "Аниме",
       url: "/anime?page=1",
-      type: "button",
-      className: `button link ${isActive("/anime")}`,
-      onClick: () => { },
+      className: isActive("/anime"),
+      onClick: () => {},
       svg: <IconTorii stroke={2} />,
-      name: "Аниме"
     },
     {
+      name: "Коллекции",
       url: "/list?page=1",
-      type: "button",
-      className: `button link ${isActive("/list")}`,
-      onClick: () => { },
+      className: isActive("/list"),
+      onClick: () => {},
       svg: <IconCards stroke={2} />,
-      name: "Коллекции"
     },
     {
+      name: "Персоны",
       url: "/person?page=1",
-      type: "button",
-      className: `button link ${isActive("/person")}`,
-      onClick: () => { },
+      className: isActive("/person"),
+      onClick: () => {},
       svg: <IconUsers stroke={2} />,
-      name: "Персоны"
-    }
+    },
   ];
 
   return (
-    <aside>
+    <header>
       <section className="sidebar">
         <Logo />
-        <hr />
-        <UserCard />
-        <hr />
         <Search />
         <hr />
         <nav aria-label="Боковое меню навигации">
@@ -108,7 +92,8 @@ export function Sidebar() {
         </nav>
         <hr />
         <Togglers />
+        <UserCard />
       </section>
-    </aside>
+    </header>
   );
 }

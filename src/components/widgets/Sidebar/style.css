@@ -1,32 +1,26 @@
-aside {
-  display        : flex;
-  flex           : 0 0 auto;
-  width          : 15rem;
-  height         : auto;
-  border-radius  : 0;
-  backdrop-filter: var(--blur);
-  background     : var(--color-block_back);
-  z-index        : var(--sidebar_z-index);
+header {
+  display: flex;
+  flex   : 0 0 auto;
+  width  : 16rem;
+  height : auto;
+  z-index: var(--sidebar_z-index);
 }
 
 .sidebar {
-  position      : sticky;
-  top           : 0;
-  display       : flex;
-  flex-direction: column;
-  place-content : center start;
-  place-self    : start center;
-  width         : 100%;
-  height        : 100dvh;
-  border-radius : 0;
+  position       : sticky;
+  top            : 1rem;
+  display        : flex;
+  flex-direction : column;
+  place-content  : center start;
+  place-self     : start center;
+  width          : 100%;
+  height         : 100dvh;
+  backdrop-filter: var(--blur);
+  background     : var(--color-block_back);
 }
 
 .sidebar nav {
-  display       : flex;
-  flex-direction: column;
-  display       : flex;
-  border-radius : 0;
-  width         : 100%;
+  border-radius: 0;
 }
 
 .sidebar nav ul {
@@ -34,45 +28,48 @@ aside {
   flex-direction: column;
   gap           : 0.5rem;
   border-radius : 0;
-  padding       : 1rem 0;
-  overflow-x    : hidden;
 }
 
 .sidebar nav ul li {
-  width        : 100%;
-  height       : max-content;
   border-radius: 0;
-  padding      : 0rem 0 0rem 1.5rem;
 }
 
-.sidebar nav ul li button a {
+.sidebar nav ul li button {
+  display        : flex;
+  flex-direction : row;
   width          : 100%;
+  height         : max-content;
   place-content  : center start;
-  border-radius  : 1rem 0 0 1rem;
+  border-radius  : 0;
   box-shadow     : none;
   backdrop-filter: none;
   background     : transparent;
 }
 
-.sidebar nav ul li button a svg {
-  color: var(--color-white);
+.sidebar nav ul li button svg {
+  color  : var(--color-white);
+  width  : 2rem;
+  height : 2rem;
+  padding: 0.2rem;
 }
 
-.sidebar nav ul li button a h6 {
+.sidebar nav ul li button h6 {
   font-size   : 1;
   padding-left: var(--block-gap);
   overflow    : hidden;
   color       : var(--color-white);
 }
 
-.sidebar nav ul li button a.active {
-  scale     : 105%;
-  color     : var(--color-white);
-  background: var(--color-purple);
-}
+.sidebar nav ul li button.active {
+  color          : var(--color-white);
+  border-left    : 0.3rem solid var(--color-purple);
+  border-right   : 0.3rem solid var(--color-purple);
+  backdrop-filter: var(--blur);
 
-.sidebar_hide .avatarName {
-  display: none;
+  & svg {
+    color     : var(--color-orangered);
+    background: var(--color-purple);
+  }
 }
 
 .sidebar_hide {
@@ -87,17 +84,20 @@ aside {
   display: block;
 }
 
-.sidebar_hide .signin {
-  gap: 0;
+.sidebar_hide nav button {
+  place-content: ceter ceter;
+  place-items  : ceter ceter;
+  place-self   : ceter ceter;
 }
 
-.sidebar_hide ul h6 {
+.sidebar_hide nav button h6 {
   font-size: 0;
 }
 
 .sidebar_hide .togglers {
   flex-direction: column;
 }
+
 
 @media (max-width: 750px) {
   .pagination {
@@ -107,7 +107,7 @@ aside {
   }
 
 
-  aside,
+  header,
   .sidebar_hide {
     position  : sticky;
     bottom    : 0 !important;

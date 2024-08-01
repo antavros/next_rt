@@ -4,10 +4,7 @@
   padding: 0.5rem;
 
   &:is(:hover, :focus, :active) {
-    width   : 22rem;
-    position: sticky;
-    top     : 0;
-    color   : var(--color-white);
+    color: var(--color-white);
   }
 }
 

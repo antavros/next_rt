@@ -3,7 +3,11 @@
   flex-direction: column;
   place-content : center center;
   place-self    : center center;
+  place-items   : center center;
   width         : 100%;
-  padding       : 0.5rem 0.5rem 0 0.5rem;
+  height        : max-content;
   min-height    : 3rem;
+  margin-top    : auto;
+  padding       : 1rem 1rem 1rem 1rem;
+  overflow      : hidden;
 }

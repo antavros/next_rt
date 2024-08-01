@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IconSearch } from '@tabler/icons-react';
+import { Button } from "@/components/features/Button";
 
 import './style.css';
 
@@ -21,12 +22,18 @@ export function Search({ onSearch }: SearchProps) {
     router.push(`/search?page=1&query=${searchValue}`);
   };
 
+  const buttonItems: Item[] = [
+    {
+      type: "submit",
+      title: "Найти",
+      svg: <IconSearch stroke={2} />,
+    },
+  ];
+
   return (
     <div className="searchContainer">
       <form className="search" id="search" onSubmit={handleSubmit}>
-        <button type="submit" title='Найти'>
-          <IconSearch stroke={2} />
-        </button>
+        <Button items={buttonItems} />
         <input
           className="search_input"
           type="text"
