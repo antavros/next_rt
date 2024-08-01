@@ -9,7 +9,7 @@ aside {
   z-index        : var(--sidebar_z-index);
 }
 
-.Sidebar {
+.sidebar {
   position      : sticky;
   top           : 0;
   display       : flex;
@@ -21,7 +21,7 @@ aside {
   border-radius : 0;
 }
 
-.Sidebar nav {
+.sidebar nav {
   display       : flex;
   flex-direction: column;
   display       : flex;
@@ -29,7 +29,7 @@ aside {
   width         : 100%;
 }
 
-.Sidebar nav ul {
+.sidebar nav ul {
   display       : flex;
   flex-direction: column;
   gap           : 0.5rem;
@@ -38,14 +38,14 @@ aside {
   overflow-x    : hidden;
 }
 
-.Sidebar nav ul li {
+.sidebar nav ul li {
   width        : 100%;
   height       : max-content;
   border-radius: 0;
   padding      : 0rem 0 0rem 1.5rem;
 }
 
-.Sidebar nav ul a {
+.sidebar nav ul li button a {
   width          : 100%;
   place-content  : center start;
   border-radius  : 1rem 0 0 1rem;
@@ -54,18 +54,18 @@ aside {
   background     : transparent;
 }
 
-.Sidebar nav ul svg {
+.sidebar nav ul li button a svg {
   color: var(--color-white);
 }
 
-.Sidebar nav ul h6 {
+.sidebar nav ul li button a h6 {
   font-size   : 1;
   padding-left: var(--block-gap);
   overflow    : hidden;
   color       : var(--color-white);
 }
 
-.Sidebar nav ul li a.active {
+.sidebar nav ul li button a.active {
   scale     : 105%;
   color     : var(--color-white);
   background: var(--color-purple);
@@ -109,61 +109,61 @@ aside {
 
   aside,
   .sidebar_hide {
-    position: sticky;
-    bottom  : 0 !important;
-    right   : 0 !important;
-    left    : 0 !important;
-    order   : 5;
-    width   : 100%;
-    height  : auto !important;
-      overflow-y : scroll;
+    position  : sticky;
+    bottom    : 0 !important;
+    right     : 0 !important;
+    left      : 0 !important;
+    order     : 5;
+    width     : 100%;
+    height    : auto !important;
+    overflow-y: scroll;
   }
 
-  .Sidebar {
+  .sidebar {
     display       : flex;
     flex-direction: row;
     width         : 100%;
     height        : auto;
   }
 
-  .Sidebar hr {
+  .sidebar hr {
     display: none;
   }
 
-  .Sidebar .logo {
+  .sidebar .logo {
     display: none;
   }
 
-  .Sidebar .togglers {
+  .sidebar .togglers {
     display       : flex;
     width         : auto;
     flex-direction: row;
     padding       : 0.2rem;
   }
 
-  .Sidebar .togglers button {
+  .sidebar .togglers button {
     display: none;
   }
 
-  .Sidebar nav {
+  .sidebar nav {
     flex-direction: row;
     width         : auto;
   }
 
-  .Sidebar nav ul {
+  .sidebar nav ul {
     display       : flex;
     flex-direction: row;
     padding-left  : 0;
     padding-top   : 1.5rem;
   }
 
-  .Sidebar nav ul a {
+  .sidebar nav ul a {
     place-items  : start center !important;
     height       : 100% !important;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
-  .Sidebar nav ul h6 {
+  .sidebar nav ul h6 {
     display: none !important;
   }
 }

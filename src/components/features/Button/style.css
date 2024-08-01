@@ -1,7 +1,4 @@
-button,
-.button,
-.swiper-button-prev,
-.swiper-button-next {
+button {
   display            : flex;
   flex-direction     : row;
   place-content      : center;
@@ -21,74 +18,74 @@ button,
   padding            : 0.5rem;
   background         : var(--color-button-inactive);
   backdrop-filter    : var(--blur);
+}
 
-  & svg {
-    width : 1.5rem;
-    height: 1.5rem;
-  }
+button a svg {
+  width : 1.5rem;
+  height: 1.5rem;
+}
 
-  & h6 {
-    font-size    : 0.8rem;
-    color        : var(--color-text);
-    text-overflow: ellipsis;
-    text-align   : center;
-    white-space  : nowrap;
-    overflow     : hidden;
-  }
+button h6 {
+  font-size    : 0.8rem;
+  color        : var(--color-text);
+  text-overflow: ellipsis;
+  text-align   : center;
+  white-space  : nowrap;
+  overflow     : hidden;
+}
+
+button:hover {
+  color           : var(--color-white);
+  background-color: var(--color-button-hover);
+}
+
+button:hover svg,
+h6 {
+  scale: 105%;
+  color: var(--color-white);
+}
+
+button:active {
+  color     : var(--color-orangered);
+  background: var(--color-purple);
+}
+
+button:active svg,
+h6 {
+  scale: 96%;
+  color: var(--color-orangered);
+}
+
+button:disabled {
+  scale           : 1;
+  color           : var(--color-text);
+  background-color: rgba(255, 255, 255, 0.342);
 
   &:hover {
-    color           : var(--color-white);
-    background-color: var(--color-button-hover);
-
-    & svg,
-    h6 {
-      scale: 105%;
-      color: var(--color-white);
-    }
-  }
-
-  &:active {
-    color     : var(--color-orangered);
-    background: var(--color-purple);
-
-    & svg,
-    h6 {
-      scale: 96%;
-      color: var(--color-orangered);
-    }
-  }
-
-  &:disabled {
     scale           : 1;
     color           : var(--color-text);
     background-color: rgba(255, 255, 255, 0.342);
 
-    &:hover {
-      scale           : 1;
-      color           : var(--color-text);
-      background-color: rgba(255, 255, 255, 0.342);
-
-      & svg {
-        color: var(--color-text);
-      }
-
-      & h6 {
-        color: var(--color-text);
-      }
+    & svg {
+      color: var(--color-text);
     }
 
-    &:active {
-      scale           : 1;
-      color           : var(--color-text);
-      background-color: rgba(255, 255, 255, 0.342);
+    & h6 {
+      color: var(--color-text);
+    }
+  }
 
-      & svg {
-        color: var(--color-text);
-      }
+  &:active {
+    scale           : 1;
+    color           : var(--color-text);
+    background-color: rgba(255, 255, 255, 0.342);
 
-      & h6 {
-        color: var(--color-text);
-      }
+    & svg {
+      color: var(--color-text);
+    }
+
+    & h6 {
+      color: var(--color-text);
     }
   }
 }
