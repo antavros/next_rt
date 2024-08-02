@@ -5,7 +5,7 @@ import React from "react";
 import "./style.css";
 
 export type Item = {
-  type?: "button" | "submit" | "reset";
+  type?: any;
   title?: string;
   name?: string;
   url?: string;

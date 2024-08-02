@@ -1,72 +1,52 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react';
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
 import { Preloader } from "@/components/features/PreLoader";
 
-import {
-  Swiper,
-  SwiperSlide
-} from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Virtual,
   Autoplay,
   Keyboard,
   Navigation,
   Pagination,
-} from 'swiper/modules';
+} from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/keyboard';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/virtual';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/keyboard";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/virtual";
 
-import '../style.css';
-import style from './style.module.css';
+import "../style.css";
+import style from "./style.module.css";
 
 export function SwiperMain({ details }: any) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className={style.swiperContainer} >
+    <div className={style.swiperContainer}>
       <Swiper
         breakpoints={{
-          100: {
-            slidesPerView: 1,
-          },
-          600: {
-            slidesPerView: 1,
-          },
-          1024: {
-            slidesPerView: 1,
-          },
-          1500: {
-            slidesPerView: 1,
-          },
-          1550: {
+          1551: {
             slidesPerView: 2,
           },
         }}
-        modules={[
-          Autoplay,
-          Keyboard,
-          Navigation,
-          Pagination,
-          Virtual
-        ]}
+        modules={[Autoplay, Keyboard, Navigation, Pagination, Virtual]}
         className={style.swiper_home}
         cssMode={false}
         navigation={true}
-        slidesPerView={2}
+        spaceBetween={8}
+        virtual
+        slidesPerView={1}
         slidesPerGroupAuto={true}
         centeredSlides={true}
         loop={true}
-        spaceBetween={8}
         grabCursor={true}
         keyboard={true}
         pagination={{
@@ -76,12 +56,15 @@ export function SwiperMain({ details }: any) {
           delay: 22500,
           disableOnInteraction: true,
         }}
-        virtual
       >
         {!imageLoaded && <Preloader />}
-        {(details.map((details: any, index: any) => (
+        {details.map((details: any, index: any) => (
           <SwiperSlide key={details.id} virtualIndex={index}>
-            <Link className={style.swiper_home_wrapper} href={`/${details.type}/${details.id}`} prefetch={false}>
+            <Link
+              className={style.swiper_home_wrapper}
+              href={`/${details.type}/${details.id}`}
+              prefetch={false}
+            >
               <Image
                 width={1280}
                 height={720}
@@ -105,14 +88,21 @@ export function SwiperMain({ details }: any) {
                 <h1>{details.name}</h1>
                 <h2>{details.enName}</h2>
                 <p>{details.countries}</p>
-                <p>{details.year}г {details.length}</p>
+                <p>
+                  {details.year}г {details.length}
+                </p>
                 <p>{details.genres}</p>
-                < TitleRate kp={details.average_kp} imdb={details.average_imdb} personal={details.average_imdb} rt={details.average_kp} />
+                <TitleRate
+                  kp={details.average_kp}
+                  imdb={details.average_imdb}
+                  personal={details.average_imdb}
+                  rt={details.average_kp}
+                />
               </section>
-            </Link >
+            </Link>
           </SwiperSlide>
-        )))}
-      </Swiper >
+        ))}
+      </Swiper>
     </div>
   );
 }

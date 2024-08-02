@@ -16,7 +16,7 @@ button {
   user-select        : none;
   gap                : 0.2rem;
   padding            : 0.5rem;
-  background         : var(--color-button-inactive);
+  background-color   : var(--color-button-inactive);
   backdrop-filter    : var(--blur);
 }
 

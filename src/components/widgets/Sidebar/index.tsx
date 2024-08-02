@@ -85,9 +85,9 @@ export function Sidebar() {
     <header>
       <section className="sidebar">
         <Logo />
-        <Search />
-        <hr />
         <nav aria-label="Боковое меню навигации">
+          <Search />
+          <hr />
           <Button items={buttonItems} />
         </nav>
         <hr />

@@ -1,10 +1,11 @@
-'use client'
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { IconSearch } from '@tabler/icons-react';
-import { Button } from "@/components/features/Button";
+"use client";
 
-import './style.css';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { IconSearch, IconX } from "@tabler/icons-react";
+import { Button, Item } from "@/components/features/Button";
+
+import "./style.css";
 
 interface SearchProps {
   onSearch?: (value: string) => void;
@@ -22,18 +23,32 @@ export function Search({ onSearch }: SearchProps) {
     router.push(`/search?page=1&query=${searchValue}`);
   };
 
-  const buttonItems: Item[] = [
+  const handleReset = () => {
+    setSearchValue("");
+  };
+
+  const buttonItemsSubmit: Item[] = [
     {
       type: "submit",
-      title: "Найти",
       svg: <IconSearch stroke={2} />,
     },
   ];
 
+    const buttonItemsReset: Item[] = [
+      {
+      type: "reset",
+      svg: <IconX stroke={2} />,
+      },
+    ];
   return (
     <div className="searchContainer">
-      <form className="search" id="search" onSubmit={handleSubmit}>
-        <Button items={buttonItems} />
+      <form
+        className="search"
+        id="search"
+        onSubmit={handleSubmit}
+        onReset={handleReset}
+      >
+        <Button items={buttonItemsSubmit} />
         <input
           className="search_input"
           type="text"
@@ -48,6 +63,7 @@ export function Search({ onSearch }: SearchProps) {
           maxLength={99}
           size={10}
         />
+        <Button items={buttonItemsReset} />
       </form>
     </div>
   );
