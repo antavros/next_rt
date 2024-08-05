@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Logo } from "@/components/entities/Logo";
-import { IconUsers, IconAddressBook } from '@tabler/icons-react';
+import { Logo } from "@/components/features/Logo";
+import { IconUsers, IconAddressBook } from "@tabler/icons-react";
 
 import "./style.css";
 
@@ -14,8 +14,7 @@ export function Footer() {
           <ul>
             <li>
               <Link href="/user/policy" className="button" prefetch={false}>
-                <IconUsers stroke={2} />
-                О нас
+                <IconUsers stroke={2} />О нас
               </Link>
             </li>
             <li>

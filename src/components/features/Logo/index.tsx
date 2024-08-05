@@ -22,7 +22,7 @@ export function Logo() {
         priority={true}
         id="logo2"
         alt="RATETABLE"
-        src="/images/LOGO.svg"
+        src="/images/LOGO.webp"
       />
     </Link>
   );

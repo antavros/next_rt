@@ -7,6 +7,13 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { ZodError } from "zod";
 import { signInSchema } from "./zod";
+export type {
+  Account,
+  DefaultSession,
+  Profile,
+  Session,
+  User,
+} from "@auth/core/types";
 
 const prisma = new PrismaClient();
 
@@ -59,7 +66,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   pages: {
-    signIn: "/",
+    signIn: "/user/signin",
     error: "/user/signin",
   },
   adapter: PrismaAdapter(prisma),
@@ -79,7 +86,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         login: { label: "login", type: "text" },
         email: { label: "email", type: "email" },
       },
-      authorize: async (credentials) => {
+      authorize: async (credentials: any) => {
         try {
           const { password, email, login } = await signInSchema.parseAsync(
             credentials

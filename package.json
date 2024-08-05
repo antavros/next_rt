@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/core": "^0.34.2",
     "@auth/pg-adapter": "^1.4.1",
     "@auth/prisma-adapter": "^2.4.1",
     "@mapbox/node-pre-gyp": "^1.0.11",
@@ -22,12 +23,12 @@
     "@vercel/speed-insights": "^1.0.12",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
-    "next": "^15.0.0-canary.68",
-    "next-auth": "^5.0.0-beta.19",
+    "next": "^15.0.0-canary.102",
+    "next-auth": "^5.0.0-beta.20",
     "node-addon-api": "^8.1.0",
     "pg": "^8.12.0",
-    "react": "^19.0.0-rc-01172397-20240716",
-    "react-dom": "^19.0.0-rc-01172397-20240716",
+    "react": "^19.0.0-rc-8269d55d-20240802",
+    "react-dom": "^19.0.0-rc-8269d55d-20240802",
     "swiper": "^11.1.1",
     "zod": "^3.23.8"
   },

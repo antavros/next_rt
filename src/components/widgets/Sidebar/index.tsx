@@ -14,7 +14,7 @@ import {
 import { Search } from "@/components/features/Search";
 import { Togglers } from "@/components/features/Togglers";
 import { UserCard } from "@/components/entities/User/Card";
-import { Logo } from "@/components/entities/Logo";
+import { Logo } from "@/components/features/Logo";
 import { Button } from "@/components/features/Button";
 import "./style.css";
 
