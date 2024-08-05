@@ -15,14 +15,14 @@ header {
   place-self     : start center;
   width          : 100%;
   height         : 100dvh;
-  padding        : 1rem;
   border-radius  : 0;
   backdrop-filter: var(--blur);
   background     : var(--color-block_back);
 }
 
 .sidebar nav {
-  padding: 0.5rem 0;
+  padding      : 0.5rem 0;
+  border-radius: 0;
 }
 
 .sidebar nav ul {
@@ -30,6 +30,11 @@ header {
   flex-direction: column;
   gap           : 0.5rem;
   padding       : 0.5rem 0 0 0;
+  border-radius : 0;
+}
+
+.sidebar nav ul li {
+  border-radius: 0;
 }
 
 .sidebar nav ul li button {
@@ -41,6 +46,7 @@ header {
   box-shadow     : none;
   backdrop-filter: none;
   background     : transparent;
+  border-radius  : 0;
 }
 
 .sidebar nav ul li button svg {
@@ -53,14 +59,14 @@ header {
 .sidebar nav ul li button h6 {
   font-size   : 1;
   padding-left: var(--block-gap);
-  overflow    : hidden;
   color       : var(--color-white);
 }
 
 .sidebar nav ul li button.active {
   color          : var(--color-white);
-  border-left    : 0.3rem solid var(--color-purple);
-  border-right   : 0.3rem solid var(--color-purple);
+  border-inline  : 0.3rem solid var(--color-purple);
+  writing-mode   : horizontal-tb;
+  direction      : ltr;
   backdrop-filter: var(--blur);
 
   & svg {
@@ -96,6 +102,9 @@ header {
   flex-direction: column;
 }
 
+.sidebar_hide .avatarContainer .avatarName {
+  display: none;
+}
 
 @media (max-width: 1100px) {
   .pagination {

@@ -1,13 +1,11 @@
 .userCard {
-  display       : flex;
-  flex-direction: column;
-  place-content : center center;
-  place-self    : center center;
-  place-items   : center center;
-  width         : 100%;
-  height        : max-content;
-  min-height    : 3rem;
-  margin-top    : auto;
-  padding       : 1rem 1rem 1rem 1rem;
-  overflow      : hidden;
+  display        : flex;
+  flex-direction : row;
+  width          : 100%;
+  height         : max-content;
+  min-height     : 3rem;
+  margin-top     : auto;
+  padding        : 0.5rem;
+  backdrop-filter: var(--blur);
+  background     : var(--color-block_back);
 }

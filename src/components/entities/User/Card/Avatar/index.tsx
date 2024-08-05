@@ -31,21 +31,19 @@ export const UserAvatar: React.FC = () => {
   return (
     <>
       <button onClick={() => setDropDown(!dropDown)} className="avatarButton">
-        <div className="avatarGradient">
-          {session?.user?.image ? (
-            <Image
-              width={75}
-              height={75}
-              className="userAvatar"
-              src={session.user.image}
-              alt="User Avatar"
-              quality={25}
-              priority={true}
-            />
-          ) : (
-            <IconUserCircle stroke={2} />
-          )}
-        </div>
+        {session?.user?.image ? (
+          <Image
+            width={75}
+            height={75}
+            className="userAvatar"
+            src={session.user.image}
+            alt="User Avatar"
+            quality={25}
+            priority={true}
+          />
+        ) : (
+          <IconUserCircle stroke={2} />
+        )}
         <h6>{session?.user?.name}</h6>
       </button>
       {dropDown ? (
