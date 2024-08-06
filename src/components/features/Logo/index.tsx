@@ -13,7 +13,7 @@ export function Logo() {
         priority={true}
         id="logo1"
         alt="RATETABLE"
-        src="/images/LOGO.png"
+        src="/images/LOGO.webp"
       />
       <Image
         width={200}
@@ -22,7 +22,7 @@ export function Logo() {
         priority={true}
         id="logo2"
         alt="RATETABLE"
-        src="/images/LOGO.webp"
+        src="/images/LOGO1.webp"
       />
     </Link>
   );

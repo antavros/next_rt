@@ -4,7 +4,6 @@ import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
 import { ZodError } from "zod";
 import { signInSchema } from "./zod";
 export type {
@@ -15,46 +14,9 @@ export type {
   User,
 } from "@auth/core/types";
 
+import { getUserFromDb, checkUserExists, registerUser } from "./serverActions";
+
 const prisma = new PrismaClient();
-
-const getUserFromDb = async (password: string, email: string) => {
-  const user = await prisma.user.findFirst({
-    where: {
-      OR: [{ email: email }, { password: password }],
-    },
-  });
-
-  if (user && (await bcrypt.compare(password, user.password ?? ""))) {
-    return user;
-  } else {
-    return null;
-  }
-};
-
-const checkUserExists = async (password: string, email: string) => {
-  const user = await prisma.user.findFirst({
-    where: {
-      OR: [{ email: email }, { password: password }],
-    },
-  });
-  return user;
-};
-
-export const registerUser = async (
-  password: string,
-  email: string,
-  login?: string
-) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = await prisma.user.create({
-    data: {
-      password: hashedPassword,
-      email: email,
-      name: login,
-    },
-  });
-  return user;
-};
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: {
