@@ -1,29 +1,34 @@
-import Link from "next/link";
+"use server";
 
 import { Logo } from "@/components/features/Logo";
 import { IconUsers, IconAddressBook } from "@tabler/icons-react";
+import { Button } from "@/components/features/Button";
 
 import "./style.css";
 
-export function Footer() {
+export async function Footer() {
+  const buttonItemsLogin = [
+    {
+      type: "button",
+      title: "О нас",
+      name: "О нас",
+      url: "/user/policy",
+      svg: <IconUsers stroke={2} />,
+    },
+    {
+      type: "button",
+      title: "Контакты",
+      name: "Контакты",
+      url: "/user/policy",
+      svg: <IconAddressBook stroke={2} />,
+    },
+  ];
   return (
     <>
       <hr />
       <footer id="footer">
         <section className="footer">
-          <ul>
-            <li>
-              <Link href="/user/policy" className="button" prefetch={false}>
-                <IconUsers stroke={2} />О нас
-              </Link>
-            </li>
-            <li>
-              <Link href="/user/policy" className="button" prefetch={false}>
-                <IconAddressBook stroke={2} />
-                Контакты
-              </Link>
-            </li>
-          </ul>
+          <Button items={buttonItemsLogin} />
           <Logo />
         </section>
       </footer>

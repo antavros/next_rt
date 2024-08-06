@@ -1,14 +1,21 @@
-.signinButton {
+.signinButtons {
+  display      : flex;
+  width        : 100%;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+}
+
+.signButton {
   display       : flex;
   flex-direction: row;
   place-content : center center;
   place-items   : center center;
   place-self    : center center;
+}
 
-
-  & svg {
-    width  : 2rem;
-    height : 2rem;
-    padding: 0.1rem;
-  }
+.signButton svg {
+  width  : 2rem;
+  height : 2rem;
+  padding: 0.1rem;
 }

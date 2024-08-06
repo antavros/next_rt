@@ -29,33 +29,28 @@ export const UserAvatar: React.FC = () => {
 
   return (
     <>
-      {session ? (
-        <button onClick={() => setDropDown(!dropDown)} className="avatarButton">
-          {session?.user?.image ? (
-            <Image
-              width={75}
-              height={75}
-              className="userAvatar"
-              src={session.user.image}
-              alt="User Avatar"
-              quality={25}
-              priority={true}
-            />
-          ) : (
-            <IconUserCircle stroke={2} />
-          )}
-          <h6>{session?.user?.name}</h6>
-        </button>
-      ) : (
-        <SignButton />
-      )}
-
-      {dropDown && (
+      <button onClick={() => setDropDown(!dropDown)} className="avatarButton">
+        {session?.user?.image ? (
+          <Image
+            width={75}
+            height={75}
+            className="userAvatar"
+            src={session.user.image}
+            alt="User Avatar"
+            quality={25}
+            priority={true}
+          />
+        ) : (
+          <IconUserCircle stroke={2} />
+        )}
+        <h6>{session?.user?.name}</h6>
+      </button>
+      {dropDown ? (
         <div className="avatarMenu">
           <Button items={buttonItems} />
           <SignButton />
         </div>
-      )}
+      ) : null}
     </>
   );
 };

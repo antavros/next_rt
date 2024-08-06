@@ -13,16 +13,8 @@
   backdrop-filter: none !important;
 }
 
-.avatarButton img{
-  object-fit   : cover;
-  border-radius: 5rem;
-  z-index      : 9999;
-  width        : 3.5rem;
-  height       : 3.5rem;
-  color        : var(--color-white);
-}
-
-.avatarButton svg {
+.avatarButton img,
+svg {
   object-fit   : cover;
   border-radius: 5rem;
   z-index      : 9999;

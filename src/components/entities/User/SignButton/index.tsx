@@ -34,9 +34,13 @@ export const SignButton: React.FC = () => {
     },
   ];
 
-  return !session ? (
-    <Button items={buttonItemsLogin} />
-  ) : (
-    <Button items={buttonItemsLogout} />
+  return (
+    <div className="signinButtons">
+      {!session ? (
+        <Button items={buttonItemsLogin} />
+      ) : (
+        <Button items={buttonItemsLogout} />
+      )}
+    </div>
   );
 };

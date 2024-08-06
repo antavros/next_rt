@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+
 import { IconUserCircle } from "@tabler/icons-react";
 import style from "./style.module.css";
-import { rateTitle } from "@/components/shared/api/clientUtils";
 
 interface RatingProps {
   personal?: number;
   kp?: number;
   imdb?: number;
   rt?: number;
-  onRateChange?: (newRating: number) => void; // Добавляем onRateChange для обработки изменений рейтинга
 }
 
 function getClassByRate({ vote }: { vote: number }) {
@@ -32,16 +32,8 @@ export const TitleRate: React.FC<RatingProps> = ({
   imdb,
   rt,
   personal,
-  onRateChange,
 }) => {
-  const [userRating, setUserRating] = useState<number | null>(null);
-
-  const handleRateChange = async (newRating: number) => {
-    setUserRating(newRating);
-    if (onRateChange) {
-      await onRateChange(newRating);
-    }
-  };
+  const { data: session } = useSession();
 
   const ratings = [];
   if (kp) ratings.push(kp);
@@ -77,27 +69,30 @@ export const TitleRate: React.FC<RatingProps> = ({
           <span>{imdb.toFixed(1)}</span>
         </article>
       )}
-      {personal !== undefined && personal > 0 && (
-        <article
-          className={style.personal}
-          style={getClassByRate({ vote: personal })}
-        >
-          <IconUserCircle stroke={2} />
-          <span>{personal.toFixed(1)}</span>
-        </article>
-      )}
-      <div className={style.rating_input}>
-        <label htmlFor="rating">Your Rating: </label>
-        <input
-          type="number"
-          id="rating"
-          name="rating"
-          min="1"
-          max="10"
-          value={userRating ?? ""}
-          onChange={(e) => handleRateChange(Number(e.target.value))}
-        />
-      </div>
+      {session
+        ? personal !== undefined &&
+          personal > 0 && (
+            <article
+              className={style.personal}
+              style={getClassByRate({ vote: personal })}
+            >
+              {session?.user?.image ? (
+                <Image
+                  width={75}
+                  height={75}
+                  className="userAvatar"
+                  src={session.user.image}
+                  alt="User Avatar"
+                  quality={25}
+                  priority={true}
+                />
+              ) : (
+                <IconUserCircle stroke={2} />
+              )}
+              <span>{personal.toFixed(1)}</span>
+            </article>
+          )
+        : null}
     </section>
   );
 };

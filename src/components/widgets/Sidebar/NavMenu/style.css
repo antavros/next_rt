@@ -1,0 +1,54 @@
+nav {
+  padding      : 0.5rem 0;
+  border-radius: 0;
+}
+
+nav ul {
+  display       : flex;
+  flex-direction: column;
+  gap           : 0.5rem;
+  padding       : 0.5rem 0 0 0;
+  border-radius : 0;
+}
+
+nav ul li {
+  border-radius: 0;
+}
+
+nav ul li button {
+  display        : flex;
+  flex-direction : row;
+  width          : 100%;
+  height         : max-content;
+  place-content  : center start;
+  box-shadow     : none;
+  backdrop-filter: none;
+  background     : transparent;
+  border-radius  : 0;
+}
+
+nav ul li button svg {
+  color  : var(--color-white);
+  width  : 2rem;
+  height : 2rem;
+  padding: 0.2rem;
+}
+
+nav ul li button h6 {
+  font-size   : 1;
+  padding-left: var(--block-gap);
+  color       : var(--color-white);
+}
+
+nav ul li button.active {
+  color            : var(--color-white);
+  border-inline-end: 0.5rem solid var(--color-purple);
+  writing-mode     : horizontal-tb;
+  direction        : ltr;
+  background       : rgba(0, 0, 0, 0.5);
+}
+
+nav ul li button.active svg {
+  color     : var(--color-white);
+  background: var(--color-purple);
+}

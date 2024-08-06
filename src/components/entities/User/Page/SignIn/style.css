@@ -47,7 +47,6 @@
       font-size      : 1.5rem;
       box-shadow     : none;
       backdrop-filter: none
-      
     }
   }
 
@@ -115,6 +114,11 @@
   font-size: 0.9rem;
 }
 
+#message svg {
+  width : auto;
+  height: 1.5rem;
+}
+
 #message span {
   display       : flex;
   flex-direction: row;
@@ -123,6 +127,7 @@
   font-size     : 0.8rem;
 }
 
+
 .valid {
   color: green;
 }
@@ -130,4 +135,3 @@
 .invalid {
   color: red;
 }
-
