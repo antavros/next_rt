@@ -10,7 +10,6 @@ import { SwiperCardPerson } from "./Swiper/Person";
 import { SwiperCardTitle } from "./Swiper/Titles";
 import { SwiperWatchability } from "./Swiper/watchability";
 
-
 import { Player } from "@/components/entities/Player";
 
 import style from "./style.module.css";
@@ -71,12 +70,12 @@ export function TitlePageBody({ details }: Details) {
 
   return (
     <div className={style.body}>
-      <button onClick={() => console.log(session)}>сессия</button>
 
-      <section className={`${style.details}`} >
-
+      <section className={`${style.details}`}>
         <span>
-          {details && details?.watchability && details?.watchability.length > 0 ? (
+          {details &&
+          details?.watchability &&
+          details?.watchability.length > 0 ? (
             <section className={`${style.block} ${style.watchability}`}>
               <h3>Где смотреть {typeName4}</h3>
               <SwiperWatchability details={details?.watchability} />
@@ -85,9 +84,7 @@ export function TitlePageBody({ details }: Details) {
         </span>
 
         <span>
-
           <span className={style.d}>
-
             <span className={style.e}>
               <section className={`${style.block} ${style.detailsList}`}>
                 <h3>О {typeName2}</h3>
@@ -121,16 +118,12 @@ export function TitlePageBody({ details }: Details) {
         </span>
       </section>
 
-
-
       {session ? (
         <section className={`${style.block} ${style.player}`}>
           <h3>Просмотр</h3>
           <Player details={details?.id} />
         </section>
       ) : null}
-
-
 
       <section className={`${style.add}`}>
         {details && details?.chapters && details?.chapters?.length > 0 ? (
@@ -146,7 +139,6 @@ export function TitlePageBody({ details }: Details) {
           </section>
         )}
       </section>
-
     </div>
   );
 }

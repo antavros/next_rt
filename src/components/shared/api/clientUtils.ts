@@ -10,9 +10,6 @@ async function getSessionUser() {
   return session?.user ?? null;
 }
 
-
-
-
 export const checkUserExists = async (password: string, email: string) => {
   const user = await prisma.user.findFirst({
     where: {
@@ -38,20 +35,19 @@ export const registerUser = async (
   return user;
 };
 
-export const getUserFromDb = async (password: string, email: string) => {
+export const getUserFromDb = async (email: string) => {
   const user = await prisma.user.findFirst({
     where: {
-      OR: [{ email: email }, { password: password }],
+      OR: [{ email: email }],
     },
   });
 
-  if (user && (await bcrypt.compare(password, user.password ?? ""))) {
+  if (user) {
     return user;
   } else {
     return null;
   }
 };
-
 
 export async function markTitleVisited(titleId: string) {
   const user = await getSessionUser();
