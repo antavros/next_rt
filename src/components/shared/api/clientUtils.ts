@@ -10,6 +10,49 @@ async function getSessionUser() {
   return session?.user ?? null;
 }
 
+
+
+
+export const checkUserExists = async (password: string, email: string) => {
+  const user = await prisma.user.findFirst({
+    where: {
+      OR: [{ email: email }, { password: password }],
+    },
+  });
+  return user;
+};
+
+export const registerUser = async (
+  password: string,
+  email: string,
+  login?: string
+) => {
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = await prisma.user.create({
+    data: {
+      password: hashedPassword,
+      email: email,
+      name: login,
+    },
+  });
+  return user;
+};
+
+export const getUserFromDb = async (password: string, email: string) => {
+  const user = await prisma.user.findFirst({
+    where: {
+      OR: [{ email: email }, { password: password }],
+    },
+  });
+
+  if (user && (await bcrypt.compare(password, user.password ?? ""))) {
+    return user;
+  } else {
+    return null;
+  }
+};
+
+
 export async function markTitleVisited(titleId: string) {
   const user = await getSessionUser();
   if (user?.id) {

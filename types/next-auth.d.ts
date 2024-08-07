@@ -3,40 +3,43 @@ import NextAuth, { DefaultSession } from "next-auth";
 import "next-auth/jwt";
 
 declare module "next-auth" {
-  type Session = {
+  interface Session {
     user: {
+      role?: string;
+      emailVerified?: string;
       nameOrEmail?: string;
-      id?: string;
-      name?: string | null;
+      id: string;
+      name?: string;
       username?: string;
       email?: string;
       accessToken?: string;
     } & DefaultSession["user"];
-  };
+  }
 
-  type User = {
+  interface User {
+    emailVerified?: string;
+    role?: string;
     nameOrEmail?: string;
-    id?: string;
-    name?: string | null;
+    id: string;
+    name?: string;
     username?: string;
     email?: string;
     accessToken?: string;
-  };
+  }
 }
 
 declare module "next-auth/jwt" {
-  // Расширяем интерфейс JWT
-  type JWT = {
+  interface JWT {
+    emailVerified?: DateTime;
+    role?: string;
     nameOrEmail?: string;
-    id?: string;
-    name?: string | null;
+    id: string;
+    name?: string;
     username?: string;
     email?: string;
     accessToken?: string;
-  };
+  }
 }
-
-type SignInResponse = {
-  // other properties
-  notRegistered?: boolean; // add this line
-};
+interface SignInResponse {
+  notRegistered?: boolean;
+}

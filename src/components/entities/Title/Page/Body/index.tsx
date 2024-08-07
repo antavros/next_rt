@@ -71,6 +71,7 @@ export function TitlePageBody({ details }: Details) {
 
   return (
     <div className={style.body}>
+      <button onClick={() => console.log(session)}>сессия</button>
 
       <section className={`${style.details}`} >
 
@@ -86,7 +87,7 @@ export function TitlePageBody({ details }: Details) {
         <span>
 
           <span className={style.d}>
-            
+
             <span className={style.e}>
               <section className={`${style.block} ${style.detailsList}`}>
                 <h3>О {typeName2}</h3>
