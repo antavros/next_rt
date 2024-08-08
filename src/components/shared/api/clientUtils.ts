@@ -36,16 +36,16 @@ export const registerUser = async (
 };
 
 export const getUserFromDb = async (email: string) => {
-  const user = await prisma.user.findFirst({
-    where: {
-      OR: [{ email: email }],
-    },
-  });
-
-  if (user) {
+  try {
+    const user = await prisma.user.findFirst({
+      where: { email },
+    });
     return user;
-  } else {
+  } catch (error) {
+    console.error("Error fetching user from database:", error);
     return null;
+  } finally {
+    await prisma.$disconnect();
   }
 };
 
