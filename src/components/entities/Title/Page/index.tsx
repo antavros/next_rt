@@ -10,6 +10,16 @@ import { UserSessionButton } from "./UserSessionButton"; // Импортируе
 
 const prisma = new PrismaClient();
 
+export async function markTitleVisited(titleId: string) {
+  const session = await auth();
+  if (session?.user?.email) {
+    await prisma.userTitle.update({
+      where: { userId: { userId: session?.user?.id, titleId } },
+      data: { visited: true },
+    });
+  }
+}
+
 export const addTitle = async (
   id: string,
   name: string,
@@ -52,12 +62,12 @@ export const getTitleFromDb = async (id: string) => {
 
 export async function TitlePage({ details }: { readonly details: any }) {
   const session = await auth();
-
   const id = details.id.toString(); // Преобразуем id в строку
   const name = details.name;
   const engname = details.enName;
   const description = details.sDescription;
   const image = details.poster;
+  markTitleVisited(id);
 
   // Проверяем наличие титула в базе данных
   let title = await getTitleFromDb(id);
@@ -76,7 +86,7 @@ export async function TitlePage({ details }: { readonly details: any }) {
         imdb={details.imdb_rating}
         rt={details.rt_rating}
       />
-      <UserSessionButton user={title} /> {/* Передаем информацию о титуле */}
+      <UserSessionButton title={title} />
       <TitlePageBody details={details} />
     </section>
   );

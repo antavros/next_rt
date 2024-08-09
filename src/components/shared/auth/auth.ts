@@ -54,8 +54,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             credentials
           );
           const user = await getUserFromDb(password, email);
+
           if (!user) {
-            const existingUser = await checkUserExists(password, email);
+            const existingUser = await getUserFromDb(password, email);
             if (existingUser) {
               throw new Error("Invalid password");
             } else {
@@ -73,13 +74,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  basePath: "/api/auth",
   callbacks: {
-    jwt({ token, user }) {
-      if (user) token.role = user.role;
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+      }
       return token;
     },
-    session({ session, token }) {
-      session.user.role = token.role;
+    async session({ session, token }) {
+      if (token.id) {
+        session.user.id = token.id;
+      }
+      if (token.role) {
+        session.user.role = token.role;
+      }
       return session;
     },
   },

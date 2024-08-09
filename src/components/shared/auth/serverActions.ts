@@ -19,15 +19,6 @@ export const getUserFromDb = async (password: string, email: string) => {
   }
 };
 
-export const checkUserExists = async (password: string, email: string) => {
-  const user = await prisma.user.findFirst({
-    where: {
-      OR: [{ email: email }, { password: password }],
-    },
-  });
-  return user;
-};
-
 export const registerUser = async (
   password: string,
   email: string,
