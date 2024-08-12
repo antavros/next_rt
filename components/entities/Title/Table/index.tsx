@@ -1,6 +1,6 @@
 import React from 'react';
 import { TitleCard } from "@/components/entities/Title/Card";
-import { Details } from '../../../shared/api/next-title';
+import { Details } from "@/components/shared/api/next-title";
 import "./style.css";
 
 export const TitleTable: React.FC<Details> = ({ details }) => {

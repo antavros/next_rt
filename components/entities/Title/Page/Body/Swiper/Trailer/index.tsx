@@ -1,8 +1,8 @@
 'use client';
 
 import { CustomSwiper } from '@/components/entities/Swiper/CustomSwiper';
-import { Details } from '@/components/shared/api/next-title';
 import { YouTubeEmbed } from '@next/third-parties/google';
+import { Details } from "@/components/shared/api/next-title";
 
 import style from './style.module.css';
 
