@@ -1,18 +1,5 @@
-"use client";
-
-import { useEffect } from "react";
 import { ErrorPage } from "@/components/widgets/ErrorPage";
 
-export default function ErrorRender({
-  error,
-  reset,
-}: {
-  readonly error: Error & { digest?: string };
-  reset: () => void;
-}) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
-
+export default function NotFound({ reset }: { reset: () => void }) {
   return <ErrorPage onClick={reset} />;
 }
