@@ -58,8 +58,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   pages: {
-    signIn: "/user/signin",
-    error: "/user/signin",
+    signIn: "/signin",
+    error: "/signin",
   },
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -104,7 +104,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  basePath: "/api/auth",
   callbacks: {
     async jwt({ token, user }) {
       // Persist the OAuth access_token and or the user id to the token right after signin

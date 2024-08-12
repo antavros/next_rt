@@ -20,7 +20,7 @@ model User {
   name          String?     @unique
   email         String      @unique
   password      String?
-  emailVerified Boolean     @default(false)
+  emailVerified DateTime?
   image         String?
   bio           String?
   lists         List[]
