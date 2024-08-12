@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { TitleTable } from "@/components/entities/Title/Table";
 import { SwiperMain } from "@/components/entities/Swiper/Main";
@@ -7,23 +7,26 @@ import { getData } from "@/components/shared/api/api";
 import type { Metadata } from "next";
 
 // Функция для извлечения данных и генерации метаданных
-async function fetchDetailsAndMetadata(): Promise<{ details: any[], metadata: Metadata }> {
+async function fetchDetailsAndMetadata(): Promise<{
+  details: any[];
+  metadata: Metadata;
+}> {
   const data = await getData({ url: ApiUrl_Title_Popular });
-  const details = data.data;
+  const details = data?.data;
 
   const metadata: Metadata = {
     title: "ГЛАВНАЯ",
     openGraph: {
       title: "ГЛАВНАЯ",
-      images: "/images/LOGO.png",
+      images: "/images/LOGO.webp",
     },
     twitter: {
       title: "ГЛАВНАЯ",
-      images: "/images/LOGO.png",
+      images: "/images/LOGO.webp",
     },
   };
 
-  return { details, metadata };
+  return { details: details ?? [], metadata };
 }
 
 // Используем асинхронную функцию для генерации метаданных

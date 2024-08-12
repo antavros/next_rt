@@ -56,7 +56,7 @@ export async function fetchDetailsAndMetadata(
   parent: ResolvingMetadata
 ): Promise<{ details: any; metadata: Metadata }> {
   const data = await getData({ url: `${ApiUrl_Title_Page}${id}` });
-  const details = data.data[0];
+  const details = data?.data[0];
   const previousImages = (await parent).openGraph?.images || [];
   const poster = details?.poster ?? "";
 
