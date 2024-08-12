@@ -24,6 +24,7 @@ export default async function TitlePageRender({
 }) {
   const id = params.id.toString();
   const category = params.category;
+  console.log(`TitlePageRender: ${id} ${category}`);
   const allowedCategories = [
     "movie",
     "tv-series",
@@ -33,7 +34,7 @@ export default async function TitlePageRender({
   ];
 
   if (!allowedCategories.includes(category)) {
-    return null;
+    redirect(`/`);
   }
 
   const { details } = await fetchDetailsAndMetadata(

@@ -1,5 +1,7 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 import { TitleTable } from "@/components/entities/Title/Table";
 import { Pagination } from "@/components/features/Pagination";
 import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
@@ -32,7 +34,7 @@ export default async function categoryRender({
   const category = params.category;
   // Проверка, является ли категория допустимой
   if (!allowedCategories.includes(category)) {
-    return null;
+    redirect(`/`);
   }
 
   const page = searchParams["page"] ?? "1";

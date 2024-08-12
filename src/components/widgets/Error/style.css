@@ -1,23 +1,30 @@
 .error {
   display         : flex;
-  flex-direction  : column;
+  flex-flow       : row wrap;
   place-content   : center center;
   place-self      : center center;
   place-items     : center center;
   background-color: var(--color-block_back);
+  width           : 400px;
   min-height      : 100%;
   padding         : 2rem;
 }
 
 .error h2 {
+  width     : 100%;
   text-align: center;
   font-size : 2rem;
   color     : white;
 }
 
-.error div {
-  display       : flex;
-  flex-direction: row;
-  gap           : 1rem;
-  padding       : 1rem;
+.error ul {
+  display  : flex;
+  flex-flow: row wrap;
+  padding  : 2rem 1rem;
+  gap      : 1rem;
+}
+
+.error button {
+  width     : 8rem;
+  text-align: center;
 }

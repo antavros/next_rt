@@ -1,12 +1,15 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 import { getDetails } from "./data_types";
 
 export async function getData({ url }: any) {
   const API_KEY = process.env.API_TOKEN;
 
   if (!API_KEY) {
-    throw new Error("API key is missing");
+    redirect(`/error`); // Если API ключ отсутствует, выполняем редирект на главную
+    return;
   }
 
   const options: any = {
@@ -44,6 +47,7 @@ export async function getData({ url }: any) {
     return details;
   } catch (error: any) {
     console.error("getData error:", error);
-    throw new Error(`Failed to fetch data: ${error.message}`);
+    redirect(`/`); // В случае ошибки выполняем редирект на главную
+    return;
   }
 }
