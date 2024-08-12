@@ -18,6 +18,9 @@ export function UserSessionButton({ title }: { readonly title: any }) {
         <div>
           <p>User ID: {session?.user?.id}</p>
           <p>User Role: {session?.user?.role}</p>
+          <p>User name: {session?.user?.name}</p>
+          <p>User email: {session?.user?.email}</p>
+          <p>User image: {session?.user?.image}</p>
         </div>
       </button>
     </div>

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { registerUser } from "@/components/shared/auth/serverActions";
+import { registerUser } from "@/app/api/auth/[...nextauth]/route";
 import { z, ZodError } from "zod";
 
 const registerSchema = z.object({

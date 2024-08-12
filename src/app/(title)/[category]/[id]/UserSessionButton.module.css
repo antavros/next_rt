@@ -1,0 +1,23 @@
+.div {
+  display       : flex;
+  flex-direction: column;
+  place-content : center;
+  place-items   : center;
+  place-self    : center;
+  width         : 100%;
+}
+
+.div button {
+  display        : flex;
+  color          : white;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  width          : 100%;
+}
+.div p {
+  display        : flex;
+  color          : white;
+  text-align    : left;
+
+}

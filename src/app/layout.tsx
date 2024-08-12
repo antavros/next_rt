@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ratetable.vercel.app"),
   description:
     "Фильмы, сериалы, мультфильмы, мультсериалы, аниме - каждый найдет что ему по вкусу!",
-  icons: "/images/LOGO.webp",
+  icons: "/images/LOGO2.webp",
   robots: "index, follow",
   creator: "antavros",
   keywords:

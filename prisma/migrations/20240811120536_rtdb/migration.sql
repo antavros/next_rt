@@ -8,7 +8,7 @@ CREATE TABLE "User" (
     "name" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT,
-    "emailVerified" TIMESTAMP(3),
+    "emailVerified" BOOLEAN NOT NULL DEFAULT false,
     "image" TEXT,
     "bio" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -33,8 +33,9 @@ CREATE TABLE "List" (
 -- CreateTable
 CREATE TABLE "Title" (
     "id" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "engname" TEXT NOT NULL,
+    "engname" TEXT,
     "description" TEXT,
     "image" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

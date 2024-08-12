@@ -1,41 +1,68 @@
-"use client";
+"use server";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import { Preloader } from "@/components/features/PreLoader";
+import { ClientTitleCard } from "./clientAction"
 
-import { TitleRate } from "@/components/entities/Title/Rate/";
-import "./style.css";
+import { PrismaClient } from "@prisma/client";
 
-export function TitleCard({ details }: { readonly details: any }) {
-  const [imageLoaded, setImageLoaded] = useState(false);
+const prisma = new PrismaClient();
 
+export const addTitle = async (
+  id: string,
+  type: string,
+  name: string,
+  engname: string,
+  description: string,
+  image: string
+) => {
+  try {
+    const title = await prisma.title.create({
+      data: {
+        id: id, // id должно быть строкой
+        type: type,
+        name: name,
+        engname: engname,
+        description: description,
+        image: image,
+      },
+    });
+    return title;
+  } catch (error) {
+    console.error("Error adding title to database:", error);
+    return null;
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+export const getTitleFromDb = async (id: string) => {
+  try {
+    const title = await prisma.title.findFirst({
+      where: { id },
+    });
+    return title;
+  } catch (error) {
+    console.error("Error fetching title from database:", error);
+    return null;
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+export async function TitleCard({ details }: { readonly details: any }) {
+  const id = details.id.toString(); // Преобразуем id в строку
+  const type = details.type;
+  const name = details.name;
+  const engname = details.enName;
+  const description = details.sDescription;
+  const image = details.poster;
+  // Проверяем наличие титула в базе данных
+  let title = await getTitleFromDb(id);
+
+  // Если титула нет, добавляем его
+  if (!title) {
+    title = await addTitle(id, type, name, engname, description, image);
+  }
   return (
-    <article className="title_card" id={details.id}>
-      {!imageLoaded && <Preloader />}
-      <Link href={`/${details.type}/${details.id}`} prefetch={false}>
-        <Image
-          onLoad={() => setImageLoaded(true)}
-          width={256}
-          height={400}
-          quality={25}
-          loading={"lazy"}
-          src={details.poster}
-          alt={details.name}
-        />
-        <section className="card_info">
-          <TitleRate personal={details.average_imdb} rt={details.average_kp} />
-          <h3>{details.name}</h3>
-          <h4>{details.enName}</h4>
-          <p>{details.countries}</p>
-          <p>
-            {details.year}г {details.length}
-          </p>
-          <p>{details.genres}</p>
-          <p>{details.sDescription}</p>
-        </section>
-      </Link>
-    </article>
+    <ClientTitleCard details={details} />
   );
 }

@@ -20,7 +20,7 @@ model User {
   name          String?     @unique
   email         String      @unique
   password      String?
-  emailVerified DateTime?
+  emailVerified Boolean     @default(false)
   image         String?
   bio           String?
   lists         List[]
@@ -47,8 +47,9 @@ model List {
 
 model Title {
   id          String      @unique
+  type        String
   name        String
-  engname     String
+  engname     String?
   description String?
   image       String?
   userTitles  UserTitle[]
