@@ -55,7 +55,7 @@ export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
             <ul>
               {visiblePersons.map((person: any) => (
                 <li key={person?.id}>
-                  <Link href={`/person/${person?.id}`} prefetch={false}>
+                  <Link href={`/title/person/${person?.id}`} prefetch={false}>
                     <h6>{person?.name ? person?.name : person?.enName}</h6>
                   </Link>
                 </li>

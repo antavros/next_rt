@@ -20,7 +20,7 @@ export function Search({ onSearch }: SearchProps) {
     if (onSearch) {
       onSearch(searchValue);
     }
-    router.push(`/search?page=1&query=${searchValue}`);
+    router.push(`/title/search?page=1&query=${searchValue}`);
   };
 
   const handleReset = () => {
@@ -34,12 +34,12 @@ export function Search({ onSearch }: SearchProps) {
     },
   ];
 
-    const buttonItemsReset: Item[] = [
-      {
+  const buttonItemsReset: Item[] = [
+    {
       type: "reset",
       svg: <IconX stroke={2} />,
-      },
-    ];
+    },
+  ];
   return (
     <div className="searchContainer">
       <form

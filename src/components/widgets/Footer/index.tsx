@@ -12,14 +12,14 @@ export async function Footer() {
       type: "button",
       title: "О нас",
       name: "О нас",
-      url: "/user/policy",
+      url: "/policy",
       svg: <IconUsers stroke={2} />,
     },
     {
       type: "button",
       title: "Контакты",
       name: "Контакты",
-      url: "/user/policy",
+      url: "/policy",
       svg: <IconAddressBook stroke={2} />,
     },
   ];

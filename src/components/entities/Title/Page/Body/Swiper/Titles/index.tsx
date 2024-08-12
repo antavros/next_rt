@@ -1,10 +1,10 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { TitleRate } from "@/components/entities/Title/Rate/";
-import { CustomSwiper } from '@/components/entities/Swiper/CustomSwiper';
-import { Details } from '../../../../../../shared/api/next-title';
-import style from './style.module.css';
+import { CustomSwiper } from "@/components/entities/Swiper/CustomSwiper";
+import { Details } from "../../../../../../shared/api/next-title";
+import style from "./style.module.css";
 
 export function SwiperCardTitle({ details }: Details) {
   if (!details || !Array.isArray(details)) {
@@ -12,12 +12,12 @@ export function SwiperCardTitle({ details }: Details) {
   }
 
   const renderSlide = (item: any) => (
-    <Link href={`/${item?.type}/${item?.id}`} prefetch={false}>
+    <Link href={`/title/${item?.type}/${item?.id}`} prefetch={false}>
       <div className={style.swiper_title_wrapper}>
         <Image
           width={260}
           height={400}
-          src={item?.poster?.url || '/images/placeholder.webp'}
+          src={item?.poster?.url || "/images/placeholder.webp"}
           alt={item?.name}
           priority={true}
         />
