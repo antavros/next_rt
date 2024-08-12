@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { registerUser } from "@/app/api/auth/[...nextauth]/route";
+import { registerUser } from "@/app/api/auth/[...nextauth]/auth";
 import { z, ZodError } from "zod";
 
 const registerSchema = z.object({

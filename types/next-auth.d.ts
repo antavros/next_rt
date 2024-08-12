@@ -46,6 +46,13 @@ declare module "next-auth/jwt" {
     createdAt: Date;
     updatedAt: Date;
   }
+  interface Token {
+    id: string;
+    role: string;
+    name: string;
+    email: string;
+    image: string;
+  }
 }
 interface SignInResponse {
   notRegistered?: boolean;

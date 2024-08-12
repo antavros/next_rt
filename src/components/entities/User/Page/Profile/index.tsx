@@ -1,13 +1,13 @@
 "use server";
 
-import { redirect } from 'next/navigation';
-import React from 'react';
-import { auth } from '@/app/api/auth/[...nextauth]/route';
+import { redirect } from "next/navigation";
+import React from "react";
+import { auth } from "@/app/api/auth/[...nextauth]/auth";
 import { SwiperCardTitle } from "@/components/entities/User/History";
 
 import "./style.css";
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 export async function getVisitedTitles() {
@@ -25,7 +25,7 @@ export async function getVisitedTitles() {
       title: true,
     },
     orderBy: {
-      updatedAt: 'desc', // Сортируем по полю updatedAt в порядке убывания (от новых к старым)
+      updatedAt: "desc", // Сортируем по полю updatedAt в порядке убывания (от новых к старым)
     },
   });
 
@@ -41,7 +41,7 @@ export async function ProfilePage() {
   }
 
   return (
-    <section className='profile'>
+    <section className="profile">
       <h1>Профиль</h1>
       {visitedTitles.length > 0 && (
         <section className="history block">
