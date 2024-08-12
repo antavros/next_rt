@@ -14,7 +14,7 @@ export function ClientTitleCard({ details }: { readonly details: any }) {
   return (
     <article className="title_card" id={details.id}>
       {!imageLoaded && <Preloader />}
-      <Link href={`/title/${details.type}/${details.id}`} prefetch={false}>
+      <Link href={`/${details.type}/${details.id}`} prefetch={false}>
         <Image
           onLoad={() => setImageLoaded(true)}
           width={256}

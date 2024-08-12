@@ -12,7 +12,7 @@ export function SwiperCardTitle({ details }: Details) {
   }
 
   const renderSlide = (item: any) => (
-    <Link href={`/title/${item?.type}/${item?.id}`} prefetch={false}>
+    <Link href={`/${item?.type}/${item?.id}`} prefetch={false}>
       <div className={style.swiper_title_wrapper}>
         <Image
           width={260}

@@ -62,7 +62,7 @@ export function SwiperMain({ details }: any) {
           <SwiperSlide key={details.id} virtualIndex={index}>
             <Link
               className={style.swiper_home_wrapper}
-              href={`/title/${details.type}/${details.id}`}
+              href={`/${details.type}/${details.id}`}
               prefetch={false}
             >
               <Image
