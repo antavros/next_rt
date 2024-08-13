@@ -1,18 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
 import { IconUserCircle, IconSettings } from "@tabler/icons-react";
 import { SignButton } from "@/components/entities/User/SignButton";
-import { Button, Item } from "@/components/features/Button";
+import { Button } from "@/components/features/Button";
 
 import "./style.css";
 
 export const UserAvatar: React.FC = () => {
   const { data: session } = useSession();
   const [dropDown, setDropDown] = useState(false);
+  const avatarRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const buttonItems = [
     {
@@ -27,10 +29,32 @@ export const UserAvatar: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        avatarRef.current &&
+        menuRef.current &&
+        !avatarRef.current.contains(event.target as Node) &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setDropDown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       {session ? (
-        <button onClick={() => setDropDown(!dropDown)} className="avatarButton">
+        <button
+          onClick={() => setDropDown(!dropDown)}
+          className="avatarButton"
+          ref={avatarRef}
+        >
           {session?.user?.image ? (
             <Image
               width={75}
@@ -51,7 +75,7 @@ export const UserAvatar: React.FC = () => {
       )}
 
       {dropDown && (
-        <div className="avatarMenu">
+        <div className="avatarMenu" ref={menuRef}>
           <Button items={buttonItems} />
           <SignButton />
         </div>

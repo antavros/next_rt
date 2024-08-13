@@ -18,7 +18,6 @@ import { Details } from "@/components/shared/api/next-title";
 
 export function TitlePageBody({ details }: Details) {
   const { data: session } = useSession();
-
   const category = details?.type.toLowerCase();
   let typeName: string;
   let typeName2: string;
@@ -67,12 +66,9 @@ export function TitlePageBody({ details }: Details) {
       typeName4 = "тайтл";
     }
   }
-
   return (
     <div className={style.body}>
-
       <section className={`${style.details}`}>
-
         <div className={`${style.details_block}`}>
           {details?.watchability.length > 0 ? (
             <section className={`${style.block} ${style.watchability}`}>
@@ -85,7 +81,6 @@ export function TitlePageBody({ details }: Details) {
         <div className={`${style.details_block}`}>
           <span className={style.d}>
             <span className={style.e}>
-
               <section className={`${style.block} ${style.detailsList}`}>
                 <h3>О {typeName2}</h3>
                 <DetailsList details={details} />
@@ -94,7 +89,6 @@ export function TitlePageBody({ details }: Details) {
                 <h3>Описание</h3>
                 <p>{details?.description}</p>
               </section>
-
             </span>
 
             <section className={`${style.block} ${style.person}`}>
@@ -103,15 +97,13 @@ export function TitlePageBody({ details }: Details) {
             </section>
           </span>
 
-          {
-            details?.trailers?.length > 0 && (
-              <section className={`${style.block} ${style.trailers}`}>
-                <h3>Трейлеры</h3>
-                <SwiperCardTrailer details={details} />
-              </section>
-            )
-          }
-        </div >
+          {details?.trailers?.length > 0 && (
+            <section className={`${style.block} ${style.trailers}`}>
+              <h3>Трейлеры</h3>
+              <SwiperCardTrailer details={details} />
+            </section>
+          )}
+        </div>
 
         <div className={`${style.details_block}`}>
           <section className={`${style.block} ${style.actors}`}>
@@ -119,16 +111,14 @@ export function TitlePageBody({ details }: Details) {
             <SwiperCardPerson details={details} />
           </section>
         </div>
-      </section >
+      </section>
 
-      {
-        session ? (
-          <section className={`${style.block} ${style.player}`} >
-            <h3>Просмотр</h3>
-            <Player details={details?.id} />
-          </section >
-        ) : null
-      }
+      {session?.user?.role == "USER" ? (
+        <section className={`${style.block} ${style.player}`}>
+          <h3>Просмотр</h3>
+          <Player details={details?.id} />
+        </section>
+      ) : null}
 
       <section className={`${style.add}`}>
         {details?.chapters?.length > 0 ? (
@@ -144,6 +134,6 @@ export function TitlePageBody({ details }: Details) {
           </section>
         )}
       </section>
-    </div >
+    </div>
   );
 }

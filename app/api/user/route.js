@@ -13,11 +13,13 @@ export async function GET(req) {
         OR: [{ email: email }, { name: name }],
       },
     });
+
     return new Response(JSON.stringify(user), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
+    console.error("Ошибка при получении пользователя:", error);
     return new Response(
       JSON.stringify({ error: "Ошибка получения данных пользователя" }),
       {
@@ -25,22 +27,36 @@ export async function GET(req) {
         headers: { "Content-Type": "application/json" },
       }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
 export async function PUT(req) {
-  const { id, field, value } = await req.json();
-
   try {
+    const { id, field, value } = await req.json();
+
+    if (!id || !field || !value) {
+      return new Response(
+        JSON.stringify({ error: "Некорректные данные для обновления" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
     const updatedUser = await prisma.user.update({
       where: { id: id },
       data: { [field]: value },
     });
+
     return new Response(JSON.stringify(updatedUser), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
+    console.error("Ошибка при обновлении пользователя:", error);
     return new Response(
       JSON.stringify({ error: "Ошибка обновления данных пользователя" }),
       {
@@ -48,5 +64,7 @@ export async function PUT(req) {
         headers: { "Content-Type": "application/json" },
       }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }

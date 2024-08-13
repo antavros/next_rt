@@ -19,13 +19,14 @@ import "./style.css";
 
 export function NavMenu() {
   const pathname = usePathname();
-  const isActive = (href: string) => (pathname === href ? "active" : "");
-
+  const isActiveMain = (href: string) => (pathname === href ? "active" : "");
+  const isActive = (href: string) =>
+    pathname.startsWith(href) ? "active" : "";
   const buttonItems = [
     {
       name: "Главная",
       url: "/",
-      className: isActive("/"),
+      className: isActiveMain("/"),
       onClick: () => {},
       svg: <IconHome stroke={2} />,
     },

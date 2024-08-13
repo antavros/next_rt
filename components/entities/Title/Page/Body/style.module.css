@@ -11,8 +11,6 @@
 .block {
   display         : flex;
   flex-direction  : column;
-  width           : 100%;
-  max-width       : 398px;
   height          : 100%;
   place-self      : center center;
   padding         : 1rem;
@@ -112,6 +110,7 @@
 .details .d {
   display         : flex;
   flex-flow       : row nowrap;
+  width           : min-content;
   padding         : 1rem;
   background-color: var(--color-block_back);
 }
@@ -153,7 +152,7 @@
 
 
 .player {
-  width: min-content;
+  width: max-content;
 }
 
 @media (max-width: 1200px) {

@@ -1,17 +1,17 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
 import { IconEdit } from "@tabler/icons-react";
 import { SignButton } from "@/components/entities/User/SignButton";
-import bcrypt from "bcryptjs";
+import { handleUpdate } from "@/components/entities/User/Page/Settings/serverAction";
+
+import { getSession, useSession, signIn } from "next-auth/react";
 
 import "./style.css";
 
 export function SettingsPage() {
-  const { data: session, update } = useSession();
+  const { data: session } = useSession();
   const [role, setRole] = useState(session?.user?.role ?? "");
   const [name, setName] = useState(session?.user?.name ?? "");
   const [email, setEmail] = useState(session?.user?.email ?? "");
@@ -19,53 +19,21 @@ export function SettingsPage() {
   const [image, setImage] = useState(session?.user?.image ?? "");
   const [message, setMessage] = useState("");
 
-  if (!session) {
-    redirect(`/signin`);
-    return null;
-  }
-
-  const getUserFromDb = async (name: string, email: string) => {
+  const handleFieldUpdate = async (field: string, value: string) => {
     try {
-      const response = await fetch(`/api/user?name=${name}&email=${email}`);
-      const user = await response.json();
-      return user;
-    } catch (error) {
-      console.error("Error fetching user from DB:", error);
-      return null;
-    }
-  };
+      const updatedUser = await handleUpdate(field, value, session);
+      console.log(field, value, session);
+      if (updatedUser) {
+        // Принудительно получаем новую сессию
+        const updatedSession = await getSession();
 
-  const updateValue = async (id: string, field: string, value: string) => {
-    try {
-      const response = await fetch(`/api/user`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id, field, value }),
-      });
-      const updatedUser = await response.json();
-      return updatedUser;
-    } catch (error) {
-      console.error("Error updating user:", error);
-      throw error;
-    }
-  };
+        // Устанавливаем новую сессию в клиенте
+        await signIn("credentials", {
+          redirect: false,
+          email: updatedSession?.user?.email,
+        });
 
-  const handleUpdate = async (field: string, value: string) => {
-    try {
-      const userName = session?.user?.name ?? "";
-      const userEmail = session?.user?.email ?? "";
-      const user = await getUserFromDb(userName, userEmail);
-      if (user) {
-        if (field === "password") {
-          value = await bcrypt.hash(value, 10);
-        }
-
-        const updatedUser = await updateValue(user.id, field, value);
         setMessage("Данные успешно обновлены.");
-        update({ [field]: value });
-        return updatedUser;
       } else {
         setMessage("Пользователь не найден.");
       }
@@ -76,6 +44,7 @@ export function SettingsPage() {
 
   return (
     <section className="settings">
+      <p>{JSON.stringify(session)}</p>
       <h1>Настройки</h1>
       <div>
         <div className="settings_column">
@@ -91,7 +60,7 @@ export function SettingsPage() {
               />
               <button
                 title="Изменить роль"
-                onClick={() => handleUpdate("role", role)}
+                onClick={() => handleFieldUpdate("role", role)}
               >
                 <IconEdit stroke={2} />
               </button>
@@ -109,7 +78,7 @@ export function SettingsPage() {
               />
               <button
                 title="Изменить логин"
-                onClick={() => handleUpdate("name", name)}
+                onClick={() => handleFieldUpdate("name", name)}
               >
                 <IconEdit stroke={2} />
               </button>
@@ -127,7 +96,7 @@ export function SettingsPage() {
               />
               <button
                 title="Изменить почту"
-                onClick={() => handleUpdate("email", email)}
+                onClick={() => handleFieldUpdate("email", email)}
               >
                 <IconEdit stroke={2} />
               </button>
@@ -144,7 +113,7 @@ export function SettingsPage() {
               />
               <button
                 title="Изменить пароль"
-                onClick={() => handleUpdate("password", password)}
+                onClick={() => handleFieldUpdate("password", password)}
               >
                 <IconEdit stroke={2} />
               </button>
@@ -172,7 +141,7 @@ export function SettingsPage() {
             />
             <button
               title="Изменить аватар"
-              onClick={() => handleUpdate("image", image)}
+              onClick={() => handleFieldUpdate("image", image)}
             >
               <IconEdit stroke={2} />
             </button>

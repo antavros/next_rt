@@ -1,9 +1,14 @@
-"use server"
+"use server";
 
-import { SettingsPage } from "@/components/entities/User/Page/Settings"
+import { redirect } from "next/navigation";
+import { auth } from "@/app/api/auth/[...nextauth]/auth";
+import { SettingsPage } from "@/components/entities/User/Page/Settings";
 
 export default async function SettingsRender() {
-  return (
-    <SettingsPage />
-  );
+  const session = await auth();
+  if (!session) {
+    redirect(`/signin`);
+    return null;
+  }
+  return <SettingsPage />;
 }

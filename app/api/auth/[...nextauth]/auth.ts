@@ -88,7 +88,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           if (!user) {
             const existingUser = await getUserFromDb(password, email);
             if (existingUser) {
-              throw new Error("Invalid password");
+              throw new Error("Invalidфффф password");
             } else {
               const newUser = await registerUser(password, email, login);
               return newUser;
@@ -105,22 +105,36 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
-        token.id = user?.id ?? "";
-        token.role = user?.role ?? "";
-        token.name = user?.name ?? "";
-        token.email = user?.email ?? "";
-        token.image = user?.image ?? "";
+        token.id = user.id ?? "";
+        token.role = user.role ?? "";
+        token.name = user.name ?? "";
+        token.email = user.email ?? "";
+        token.image = user.image ?? "";
+      }
+      if (trigger === "update" && session) {
+        if (session.name) {
+          token.name = session.name;
+        }
+        if (session.email) {
+          token.email = session.email;
+        }
+        if (session.image) {
+          token.image = session.image;
+        }
+        if (session.role) {
+          token.role = session.role;
+        }
       }
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
-      session.user.role = token.role;
-      session.user.name = token.name;
-      session.user.email = token.email;
-      session.user.image = token.image;
+      session.user.id = token.id ?? "";
+      session.user.role = token.role ?? "";
+      session.user.name = token.name ?? "";
+      session.user.email = token.email ?? "";
+      session.user.image = token.image ?? "";
       return session;
     },
   },
