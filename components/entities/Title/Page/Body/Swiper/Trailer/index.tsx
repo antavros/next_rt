@@ -27,7 +27,7 @@ export function SwiperCardTrailer({ details }: Details) {
         {videoId && (
           <YouTubeEmbed
             videoid={videoId}
-            width={400}
+            width={368}
             params="controls=0"
           />
         )}

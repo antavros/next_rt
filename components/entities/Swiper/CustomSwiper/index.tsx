@@ -36,7 +36,6 @@ export function CustomSwiper({
       centerInsufficientSlides={true}
       centeredSlidesBounds={true}
       slidesPerGroupAuto={true}
-      centeredSlides={true}
       grabCursor={true}
       navigation={{
         lockClass: "hideSwiperButton",

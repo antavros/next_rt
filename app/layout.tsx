@@ -60,7 +60,7 @@ export default function RootLayout({
         <Providers>
           <Sidebar />
           <div className="content">
-            <main>{children}</main>
+            <main className="main">{children}</main>
             <Footer />
           </div>
         </Providers>

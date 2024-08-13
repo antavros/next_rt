@@ -2,38 +2,37 @@
   width  : 100%;
   height : auto;
   padding: 0.5rem;
+}
 
-  &:is(:hover, :focus, :active) {
-    & input {
-      color       : var(--color-white);
-      border-color: var(--color-purple);
-      border-left : none;
-      border-right: none;
+.searchContainer :is(:hover, :focus, :active) input {
+  color       : var(--color-white);
+  border-color: var(--color-purple);
+  border-left : none;
+  border-right: none;
+}
 
-      &::placeholder {
-        opacity: 0;
-      }
-    }
+.searchContainer :is(:hover, :focus, :active) input::placeholder {
+  opacity: 0;
 
-    & button {
-      scale       : none;
-      color       : var(--color-white);
-      border-color: var(--color-purple);
-      border-right: none;
+}
 
-    }
+.searchContainer :is(:hover, :focus, :active) button {
+  scale       : none;
+  color       : var(--color-white);
+  border-color: var(--color-purple);
+  border-right: none;
 
-    & button:last-child {
-      scale       : none;
-      color       : var(--color-white);
-      border-color: var(--color-purple);
-      border-left : none;
+}
 
-      & svg {
-        color: var(--color-white);
-      }
-    }
-  }
+.searchContainer :is(:hover, :focus, :active) button:last-child {
+  scale       : none;
+  color       : var(--color-white);
+  border-color: var(--color-purple);
+  border-left : none;
+}
+
+.searchContainer :is(:hover, :focus, :active) button:last-child svg {
+  color: var(--color-white);
 }
 
 .search {
@@ -71,10 +70,11 @@
   border-left     : none;
   background-color: rgba(0, 0, 0, 0.3) !important;
   backdrop-filter : none;
+}
 
-  & svg {
-    color: transparent;
-  }
+.search button:last-child svg {
+  color: transparent;
+
 }
 
 .search input {
@@ -88,11 +88,12 @@
   border-left   : none;
   border-right  : none;
   background    : rgba(0, 0, 0, 0.3) !important;
+}
 
-  &::placeholder {
-    text-align   : center;
-    place-content: center center;
-    place-self   : center center;
-    place-items  : center center;
-  }
+.search input::placeholder {
+  text-align   : center;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
+
 }

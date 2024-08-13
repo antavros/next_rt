@@ -12,6 +12,7 @@
   display         : flex;
   flex-direction  : column;
   width           : 100%;
+  max-width       : 398px;
   height          : 100%;
   place-self      : center center;
   padding         : 1rem;
@@ -50,7 +51,7 @@
 .watchability,
 .actors {
   height       : auto !important;
-  max-height   : 69.5rem;
+  max-height   : 1105px;
   place-content: center center;
   place-items  : center center;
   place-self   : start center;
@@ -59,7 +60,8 @@
 .trailers {
   display      : flex;
   width        : auto;
-  max-width    : 58rem;
+  max-width    : 812px;
+  padding      : 0;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
@@ -83,27 +85,35 @@
   display      : flex;
   flex-flow    : row wrap;
   position     : relative;
-  width        : 100%;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
+  width        : 100%;
   gap          : 1rem;
 }
 
-.details span {
+.details_block {
   display      : flex;
-  flex-flow    : column nowrap;
+  flex-flow    : row wrap;
   flex         : auto auto 33%;
   place-content: center center;
   place-items  : center center;
   place-self   : start center;
+  width        : max-content;
   gap          : 1rem;
 }
 
-.details .d {
+.details_block span {
   display  : flex;
   flex-flow: row wrap;
-  width    : min-content;
+  gap      : 1rem;
+}
+
+.details .d {
+  display         : flex;
+  flex-flow       : row nowrap;
+  padding         : 1rem;
+  background-color: var(--color-block_back);
 }
 
 .details .e {
@@ -120,7 +130,8 @@
 .detailsList {
   display  : flex;
   flex-flow: column wrap;
-  width    : max-content;
+  width    : 366px;
+
 }
 
 .description {
@@ -146,7 +157,24 @@
 }
 
 @media (max-width: 1200px) {
+  .trailers {
+    max-width: 400px;
+  }
+
+  .actors {
+    max-height: 422px;
+  }
+
+  .watchability {
+    max-height: 270px;
+  }
+
+  .details .d {
+    flex-flow: row wrap;
+  }
+
   .details span {
+    flex-flow    : column nowrap;
     place-content: center center;
     place-items  : center center;
     place-self   : center center;

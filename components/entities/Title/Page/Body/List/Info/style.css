@@ -3,6 +3,7 @@
   flex-direction: column;
   gap           : 1rem;
   width         : 100%;
+  max-width     : 400px;
 }
 
 .details_list article {
@@ -10,6 +11,7 @@
   flex-direction: row;
   width         : 100%;
   gap           : 1rem;
+  max-width     : 400px;
 }
 
 .details_list article h4 {
