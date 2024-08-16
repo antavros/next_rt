@@ -14,7 +14,7 @@ function onChange(value: any) {
 }
 
 export function SignInPage() {
-  const siteKey = "6LeXNigqAAAAAHc09Cy6LJBZg2wfsQoGWFAfGQI0";
+
   const { data: session } = useSession();
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
@@ -193,7 +193,7 @@ export function SignInPage() {
           </span>
         </div>
       ) : null}
-      <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
+      <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_TOKEN} onChange={onChange} />
       <h1>или</h1>
       <button onClick={() => signIn("google")}>
         <Image
