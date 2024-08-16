@@ -1,12 +1,37 @@
-.userCard {
+.userBlock {
   display        : flex;
-  flex-direction : row;
+  flex-flow      : row nowrap;
   width          : 100%;
   height         : max-content;
   min-height     : 3rem;
   margin-top     : auto;
   padding        : 0.5rem;
+  gap            : 0.5rem;
+  place-content  : center end;
   border-radius  : var(--border-radius) var(--border-radius) 0 0;
   backdrop-filter: var(--blur);
   background     : var(--color-block_back);
+}
+
+.unSign {
+  place-content: center center;
+}
+
+.userButtons {
+  display      : flex;
+  flex-flow    : column nowrap;
+  width        : 35%;
+  place-content: end end;
+  place-items  : end end;
+  place-self   : end end;
+}
+
+.userButtons .signinButton {
+  place-content: end end;
+  place-items  : end end;
+  place-self   : end end;
+}
+
+.userButtons h6 {
+  display: none;
 }

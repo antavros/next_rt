@@ -7,8 +7,14 @@ import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import { IconLogin, IconCheck } from "@tabler/icons-react";
 import "./style.css";
+import ReCAPTCHA from "react-google-recaptcha";
+
+function onChange(value: any) {
+  console.log("Captcha value:", value);
+}
 
 export function SignInPage() {
+  const siteKey = "6LeXNigqAAAAAHc09Cy6LJBZg2wfsQoGWFAfGQI0";
   const { data: session } = useSession();
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
@@ -187,6 +193,7 @@ export function SignInPage() {
           </span>
         </div>
       ) : null}
+      <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
       <h1>или</h1>
       <button onClick={() => signIn("google")}>
         <Image

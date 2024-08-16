@@ -22,7 +22,7 @@ header {
 }
 
 .sidebar_hide {
-  width: 5.5rem;
+  width: 6rem;
 }
 
 .sidebar_hide #logo1 {
@@ -48,14 +48,17 @@ header {
   flex-direction: column;
 }
 
-.sidebar_hide .userCard {
+.sidebar_hide .userBlock {
+  flex-flow: column nowrap;
+
   place-content: center center;
   place-self   : center center;
   place-items  : center center;
 }
 
-.sidebar_hide .userCard h6 {
-  display: none;
+.sidebar_hide .userButtons {
+  flex-flow: row nowrap;
+  width    : 100%;
 }
 
 .sidebar_hide .searchContainer:is(:hover, :focus, :active) {
@@ -104,7 +107,7 @@ header {
     height : auto;
   }
 
-  .userCard {
+  .userBlock {
     width        : auto;
     order        : -1;
     height       : 100%;
@@ -112,7 +115,7 @@ header {
     border-radius: var(--border-radius);
   }
 
-  .userCard h6 {
+  .userBlock h6 {
     display: none !important;
   }
 

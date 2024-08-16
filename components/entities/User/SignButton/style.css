@@ -1,11 +1,3 @@
-.signinButtons {
-  display      : flex;
-  width        : 100%;
-  place-content: center center;
-  place-items  : center center;
-  place-self   : center center;
-}
-
 .signButton {
   display       : flex;
   flex-direction: row;
