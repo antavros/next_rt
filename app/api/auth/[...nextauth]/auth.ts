@@ -3,48 +3,41 @@ import "next-auth/jwt";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
 import { ZodError } from "zod";
 import { signInSchema } from "./zod";
-export type {
-  Account,
-  DefaultSession,
-  Profile,
-  Session,
-  User,
-} from "@auth/core/types";
-
 import bcrypt from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const getUserFromDb = async (password: string, email: string) => {
-  const user = await prisma.user.findFirst({
-    where: {
-      OR: [{ email: email }, { password: password }],
-    },
+export const getUserFromDb = async (email: string) => {
+  return prisma.user.findUnique({
+    where: { email },
   });
-
-  if (user && (await bcrypt.compare(password, user.password ?? ""))) {
-    return user;
-  } else {
-    return null;
-  }
 };
 
-export const registerUser = async (
-  password: string,
-  email: string,
-  login?: string
-) => {
+export const registerUser = async (password: string, email: string, name: string) => {
+  // Проверка на существующего пользователя
+  const existingUser = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  if (existingUser) {
+    throw new Error("Пользователь с таким email уже существует");
+  }
+
+  // Хеширование пароля
   const hashedPassword = await bcrypt.hash(password, 10);
+
+  // Создание нового пользователя
   const user = await prisma.user.create({
     data: {
       password: hashedPassword,
       email: email,
-      name: login,
+      name: name,
     },
   });
+
   return user;
 };
 
@@ -53,13 +46,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     strategy: "jwt",
     updateAge: 24 * 60 * 60, // 24 часа
     maxAge: 30 * 24 * 60 * 60, // 30 дней
-    generateSessionToken: () => {
-      return `session_${Math.random().toString(36).substring(2)}`;
-    },
   },
   pages: {
     signIn: "/signin",
+    signOut: "/signin",
     error: "/signin",
+    newUser: "/",
   },
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -75,59 +67,71 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Credentials({
       credentials: {
         password: { label: "password", type: "password" },
-        login: { label: "login", type: "text" },
+        login: { label: "username", type: "text" },
         email: { label: "email", type: "email" },
       },
-      authorize: async (credentials: any) => {
+      authorize: async (credentials) => {
         try {
-          const { password, email, login } = await signInSchema.parseAsync(
+          const { password, email } = await signInSchema.parseAsync(
             credentials
           );
-          const user = await getUserFromDb(password, email);
 
-          if (!user) {
-            const existingUser = await getUserFromDb(password, email);
-            if (existingUser) {
-              throw new Error("Invalidфффф password");
-            } else {
-              const newUser = await registerUser(password, email, login);
-              return newUser;
-            }
+          if (!email || !password) {
+            throw new Error("Please enter an email and password");
           }
+
+          const user = await getUserFromDb(email);
+
+          if (!user || !user.password) {
+            throw new Error("No user found");
+          }
+
+          const passwordMatch = await bcrypt.compare(password, user.password);
+
+          if (!passwordMatch) {
+            throw new Error("Incorrect password");
+          }
+
           return user;
         } catch (error) {
           if (error instanceof ZodError) {
             throw new Error(`Validation error: ${error}`);
           }
-          throw error;
+          console.error("Authorization error:", error);
+          throw new Error("Authorization error");
         }
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user, trigger, session }) {
-      if (user) {
-        token.id = user.id ?? "";
-        token.role = user.role ?? "";
-        token.name = user.name ?? "";
-        token.email = user.email ?? "";
-        token.image = user.image ?? "";
+      try {
+        if (user) {
+          token.id = user.id ?? "";
+          token.role = user.role ?? "";
+          token.name = user.name ?? "";
+          token.email = user.email ?? "";
+          token.image = user.image ?? "";
+        }
+        if (trigger === "update" && session) {
+          if (session.name) {
+            token.name = session.name;
+          }
+          if (session.email) {
+            token.email = session.email;
+          }
+          if (session.image) {
+            token.image = session.image;
+          }
+          if (session.role) {
+            token.role = session.role;
+          }
+        }
+        return token;
+      } catch (error) {
+        console.error("Error in JWT callback:", error);
+        throw new Error("JWT callback error");
       }
-      if (trigger === "update" && session) {
-        if (session.name) {
-          token.name = session.name;
-        }
-        if (session.email) {
-          token.email = session.email;
-        }
-        if (session.image) {
-          token.image = session.image;
-        }
-        if (session.role) {
-          token.role = session.role;
-        }
-      }
-      return token;
     },
     async session({ session, token }) {
       session.user.id = token.id ?? "";

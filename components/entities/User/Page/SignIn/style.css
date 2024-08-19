@@ -4,122 +4,102 @@
   place-content   : center center;
   place-self      : center center;
   place-items     : center center;
+  width           : 400px;
   background-color: var(--color-block_back);
   padding         : 2rem;
   gap             : 1rem;
-
-  & h1 {
-    padding-bottom: 1rem;
-    text-align    : center;
-    color         : white;
-    font-size     : 1.5rem;
-  }
-
-  & .head {
-    display       : flex;
-    flex-direction: row;
-
-    & h1 {
-      text-align: center;
-      color     : var(--color-text);
-      font-size : 1.5rem;
-    }
-
-    & p {
-      font-size: 1.5rem;
-      color    : white;
-      padding  : 0.5rem;
-    }
-
-    & .active {
-      & h1 {
-        color: white;
-      }
-
-      scale: 101%;
-    }
-
-    & button {
-      padding        : 0.5rem;
-      text-align     : center;
-      color          : var(--color-text);
-      background     : none !important;
-      font-size      : 1.5rem;
-      box-shadow     : none;
-      backdrop-filter: none
-    }
-  }
-
-  & form {
-    display         : flex;
-    flex-direction  : column;
-    width           : 20rem;
-    place-content   : center center;
-    place-self      : center center;
-    place-items     : center center;
-    padding         : 1rem;
-    gap             : 0.5rem;
-    background-color: var(--color-block_back);
-  }
-
-  & .policy {
-    text-align     : center;
-    color          : var(--color-text);
-    font-size      : 0.8rem;
-    text-decoration: underline;
-    padding-top    : 1rem;
-
-    &:is(:hover, :focus, :active) {
-      scale: 105%;
-    }
-  }
-
-  & input {
-    width         : 100%;
-    height        : 2rem;
-    font-size     : 1rem;
-    text-align    : center;
-    vertical-align: middle;
-    color         : white;
-    border        : var(--border) var(--color-border);
-    border-radius : 5rem;
-    background    : rgba(0, 0, 0, 0.3) !important;
-    box-shadow    : var(--shadow);
-
-    &:is(:hover, :focus, :active) {
-      background-color: var(--color-gray_dark);
-      border-color    : var(--color-purple);
-      color           : var(--color-white);
-
-      &::placeholder {
-        opacity: 0;
-      }
-    }
-  }
 }
 
-.signin form p {
-  color: red;
+.signin h1 {
+  text-align: center;
+  color     : white;
+  font-size : 1.5rem;
 }
 
-#message {
+.signin .head {
+  display       : flex;
+  flex-direction: row;
+}
+
+.signin .head button {
+  padding        : 0.5rem;
+  text-align     : center;
+  background     : none !important;
+  font-size      : 1.5rem;
+  box-shadow     : none;
+  backdrop-filter: none;
+}
+
+.signin .head button h1 {
+  color: gray;
+}
+
+.signin .head .active h1 {
+  color          : white;
+  text-decoration: underline;
+}
+
+.signin .head p {
+  font-size     : 1.5rem;
+  padding       : 1rem;
+  color         : white;
+  text-align    : center;
+  vertical-align: middle;
+}
+
+.signin form {
+  display         : flex;
+  flex-direction  : column;
+  width           : max-content;
+  place-content   : center center;
+  place-self      : center center;
+  place-items     : center center;
+  padding         : 1rem 2rem;
+  gap             : 1rem;
   background-color: var(--color-block_back);
-  color           : var(--color-white);
-  position        : relative;
-  padding         : 1rem;
 }
 
-#message h3 {
-  padding  : 1rem 0;
+.signin label {
+  display       : flex;
+  flex-direction: row;
+  width         : 100%;
+  height        : max-content;
+  font-size     : 1rem;
+  text-align    : center;
+  text-align    : left;
+  vertical-align: middle;
+  gap           : 1rem;
+  color         : white;
+}
+
+.signin input {
+  width         : 100%;
+  height        : 2rem;
+  font-size     : 1rem;
+  text-align    : center;
+  vertical-align: middle;
+  color         : white;
+  border        : var(--border) var(--color-border);
+  border-radius : 5rem;
+  background    : rgba(0, 0, 0, 0.3) !important;
+  box-shadow    : var(--shadow);
+}
+
+.signin input:is(:hover, :focus, :active) {
+  background-color: var(--color-gray_dark);
+  border-color    : var(--color-purple);
+  color           : var(--color-white);
+}
+
+.signin input:is(:hover, :focus, :active)::placeholder {
+  opacity: 0;
+}
+
+.passwordMessage ul {
   font-size: 0.9rem;
 }
 
-#message svg {
-  width : auto;
-  height: 1.5rem;
-}
-
-#message span {
+.passwordMessage li {
   display       : flex;
   flex-direction: row;
   place-content : center start;
@@ -127,11 +107,27 @@
   font-size     : 0.8rem;
 }
 
+.passwordMessage svg {
+  width : auto;
+  height: 1.5rem;
+}
 
-.valid {
+.passwordMessage .valid {
   color: green;
 }
 
-.invalid {
+.passwordMessage .invalid {
   color: red;
+}
+
+.signin .policy {
+  text-align     : center;
+  color          : var(--color-text);
+  font-size      : 0.8rem;
+  text-decoration: underline;
+  padding-top    : 1rem;
+}
+
+.signin .policy:is(:hover, :focus, :active) {
+  scale: 105%;
 }
