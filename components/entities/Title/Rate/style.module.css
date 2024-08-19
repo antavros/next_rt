@@ -47,18 +47,17 @@
 }
 
 .personal img {
-  position     : relative !important;
+  object-fit   : cover;
+  border-radius: 50% !important;
   width        : auto !important;
   height       : 1.5rem !important;
   scale        : none !important;
-  overflow     : hidden;
-  border-radius: var(--border-radius);
 }
 
 .rt img {
   position     : relative !important;
   width        : auto !important;
   height       : 0.8rem !important;
-  border-radius: 0;
+  border-radius: 0 !important;
   scale        : none !important;
 }

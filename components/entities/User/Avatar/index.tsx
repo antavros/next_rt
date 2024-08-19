@@ -1,14 +1,14 @@
-"use server";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import { auth } from "@/app/api/auth/[...nextauth]/auth";
+import { useSession } from "next-auth/react";
 import { IconUserCircle } from "@tabler/icons-react";
 
 import "./style.css";
 
 export const UserAvatar: React.FC = async () => {
-  const session = await auth();
+  const { data: session } = useSession();
 
   return (
     <Link href="/profile">

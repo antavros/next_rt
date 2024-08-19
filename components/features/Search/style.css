@@ -1,7 +1,7 @@
 .searchContainer {
   width  : 100%;
   height : auto;
-  padding: 0.5rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .searchContainer :is(:hover, :focus, :active) input {
@@ -13,7 +13,6 @@
 
 .searchContainer :is(:hover, :focus, :active) input::placeholder {
   opacity: 0;
-
 }
 
 .searchContainer :is(:hover, :focus, :active) button {
@@ -21,7 +20,6 @@
   color       : var(--color-white);
   border-color: var(--color-purple);
   border-right: none;
-
 }
 
 .searchContainer :is(:hover, :focus, :active) button:last-child {
@@ -44,10 +42,11 @@
   height        : 3rem;
   box-shadow    : var(--shadow);
   border-radius : 2.5rem;
+  box-shadow    : 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .search button {
-  min-width       : 2.5rem;
+  min-width       : 1rem;
   max-width       : 30rem;
   height          : 3rem;
   width           : 2.5rem;
@@ -57,10 +56,11 @@
   border-right    : none;
   background-color: rgba(0, 0, 0, 0.3) !important;
   backdrop-filter : none;
+  box-shadow      : none;
 }
 
 .search button:last-child {
-  min-width       : 2.5rem;
+  min-width       : 1rem;
   max-width       : 30rem;
   height          : 3rem;
   width           : 2.5rem;
@@ -70,6 +70,7 @@
   border-left     : none;
   background-color: rgba(0, 0, 0, 0.3) !important;
   backdrop-filter : none;
+  box-shadow      : none;
 }
 
 .search button:last-child svg {

@@ -1,18 +1,25 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { signIn, useSession } from "next-auth/react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-import { IconCheck, IconX, IconLogin, IconMail, IconUser, IconKey } from "@tabler/icons-react";
+import {
+  IconCheck,
+  IconX,
+  IconLogin,
+  IconMail,
+  IconUser,
+  IconKey,
+} from "@tabler/icons-react";
 import "./style.css";
 
 export function SignInPage() {
-  const session = useSession()
+  const { data: session } = useSession();
 
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_TOKEN as string;
   const [userName, setUserName] = useState("");
@@ -28,7 +35,9 @@ export function SignInPage() {
     length: false,
     visible: false,
   });
-  if (session === null) {
+
+  if (session) {
+    window.location.reload();
     redirect(`/profile`);
   }
 
@@ -54,7 +63,6 @@ export function SignInPage() {
   const isPasswordValid = Object.values(passwordValidations).every(Boolean);
   const isFormValid = isPasswordValid && recaptchaValue;
 
-
   const handleRegister = async (e: any) => {
     e.preventDefault();
     setError("");
@@ -67,41 +75,34 @@ export function SignInPage() {
       });
 
       const data = await res.json();
-      signIn('credentials',
-        {
-          redirect: false,
-          password,
-          email,
-        })
-      if (!res.ok) {
-        if (data.error instanceof Array) {
-          setError(data.error.map((err: any) => err.message).join(", "));
-        } else {
-          setError(data.error || "Произошла ошибка при регистрации");
-        }
-      }
-    } catch (error) {
-      setError("Произошла ошибка при регистрации");
-    }
-  };
-
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-    setError("");
-    signIn('credentials',
-      {
+      signIn("credentials", {
         redirect: false,
         password,
         email,
-      })
-      .then((callback) => {
-        if (callback?.error) {
-          setError("EMAIL или пароль введены неверно");
+      });
+      if (!res.ok) {
+        if (data.error instanceof Array) {
+          setError("email или name уже используется");
         }
-      })
-  }
+      }
+    } catch (error) {
+      setError("email или name уже используется");
+    }
+  };
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setError("");
+    signIn("credentials", {
+      redirect: false,
+      password,
+      email,
+    }).then((callback) => {
+      if (callback?.error) {
+        setError("EMAIL или пароль введены неверно");
+      }
+    });
+  };
   return (
     <section className="signin">
       <div className="head">
@@ -164,29 +165,50 @@ export function SignInPage() {
         {passwordValidations.visible && (
           <ul className="passwordMessage">
             <li className={passwordValidations.letter ? "valid" : "invalid"}>
-              {passwordValidations.letter ? <IconCheck stroke={2} /> : <IconX stroke={2} />}
-              <p>Одна <b>строчная</b> буква</p>
+              {passwordValidations.letter ? (
+                <IconCheck stroke={2} />
+              ) : (
+                <IconX stroke={2} />
+              )}
+              <p>
+                Одна <b>строчная</b> буква
+              </p>
             </li>
             <li className={passwordValidations.capital ? "valid" : "invalid"}>
-              {passwordValidations.capital ? <IconCheck stroke={2} /> : <IconX stroke={2} />}
-              <p>Одна <b>прописная (заглавная)</b> буква</p>
+              {passwordValidations.capital ? (
+                <IconCheck stroke={2} />
+              ) : (
+                <IconX stroke={2} />
+              )}
+              <p>
+                Одна <b>прописная (заглавная)</b> буква
+              </p>
             </li>
             <li className={passwordValidations.number ? "valid" : "invalid"}>
-              {passwordValidations.number ? <IconCheck stroke={2} /> : <IconX stroke={2} />}
-              <p>Одна <b>цифра</b></p>
+              {passwordValidations.number ? (
+                <IconCheck stroke={2} />
+              ) : (
+                <IconX stroke={2} />
+              )}
+              <p>
+                Одна <b>цифра</b>
+              </p>
             </li>
             <li className={passwordValidations.length ? "valid" : "invalid"}>
-              {passwordValidations.length ? <IconCheck stroke={2} /> : <IconX stroke={2} />}
-              <p>Минимум <b>8 символов</b></p>
+              {passwordValidations.length ? (
+                <IconCheck stroke={2} />
+              ) : (
+                <IconX stroke={2} />
+              )}
+              <p>
+                Минимум <b>8 символов</b>
+              </p>
             </li>
           </ul>
         )}
         <ReCAPTCHA sitekey={siteKey} onChange={onCaptchaChange} />
 
-        <button
-          type="submit"
-          disabled={!isFormValid}
-        >
+        <button type="submit" disabled={!isFormValid}>
           <IconLogin stroke={2} />
           {isRegistering ? "Зарегистрироваться" : "Войти"}
         </button>

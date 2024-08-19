@@ -18,11 +18,11 @@ function getClassByRate({ vote }: { vote: number }) {
   const hue = (vote / 10) * 110;
   const saturation = 100;
   const lightness = 50;
-  const transparent = 1;
+  const transparent = 11;
   const rateColor = `hsl(${hue}, ${saturation}%, ${lightness}%, ${transparent})`;
   return {
     border: `0 solid ${rateColor}`,
-    boxShadow: `0rem 0rem 0.1rem 0.15rem ${rateColor}`,
+    boxShadow: `0rem 0rem 0.3rem 0.15rem ${rateColor}`,
     color: `${rateColor}`,
   };
 }
@@ -80,7 +80,7 @@ export const TitleRate: React.FC<RatingProps> = ({
                 <Image
                   width={75}
                   height={75}
-                  className="userAvatar"
+                  className={style.userAvatar}
                   src={session.user.image}
                   alt="User Avatar"
                   quality={25}
