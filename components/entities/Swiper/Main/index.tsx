@@ -34,7 +34,7 @@ export function SwiperMain({ details }: any) {
       <Swiper
         breakpoints={{
           1551: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
         }}
         modules={[Autoplay, Keyboard, Navigation, Pagination, Virtual]}

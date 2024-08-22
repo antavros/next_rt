@@ -5,9 +5,9 @@ import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
 import { IconSettings } from "@tabler/icons-react";
 import { Button } from "@/components/features/Button";
-import { SignButton } from "@/components/entities/User/SignButton";
+import { SignButton } from "@/components/entities/User/features/SignButton";
 
-import { UserAvatar } from "../Avatar";
+import { UserAvatar } from "../../features/Avatar";
 import "./style.css";
 
 export const UserCard: React.FC = async () => {

@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { IconEdit } from "@tabler/icons-react";
-import { SignButton } from "@/components/entities/User/SignButton";
+import { SignButton } from "@/components/entities/User/features/SignButton";
 import bcrypt from "bcryptjs";
 
 import "./style.css";

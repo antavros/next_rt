@@ -8,7 +8,7 @@ import { signInSchema } from "./zod";
 import bcrypt from "bcryptjs";
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 export const getUserFromDb = async (email: string) => {
   return prisma.user.findUnique({

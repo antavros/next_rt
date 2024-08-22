@@ -4,7 +4,7 @@ import React from "react";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
-import { SwiperCardTitle } from "@/components/entities/User/History";
+import { SwiperCardTitle } from "@/components/entities/User/widgets/History";
 
 import "./style.css";
 

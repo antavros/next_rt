@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { IconEdit } from "@tabler/icons-react";
-import { SignButton } from "@/components/entities/User/SignButton";
+import { SignButton } from "@/components/entities/User/features/SignButton";
 import { handleUpdate } from "@/components/entities/User/Page/Settings/serverAction";
 
 import { getSession, useSession, signIn } from "next-auth/react";

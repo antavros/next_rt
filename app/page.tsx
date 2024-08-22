@@ -67,6 +67,7 @@ export default async function Home() {
 
   return (
     <>
+      <hr />
       <SwiperMain details={topTenTitlesWithLogo} />
       <hr />
       <TitleTable details={details} />

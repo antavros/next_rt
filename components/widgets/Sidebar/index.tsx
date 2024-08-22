@@ -3,7 +3,7 @@
 import { Togglers } from "@/components/features/Togglers";
 import { Logo } from "@/components/features/Logo";
 import "./style.css";
-import { UserCard } from "@/components/entities/User/Card";
+import { UserCard } from "@/components/entities/User/widgets/Card";
 import { NavMenu } from "./NavMenu";
 
 export async function Sidebar() {

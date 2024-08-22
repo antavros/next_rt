@@ -1,10 +1,11 @@
 .head {
-  display       : inline flex;
+  display       : flex;
+  flex-flow     : column wrap;
   width         : 100%;
+  height        : 90dvh;
+  min-width     : 100%;
   min-height    : 100%;
-  height        : 85svh;
   position      : relative;
-  overflow      : hidden;
   pointer-events: none !important;
 }
 
@@ -29,7 +30,6 @@
 .title_back {
   height        : 100%;
   max-width     : 100%;
-  display       : block;
   object-fit    : cover;
   z-index       : -1;
   pointer-events: auto !important;
@@ -38,8 +38,10 @@
 
 .head_Info {
   display        : inline flex;
-  flex-direction : column;
+  flex-flow      : column nowrap;
   position       : absolute;
+  top            : 0;
+  left           : 0;
   place-content  : center center;
   place-items    : center center;
   place-self     : center center;

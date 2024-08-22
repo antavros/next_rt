@@ -1,8 +1,5 @@
 .userBlock {
   display        : flex;
-  position       : absolute;
-  left           : 0;
-  bottom         : 0;
   flex-flow      : row nowrap;
   width          : 100%;
   height         : max-content;

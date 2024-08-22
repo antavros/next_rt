@@ -1,11 +1,19 @@
 .swiperContainer {
-  display    : flex;
-  flex-flow  : row wrap;
-  width      : 100%;
-  height     : 100%;
-  flex-basis : 0;
-  flex-grow  : 1;
-  flex-shrink: 2;
+  display      : flex;
+  position     : relative;
+  flex-flow    : column nowrap;
+  width        : 100%;
+  height       : 95dvh;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+}
+
+.swiper_home {
+  position: absolute;
+  width   : 100%;
+  height  : 100%;
+  top     : 0;
 }
 
 .swiper_home_wrapper::after {
@@ -81,7 +89,8 @@
   }
 
   .swiper_home .title_back {
-  width : 100% !important;    height: 100%;
+    width : 100% !important;
+    height: 100%;
   }
 
   .swiper_home_Info {
