@@ -2,15 +2,13 @@
 
 import React from "react";
 import { redirect } from "next/navigation";
+import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 import { SwiperCardTitle } from "@/components/entities/User/widgets/History";
 
 import "./style.css";
 
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
 export async function getVisitedTitles() {
   const session = await auth();
   if (!session?.user?.id) {

@@ -2,9 +2,7 @@
 
 import { ClientTitleCard } from "./clientAction"
 
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
 export const addTitle = async (
   id: string,

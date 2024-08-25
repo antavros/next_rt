@@ -71,27 +71,27 @@ export const TitleRate: React.FC<RatingProps> = ({
       )}
       {session
         ? personal !== undefined &&
-          personal > 0 && (
-            <article
-              className={style.personal}
-              style={getClassByRate({ vote: personal })}
-            >
-              {session?.user?.image ? (
-                <Image
-                  width={75}
-                  height={75}
-                  className={style.userAvatar}
-                  src={session.user.image}
-                  alt="User Avatar"
-                  quality={25}
-                  priority={true}
-                />
-              ) : (
-                <IconUserCircle stroke={2} />
-              )}
-              <span>{personal.toFixed(1)}</span>
-            </article>
-          )
+        personal > 0 && (
+          <article
+            className={style.personal}
+            style={getClassByRate({ vote: personal })}
+          >
+            {session?.user?.image ? (
+              <Image
+                width={75}
+                height={75}
+                className={style.userAvatar}
+                src={session.user.image}
+                alt="User Avatar"
+                quality={25}
+                priority={true}
+              />
+            ) : (
+              <IconUserCircle stroke={2} />
+            )}
+            <span>{personal.toFixed(1)}</span>
+          </article>
+        )
         : null}
     </section>
   );

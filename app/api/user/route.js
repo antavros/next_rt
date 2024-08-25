@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);

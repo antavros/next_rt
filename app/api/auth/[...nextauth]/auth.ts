@@ -6,9 +6,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { ZodError } from "zod";
 import { signInSchema } from "./zod";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
-
-export const prisma = new PrismaClient();
+import prisma from "./prismadb";
 
 export const getUserFromDb = async (email: string) => {
   return prisma.user.findUnique({
@@ -16,7 +14,11 @@ export const getUserFromDb = async (email: string) => {
   });
 };
 
-export const registerUser = async (password: string, email: string, name: string) => {
+export const registerUser = async (
+  password: string,
+  email: string,
+  name: string
+) => {
   // Проверка на существующего пользователя
   const existingUser = await prisma.user.findUnique({
     where: { email },

@@ -1,8 +1,6 @@
 "use server";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
 export const handleUpdate = async (
   field: string,
