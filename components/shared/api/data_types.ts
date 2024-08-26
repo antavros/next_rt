@@ -90,6 +90,8 @@ export async function getDetails({
         const backdrop = doc?.backdrop?.url ?? "";
 
         const average_kp = doc?.rating?.kp ?? "";
+        const votes_kp = doc?.votes?.kp ?? "";
+
         const average_imdb = doc?.rating?.imdb ?? "";
 
         const budget = doc?.budget?.value
@@ -155,6 +157,7 @@ export async function getDetails({
           trailers,
           watchability,
           average_kp,
+          votes_kp,
           average_imdb,
           budget,
           feesRussia,

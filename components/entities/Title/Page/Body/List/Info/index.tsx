@@ -9,6 +9,7 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
 
   return (
     <section className="details_list">
+
       <article className="age">
         <h4>Возрастной рейтинг</h4>
         <div className="data">
@@ -20,18 +21,21 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </h6>
         </div>
       </article>
+
       <article>
         <h4>Страна</h4>
         <div className="data">
           <h6>{details?.countries}</h6>
         </div>
       </article>
+
       <article>
         <h4>Жанр</h4>
         <div className="data">
           <h6>{details?.genres}</h6>
         </div>
       </article>
+
       {details?.slogan?.length > 0 && (
         <article>
           <h4>Слоган</h4>
@@ -40,6 +44,7 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </div>
         </article>
       )}
+
       {details?.length?.length > 0 && (
         <article>
           <h4>Длительность</h4>
@@ -48,12 +53,14 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </div>
         </article>
       )}
+
       <article>
         <h4>Год производства</h4>
         <div className="data">
           <h6>{details?.year}</h6>
         </div>
       </article>
+
       {details?.premiereRussia?.length > 1 || details?.premiereUSA?.length > 1 || details?.premiereWorld?.length > 1 || details?.premiereBluray?.length > 1 ? (
         <article>
           <h4>Премьера</h4>
@@ -87,6 +94,7 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </div>
         </article>
       ) : null}
+
       {details?.budget && (
         <article>
           <h4>Бюджет</h4>
@@ -95,6 +103,7 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </div>
         </article>
       )}
+
       {details?.feesRussia || details?.feesUSA || details?.feesWorld ? (
         <article>
           <h4>Сборы</h4>
@@ -119,6 +128,7 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </div>
         </article>
       ) : null}
+
       {details?.audience?.length > 0 && (
         <article>
           <h4>Аудитория</h4>
@@ -133,6 +143,7 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
           </div>
         </article>
       )}
+
     </section>
   );
 };

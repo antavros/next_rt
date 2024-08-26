@@ -1,16 +1,35 @@
 .titles {
+  display         : flex;
+  flex-flow       : column nowrap;
+  place-content   : center center;
+  place-items     : center center;
+  place-self      : center center;
+  padding         : 1rem;
+  gap             : 1rem;
+  min-height      : 100vh;
+  width           : auto;
+  background-color: var(--color-block_back)
+}
+
+.titles h1 {
+  width      : 100%;
+  text-align : left;
+  font-weight: bold;
+  font-size  : 1.5rem;
+}
+
+.tableTitles {
   display      : flex;
   flex-wrap    : wrap;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
-  gap          : 0.5rem;
+  gap          : 1rem;
   min-height   : 100vh;
   width        : auto;
-  padding-top      : 1rem;
 }
 
-.titles .title_rate {
+.tableTitles .title_rate {
   position     : absolute;
   place-content: center space-between;
   padding      : var(--element-gap);

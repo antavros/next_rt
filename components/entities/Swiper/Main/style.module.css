@@ -1,19 +1,35 @@
 .swiperContainer {
-  display      : flex;
-  position     : relative;
-  flex-flow    : column nowrap;
-  width        : 100%;
-  height       : 95dvh;
-  place-content: center center;
-  place-items  : center center;
-  place-self   : center center;
+  display         : flex;
+  position        : relative;
+  flex-flow       : column nowrap;
+  width           : 100%;
+  height          : 100%;
+  max-height      : 95dvh;
+  gap             : 0.5rem;
+  padding         : 0 0 1rem 0;
+  place-content   : center center;
+  place-items     : center center;
+  place-self      : center center;
+  background-color: var(--color-block_back);
 }
 
-.swiper_home {
-  position: absolute;
-  width   : 100%;
-  height  : 100%;
-  top     : 0;
+.thumbs {
+  width        : 100%;
+  height       : 200px !important;
+  border-radius: var(--border-radius);
+}
+
+.thumbsSlide {
+  width        : 100px !important;
+  height       : max-content !important;
+  border-radius: var(--border-radius);
+}
+
+.thumbs img {
+  object-fit   : cover;
+  width        : 100px;
+  height       : max-content;
+  border-radius: var(--border-radius);
 }
 
 .swiper_home_wrapper::after {
@@ -65,14 +81,14 @@
 
 .swiper_home_Info h1 {
   padding-top  : 1rem;
-  font-size    : 150%;
+  font-size    : 1rem;
   text-overflow: ellipsis;
   color        : var(--color-white);
 }
 
 .swiper_home_Info h2 {
   font-size     : 100%;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   color         : var(--color-text);
 }
 
@@ -84,13 +100,8 @@
 }
 
 @media (max-width: 1200px) {
-  .swiper_home {
-    height: 70dvh !important;
-  }
-
-  .swiper_home .title_back {
-    width : 100% !important;
-    height: 100%;
+  .swiperContainer {
+    height: 65dvh;
   }
 
   .swiper_home_Info {

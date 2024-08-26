@@ -69,6 +69,7 @@ export function TitlePageBody({ details }: Details) {
   return (
     <div className={style.body}>
       <section className={`${style.details}`}>
+
         <div className={`${style.details_block}`}>
           {details?.watchability.length > 0 ? (
             <section className={`${style.block} ${style.watchability}`}>
@@ -79,8 +80,10 @@ export function TitlePageBody({ details }: Details) {
         </div>
 
         <div className={`${style.details_block}`}>
-          <span className={style.d}>
-            <span className={style.e}>
+
+          <span className={style.details_block_1}>
+
+            <span className={style.details_block_2}>
               <section className={`${style.block} ${style.detailsList}`}>
                 <h3>О {typeName2}</h3>
                 <DetailsList details={details} />
@@ -103,6 +106,7 @@ export function TitlePageBody({ details }: Details) {
               <SwiperCardTrailer details={details} />
             </section>
           )}
+
         </div>
 
         <div className={`${style.details_block}`}>
@@ -111,7 +115,13 @@ export function TitlePageBody({ details }: Details) {
             <SwiperCardPerson details={details} />
           </section>
         </div>
+
       </section>
+
+
+
+
+
 
       {session?.user?.role == "USER" ? (
         <section className={`${style.block} ${style.player}`}>

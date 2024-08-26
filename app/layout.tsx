@@ -46,7 +46,6 @@ const ubuntu = Ubuntu({
 import Providers from "./providers";
 
 import { Sidebar } from "@/components/widgets/Sidebar";
-import { Footer } from "@/components/widgets/Footer";
 import "./globals.css";
 
 export default function RootLayout({
@@ -59,10 +58,10 @@ export default function RootLayout({
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
           <Sidebar />
-          <div className="content">
-            <main className="main">{children}</main>
-            <Footer />
-          </div>
+          <main className="main">
+            {children}
+            <span id="footer"/>
+          </main>
         </Providers>
       </body>
     </html>

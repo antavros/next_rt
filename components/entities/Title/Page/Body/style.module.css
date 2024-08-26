@@ -58,11 +58,11 @@
 .trailers {
   display      : flex;
   width        : auto;
-  max-width    : 812px;
+  max-width    : 816px;
   padding      : 0;
-  place-content: center center;
-  place-items  : center center;
-  place-self   : center center;
+  place-content: start start;
+  place-items  : start start;
+  place-self   : start start;
 }
 
 .trailers h2 {
@@ -72,6 +72,7 @@
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
+
 }
 
 .trailers button {
@@ -87,55 +88,61 @@
   place-items  : center center;
   place-self   : center center;
   width        : 100%;
-  gap          : 1rem;
 }
 
 .details_block {
   display      : flex;
-  flex-flow    : row wrap;
-  flex         : auto auto 33%;
-  place-content: center center;
-  place-items  : center center;
-  place-self   : start center;
-  width        : max-content;
+  flex-flow    : column wrap;
+  place-content: start start;
+  place-items  : start start;
+  place-self   : start start;
+  width        : auto;
   gap          : 1rem;
 }
 
-.details_block span {
+.details_block_1 {
   display  : flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
+  width    : auto;
   gap      : 1rem;
 }
 
-.details .d {
-  display         : flex;
-  flex-flow       : row nowrap;
-  width           : min-content;
-  padding         : 1rem;
-  background-color: var(--color-block_back);
-}
-
-.details .e {
+.details_block_2 {
   display  : flex;
   flex-flow: column nowrap;
+  width    : auto;
+  gap      : 1rem;
 }
 
 .person {
-  display   : flex;
-  flex-flow : column wrap;
-  place-self: start start;
+  display      : flex;
+  flex-flow    : column wrap;
+  place-self   : start start;
+  width        : 400px;
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+}
+
+.person h3 {
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+  width        : 400px;
 }
 
 .detailsList {
   display  : flex;
   flex-flow: column wrap;
-  width    : 366px;
-
+  width    : 400px;
+  height   : max-content;
 }
 
 .description {
   display  : flex;
   flex-flow: column wrap;
+  width    : 400px;
+  height   : max-content;
 }
 
 .description p {

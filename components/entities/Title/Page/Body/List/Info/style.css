@@ -1,40 +1,46 @@
 .details_list {
   display       : flex;
   flex-direction: column;
-  gap           : 1rem;
-  width         : 100%;
-  max-width     : 400px;
+  gap           : 0.5rem;
+  width         : 400px;
+  overflow      : hidden;
 }
 
 .details_list article {
   display       : flex;
   flex-direction: row;
   width         : 100%;
-  gap           : 1rem;
+  gap           : 0.5rem;
   max-width     : 400px;
 }
 
 .details_list article h4 {
-  font-size : 1rem;
-  color     : white;
-  text-align: left;
-  width     : 11rem;
+  font-size    : 1rem;
+  color        : white;
+  text-align   : left;
+  width        : 176px;
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
 }
 
 .details_list article .data {
-  display       : flex;
-  flex-direction: row;
-  place-content : start start;
-  width         : auto;
-  gap           : 0.3rem;
+  display      : flex;
+  flex-flow    : row wrap;
+  place-content: start start;
+  width        : 208px;
+  gap          : 0.3rem;
 }
 
 .details_list h6 {
-  font-size : 1rem;
-  min-width : auto;
-  max-width : 16rem;
-  text-align: left;
-  color     : var(--color-text);
+  font-size    : 1rem;
+  width        : 208px;
+  max-width    : 16rem;
+  text-align   : left;
+  color        : var(--color-text);
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
 }
 
 .details_list article ul {
@@ -50,6 +56,16 @@
   place-content : start space-between;
 }
 
+.details_list article ul li h6 {
+  font-size    : 1rem;
+  width        : 90px;
+  max-width    : 16rem;
+  text-align   : left;
+  color        : var(--color-text);
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+}
 
 .details_list article:hover h6 li:hover h6 {
   color: white;

@@ -142,27 +142,18 @@ body {
   background-image : var(--theme-back);
 }
 
-.content {
+.main {
   display      : flex;
   flex         : 1 2 0;
   flex-flow    : column wrap;
-  width        : auto;
+  width        : 100%;
   height       : 100%;
   max-width    : 100%;
   min-width    : 70vw;
   min-height   : 100vh;
-  justify-items: end;
-}
-
-.main {
-  display      : flex;
-  flex         : 3 0 0;
-  flex-flow    : column wrap;
-  width        : 100%;
-  height       : 100%;
   place-content: center start;
-  min-height   : 73vh;
   padding      : 1rem 1.5rem 1rem 1rem;
+  gap          : 1rem;
   z-index      : var(--main_z-index);
 }
 

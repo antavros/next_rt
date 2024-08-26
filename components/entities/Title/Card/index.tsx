@@ -1,6 +1,6 @@
 "use server";
 
-import { ClientTitleCard } from "./clientAction"
+import { ClientTitleCard } from "./ui"
 
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 

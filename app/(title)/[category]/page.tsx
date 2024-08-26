@@ -1,9 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-
 import { TitleTable } from "@/components/entities/Title/Table";
-import { Pagination } from "@/components/features/Pagination";
 import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -32,6 +30,7 @@ export default async function categoryRender({
     "anime",
   ];
   const category = params.category;
+
   // Проверка, является ли категория допустимой
   if (!allowedCategories.includes(category)) {
     redirect(`/`);
@@ -42,10 +41,34 @@ export default async function categoryRender({
     params.category,
     page
   );
+
+  // Определение заголовка таблицы в зависимости от категории
+  let tableTitle = "Фильмы";
+  switch (category) {
+    case "movie":
+      tableTitle = "Фильмы";
+      break;
+    case "tv-series":
+      tableTitle = "Сериалы";
+      break;
+    case "cartoon":
+      tableTitle = "Мультфильмы";
+      break;
+    case "animated-series":
+      tableTitle = "Анимационные сериалы";
+      break;
+    case "anime":
+      tableTitle = "Аниме";
+      break;
+    default:
+      tableTitle = "Фильмы"; // значение по умолчанию
+  }
+
   return (
-    <>
-      <TitleTable details={details?.data} />
-      <Pagination pagination={details?.pagination} />
-    </>
+    <TitleTable
+      TableTitle={tableTitle}
+      details={details?.data}
+      pagination={details?.pagination}
+    />
   );
 }

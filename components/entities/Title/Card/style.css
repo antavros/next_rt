@@ -65,7 +65,7 @@
 .card_info h3,
 .card_info h4,
 .card_info p {
-  font-size    : 0.9rem;
+  font-size    : 0.8rem;
   text-align   : center;
   text-overflow: ellipsis;
   word-spacing : 0.2rem;
@@ -75,7 +75,7 @@
 
 .card_info h3 {
   color         : var(--color-white);
-  font-size     : 1.1rem;
+  font-size     : 1rem;
   padding-top   : 3rem;
   padding-bottom: 0.2rem;
 }

@@ -4,7 +4,7 @@ const yearRange = `${pastYear}-${currentYear}`;
 
 const ApiUrl = `https://api.kinopoisk.dev/v1.4/`;
 
-const ApiUrl_limit = `limit=40`;
+const ApiUrl_limit = `limit=42`;
 const ApiUrl_params = `sortField=votes.kp&sortType=-1&notNullFields=poster.url`;
 
 export const ApiUrl_Title_Page = `${ApiUrl}movie/`;
