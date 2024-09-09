@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
-import { IconUserCircle } from "@tabler/icons-react";
-import style from "./style.module.css";
+import { UserRate } from "@/components/entities/User/features/rate";
+import "./style.css";
 
 interface RatingProps {
   personal?: number;
@@ -14,7 +14,7 @@ interface RatingProps {
   rt?: number;
 }
 
-function getClassByRate({ vote }: { vote: number }) {
+export function getClassByRate({ vote }: { vote: number }) {
   const hue = (vote / 10) * 110;
   const saturation = 100;
   const lightness = 50;
@@ -47,10 +47,10 @@ export const TitleRate: React.FC<RatingProps> = ({
       : null;
 
   return (
-    <section className={`${style.title_rate} title_rate`}>
+    <section className={`title_rate`}>
       {averageRating !== null && (
         <article
-          className={style.rt}
+          className={"rt"}
           style={getClassByRate({ vote: averageRating })}
         >
           <Image fill={true} src="/images/RT.webp" alt="RT" priority={true} />
@@ -58,41 +58,18 @@ export const TitleRate: React.FC<RatingProps> = ({
         </article>
       )}
       {kp !== undefined && kp > 0 && (
-        <article className={style.kp} style={getClassByRate({ vote: kp })}>
+        <article className={"kp"} style={getClassByRate({ vote: kp })}>
           <h6>КП</h6>
           <span>{kp.toFixed(1)}</span>
         </article>
       )}
       {imdb !== undefined && imdb > 0 && (
-        <article className={style.imdb} style={getClassByRate({ vote: imdb })}>
+        <article className={"imdb"} style={getClassByRate({ vote: imdb })}>
           <h6>IMDB</h6>
           <span>{imdb.toFixed(1)}</span>
         </article>
       )}
-      {session
-        ? personal !== undefined &&
-        personal > 0 && (
-          <article
-            className={style.personal}
-            style={getClassByRate({ vote: personal })}
-          >
-            {session?.user?.image ? (
-              <Image
-                width={75}
-                height={75}
-                className={style.userAvatar}
-                src={session.user.image}
-                alt="User Avatar"
-                quality={25}
-                priority={true}
-              />
-            ) : (
-              <IconUserCircle stroke={2} />
-            )}
-            <span>{personal.toFixed(1)}</span>
-          </article>
-        )
-        : null}
+      {session ? personal !== undefined && personal > 0 && <UserRate /> : null}
     </section>
   );
 };

@@ -1,0 +1,13 @@
+.personal svg {
+  width : 100%;
+  height: 100%;
+  color : var(--color-text);
+}
+
+.personal img {
+  object-fit   : cover;
+  border-radius: 50% !important;
+  width        : auto !important;
+  height       : 1.5rem !important;
+  scale        : none !important;
+}

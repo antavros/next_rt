@@ -83,3 +83,41 @@ export async function markTitleVisited(id: string) {
     }
   }
 }
+
+export async function getUserRate(id: string) {
+  const session = await auth();
+  if (session?.user?.id) {
+    const userId = session.user.id;
+
+    const existingUserTitle = await prisma.userTitle.findUnique({
+      where: {
+        userId_titleId: {
+          userId,
+          titleId: id,
+        },
+      },
+    });
+
+    if (existingUserTitle) {
+      await prisma.userTitle.update({
+        where: {
+          userId_titleId: {
+            userId,
+            titleId: id,
+          },
+        },
+        data: {
+          visited: true,
+        },
+      });
+    } else {
+      await prisma.userTitle.create({
+        data: {
+          userId,
+          titleId: id,
+          visited: true,
+        },
+      });
+    }
+  }
+}
