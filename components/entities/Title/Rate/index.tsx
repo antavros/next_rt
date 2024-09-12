@@ -69,7 +69,7 @@ export const TitleRate: React.FC<RatingProps> = ({
           <span>{imdb.toFixed(1)}</span>
         </article>
       )}
-      {session ? personal !== undefined && personal > 0 && <UserRate /> : null}
+      {session && personal ? <UserRate /> : null}
     </section>
   );
 };
