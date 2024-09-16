@@ -11,3 +11,21 @@
   height       : 1.5rem !important;
   scale        : none !important;
 }
+
+input[type="radio"] {
+  display: none;
+}
+
+.star svg {
+  cursor: pointer;
+  width : 1.5rem;
+  height: 1.5rem;
+  margin: 1px;
+}
+
+
+
+.rating .star:hover {
+  cursor: pointer;
+  /* Меняем курсор при наведении на звезду */
+}

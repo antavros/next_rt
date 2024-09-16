@@ -23,6 +23,8 @@
   font-weight     : height;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter : var(--blur);
+  pointer-events  : all !important;
+  z-index         : 24221;
 }
 
 .title_rate h6 {

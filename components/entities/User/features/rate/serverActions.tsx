@@ -1,6 +1,5 @@
 "use server";
 
-import { ClientTitleCard } from "./ui";
 
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
@@ -60,5 +59,5 @@ export async function TitleCard({ details }: { readonly details: any }) {
   if (!title) {
     title = await addTitle(id, type, name, engname, description, image);
   }
-  return <ClientTitleCard details={details} />;
+  return null;
 }

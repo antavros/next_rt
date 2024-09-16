@@ -1,21 +1,52 @@
 "use client";
+import React, { useState } from "react";
+import Image from "next/image";
 
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
-import { IconUserCircle } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { getClassByRate } from "@/components/entities/Title/Rate";
+
+import { IconUserCircle, IconStar, IconStarHalfFilled, IconStarFilled } from "@tabler/icons-react";
+
 import "./style.css";
-import "./styles.css";
-import React, { useState } from "react";
 
 export function UserRate({ personal }: any) {
   const { data: session } = useSession();
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
+  const [hide, setHide] = useState(true); // Состояние для скрытия/отображения блока рейтинга
+  const [rating, setRating] = useState(0); // Текущее значение рейтинга
+  const [hoverValue, setHoverValue] = useState(0); // Состояние для наведения мыши (с дробной частью)
+
+  // Функция для рендера звезды (пустая, половина или полная) в зависимости от текущего и наведенного рейтинга
+  const renderStarIcon = (index: number) => {
+    if (hoverValue >= index) {
+      return <IconStarFilled className="star-icon" style={{ color: "yellow" }} />;
+    } else if (hoverValue >= index - 0.5) {
+      return <IconStarHalfFilled className="star-icon" style={{ color: "yellow" }} />;
+    } else {
+      return <IconStar className="star-icon" style={{ color: "gray" }} />;
+    }
+  };
+
+  // Функция для обработки наведения мыши
+  const handleMouseMove = (event: React.MouseEvent, index: number) => {
+    const { left, width } = event.currentTarget.getBoundingClientRect();
+    const mouseX = event.clientX - left;
+
+    // Если курсор находится в первой половине звезды, ставим половину, иначе - полную звезду
+    const isHalf = mouseX < width / 2;
+    setHoverValue(index - (isHalf ? 0.5 : 0));
+  };
+
+  // Функция для выбора рейтинга по клику
+  const handleClick = (index: number) => {
+    setRating(hoverValue); // Устанавливаем точное значение рейтинга (с дробной частью, если выбрана половина)
+  };
+  const toggleRatingVisibility = () => {
+    setHide(!hide); // Переключаем состояние
+  };
 
   return (
-    <article className={"personal"} style={getClassByRate({ vote: 8 })}>
+    <article className={"personal"} style={getClassByRate({ vote: rating })}>
       {session?.user?.image ? (
         <Image
           width={75}
@@ -29,33 +60,40 @@ export function UserRate({ personal }: any) {
       ) : (
         <IconUserCircle stroke={2} />
       )}
-      <span>{rating}</span>
-      <div className="rating">
-        {[...Array(10)].map((star, index) => {
-          const currentRating = index + 1;
-          return (
-            <label key={index}>
-              <input
-                type="radio"
-                name="rating"
-                value={currentRating}
-                onChange={() => setRating(currentRating)}
-              />
-              <span
-                className="star"
-                style={{
-                  color:
-                    currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9",
-                }}
-                onMouseEnter={() => setHover(currentRating)}
-                onMouseLeave={() => setHover(0)}
-              >
-                &#9733;
-              </span>
-            </label>
-          );
-        })}
-      </div>
+      {/* Элемент <span>, по клику на который переключается состояние видимости блока рейтинга */}
+      <span onClick={toggleRatingVisibility}>{rating}</span>
+
+      {/* Блок с рейтингом скрыт, если состояние hide === true */}
+      {!hide && (
+        <div className="rating">
+          {/* Генерация 10 звезд */}
+          {[...Array(10)].map((_, index) => {
+            const currentRating = index + 1;
+
+            return (
+              <label key={index}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={currentRating}
+                  style={{ display: "none" }} // Прячем радио-инпут
+                  onClick={() => {
+                    handleClick(currentRating);
+                    toggleRatingVisibility();
+                  }}
+                />
+                <span
+                  className="star"
+                  onMouseMove={(event) => handleMouseMove(event, currentRating)} // Обработка движения мыши
+                  onMouseLeave={() => setHoverValue(rating)} // Возвращаем hover к значению текущего рейтинга
+                >
+                  {renderStarIcon(currentRating)}
+                </span>
+              </label>
+            );
+          })}
+        </div>
+      )}
     </article>
   );
 }
