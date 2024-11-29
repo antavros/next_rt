@@ -59,6 +59,9 @@ export async function getDetails({
           ? doc.watchability?.items
           : [];
 
+        const sex = doc?.sex;
+        const age = doc?.age;
+
         const id = doc?.id;
         const type = doc?.type;
         const name = doc?.name ?? doc?.alternativeName ?? doc?.enName ?? "";
@@ -86,7 +89,8 @@ export async function getDetails({
         const description = doc?.description ?? "";
 
         const logo = doc?.logo?.url ?? "";
-        const poster = doc?.poster?.previewUrl ?? doc?.poster?.url ?? "";
+        const poster =
+          doc?.poster?.previewUrl ?? doc?.poster?.url ?? doc?.photo ?? "";
         const backdrop = doc?.backdrop?.url ?? "";
 
         const average_kp = doc?.rating?.kp ?? "";
@@ -168,6 +172,8 @@ export async function getDetails({
           premiereBluray,
           premiereUSA,
           audience,
+          sex,
+          age,
           hasPosters: !!poster,
         };
       })

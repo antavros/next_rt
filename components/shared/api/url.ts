@@ -16,6 +16,7 @@ export const ApiUrl_Title_Movie = `${ApiUrl}movie?${ApiUrl_limit}&${ApiUrl_param
 export const ApiUrl_Title_Cartoon = `${ApiUrl}movie?${ApiUrl_limit}&${ApiUrl_params}&type=cartoon`;
 export const ApiUrl_Title_TvSeries = `${ApiUrl}movie?${ApiUrl_limit}&${ApiUrl_params}&type=tv-series`;
 export const ApiUrl_Title_AniSeries = `${ApiUrl}movie?${ApiUrl_limit}&${ApiUrl_params}&type=animated-series`;
+export const ApiUrl_Title_Person = `${ApiUrl}person?${ApiUrl_limit}&sortField=countAwards&sortType=-1`;
 
 export const ApiUrl_List_Popular = `${ApiUrl}list?page=1&limit=250&sortField=updatedAt&sortType=-1`;
 export const ApiUrl_Person_Popular = `${ApiUrl}person?page=1&limit=250&sortField=movies.rating&sortType=-1`;

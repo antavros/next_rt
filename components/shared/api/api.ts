@@ -17,6 +17,7 @@ export async function getData({ url }: any) {
     headers: {
       accept: "application/json",
       "X-API-KEY": API_KEY,
+      cache: "force-cache",
     },
     next: {
       cache: "force-cache",
