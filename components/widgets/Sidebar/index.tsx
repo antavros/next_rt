@@ -12,7 +12,6 @@ export async function Sidebar() {
       <section className="sidebar">
         <Logo />
         <NavMenu />
-        <hr />
         <Togglers />
         <UserCard />
       </section>

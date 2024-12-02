@@ -62,6 +62,10 @@ export async function getDetails({
         const sex = doc?.sex;
         const age = doc?.age;
 
+        const profession = Array.isArray(doc?.profession)
+          ? doc?.profession.map((professions: any) => professions?.value).join(" ")
+          : "";
+        
         const id = doc?.id;
         const type = doc?.type;
         const name = doc?.name ?? doc?.alternativeName ?? doc?.enName ?? "";
@@ -174,6 +178,7 @@ export async function getDetails({
           audience,
           sex,
           age,
+          profession,
           hasPosters: !!poster,
         };
       })

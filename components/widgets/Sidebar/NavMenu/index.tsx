@@ -14,6 +14,7 @@ import {
   IconTorii,
   IconUsers,
   IconCards,
+  IconSpeakerphone
 } from "@tabler/icons-react";
 import "./style.css";
 
@@ -27,64 +28,70 @@ export function NavMenu() {
       name: "Главная",
       url: "/",
       className: isActiveMain("/"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconHome stroke={2} />,
     },
     {
       name: "Фильмы",
       url: "/movie?page=1",
       className: isActive("/movie"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconMovie stroke={2} />,
     },
     {
       name: "Сериалы",
       url: "/tv-series?page=1",
       className: isActive("/tv-series"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconDeviceTvOld stroke={2} />,
     },
     {
       name: "Мультфильмы",
       url: "/cartoon?page=1",
       className: isActive("/cartoon"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconMickey stroke={2} />,
     },
     {
       name: "Мультсериалы",
       url: "/animated-series?page=1",
       className: isActive("/animated-series"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconHorseToy stroke={2} />,
     },
     {
       name: "Аниме",
       url: "/anime?page=1",
       className: isActive("/anime"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconTorii stroke={2} />,
     },
     {
       name: "Коллекции",
       url: "/list?page=1",
       className: isActive("/list"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconCards stroke={2} />,
     },
     {
       name: "Персоны",
       url: "/person?page=1",
       className: isActive("/person"),
-      onClick: () => {},
+      onClick: () => { },
       svg: <IconUsers stroke={2} />,
+    },
+    {
+      name: "Анонсированные",
+      url: "/announced?page=1",
+      className: isActiveMain("/announced"),
+      onClick: () => { },
+      svg: <IconSpeakerphone stroke={2} />,
     },
   ];
 
   return (
     <nav aria-label="Боковое меню навигации">
       <Search />
-      <hr />
       <Button items={buttonItems} />
     </nav>
   );

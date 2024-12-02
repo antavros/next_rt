@@ -40,7 +40,6 @@ type Details = {
   href?: string | null;
   Kinobox?: any;
   className?: string;
-  params?: { readonly id: string };
   option?: any;
   responseData?: any[];
 

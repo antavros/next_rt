@@ -1,37 +1,38 @@
 .logo {
-    display            : flex;
-    flex-direction     : column;
-    width              : 100%;
-    height             : var(--header-height);
-    cursor             : pointer;
-    place-content      : center center;
-    place-items        : center center;
-    place-self         : center center;
-    -webkit-user-select: none;
-    -moz-user-select   : none;
-    -ms-user-select    : none;
-    user-select        : none;
-    filter             : drop-shadow(-1px 1px 16px rgba(85, 0, 255, 0.9));
+  display               : flex;
+  flex-direction        : column;
+  width                 : 100%;
+  height                : var(--header-height);
+  cursor                : pointer;
+  place-content         : center center;
+  place-items           : center center;
+  place-self            : center center;
+  -webkit-user-select   : none;
+  -moz-user-select      : none;
+  -ms-user-select       : none;
+  user-select           : none;
+  /* filter             : drop-shadow(-1px 1px 16px rgba(85, 0, 255, 0.9)); */
+  filter                : drop-shadow(-1px 1px 16px rgba(2, 2, 2, 0.9));
 }
 
 .logo img {
-    display            : block;
-    width              : auto;
-    height             : 100%;
-    object-fit         : cover;
-    transition-behavior: normal;
+  display            : block;
+  width              : auto;
+  height             : 100%;
+  object-fit         : cover;
+  transition-behavior: normal;
 }
 
 .logo #logo1 {
-    display: block;
-    padding: 0.3rem;
+  display: block;
+  padding: 0.3rem;
 }
 
 .logo #logo2 {
-    display: none;
-    padding: 0.6rem;
+  display: none;
+  padding: 0.6rem;
 }
 
 .logo:hover {
-    filter: drop-shadow(-1px 1px 13px rgb(255, 255, 255, 0.1));
+  filter: drop-shadow(-1px 1px 13px rgb(255, 255, 255, 0.1));
 }

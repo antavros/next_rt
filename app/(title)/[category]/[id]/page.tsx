@@ -8,10 +8,10 @@ import { addTitle, getTitleFromDb, markTitleVisited } from "./serverActions";
 
 // Генерация метаданных
 export async function generateMetadata(
-  { params }: { readonly params: { readonly id: string } },
+  { params }: { params: { category: string, id: string; } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const id = params.id;
+  const { id } = await params;
   const { metadata } = await fetchDetailsAndMetadata(id, parent);
   return metadata;
 }
@@ -20,23 +20,16 @@ export async function generateMetadata(
 export default async function TitlePageRender({
   params,
 }: {
-  readonly params: { readonly id: string; readonly category: string };
+  params: { category: string, id: string; };
 }) {
-  const id = params.id.toString();
-  const category = params.category;
-  console.log(`TitlePageRender: ${id} ${category}`);
-  const allowedCategories = [
-    "movie",
-    "tv-series",
-    "cartoon",
-    "animated-series",
-    "anime",
-  ];
+  const { category, id } = await params;
+  const allowedCategories = new Set([
+    "movie", "tv-series", "cartoon", "animated-series", "anime"
+  ]);
 
-  if (!allowedCategories.includes(category)) {
+  if (!allowedCategories.has(category)) {
     redirect(`/`);
   }
-
   const { details } = await fetchDetailsAndMetadata(
     id,
     {} as ResolvingMetadata
@@ -47,16 +40,12 @@ export default async function TitlePageRender({
     return;
   }
 
-  const type = details.type;
-  const name = details.name;
-  const engname = details.enName;
-  const description = details.sDescription;
-  const image = details.poster;
+  const { type, name, enName, sDescription, poster } = details;
 
   let title = await getTitleFromDb(id);
 
   if (!title) {
-    title = await addTitle(id, type, name, engname, description, image);
+    title = await addTitle(id, type, name, enName, sDescription, poster);
   }
 
   // Вызываем обновление статуса посещения

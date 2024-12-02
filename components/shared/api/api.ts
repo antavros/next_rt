@@ -44,6 +44,7 @@ export async function getData({ url }: any) {
     }
 
     const details = await getDetails({ details: responseData });
+    // console.log(details)
 
     return details;
   } catch (error: any) {

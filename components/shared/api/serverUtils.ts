@@ -9,6 +9,7 @@ import {
   ApiUrl_Title_Anime,
   ApiUrl_Title_Page,
   ApiUrl_Title_Person,
+  ApiUrl_Title_Announced,
 } from "@/components/shared/api/url";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -27,7 +28,9 @@ export async function getCategoryDetails(
     case "anime":
       return { url: ApiUrl_Title_Anime, name: "Аниме" };
     case "person":
-      return { url: ApiUrl_Title_Person, name: "person" };
+      return { url: ApiUrl_Title_Person, name: "Персоны" };
+    case "announced":
+      return { url: ApiUrl_Title_Announced, name: "Анонсированные" };
     default:
       return { name: "404" };
   }

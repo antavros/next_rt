@@ -1,12 +1,13 @@
 nav {
   padding      : 0;
   border-radius: 0;
+  overflow-y   : auto;
+  overflow-x   : hidden;
 }
 
 nav ul {
   display       : flex;
   flex-direction: column;
-  padding       : 0.7rem 0;
   border-radius : 0;
 }
 
@@ -26,28 +27,37 @@ nav ul li button {
   border-radius  : 0;
 }
 
+nav ul li button:hover {
+  background: transparent;
+}
+
+nav ul li button:hover svg {
+  background: var(--color-purple);
+}
+
+nav ul li button:hover h6 {
+  color: var(--color-white);
+}
+
 nav ul li button svg {
-  color  : var(--color-white);
-  width  : 2rem;
-  height : 2rem;
+  width  : 2.5rem;
+  height : 2.2rem;
   padding: 0.2rem;
 }
 
 nav ul li button h6 {
-  font-size   : 1;
-  padding-left: var(--block-gap);
-  color       : var(--color-white);
-}
-
-nav ul li button.active {
-  color            : var(--color-white);
-  border-inline-end: 0.5rem solid var(--color-purple);
-  writing-mode     : horizontal-tb;
-  direction        : ltr;
-  background       : rgba(0, 0, 0, 0.5);
+  font-size: 1.1rem !important;
 }
 
 nav ul li button.active svg {
   color     : var(--color-white);
   background: var(--color-purple);
+  width     : 2.6rem;
+  height    : 2.4rem;
+  padding   : 0.2rem;
+}
+
+nav ul li button.active h6 {
+  color    : var(--color-white);
+  font-size: 1.3rem !important;
 }
