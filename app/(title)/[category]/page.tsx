@@ -28,6 +28,8 @@ export default async function categoryRender({
     "cartoon",
     "animated-series",
     "anime",
+    "person",
+    "announced"
   ];
   const category = params.category;
 
