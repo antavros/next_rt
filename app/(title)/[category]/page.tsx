@@ -43,7 +43,7 @@ export default async function categoryRender({
   );
 
   // Определение заголовка таблицы в зависимости от категории
-  let tableTitle = "Фильмы";
+  let tableTitle = "RATETABLE";
   switch (category) {
     case "movie":
       tableTitle = "Фильмы";
@@ -60,8 +60,12 @@ export default async function categoryRender({
     case "anime":
       tableTitle = "Аниме";
       break;
-    default:
-      tableTitle = "Фильмы"; // значение по умолчанию
+    case "person":
+      tableTitle = "Персоны";
+      break;
+    case "announced":
+      tableTitle = "Анонсированные";
+      break;
   }
 
   return (

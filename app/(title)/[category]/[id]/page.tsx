@@ -24,7 +24,7 @@ export default async function TitlePageRender({
 }) {
   const { category, id } = await params;
   const allowedCategories = new Set([
-    "movie", "tv-series", "cartoon", "animated-series", "anime"
+    "movie", "tv-series", "cartoon", "animated-series", "anime", "person",
   ]);
 
   if (!allowedCategories.has(category)) {
