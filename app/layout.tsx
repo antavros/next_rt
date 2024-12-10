@@ -58,9 +58,11 @@ export default function RootLayout({
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
           <Sidebar />
-          <main className="main">
-            {children}
-            <span id="footer"/>
+          <main >
+            <div className="content">
+              {children}
+              <span id="footer" />
+            </div>
           </main>
         </Providers>
       </body>

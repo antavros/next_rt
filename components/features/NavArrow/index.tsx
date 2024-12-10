@@ -33,7 +33,7 @@ export const FastNavigation = () => {
     {
       type: "button",
       title: "Наверх",
-      url: "#body",
+      url: "#main",
       svg: <IconChevronsUp stroke={2} />,
     },
   ];

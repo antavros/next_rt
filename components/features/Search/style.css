@@ -1,7 +1,11 @@
 .searchContainer {
-  width  : 100%;
-  height : auto;
-  padding: 0 1rem 1rem 1rem;
+  display      : flex;
+  width        : 100%;
+  height       : auto;
+  padding      : 0.5rem;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
 }
 
 .searchContainer :is(:hover, :focus, :active) input {
