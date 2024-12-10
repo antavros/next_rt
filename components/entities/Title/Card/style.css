@@ -1,15 +1,14 @@
 .title_card {
-  display         : flex;
-  place-content   : center center;
-  place-items     : center center;
-  place-self      : center center;
-  position        : relative;
-  width           : auto;
-  height          : auto;
-  cursor          : pointer;
-  overflow        : hidden;
-  z-index         : 2;
-  background-color: red;
+  display      : flex;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  position     : relative;
+  width        : 16rem;
+  height       : 25rem;
+  cursor       : pointer;
+  overflow     : hidden;
+  z-index      : 2;
 }
 
 .title_card img {

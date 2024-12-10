@@ -1,10 +1,9 @@
 .body {
   display      : flex;
   flex-flow    : column nowrap;
-  position     : relative;
   width        : 100%;
+  height       : auto;
   place-content: center center;
-  overflow     : hidden;
   gap          : 1rem;
 }
 
@@ -56,17 +55,14 @@
 }
 
 .trailers {
-  display      : flex;
-  width        : auto;
-  max-width    : 816px;
-  padding      : 0;
-  place-content: start start;
-  place-items  : start start;
-  place-self   : start start;
+  display         : flex;
+  width           : auto;
+  max-width       : 817px;
+  background-color: var(--color-block_back);
 }
 
 .trailers h2 {
-  width        : 400px;
+  width        : 100%;
   padding      : 0 1rem 1rem 1rem;
   font-size    : 1rem;
   text-wrap    : nowrap;
@@ -118,7 +114,7 @@
   display      : flex;
   flex-flow    : column wrap;
   place-self   : start start;
-  width        : 400px;
+  width        : 390px;
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
@@ -128,20 +124,20 @@
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
-  width        : 400px;
+  width        : 390px;
 }
 
 .detailsList {
   display  : flex;
   flex-flow: column wrap;
-  width    : 400px;
+  width    : 390px;
   height   : max-content;
 }
 
 .description {
   display  : flex;
   flex-flow: column wrap;
-  width    : 400px;
+  width    : 390px;
   height   : max-content;
 }
 
@@ -159,12 +155,13 @@
 
 
 .player {
-  width: max-content;
+  width : max-content;
+  height: auto;
 }
 
 @media (max-width: 1200px) {
   .trailers {
-    max-width: 400px;
+    max-width: 390px;
   }
 
   .actors {

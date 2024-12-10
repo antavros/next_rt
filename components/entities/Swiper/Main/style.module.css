@@ -73,10 +73,11 @@
 
 .title_logo {
   display      : block;
-  width        : auto !important;
+  width        : 100% !important;
   height       : auto !important;
   object-fit   : cover;
-  max-width    : 80%;
+  max-width    : 60%;
+  max-height   : 30%;
   border-radius: 0 !important;
 }
 
