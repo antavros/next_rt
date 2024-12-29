@@ -59,10 +59,12 @@ export default function RootLayout({
         <Providers>
           <Sidebar />
           <main >
+            <hr />
             <div className="content">
               {children}
               <span id="footer" />
             </div>
+            <hr />
           </main>
         </Providers>
       </body>

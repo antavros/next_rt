@@ -1,9 +1,10 @@
 .titles {
-  display         : flex;
-  flex-flow       : column nowrap;
-  gap             : 1rem;
-  padding         : 1rem;
-  background-color: var(--color-block_back);
+  display  : flex;
+  flex-flow: column wrap;
+  gap      : 1rem;
+
+  max-width : auto;
+  box-sizing: border-box;
 }
 
 .titles h1 {

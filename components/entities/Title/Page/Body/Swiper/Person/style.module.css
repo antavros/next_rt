@@ -1,6 +1,7 @@
 .swiper_slide {
-  width : 220px !important;
-  height: 330px !important;
+  width : 260px !important;
+  height: 400px !important;
+  height: auto;
 }
 
 .swiper_person_wrapper::after {
@@ -12,6 +13,7 @@
   bottom          : 0;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 40%);
 }
+
 
 .swiper_person_Info {
   position      : absolute !important;

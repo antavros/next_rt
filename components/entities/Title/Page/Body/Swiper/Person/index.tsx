@@ -13,7 +13,7 @@ export function SwiperCardPerson({ details }: Details) {
     (person: any) => person.enProfession === "actor"
   );
   const object = filteredPersonsActor || [];
-  const option = { direction: "vertical" };
+  // const option = { direction: "vertical" };
 
   const renderSlide = (person: any) => (
     <Link
@@ -40,7 +40,7 @@ export function SwiperCardPerson({ details }: Details) {
       style={style.swiper_slide}
       object={object}
       renderSlide={renderSlide}
-      option={option}
+    // option={option}
     />
   );
 }

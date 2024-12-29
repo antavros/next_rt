@@ -3,6 +3,7 @@ header {
   width        : max-content;
   border-radius: 0;
   z-index      : var(--sidebar_z-index);
+  padding      : 1rem;
 }
 
 .sidebar {

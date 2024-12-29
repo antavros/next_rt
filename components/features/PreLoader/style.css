@@ -1,17 +1,17 @@
 .preloader {
-    display         : flex;
-    position        : absolute;
-    left            : 0;
-    top             : 0;
-    min-width       : 2rem;
-    min-height      : 2rem;
-    max-width       : 100vw;
-    width           : 100%;
-    height          : 100%;
-    background-color: rgba(32, 32, 32, 1);
-    overflow        : hidden;
-    z-index         : 999999999;
-    border-radius   : 0;
+  display         : flex;
+  position        : absolute;
+  left            : 0;
+  top             : 0;
+  min-width       : 15rem;
+  min-height      : 2rem;
+  max-width       : 100vw;
+  width           : 100%;
+  height          : 100%;
+  background-color: rgba(32, 32, 32, 1);
+  overflow        : hidden;
+  z-index         : 999999999;
+  border-radius   : 0;
 }
 
 /* .skeleton {
@@ -33,28 +33,28 @@
 } */
 
 .loader {
-    display      : flex;
-    padding      : auto;
-    margin       : auto;
-    place-content: center center;
-    place-items  : center center;
-    place-self   : center center;
-    border       : 6px solid var(--color-purple);
-    border-right : 6px solid var(--color-orangered);
-    border-radius: 50%;
-    width        : 5rem;
-    height       : 5rem;
-    animation    : spin 2s linear infinite;
+  display      : flex;
+  padding      : auto;
+  margin       : auto;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  border       : 6px solid var(--color-purple);
+  border-right : 6px solid var(--color-orangered);
+  border-radius: 50%;
+  width        : 5rem;
+  height       : 5rem;
+  animation    : spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* 

@@ -8,12 +8,11 @@
 }
 
 .block {
-  display         : flex;
-  flex-direction  : column;
-  height          : 100%;
-  place-self      : center center;
-  padding         : 1rem;
-  background-color: var(--color-block_back);
+  display       : flex;
+  flex-direction: column;
+  height        : 100%;
+  place-self    : center center;
+  padding       : 1rem;
 }
 
 .block h3 {
@@ -31,22 +30,21 @@
   place-content: start center;
   width        : 100%;
 }
-
+.actors
 .actors,
 .trailers,
 .chapters,
 .watchability,
 .similar {
   display         : flex;
-  width           : auto !important;
+  width           : 100% !important;
   max-width       : 100%;
   height          : auto !important;
   max-height      : 100%;
   background-color: transparent;
 }
 
-.watchability,
-.actors {
+.watchability {
   height       : auto !important;
   max-height   : 1105px;
   place-content: center center;
@@ -55,10 +53,9 @@
 }
 
 .trailers {
-  display         : flex;
-  width           : auto;
-  max-width       : 817px;
-  background-color: var(--color-block_back);
+  display  : flex;
+  width    : auto;
+  max-width: 817px;
 }
 
 .trailers h2 {
@@ -110,21 +107,13 @@
   gap      : 1rem;
 }
 
-.person {
-  display      : flex;
-  flex-flow    : column wrap;
-  place-self   : start start;
-  width        : 390px;
-  text-wrap    : nowrap;
-  text-overflow: ellipsis;
-  overflow     : hidden;
-}
+
 
 .person h3 {
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
-  width        : 390px;
+  width        : 100%;
 }
 
 .detailsList {
@@ -162,10 +151,6 @@
 @media (max-width: 1200px) {
   .trailers {
     max-width: 390px;
-  }
-
-  .actors {
-    max-height: 422px;
   }
 
   .watchability {
