@@ -17,7 +17,7 @@ header {
 }
 
 .sidebar_hide {
-  width: 6rem;
+  width: max-content;
 }
 
 .sidebar_hide #logo1 {
