@@ -18,7 +18,7 @@ import { Details } from "@/components/shared/api/next-title";
 
 export function TitlePageBody({ details }: Details) {
   const { data: session } = useSession();
-  const category = details?.type.toLowerCase();
+  const category = details?.type?.toLowerCase();
   let typeName: string;
   let typeName2: string;
   let typeName3: string;
@@ -109,20 +109,13 @@ export function TitlePageBody({ details }: Details) {
 
         </div>
 
-        <div className={`${style.details_block}`}>
-          <section className={`${style.block} ${style.actors}`}>
-            <h3>Актеры</h3>
-            <SwiperCardPerson details={details} />
-          </section>
-        </div>
+
 
       </section>
-
-
-
-
-
-
+        <section className={`${style.block} ${style.actors}`}>
+          <h3>Актеры</h3>
+          <SwiperCardPerson details={details} />
+        </section>
       {session?.user?.role == "USER" ? (
         <section className={`${style.block} ${style.player}`}>
           <h3>Просмотр</h3>

@@ -54,7 +54,7 @@ export function Search({ onSearch }: SearchProps) {
           type="text"
           id="search_input"
           name="search"
-          placeholder="ПОИСК"
+          placeholder="Поиск"
           autoComplete="on"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}

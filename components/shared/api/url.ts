@@ -9,6 +9,7 @@ const ApiUrl_limit = `limit=42`;
 const ApiUrl_params = `sortField=year&sortField=votes.kp&sortType=-1&sortType=-1&notNullFields=poster.url&notNullFields=rating.kp`;
 
 export const ApiUrl_Title_Page = `${ApiUrl}movie/`;
+export const ApiUrl_Person_Page = `${ApiUrl}person/`;
 export const ApiUrl_Title_Search = `${ApiUrl}movie/search?${ApiUrl_limit}&query=`;
 export const ApiUrl_Title_Popular = `${ApiUrl}movie?&notNullFields=poster.url&lists=popular-films&limit=250&notNullFields=backdrop.url&year=${yearRange}&${ApiUrl_params}`;
 

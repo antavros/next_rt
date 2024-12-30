@@ -44,9 +44,9 @@ export function SwiperMain({ details }: any) {
             slidesPerView: 1,
           },
         }}
-        modules={[Autoplay, Keyboard, Navigation, Pagination, Virtual, Thumbs]}
+        modules={[Autoplay, Keyboard, Navigation, Pagination, Virtual]}
         className={style.swiper_home}
-        thumbs={{ swiper: thumbsSwiper }}
+        // thumbs={{ swiper: thumbsSwiper }}
         cssMode={false}
         navigation={true}
         spaceBetween={30}
@@ -108,7 +108,7 @@ export function SwiperMain({ details }: any) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Swiper
+      {/* <Swiper
         onSwiper={setThumbsSwiper}
         rewind={true}
         spaceBetween={10}
@@ -135,7 +135,7 @@ export function SwiperMain({ details }: any) {
             />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 }

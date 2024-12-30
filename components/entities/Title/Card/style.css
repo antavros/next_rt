@@ -8,9 +8,6 @@
   cursor       : pointer;
   overflow     : hidden;
   z-index      : 2;
-  flex         : 1 1 calc(15% - 1rem);
-
-
 }
 
 .title_card img {

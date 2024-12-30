@@ -30,14 +30,14 @@
   place-content: start center;
   width        : 100%;
 }
-.actors
+
+
 .actors,
 .trailers,
 .chapters,
 .watchability,
 .similar {
   display         : flex;
-  width           : 100% !important;
   max-width       : 100%;
   height          : auto !important;
   max-height      : 100%;
@@ -50,13 +50,20 @@
   place-content: center center;
   place-items  : center center;
   place-self   : start center;
+  overflow     : hidden;
+}
+
+.watchability * {
+  overflow: hidden !important;
 }
 
 .trailers {
   display  : flex;
   width    : auto;
   max-width: 817px;
+  overflow : hidden;
 }
+
 
 .trailers h2 {
   width        : 100%;
@@ -65,7 +72,6 @@
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
-
 }
 
 .trailers button {
@@ -76,7 +82,6 @@
 .details {
   display      : flex;
   flex-flow    : row wrap;
-  position     : relative;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;

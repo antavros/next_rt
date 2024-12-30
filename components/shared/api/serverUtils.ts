@@ -7,9 +7,10 @@ import {
   ApiUrl_Title_Cartoon,
   ApiUrl_Title_AniSeries,
   ApiUrl_Title_Anime,
-  ApiUrl_Title_Page,
   ApiUrl_Title_Person,
   ApiUrl_Title_Announced,
+  ApiUrl_Title_Page,
+  ApiUrl_Person_Page,
 } from "@/components/shared/api/url";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -58,10 +59,13 @@ export async function fetchCategoryDetailsAndMetadata(
 }
 
 export async function fetchDetailsAndMetadata(
+    category: string,
   id: string,
   parent: ResolvingMetadata
 ): Promise<{ details: any; metadata: Metadata }> {
-  const data = await getData({ url: `${ApiUrl_Title_Page}${id}` });
+  const apiUrl = category === "person" ? ApiUrl_Person_Page : ApiUrl_Title_Page;
+
+  const data = await getData({ url: `${apiUrl}${id}` });
   const details = data?.data[0];
   const previousImages = (await parent).openGraph?.images || [];
   const poster = details?.poster ?? "";

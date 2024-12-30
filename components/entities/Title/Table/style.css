@@ -17,7 +17,7 @@
 .tableTitles {
   display      : flex;
   flex-wrap    : wrap;
-  place-content: center center;
+  place-content: center space-between;
   place-items  : center center;
   place-self   : center center;
   gap          : 1rem;
