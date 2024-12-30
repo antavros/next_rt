@@ -63,9 +63,11 @@ export async function getDetails({
         const age = doc?.age;
 
         const profession = Array.isArray(doc?.profession)
-          ? doc?.profession.map((professions: any) => professions?.value).join(" ")
+          ? doc?.profession
+              .map((professions: any) => professions?.value)
+              .join(" ")
           : "";
-        
+
         const id = doc?.id;
         const type = doc?.type;
         const name = doc?.name ?? doc?.alternativeName ?? doc?.enName ?? "";
@@ -92,7 +94,7 @@ export async function getDetails({
         const sDescription = doc?.shortDescription ?? "";
         const description = doc?.description ?? "";
 
-        const logo = doc?.logo?.url ?? "";
+        const logo = doc?.logo?.url ?? doc?.logo?.previewUrl ?? "";
         const poster =
           doc?.poster?.previewUrl ?? doc?.poster?.url ?? doc?.photo ?? "";
         const backdrop = doc?.backdrop?.url ?? "";
