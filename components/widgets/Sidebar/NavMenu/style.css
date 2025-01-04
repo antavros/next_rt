@@ -1,11 +1,20 @@
 nav {
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow-y   : auto;
+  overflow-x   : auto;
+  width        : max-content;
+  height       : max-content;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
 }
 
 nav ul {
+  padding       : 0.5rem 0.3rem;
   display       : flex;
   flex-direction: column;
+  width         : 100%;
+  height        : max-content;
+  gap           : 0.5rem;
 }
 
 nav ul li button {
@@ -18,7 +27,7 @@ nav ul li button {
   backdrop-filter: none;
   background     : transparent;
   border-radius  : 0;
-  padding        : 0.3rem 1rem;
+  padding        : 0;
 }
 
 nav ul li button:hover {

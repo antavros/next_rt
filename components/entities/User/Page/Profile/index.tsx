@@ -41,7 +41,6 @@ export async function ProfilePage() {
 
   return (
     <section className="profile">
-      <h1>Профиль</h1>
       {visitedTitles.length > 0 && (
         <section className="history block">
           <h3>История</h3>

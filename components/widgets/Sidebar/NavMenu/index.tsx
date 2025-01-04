@@ -81,7 +81,7 @@ export function NavMenu() {
       svg: <IconUsers stroke={2} />,
     },
     {
-      name: "Анонсированные",
+      name: "Анонсы",
       url: "/announced?page=1",
       className: isActiveMain("/announced"),
       onClick: () => { },

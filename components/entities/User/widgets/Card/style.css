@@ -1,27 +1,32 @@
 .userBlock {
-  display        : flex;
-  flex-flow      : row nowrap;
-  width          : 100%;
-  height         : max-content;
-  min-height     : 3rem;
-  margin-top     : auto;
-  padding        : 0.5rem;
-  gap            : 0.5rem;
-  place-content  : center space-between;
-  border-radius  : var(--border-radius);
-  backdrop-filter: var(--blur);
-  background     : var(--color-block_back);
+  display         : flex;
+  flex-flow       : row nowrap;
+  width           : 100%;
+  height          : max-content;
+  min-height      : 3rem;
+  margin-top      : auto;
+  gap             : 0.3rem;
+  padding         : 1rem;
+  place-content   : center space-between;
+  place-self      : center center;
+  place-items     : center center;
+  border-radius   : var(--border-radius);
+  background-color: var(--color-block_back);
+  background-image: var(--color-block_back);
+  backdrop-filter : var(--blur);
 }
 
 .unSign {
   place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
 }
 
 .userButtons {
   display      : flex;
   flex-flow    : column nowrap;
   width        : max-content;
-  gap          : 0.5rem;
+  gap          : var(--element-gap);
   place-content: end end;
   place-items  : end end;
   place-self   : end end;

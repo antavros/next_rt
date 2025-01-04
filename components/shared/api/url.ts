@@ -1,6 +1,6 @@
 const currentYear = new Date().getFullYear();
 const nextYear = currentYear + 1;
-const pastYear = currentYear - 1;
+const pastYear = currentYear - 2;
 const yearRange = `${pastYear}-${currentYear}`;
 
 const ApiUrl = `https://api.kinopoisk.dev/v1.4/`;
@@ -11,7 +11,7 @@ const ApiUrl_params = `sortField=year&sortField=votes.kp&sortType=-1&sortType=-1
 export const ApiUrl_Title_Page = `${ApiUrl}movie/`;
 export const ApiUrl_Person_Page = `${ApiUrl}person/`;
 export const ApiUrl_Title_Search = `${ApiUrl}movie/search?${ApiUrl_limit}&query=`;
-export const ApiUrl_Title_Popular = `${ApiUrl}movie?&notNullFields=poster.url&lists=popular-films&limit=250&notNullFields=backdrop.url&year=${yearRange}&${ApiUrl_params}`;
+export const ApiUrl_Title_Popular = `${ApiUrl}movie?&lists=popular-films&limit=250&notNullFields=backdrop.url&year=${yearRange}&${ApiUrl_params}`;
 
 export const ApiUrl_Title_Anime = `${ApiUrl}movie?${ApiUrl_limit}&${ApiUrl_params}&type=anime&year=1874-2024`;
 export const ApiUrl_Title_Movie = `${ApiUrl}movie?${ApiUrl_limit}&${ApiUrl_params}&type=movie&year=1874-2024`;

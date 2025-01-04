@@ -1,10 +1,9 @@
 .titles {
-  display  : flex;
-  flex-flow: column wrap;
-  gap      : 1rem;
-
-  max-width : auto;
+  display   : flex;
+  flex-flow : column wrap;
+  max-width : 100%;
   box-sizing: border-box;
+
 }
 
 .titles h1 {
@@ -12,17 +11,18 @@
   text-align : left;
   font-weight: bold;
   font-size  : 1.5rem;
+  padding    : 0 0 1rem 0;
 }
 
 .tableTitles {
   display      : flex;
   flex-wrap    : wrap;
-  place-content: center space-between;
+  place-content: center space-evenly;
   place-items  : center center;
   place-self   : center center;
-  gap          : 1rem;
-  min-height   : 100vh;
+  min-height   : 100dvh;
   width        : auto;
+  gap          : 0.5rem;
 }
 
 .tableTitles .title_rate {

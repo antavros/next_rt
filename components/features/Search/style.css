@@ -1,112 +1,72 @@
 .searchContainer {
   display      : flex;
-  width        : 100%;
+  width        : max-content;
   height       : auto;
-  padding      : 0.1rem 0.2rem 0.1rem 0.2rem;
   place-content: center center;
   place-self   : center center;
   place-items  : center center;
-}
-
-.searchContainer :is(:hover, :focus, :active) input {
-  color       : var(--color-white);
-  border-color: var(--color-purple);
-  border-left : none;
-  border-right: none;
-}
-
-.searchContainer :is(:hover, :focus, :active) input::placeholder {
-  opacity: 0;
-}
-
-.searchContainer :is(:hover, :focus, :active) button {
-  scale       : none;
-  color       : var(--color-white);
-  border-color: var(--color-purple);
-  border-right: none;
-}
-
-.searchContainer :is(:hover, :focus, :active) button:last-child {
-  scale       : none;
-  color       : var(--color-white);
-  border-color: var(--color-purple);
-  border-left : none;
-}
-
-.searchContainer :is(:hover, :focus, :active) button:last-child svg {
-  color: var(--color-white);
 }
 
 .search {
   display       : flex;
-  flex-direction: row;
-  min-width     : 0.1rem;
+  flex-direction: row nowrap;
   width         : 100%;
-  max-width     : 30rem;
   height        : 3rem;
-  box-shadow    : var(--shadow);
   border-radius : 2.5rem;
-  box-shadow    : 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.search input {
+  width           : max-content;
+  height          : auto;
+  font-size       : 1rem !important;
+  font-weight     : bold;
+  text-align      : start;
+  vertical-align  : middle;
+  color           : var(--color-text);
+  border          : 0.15rem solid transparent;
+  border-radius   : 0;
+  border-left     : none;
+  border-right    : none;
+  backdrop-filter : none;
+  background-color: transparent;
+}
+
+.search input::placeholder {
+  font-size  : 1rem !important;
+  font-weight: bold;
 }
 
 .search button {
-  width           : 4rem;
+  width           : 2.5rem;
   height          : 3rem;
-  min-width       : 1rem;
-  max-width       : 30rem;
   min-height      : 3rem;
-  border          : 0.15rem solid rgba(0, 0, 0, 0.3);
   border-radius   : 2.5rem 0px 0px 2.5rem;
+  border          : 0.15rem solid transparent;
   border-right    : none;
-  background-color: rgba(0, 0, 0, 0.3) !important;
   backdrop-filter : none;
+  background-color: transparent;
   box-shadow      : none;
 }
 
 .search button:last-child {
-  width           : 4rem;
-  height          : 3rem;
-  min-width       : 1rem;
-  max-width       : 30rem;
-  min-height      : 3rem;
-  border          : 0.15rem solid rgba(0, 0, 0, 0.3);
-  border-radius   : 0 2.5rem 2.5rem 0;
-  border-left     : none;
+  border-radius: 0 2.5rem 2.5rem 0;
+  border-right : 0.15rem solid transparent;
+  border-left  : none;
+  scale        : none;
+  color        : transparent;
+}
+
+.search:is(:hover, :focus, :active) input,
+.search:is(:hover, :focus, :active) button,
+.search input:is(:hover, :focus, :active) input,
+.search input:is(:hover, :focus, :active) button,
+.search input:is(:hover, :focus, :active) button svg {
+  color           : var(--color-white) !important;
+  border-color    : var(--color-purple) !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
-  backdrop-filter : none;
-  box-shadow      : none;
 }
 
-/* .search button svg {
-  width  : 1.8rem;
-  height : 1.8rem;
-  padding: 0.15rem;
-} */
-
-.search button:last-child svg {
-  color: transparent;
-}
-
-.search input {
-  width         : 100%;
-  height        : auto;
-  font-size     : 1rem !important;
-  font-weight   : bold;
-  text-align    : start;
-  vertical-align: middle;
-  color         : var(--color-text);
-  border        : 0.15rem solid rgba(0, 0, 0, 0.3);
-  border-radius : 0;
-  border-left   : none;
-  border-right  : none;
-  background    : rgba(0, 0, 0, 0.3) !important;
-}
-
-.search input::placeholder {
-  font-size    : 1rem !important;
-  font-weight  : bold;
-  text-align   : center;
-  place-content: center center;
-  place-self   : center center;
-  place-items  : center center;
+.search:is(:hover, :focus, :active) input::placeholder,
+.search input:is(:hover, :focus, :active) input::placeholder {
+  opacity: 0;
 }
