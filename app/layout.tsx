@@ -55,6 +55,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
+      <meta name="yandex-verification" content="7d219569f9075bd9" />
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
           <Sidebar />
