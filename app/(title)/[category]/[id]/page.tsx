@@ -46,15 +46,16 @@ export default async function TitlePageRender({
     return;
   }
 
-// Получение данных из базы или добавление нового заголовка
-if ( category !== "person") {
-  const { type, name, enName, sDescription, poster } = details;
-  let title = await getTitleFromDb(id);
-  // Обновление статуса посещения
-  await markTitleVisited(id);
-  if (!title) {
-    title = await addTitle(id, type, name, enName, sDescription, poster);
-  }}
+  // Получение данных из базы или добавление нового заголовка
+  if (category !== "person") {
+    const { type, name, enName, sDescription, poster } = details;
+    let title = await getTitleFromDb(id);
+    // Обновление статуса посещения
+    await markTitleVisited(id);
+    if (!title) {
+      title = await addTitle(id, type, name, enName, sDescription, poster);
+    }
+  }
 
   // Рендер страницы
   return <TitlePage details={details} />;

@@ -4,6 +4,7 @@
   gap           : 0.5rem;
   width         : 390px;
   overflow      : hidden;
+  border-radius : 0;
 }
 
 .details_list article {
@@ -12,35 +13,38 @@
   width         : 100%;
   gap           : 0.5rem;
   max-width     : 390px;
+  border-radius : 0;
 }
 
 .details_list article h4 {
   font-size    : 1rem;
   color        : white;
   text-align   : left;
-  width        : 176px;
+  width        : 145px;
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
+  border-radius: 0;
 }
 
 .details_list article .data {
   display      : flex;
   flex-flow    : row wrap;
   place-content: start start;
-  width        : 208px;
+  width        : auto;
   gap          : 0.3rem;
 }
 
 .details_list h6 {
   font-size    : 1rem;
-  width        : 208px;
+  width        : auto;
   max-width    : 16rem;
   text-align   : left;
   color        : var(--color-text);
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
+  border-radius: 0;
 }
 
 .details_list article ul {
@@ -56,25 +60,35 @@
   place-content : start space-between;
 }
 
-.details_list article ul li h6 {
+.details_list article ul li h5 {
   font-size    : 1rem;
-  width        : 90px;
-  max-width    : 16rem;
+  width        : 60px;
   text-align   : left;
   color        : var(--color-text);
   text-wrap    : nowrap;
   text-overflow: ellipsis;
   overflow     : hidden;
+  border-radius: 0;
+}
+
+.details_list article ul li h6 {
+  font-size    : 1rem;
+  text-align   : left;
+  color        : var(--color-text);
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+  border-radius: 0;
 }
 
 .details_list article:hover h6 li:hover h6 {
   color: white;
-  scale: 105%;
+  scale: 101%;
 }
 
 .details_list article:hover h6 {
   color: white;
-  scale: 105%;
+  scale: 101%;
 }
 
 .details_list .age {

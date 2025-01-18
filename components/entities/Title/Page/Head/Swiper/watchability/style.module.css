@@ -1,0 +1,11 @@
+.swiper_slide {
+  width        : 3rem;
+  height       : 3rem;
+  border-radius: 50% !important;
+}
+
+.swiper_slide img {
+  width  :3rem;
+  height : 3rem;
+  z-index: -1;
+}

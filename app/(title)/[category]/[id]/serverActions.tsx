@@ -45,7 +45,6 @@ export const getTitleFromDb = async (id: string) => {
   }
 };
 
-// Вынесем функцию markTitleVisited из основного компонента
 export async function markTitleVisited(id: string) {
   const session = await auth();
   if (session?.user?.id) {

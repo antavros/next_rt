@@ -4,6 +4,8 @@
   width        : 100%;
   height       : auto;
   place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
   gap          : 1rem;
 }
 
@@ -12,24 +14,17 @@
   flex-direction: column;
   height        : 100%;
   place-self    : center center;
+  border-radius : 0;
 }
 
 .block h3 {
-  width      : max-content;
-  text-align : left;
-  font-weight: bold;
-  font-size  : 1.5rem;
-  padding    : 0 0 1rem 0;
+  width        : max-content;
+  text-align   : left;
+  font-weight  : bold;
+  font-size    : 1.5rem;
+  padding      : 0 0 1rem 0;
+  border-radius: 0;
 }
-
-.add {
-  display      : flex;
-  flex-flow    : row wrap;
-  position     : relative;
-  place-content: start center;
-  width        : 100%;
-}
-
 
 .actors,
 .trailers,
@@ -43,19 +38,6 @@
   background-color: transparent;
 }
 
-.watchability {
-  height       : auto !important;
-  max-height   : 1105px;
-  place-content: center center;
-  place-items  : center center;
-  place-self   : start center;
-  overflow     : hidden;
-}
-
-.watchability * {
-  overflow: hidden !important;
-}
-
 .trailers {
   display  : flex;
   width    : auto;
@@ -65,7 +47,7 @@
 
 
 .trailers h2 {
-  width        : 100%;
+  width        : auto;
   padding      : 0 1rem 1rem 1rem;
   font-size    : 1rem;
   text-wrap    : nowrap;
@@ -80,7 +62,7 @@
 
 .details {
   display      : flex;
-  flex-flow    : row wrap;
+  flex-flow    : column nowrap;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
@@ -88,44 +70,30 @@
   gap          : 1rem;
 }
 
-.details_block {
-  display      : flex;
-  flex-flow    : column wrap;
-  place-content: start start;
-  place-items  : start start;
-  place-self   : start start;
-  width        : auto;
-  gap          : 1rem;
-}
-
 .details_block_1 {
-  display  : flex;
-  flex-flow: row nowrap;
-  width    : auto;
-  gap      : 1rem;
+  display      : flex;
+  flex-flow    : row nowrap;
+  width        : max-content;
+  gap          : 1rem;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
 }
 
 .details_block_2 {
-  display  : flex;
-  flex-flow: column nowrap;
-  width    : auto;
-  gap      : 1rem;
+  display      : flex;
+  flex-flow    : column nowrap;
+  width        : 50%;
+  height       : msx-content;
+  gap          : 1rem;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : start center;
 }
 
-
-
-.person h3 {
-  text-wrap    : nowrap;
-  text-overflow: ellipsis;
-  overflow     : hidden;
-  width        : 100%;
-}
-
-.detailsList {
-  display  : flex;
-  flex-flow: column wrap;
-  width    : 390px;
-  height   : max-content;
+.person {
+  width : 50%;
+  height: msx-content;
 }
 
 .description {
@@ -158,13 +126,6 @@
     max-width: 390px;
   }
 
-  .watchability {
-    max-height: 270px;
-  }
-
-  .details .d {
-    flex-flow: row wrap;
-  }
 
   .details span {
     flex-flow    : column nowrap;

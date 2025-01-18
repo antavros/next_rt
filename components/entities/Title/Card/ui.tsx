@@ -10,11 +10,10 @@ import "./style.css";
 
 export function ClientTitleCard({ details }: { readonly details: any }) {
   const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <article className="title_card" id={details.id}>
       {!imageLoaded && <Preloader />}
-      <TitleRate personal={details.average_imdb} rt={details.average_kp} />
+      <TitleRate rt={{ kp: details.average_kp, imdb: details.average_imdb }} personal={details?.userRating} titleId={details?.id} />
       <Link href={`/${details.type}/${details.id}`} prefetch={false}>
         <Image
           onLoad={() => setImageLoaded(true)}

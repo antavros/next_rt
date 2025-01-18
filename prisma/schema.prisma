@@ -63,7 +63,7 @@ model UserTitle {
   id        String  @id @default(cuid())
   userId    String
   titleId   String
-  rating    Int?
+  rating    Float? // Изменено с Int на Float
   viewed    Boolean @default(false)
   favourite Boolean @default(false)
   visited   Boolean @default(false)

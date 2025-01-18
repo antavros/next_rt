@@ -1,7 +1,70 @@
-.personal svg {
-  width : 100%;
-  height: 100%;
-  color : var(--color-text);
+.stars-container {
+  display         : flex;
+  flex-flow       : row nowrap;
+  place-content   : center center;
+  place-items     : center center;
+  place-self      : center center;
+  min-width       : 60px;
+  width           : 15.5rem;
+  height          : 30px;
+  position        : absolute;
+  z-index         : 9999999;
+  pointer-events  : auto;
+  right           : 0;
+  background-color: black;
+}
+
+.main-Star {
+  display       : flex;
+  flex-flow     : row nowrap;
+  place-content : center center;
+  place-items   : center center;
+  place-self    : center center;
+  min-width     : 65px;
+  width         : auto;
+  height        : 30px;
+  border-radius : var(--border-radius);
+  padding       : 0.3rem 0.4rem;
+  gap           : 0.2rem;
+  font-size     : 1rem !important;
+  text-align    : center;
+  font-weight   : height;
+  z-index       : 9999999;
+  pointer-events: auto;
+}
+
+.main-Star svg {
+  width        : auto;
+  height       : 30px;
+  border-radius: 0;
+}
+
+.stars-container span {
+  display      : flex;
+  flex-flow    : row nowrap;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  width        : 20px;
+  height       : 30px;
+  border-radius: 0;
+}
+
+.stars-container svg {
+  width        : 20px;
+  height       : 30px;
+  border-radius: 0;
+}
+
+.stars-container button {
+  padding: 0 !important;
+}
+
+.stars-container button svg {
+  position     : relative;
+  width        : auto;
+  height       : 30px;
+  border-radius: 0;
 }
 
 .personal img {
@@ -12,20 +75,6 @@
   scale        : none !important;
 }
 
-input[type="radio"] {
-  display: none;
-}
-
-.star svg {
-  cursor: pointer;
-  width : 1.5rem;
-  height: 1.5rem;
-  margin: 1px;
-}
-
-
-
-.rating .star:hover {
-  cursor: pointer;
-  /* Меняем курсор при наведении на звезду */
+.gray-Star {
+  color: var(--color-text);
 }

@@ -3,11 +3,14 @@
 import Image from "next/image";
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
+import { SwiperWatchability } from "./Swiper/watchability";
+
 import style from "./style.module.css";
 
 export function TitlePageHead({ details }: { readonly details: any }) {
   return (
     <div className={style.head}>
+
       {details?.backdrop ? (
         <Image
           fill={true}
@@ -29,6 +32,8 @@ export function TitlePageHead({ details }: { readonly details: any }) {
         />
       )}
       <div className={style.head_Info}>
+          <section className={`${style.block1}`}>
+
         <Image
           width={1920}
           height={1080}
@@ -38,19 +43,38 @@ export function TitlePageHead({ details }: { readonly details: any }) {
           alt={details?.name}
           priority={true}
         />
+        <div className={style.age}>
+          <h6>
+            {details?.ageMpaa?.length > 0 && (
+              <span>{details?.ageMpaa}</span>
+            )}
+            <span>{details?.ageRating}+</span>
+          </h6>
+        </div>
+
         <h1>{details?.name}</h1>
         <h2>{details?.enName}</h2>
+
         <p>{details?.countries}</p>
         <p>
           {details?.year}г {details?.length}
         </p>
         <p>{details?.genres}</p>
         <TitleRate
+          rt={{ kp: details.average_kp, imdb: details.average_imdb }}
           kp={details?.average_kp}
           imdb={details?.average_imdb}
-          personal={details?.average_imdb}
-          rt={details?.average_kp}
+          personal={details?.userRating}
+          titleId={details?.id}
         />
+                  </section>
+
+        {details?.watchability.length > 0 ? (
+          <section className={`${style.block2}`}>
+            <h3>Где смотреть?</h3>
+            <SwiperWatchability details={details?.watchability} />
+          </section>
+        ) : null}
       </div>
     </div>
   );

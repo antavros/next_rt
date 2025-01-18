@@ -8,16 +8,9 @@
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 40%);
 }
 
-.swiper_title_wrapper img {
-  z-index: -1;
-  width  : 260px;
-  height : 400px;
-  height : auto;
-}
-
 .swiper_slide {
-  width : 260px !important;
-  height: 400px !important;
+  width : 12rem !important;
+  height: 20rem !important;
   height: auto;
 }
 

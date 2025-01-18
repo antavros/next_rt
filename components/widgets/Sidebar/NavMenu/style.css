@@ -1,11 +1,14 @@
 nav {
-  overflow-y   : auto;
-  overflow-x   : auto;
-  width        : max-content;
-  height       : max-content;
-  place-content: center center;
-  place-self   : center center;
-  place-items  : center center;
+  overflow-y      : auto;
+  overflow-x      : auto;
+  width           : max-content;
+  height          : max-content;
+  place-content   : center center;
+  place-self      : center center;
+  place-items     : center center;
+  scrollbar-color : var(--color-purple) transparent;
+  scrollbar-width : thin;
+  scrollbar-gutter: stable;
 }
 
 nav ul {

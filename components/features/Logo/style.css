@@ -13,6 +13,7 @@
   user-select           : none;
   /* filter             : drop-shadow(-1px 1px 16px rgba(85, 0, 255, 0.9)); */
   filter                : drop-shadow(-1px 1px 16px rgba(2, 2, 2, 0.9));
+  border-radius         : 0;
 }
 
 .logo img {
@@ -21,16 +22,18 @@
   height             : 100%;
   object-fit         : cover;
   transition-behavior: normal;
+  border-radius      : 0;
 }
 
 .logo #logo1 {
-  display: block;
+  display      : block;
+  border-radius: 0;
 }
 
 .logo #logo2 {
-  height: 3rem;
-
-  display: none;
+  display      : none;
+  height       : 3rem;
+  border-radius: 0;
 }
 
 .logo:hover {

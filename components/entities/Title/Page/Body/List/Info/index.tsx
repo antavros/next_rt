@@ -10,18 +10,6 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
   return (
     <section className="details_list">
 
-      <article className="age">
-        <h4>Возрастной рейтинг</h4>
-        <div className="data">
-          <h6>
-            {details?.ageMpaa?.length > 0 && (
-              <span>{details?.ageMpaa}</span>
-            )}
-            <span>{details?.ageRating}+</span>
-          </h6>
-        </div>
-      </article>
-
       <article>
         <h4>Страна</h4>
         <div className="data">
@@ -68,25 +56,25 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
             <ul>
               {details?.premiereRussia?.length > 0 && (
                 <li>
-                  <h6>Россия</h6>
+                  <h5>Россия</h5>
                   <h6>{details?.premiereRussia}</h6>
                 </li>
               )}
               {details?.premiereUSA?.length > 0 && (
                 <li>
-                  <h6>США</h6>
+                  <h5>США</h5>
                   <h6>{details?.premiereUSA}</h6>
                 </li>
               )}
               {details?.premiereWorld?.length > 0 && (
                 <li>
-                  <h6>Мир</h6>
+                  <h5>Мир</h5>
                   <h6>{details?.premiereWorld}</h6>
                 </li>
               )}
               {details?.premiereBluray?.length > 0 && (
                 <li>
-                  <h6>Цифровой</h6>
+                  <h5>Цифровой</h5>
                   <h6>{details?.premiereBluray}</h6>
                 </li>
               )}
@@ -111,17 +99,17 @@ export const DetailsList: React.FC<Details> = ({ details }) => {
             <ul>
               {details?.feesRussia && (
                 <li>
-                  <h6>Россия</h6><h6>{details?.feesRussia}</h6>
+                  <h5>Россия</h5><h6>{details?.feesRussia}</h6>
                 </li>
               )}
               {details?.feesUSA && (
                 <li>
-                  <h6>США</h6><h6>{details?.feesUSA}</h6>
+                  <h5>США</h5><h6>{details?.feesUSA}</h6>
                 </li>
               )}
               {details?.feesWorld && (
                 <li>
-                  <h6>Мир</h6><h6>{details?.feesWorld}</h6>
+                  <h5>Мир</h5><h6>{details?.feesWorld}</h6>
                 </li>
               )}
             </ul>

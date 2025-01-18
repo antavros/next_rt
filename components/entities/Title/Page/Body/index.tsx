@@ -8,7 +8,6 @@ import { DetailsList } from "./List/Info";
 import { SwiperCardTrailer } from "./Swiper/Trailer";
 import { SwiperCardPerson } from "./Swiper/Person";
 import { SwiperCardTitle } from "./Swiper/Titles";
-import { SwiperWatchability } from "./Swiper/watchability";
 
 import { Player } from "@/components/entities/Player";
 
@@ -68,54 +67,45 @@ export function TitlePageBody({ details }: Details) {
   }
   return (
     <div className={style.body}>
+
+
+
       <section className={`${style.details}`}>
 
-        <div className={`${style.details_block}`}>
-          {details?.watchability.length > 0 ? (
-            <section className={`${style.block} ${style.watchability}`}>
-              <h3>Где смотреть {typeName4}</h3>
-              <SwiperWatchability details={details?.watchability} />
+        <span className={style.details_block_1}>
+
+          <span className={style.details_block_2}>
+            <section className={`${style.block} ${style.detailsList}`}>
+              <h3>О {typeName2}</h3>
+              <DetailsList details={details} />
             </section>
-          ) : null}
-        </div>
 
-        <div className={`${style.details_block}`}>
-
-          <span className={style.details_block_1}>
-
-            <span className={style.details_block_2}>
-              <section className={`${style.block} ${style.detailsList}`}>
-                <h3>О {typeName2}</h3>
-                <DetailsList details={details} />
-              </section>
-              <section className={`${style.block} ${style.description}`}>
-                <h3>Описание</h3>
-                <p>{details?.description}</p>
-              </section>
-            </span>
-
-            <section className={`${style.block} ${style.person}`}>
-              <h3>Над {typeName} работали</h3>
-              <ExpandableListPerson persons={details?.person} />
+            <section className={`${style.block} ${style.description}`}>
+              <h3>Описание</h3>
+              <p>{details?.description}</p>
             </section>
           </span>
 
-          {details?.trailers?.length > 0 && (
-            <section className={`${style.block} ${style.trailers}`}>
-              <h3>Трейлеры</h3>
-              <SwiperCardTrailer details={details} />
-            </section>
-          )}
+          <section className={`${style.block} ${style.person}`}>
+            <h3>Над {typeName} работали</h3>
+            <ExpandableListPerson persons={details?.person} />
+          </section>
+        </span>
 
-        </div>
-
-
+        {details?.trailers?.length > 0 && (
+          <section className={`${style.block} ${style.trailers}`}>
+            <h3>Трейлеры</h3>
+            <SwiperCardTrailer details={details} />
+          </section>
+        )}
 
       </section>
-        <section className={`${style.block} ${style.actors}`}>
-          <h3>Актеры</h3>
-          <SwiperCardPerson details={details} />
-        </section>
+
+      <section className={`${style.block} ${style.actors}`}>
+        <h3>Актеры</h3>
+        <SwiperCardPerson details={details} />
+      </section>
+
       {session?.user?.role == "USER" ? (
         <section className={`${style.block} ${style.player}`}>
           <h3>Просмотр</h3>
@@ -123,20 +113,19 @@ export function TitlePageBody({ details }: Details) {
         </section>
       ) : null}
 
-      <section className={`${style.add}`}>
-        {details?.chapters?.length > 0 ? (
-          <section className={`${style.block} ${style.chapters}`}>
-            <h3>Другие части {typeName3}</h3>
-            <SwiperCardTitle details={details?.chapters} />
-          </section>
-        ) : null}
-        {details?.similar?.length > 0 && (
-          <section className={`${style.block} ${style.similar}`}>
-            <h3>Похожие</h3>
-            <SwiperCardTitle details={details?.similar} />
-          </section>
-        )}
-      </section>
+      {details?.chapters?.length > 0 ? (
+        <section className={`${style.block} ${style.chapters}`}>
+          <h3>Другие части {typeName3}</h3>
+          <SwiperCardTitle details={details?.chapters} />
+        </section>
+      ) : null}
+
+      {details?.similar?.length > 0 && (
+        <section className={`${style.block} ${style.similar}`}>
+          <h3>Похожие</h3>
+          <SwiperCardTitle details={details?.similar} />
+        </section>
+      )}
     </div>
   );
 }

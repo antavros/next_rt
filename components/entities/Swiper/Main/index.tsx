@@ -95,10 +95,11 @@ export function SwiperMain({ details }: any) {
                 <p>{details.year}г {details.length}</p>
                 <p>{details.genres}</p>
                 <TitleRate
+                  rt={{ kp: details.average_kp, imdb: details.average_imdb }}
                   kp={details.average_kp}
                   imdb={details.average_imdb}
-                  personal={details.average_imdb}
-                  rt={details.average_kp}
+          personal={details?.userRating}
+          titleId={details?.id}
                 />
               </section>
             </Link>

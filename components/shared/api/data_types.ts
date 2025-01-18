@@ -1,4 +1,6 @@
 import { Details } from "./next-title";
+import prisma from "@/app/api/auth/[...nextauth]/prismadb";
+import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
 const convertMinutesToHours = ({ minutes }: { minutes: number }): string => {
   const hours = Math.floor(minutes / 60);
@@ -32,6 +34,57 @@ function convertValueFormat(value: any): string {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
+export async function getUserRatings({
+  movieIds,
+}: {
+  movieIds: string[];
+}): Promise<{ [key: string]: number }> {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    console.warn("getUserRatings: User is not authenticated");
+    return {};
+  }
+
+  if (!Array.isArray(movieIds) || movieIds.length === 0) {
+    console.warn("getUserRatings: movieIds is empty or invalid", movieIds);
+    return {};
+  }
+
+  try {
+    const stringMovieIds = movieIds.map((id) => id.toString());
+    const ratings = await prisma.userTitle.findMany({
+      where: {
+        userId,
+        titleId: {
+          in: stringMovieIds,
+        },
+      },
+      select: {
+        titleId: true,
+        rating: true,
+      },
+    });
+
+    const ratingsMap: { [key: string]: number } = {};
+    ratings.forEach(({ titleId, rating }) => {
+      if (rating !== null) {
+        ratingsMap[titleId] = rating;
+      }
+    });
+    console.log(ratingsMap);
+    return ratingsMap;
+  } catch (error: any) {
+    console.error("Ошибка получения пользовательских рейтингов:", {
+      userId,
+      movieIds,
+      error: error.message || error,
+    });
+    return {};
+  }
+}
+
 export async function getDetails({
   details,
 }: {
@@ -41,165 +94,122 @@ export async function getDetails({
   pagination: { total: number; limit: number; page: number; pages: number };
 }> {
   try {
-    const docs = Array.isArray(details?.docs) ? details?.docs : [details];
+    const docs = Array.isArray(details?.docs) ? details.docs : [details];
+    const movieIds = docs.map((doc: any) => doc.id);
 
-    const detailData = await Promise.all(
-      docs.map(async (doc: any) => {
-        const person = Array.isArray(doc?.persons) ? doc.persons : [];
-        const similar = Array.isArray(doc?.similarMovies)
-          ? doc.similarMovies
-          : [];
-        const trailers = Array.isArray(doc?.videos?.trailers)
-          ? doc.videos.trailers
-          : [];
-        const chapters = Array.isArray(doc?.sequelsAndPrequels)
-          ? doc.sequelsAndPrequels
-          : [];
-        const watchability = Array.isArray(doc?.watchability?.items)
-          ? doc.watchability?.items
-          : [];
+    // Получаем пользовательские рейтинги для всех фильмов на странице
+    const userRatings = await getUserRatings({ movieIds });
 
-        const sex = doc?.sex;
-        const age = doc?.age;
+    const transformMovie = (doc: any) => {
+      const person = Array.isArray(doc?.persons) ? doc.persons : [];
+      const similar = Array.isArray(doc?.similarMovies)
+        ? doc.similarMovies
+        : [];
+      const trailers = Array.isArray(doc?.videos?.trailers)
+        ? doc.videos.trailers
+        : [];
+      const chapters = Array.isArray(doc?.sequelsAndPrequels)
+        ? doc.sequelsAndPrequels
+        : [];
+      const watchability = Array.isArray(doc?.watchability?.items)
+        ? doc.watchability.items
+        : [];
+      const audience = Array.isArray(doc?.audience)
+        ? doc.audience.map((audience: any) => ({
+            count: convertValueFormat(audience?.count),
+            country: audience?.country,
+          }))
+        : [];
 
-        const profession = Array.isArray(doc?.profession)
-          ? doc?.profession
-              .map((professions: any) => professions?.value)
-              .join(" ")
-          : "";
+      const profession = Array.isArray(doc?.profession)
+        ? doc.profession.map((p: any) => p?.value).join(" ")
+        : "";
 
-        const id = doc?.id;
-        const type = doc?.type;
-        const name = doc?.name ?? doc?.alternativeName ?? doc?.enName ?? "";
-        const enName = doc?.enName ?? doc?.alternativeName ?? "";
-
-        const names = Array.isArray(doc?.names)
-          ? doc?.names.map((names: any) => names?.name).join(" ")
-          : "";
-        const slogan = doc?.slogan ?? "";
-        const status = doc?.status ?? "";
-        const ageRating = doc?.ageRating ?? "";
-        const ageMpaa = doc?.ratingMpaa ?? "";
-
-        const year = doc?.year ?? "...";
-        const length = doc?.movieLength
-          ? convertMinutesToHours({ minutes: doc?.movieLength })
-          : "";
-        const countries = Array.isArray(doc?.countries)
-          ? doc?.countries.map((country: any) => country?.name).join(" ")
-          : "";
-        const genres = Array.isArray(doc?.genres)
-          ? doc?.genres.map((genre: any) => genre?.name).join(" ")
-          : "";
-        const sDescription = doc?.shortDescription ?? "";
-        const description = doc?.description ?? "";
-
-        const logo = doc?.logo?.url ?? doc?.logo?.previewUrl ?? "";
-        const poster =
-          doc?.poster?.previewUrl ?? doc?.poster?.url ?? doc?.photo ?? "";
-        const backdrop = doc?.backdrop?.url ?? "";
-
-        const average_kp = doc?.rating?.kp ?? "";
-        const votes_kp = doc?.votes?.kp ?? "";
-
-        const average_imdb = doc?.rating?.imdb ?? "";
-
-        const budget = doc?.budget?.value
-          ? `${convertValueFormat(doc?.budget?.value)} ${doc?.budget?.currency}`
-          : "";
-
-        const fees = doc?.fees ?? {};
-        const feesRussia = fees?.russia?.value
-          ? `${convertValueFormat(fees?.russia?.value)} ${
-              fees?.russia?.currency
+      return {
+        id: doc?.id,
+        movieIds: Array.isArray(doc) ? doc.map((d: any) => d.id) : [],
+        type: doc?.type,
+        name: doc?.name ?? doc?.alternativeName ?? doc?.enName ?? "",
+        enName: doc?.enName ?? doc?.alternativeName ?? "",
+        names: Array.isArray(doc?.names)
+          ? doc.names.map((n: any) => n?.name).join(" ")
+          : "",
+        slogan: doc?.slogan ?? "",
+        status: doc?.status ?? "",
+        ageRating: doc?.ageRating ?? "",
+        ageMpaa: doc?.ratingMpaa ?? "",
+        year: doc?.year ?? "...",
+        length: doc?.movieLength
+          ? convertMinutesToHours({ minutes: doc.movieLength })
+          : "",
+        countries: Array.isArray(doc?.countries)
+          ? doc.countries.map((c: any) => c?.name).join(" ")
+          : "",
+        genres: Array.isArray(doc?.genres)
+          ? doc.genres.map((g: any) => g?.name).join(" ")
+          : "",
+        sDescription: doc?.shortDescription ?? "",
+        description: doc?.description ?? "",
+        logo: doc?.logo?.url ?? doc?.logo?.previewUrl ?? "",
+        poster: doc?.poster?.previewUrl ?? doc?.poster?.url ?? "",
+        backdrop: doc?.backdrop?.url ?? "",
+        person,
+        similar,
+        chapters,
+        trailers,
+        watchability,
+        average_kp: doc?.rating?.kp ?? "",
+        votes_kp: doc?.votes?.kp ?? "",
+        average_imdb: doc?.rating?.imdb ?? "",
+        budget: doc?.budget?.value
+          ? `${convertValueFormat(doc.budget.value)} ${doc.budget.currency}`
+          : "",
+        feesRussia: doc?.fees?.russia?.value
+          ? `${convertValueFormat(doc.fees.russia.value)} ${
+              doc.fees.russia.currency
             }`
-          : "";
-        const feesUSA = fees?.usa?.value
-          ? `${convertValueFormat(fees.usa.value)} ${fees?.usa?.currency}`
-          : "";
-        const feesWorld = fees?.world?.value
-          ? `${convertValueFormat(fees?.world?.value)} ${fees?.world?.currency}`
-          : "";
+          : "",
+        feesUSA: doc?.fees?.usa?.value
+          ? `${convertValueFormat(doc.fees.usa.value)} ${doc.fees.usa.currency}`
+          : "",
+        feesWorld: doc?.fees?.world?.value
+          ? `${convertValueFormat(doc.fees.world.value)} ${
+              doc.fees.world.currency
+            }`
+          : "",
+        premiereWorld: doc?.premiere?.world
+          ? convertDateFormat(doc.premiere.world)
+          : "",
+        premiereRussia: doc?.premiere?.russia
+          ? convertDateFormat(doc.premiere.russia)
+          : "",
+        premiereBluray: doc?.premiere?.digital
+          ? convertDateFormat(doc.premiere.digital)
+          : "",
+        premiereUSA: doc?.premiere?.usa
+          ? convertDateFormat(doc.premiere.usa)
+          : "",
+        audience,
+        sex: doc?.sex ?? "",
+        age: doc?.age ?? "",
+        profession,
+        hasPosters: !!(doc?.poster?.url || doc?.poster?.previewUrl),
+        userRating: userRatings[doc.id] || null, // Добавляем пользовательский рейтинг
+      };
+    };
 
-        const premiereRussia = doc?.premiere?.russia
-          ? convertDateFormat(doc?.premiere?.russia)
-          : "";
-
-        const premiereUSA = doc?.premiere?.usa
-          ? convertDateFormat(doc?.premiere?.usa)
-          : "";
-        const premiereWorld = doc?.premiere?.world
-          ? convertDateFormat(doc?.premiere?.world)
-          : "";
-        const premiereBluray = doc?.premiere?.digital
-          ? convertDateFormat(doc?.premiere?.digital)
-          : "";
-
-        const audience = Array.isArray(doc?.audience)
-          ? doc?.audience?.map((audience: any) => ({
-              count: convertValueFormat(audience?.count),
-              country: audience?.country,
-            }))
-          : [];
-
-        return {
-          id,
-          type,
-          name,
-          enName,
-          names,
-          slogan,
-          status,
-          ageRating,
-          ageMpaa,
-          countries,
-          year,
-          length,
-          genres,
-          sDescription,
-          description,
-          logo,
-          poster,
-          backdrop,
-          person,
-          similar,
-          chapters,
-          trailers,
-          watchability,
-          average_kp,
-          votes_kp,
-          average_imdb,
-          budget,
-          feesRussia,
-          feesUSA,
-          feesWorld,
-          premiereWorld,
-          premiereRussia,
-          premiereBluray,
-          premiereUSA,
-          audience,
-          sex,
-          age,
-          profession,
-          hasPosters: !!poster,
-        };
-      })
-    );
-
+    const detailData = docs.map(transformMovie);
     const filteredData = detailData.filter((movie) => movie.hasPosters);
     const { total, limit, page, pages } = details;
 
     return {
       data: filteredData,
-      pagination: {
-        total,
-        limit,
-        page,
-        pages,
-      },
+      pagination: { total, limit, page, pages },
     };
   } catch (error: any) {
-    console.error("getDetails error:", error);
-    throw new Error(`Failed to get details: ${error.message}`);
+    console.error("getDetailsWithUserRatings error:", error);
+    throw new Error(
+      `Failed to get details with user ratings: ${error.message}`
+    );
   }
 }

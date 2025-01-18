@@ -9,7 +9,7 @@
   --color-gray              : rgba(153, 153, 153);
   --color-gray_dark         : rgba(71, 71, 71);
   /* --------------------------------------------------------------- */
-  --color-text              : rgba(180, 182, 184);
+  --color-text              : rgb(180, 182, 184);
   --color-border            : rgba(255, 255, 255, 0.2);
   --color-block_back        : rgba(25, 25, 25, 0.6);
   --blur                    : blur(16px);
@@ -62,7 +62,7 @@
   padding-inline          : 0;
   padding-inline-start    : 0;
   padding-inline-end      : 0;
-  transition              : all 320ms ease-in-out;
+  transition              : all 2ms ease-in-out;
   border-radius           : var(--border-radius);
   transition-behavior     : allow-discrete;
   text-overflow           : ellipsis;
@@ -147,10 +147,8 @@ main {
   display          : flex;
   -webkit-flex-flow: column nowrap;
   flex-flow        : column nowrap;
-  width            : 100%;
-  height           : 100%;
-  max-width        : 100dvw;
-  max-height       : 100dvh;
+  width            : 100dvw;
+  height           : 100dvh;
   overflow         : hidden;
   z-index          : 0;
 }
@@ -163,8 +161,8 @@ main {
   gap              : 1rem;
   padding          : 1rem;
   width            : 100%;
+  height           : 100%;
   min-width        : 100%;
-  min-height       : calc(100dvh - 2rem);
   place-content    : center start;
   overflow         : auto;
   overflow-x       : hidden;
@@ -181,7 +179,7 @@ main {
 hr {
   width           : 100%;
   height          : 0.1rem;
-  padding         : 0.1rem;
   border          : none;
+  border-radius   : 0;
   background-image: linear-gradient(270deg, transparent .17%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, transparent);
 }

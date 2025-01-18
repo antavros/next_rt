@@ -13,20 +13,19 @@ export function SwiperCardPerson({ details }: Details) {
     (person: any) => person.enProfession === "actor"
   );
   const object = filteredPersonsActor || [];
-  // const option = { direction: "vertical" };
 
   const renderSlide = (person: any) => (
     <Link
       className={style.swiper_person_wrapper}
       href={`/person/${person.id}`}
       prefetch={false}
+      title={`${person.name ? person.name : person.enName} - ${person.description}`}
     >
       <Image
-        width={220}
-        height={330}
+        width={162}
+        height={256}
         src={person.photo}
-        alt={person.name}
-        priority={true}
+        alt={`${person.name ? person.name : person.enName} - ${person.description}`}
       />
       <section className={style.swiper_person_Info}>
         <h4>{person.name ? person.name : person.enName}</h4>
@@ -40,7 +39,6 @@ export function SwiperCardPerson({ details }: Details) {
       style={style.swiper_slide}
       object={object}
       renderSlide={renderSlide}
-    // option={option}
     />
   );
 }
