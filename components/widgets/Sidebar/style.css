@@ -24,7 +24,7 @@ header {
 }
 
 .sidebar_hide #logo2 {
-  display: block;
+  display: flex;
 }
 
 .sidebar_hide nav ul li button {

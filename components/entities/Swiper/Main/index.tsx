@@ -70,9 +70,9 @@ export function SwiperMain({ details }: any) {
               prefetch={false}
             >
               <Image
-                width={1280}
-                height={720}
-                quality={25}
+                width={640}
+                height={360}
+                quality={1}
                 priority={true}
                 onLoad={() => setImageLoaded(true)}
                 src={details.backdrop}
@@ -81,9 +81,9 @@ export function SwiperMain({ details }: any) {
               />
               <section className={style.swiper_home_Info}>
                 <Image
-                  width={1280}
-                  height={720}
-                  quality={25}
+                  width={640}
+                  height={360}
+                  quality={1}
                   priority={true}
                   className={style.title_logo}
                   src={details.logo}
@@ -98,8 +98,8 @@ export function SwiperMain({ details }: any) {
                   rt={{ kp: details.average_kp, imdb: details.average_imdb }}
                   kp={details.average_kp}
                   imdb={details.average_imdb}
-          personal={details?.userRating}
-          titleId={details?.id}
+                  personal={details?.userRating}
+                  titleId={details?.id}
                 />
               </section>
             </Link>

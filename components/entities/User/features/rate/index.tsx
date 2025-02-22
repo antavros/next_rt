@@ -107,18 +107,19 @@ export function UserRate({ personal, titleId }: any) {
       ) : (
         <IconUserCircle stroke={2} />
       )}
-
       <span
         onClick={() => setShowStars((prev) => !prev)} // Открываем или закрываем выбор звезд
         style={{ cursor: "pointer" }}
       >
-        {hoverValue ? hoverValue.toFixed(1) : rating ? rating.toFixed(1) : <IconStar className="gray-Star" />}
+        {hoverValue
+          ? (Number.isInteger(hoverValue) ? hoverValue : hoverValue.toFixed(1))
+          : rating
+            ? (Number.isInteger(rating) ? rating : rating.toFixed(1))
+            : <IconStar className="gray-Star" />}
       </span>
 
-
-
       {showStars &&
-        <div className="stars-container" style={getClassByRate({ vote: hoverValue || rating || 0 })}>
+        <div className="personal-container" style={getClassByRate({ vote: hoverValue || rating || 0 })}>
 
           <span
             className="main-Star"
@@ -137,7 +138,11 @@ export function UserRate({ personal, titleId }: any) {
             ) : (
               <IconUserCircle stroke={2} />
             )}
-            {hoverValue ? hoverValue.toFixed(1) : rating ? rating.toFixed(1) : <IconStar className="gray-Star" />}
+            {hoverValue
+              ? (Number.isInteger(hoverValue) ? hoverValue : hoverValue.toFixed(1))
+              : rating
+                ? (Number.isInteger(rating) ? rating : rating.toFixed(1))
+                : <IconStar className="gray-Star" />}
           </span>
 
           {renderStars()}

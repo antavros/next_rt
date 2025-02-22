@@ -1,14 +1,13 @@
 .swiperContainer {
-  display       : flex;
-  position      : relative;
-  flex-flow     : column nowrap;
-  width         : 100%;
-  height        : calc(100dvh - 4rem);
-  gap           : 0.5rem;
-  place-content : center center;
-  place-items   : center center;
-  place-self    : center center;
-  pointer-events: none !important;
+  display      : flex;
+  position     : relative;
+  flex-flow    : column nowrap;
+  width        : 100%;
+  height       : calc(100dvh - 4rem);
+  gap          : 0.5rem;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
 }
 
 .swiper_home_wrapper::after {
@@ -26,10 +25,6 @@
       rgba(0, 0, 0, 0.85) 99%,
       rgba(0, 0, 0, 9) 109%);
   z-index: 0;
-}
-
-.swiper_home_wrapper a {
-  pointer-events: none !important;
 }
 
 .title_back {

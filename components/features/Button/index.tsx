@@ -1,15 +1,17 @@
 "use client";
-
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 import "./style.css";
 
 export type Item = {
-  type?: any;
+  id?: string;
+  className?: string;
+  role?: string;
+  type?: "button" | "submit" | "reset";
+  "aria-details"?: string;
   title?: string;
   name?: string;
   url?: string;
-  className?: string;
   onClick?: () => void;
   svg?: JSX.Element;
 };
@@ -19,31 +21,32 @@ interface ButtonProps {
 }
 
 export const Button = ({ items }: ButtonProps) => {
-  const createButtonElement = (item: Item) => (
-    <button
-      {...(item.type ? { type: item.type } : { type: "button" })}
-      {...(item.title ? { title: item.title } : { title: "button" })}
-      {...(item.className ? { className: item.className } : null)}
-      {...(item.onClick ? { onClick: item.onClick } : null)}
-    >
-      {item.svg ? item.svg : null}
-      {item.name ? <h6>{item.name}</h6> : null}
-    </button>
-  );
+  const createButtonElement = (item: Item) => {
+    const { type = "button", title = "button", ...rest } = item;
+
+    return (
+      <button type={type} title={title} {...rest}>
+        {item.svg && item.svg}
+        {item.name && <h6>{item.name}</h6>}
+      </button>
+    );
+  };
 
   const renderButton = (item: Item) =>
-    item?.url ? (
-      <Link href={item.url} prefetch={false} key={item?.name}>
+    item.url ? (
+      <Link href={item.url} prefetch={false} key={item.id || item.name}>
         {createButtonElement(item)}
       </Link>
     ) : (
-      createButtonElement(item)
+      <React.Fragment key={item.id || item.name}>
+        {createButtonElement(item)}
+      </React.Fragment>
     );
 
   return items.length > 1 ? (
     <ul>
       {items.map((item) => (
-        <li key={item?.name}>{renderButton(item)}</li>
+        <li key={item.id || item.name}>{renderButton(item)}</li>
       ))}
     </ul>
   ) : (

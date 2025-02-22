@@ -1,6 +1,6 @@
 .searchContainer {
   display      : flex;
-  width        : max-content;
+  width        : min-content;
   height       : auto;
   place-content: center center;
   place-self   : center center;
@@ -10,13 +10,13 @@
 .search {
   display       : flex;
   flex-direction: row nowrap;
-  width         : 100%;
+  width         : min-content;
   height        : 3rem;
   border-radius : 2.5rem;
 }
 
 .search input {
-  width           : max-content;
+  width           : 6rem;
   height          : auto;
   font-size       : 1rem !important;
   font-weight     : bold;

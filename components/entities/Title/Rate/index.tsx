@@ -60,21 +60,21 @@ export const TitleRate: React.FC<RatingProps> = ({
           style={getClassByRate({ vote: averageRating })}
         >
           <Image fill={true} src="/images/RT.webp" alt="RT" priority={true} />
-          <span>{averageRating.toFixed(1)}</span>
+          <span>{Number.isInteger(averageRating) ? averageRating : averageRating.toFixed(1)}</span>
         </article>
       )}
 
       {kp !== undefined && kp > 0 && (
         <article className={"kp"} style={getClassByRate({ vote: kp })}>
           <h6>КП</h6>
-          <span>{kp.toFixed(1)}</span>
+          <span>{Number.isInteger(kp) ? kp : kp.toFixed(1)}</span>
         </article>
       )}
 
       {imdb !== undefined && imdb > 0 && (
         <article className={"imdb"} style={getClassByRate({ vote: imdb })}>
           <h6>IMDB</h6>
-          <span>{imdb.toFixed(1)}</span>
+          <span>{Number.isInteger(imdb) ? imdb : imdb.toFixed(1)}</span>
         </article>
       )}
 

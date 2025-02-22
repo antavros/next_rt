@@ -1,80 +1,74 @@
-.stars-container {
-  display         : flex;
-  flex-flow       : row nowrap;
-  place-content   : center center;
-  place-items     : center center;
-  place-self      : center center;
-  min-width       : 60px;
-  width           : 15.5rem;
-  height          : 30px;
-  position        : absolute;
-  z-index         : 9999999;
-  pointer-events  : auto;
-  right           : 0;
-  background-color: black;
-}
-
-.main-Star {
-  display       : flex;
-  flex-flow     : row nowrap;
-  place-content : center center;
-  place-items   : center center;
-  place-self    : center center;
-  min-width     : 65px;
-  width         : auto;
-  height        : 30px;
-  border-radius : var(--border-radius);
-  padding       : 0.3rem 0.4rem;
-  gap           : 0.2rem;
-  font-size     : 1rem !important;
-  text-align    : center;
-  font-weight   : height;
+.personal {
   z-index       : 9999999;
   pointer-events: auto;
 }
 
-.main-Star svg {
+.personal img {
+  object-fit   : cover;
+  border-radius: 50%;
   width        : auto;
-  height       : 30px;
-  border-radius: 0;
+  height       : 24px;
+  scale        : none;
 }
 
-.stars-container span {
+.gray-Star {
   display      : flex;
   flex-flow    : row nowrap;
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
-  width        : 20px;
+  width        : 30px;
   height       : 30px;
-  border-radius: 0;
+  font-size    : 1rem !important;
+  text-align   : center;
+  font-weight  : height;
+  color        : var(--color-text);
 }
 
-.stars-container svg {
-  width        : 20px;
-  height       : 30px;
-  border-radius: 0;
+.personal-container {
+  display         : flex;
+  flex-flow       : row nowrap;
+  place-content   : center center;
+  place-items     : center center;
+  place-self      : center center;
+  width           : 15.5rem;
+  min-width       : 15.5rem;
+  max-width       : 15.5rem;
+  height          : 30px;
+  position        : absolute;
+  z-index         : 9999999;
+  right           : 0;
+  background-color: black;
+  padding         : 0 0.1rem 0 0;
 }
 
-.stars-container button {
-  padding: 0 !important;
-}
-
-.stars-container button svg {
-  position     : relative;
+.star-container svg {
   width        : auto;
   height       : 30px;
   border-radius: 0;
 }
 
-.personal img {
-  object-fit   : cover;
-  border-radius: 50% !important;
-  width        : auto !important;
-  height       : 1.5rem !important;
-  scale        : none !important;
+.main-Star {
+  display      : flex;
+  flex-flow    : row nowrap;
+  place-content: center start !important;
+  place-items  : center center !important;
+  place-self   : center center !important;
+  width        : 55px;
+  min-width    : 55px;
+  max-width    : 55px;
+  height       : 30px;
+  border-radius: var(--border-radius);
+  padding      : 0.2rem;
+  gap          : 0.2rem;
+  font-size    : 1rem !important;
+  text-align   : center;
+  font-weight  : height;
+  z-index      : 9999999;
 }
 
-.gray-Star {
-  color: var(--color-text);
+.main-Star svg {
+  width        : 30px;
+  height       : 30px;
+  border-radius: 0;
 }

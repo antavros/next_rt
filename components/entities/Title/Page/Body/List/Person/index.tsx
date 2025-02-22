@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link'
 import { Details, Person } from '@/components/shared/api/next-title';
-import { IconChevronUp, IconChevronDown } from '@tabler/icons-react';
+import { IconChevronRight, IconChevronDown } from '@tabler/icons-react';
 
 import "./style.css";
 
@@ -38,12 +38,12 @@ export const ExpandableListPerson: React.FC<Details> = ({ persons }) => {
                 <button onClick={() => toggleExpand(profession)}>
                   {isExpanded ? (
                     <>
-                      <IconChevronUp stroke={2} />
+                      <IconChevronDown stroke={2} />
                       <h6>{profession}</h6>
                     </>
                   ) : (
                     <>
-                      <IconChevronDown stroke={2} />
+                      <IconChevronRight stroke={2} />
                       <h6>{profession}</h6>
                     </>
                   )}

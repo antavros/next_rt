@@ -1,41 +1,45 @@
 :root {
-  --color-purple            : rgba(85, 0, 255, 1);
-  --color-pink              : deeppink;
-  --color-orange            : orange;
-  --color-orangered         : orangered;
-  --color-yellow            : yellow;
-  --color-white             : white;
-  --color-black             : black;
-  --color-gray              : rgba(153, 153, 153);
-  --color-gray_dark         : rgba(71, 71, 71);
-  /* --------------------------------------------------------------- */
-  --color-text              : rgb(180, 182, 184);
-  --color-border            : rgba(255, 255, 255, 0.2);
-  --color-block_back        : rgba(25, 25, 25, 0.6);
-  --blur                    : blur(16px);
-  /* --------------------------------------------------------------- */
-  --color-button-inactive   : rgba(0, 0, 0, 0.4);
-  --color-button-hover      : rgba(0, 0, 0, 0.8);
-  --color-button-active     : rgba(77, 24, 199, 0.3);
-  /* --------------------------------------------------------------- */
-  --shadow                  : 0 0.04rem 6px 0 #171717;
-  --border                  : 0rem solid;
-  --border-radius           : 1rem;
-  /* --------------------------------------------------------------- */
-  --block-gap               : 0.5rem;
-  --element-gap             : 0.3rem;
-  /* --------------------------------------------------------------- */
-  --header-height           : 80px;
-  --sidebar-width           : auto;
-  --hover-scale             : 1.1;
-  --active-scale            : 0.9;
-  /* --------------------------------------------------------------- */
-  --header_z-index          : 99;
-  --sidebar_z-index         : 100;
-  --footer_z-index          : 99;
-  --main_z-index            : 1;
-  --theme-back              : white;
-  /* --theme-back           : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%); */
+  --color-white    : white;
+  --color-black    : black;
+  --color-yellow   : yellow;
+  --color-orange   : orange;
+  --color-orangered: orangered;
+  --color-purple   : rgba(85, 0, 255, 1);
+  --color-gray     : rgba(153, 153, 153);
+  --color-gray_dark: rgba(71, 71, 71);
+
+  --color-text           : rgb(143, 143, 143);
+  --color-border         : rgba(255, 255, 255, 0.2);
+  --color-block_back     : rgba(0, 0, 0, 0.15);
+  --color-button-active  : rgba(77, 24, 199, 0.3);
+  --color-button-inactive: rgba(0, 0, 0, 0.4);
+  --color-button-hover   : rgba(0, 0, 0, 0.8);
+
+  --blur  : blur(16px);
+  --shadow: 0 0.04rem 6px 0 #171717;
+
+  --border       : 0rem solid;
+  --border-radius: 1rem;
+
+  --block-gap  : 0.5rem;
+  --element-gap: 0.3rem;
+
+  --hover-scale : 1.1;
+  --active-scale: 0.9;
+
+  --header_z-index : 99;
+  --sidebar_z-index: 100;
+  --footer_z-index : 99;
+  --main_z-index   : 1;
+
+  --header-height: 80px;
+  --sidebar-width: auto;
+
+  --color-light      : white;
+  --color-dark       : rgb(16, 18, 24);
+  /* --color-dark    : rgb(255, 221, 221); */
+  color-scheme       : light dark;
+  --theme-back       : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
 }
 
 * {
@@ -47,7 +51,6 @@
   outline                 : none;
   text-decoration         : none;
   list-style              : none;
-  scroll-behavior         : smooth;
   margin                  : 0;
   margin-block            : 0;
   margin-block-start      : 0;
@@ -64,6 +67,7 @@
   padding-inline-end      : 0;
   transition              : all 2ms ease-in-out;
   border-radius           : var(--border-radius);
+  scroll-behavior         : smooth;
   transition-behavior     : allow-discrete;
   text-overflow           : ellipsis;
 }
@@ -79,11 +83,7 @@ svg {
 input,
 button,
 textarea,
-select {
-  font     : inherit;
-  font-size: inherit;
-}
-
+select,
 p,
 h1,
 h2,
@@ -91,9 +91,12 @@ h3,
 h4,
 h5,
 h6 {
-  overflow-wrap: break-word;
-  text-wrap    : pretty;
-  text-overflow: ellipsis;
+  font          : inherit;
+  font-size     : inherit;
+  overflow-wrap : break-word;
+  text-wrap     : pretty;
+  text-overflow : ellipsis;
+  pointer-events: all !important;
 }
 
 input:-webkit-autofill,
@@ -117,15 +120,21 @@ a:visited {
   visibility: hidden;
 }
 
-* ::-webkit-scrollbar {}
-
-html {
-  font-size: 1rem;
-  position : relative;
-
+* ::-webkit-scrollbar {
+  scrollbar-color : var(--color-purple) transparent;
+  scrollbar-width : thin;
+  scrollbar-gutter: stable;
 }
 
 body {
+  font-size: 1rem;
+
+  background: light-dark(var(--color-light),
+      var(--color-dark));
+  background-color: light-dark(var(--color-light),
+      var(--color-dark));
+  background-image: light-dark(var(--color-light),
+      var(--color-dark));
   position         : relative;
   display          : -webkit-flex;
   display          : flex;
@@ -137,8 +146,7 @@ body {
   max-height       : 100dvh;
   overflow         : hidden;
   backdrop-filter  : var(--blur);
-  background-color : rgb(0, 0, 0);
-  background-image : var(--theme-back);
+
 }
 
 main {

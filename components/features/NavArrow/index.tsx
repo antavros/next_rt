@@ -9,23 +9,33 @@ export const FastNavigation = () => {
   const [showBottomNav, setShowBottomNav] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const scrollPosition = window.scrollY;
+    const container = document.querySelector(".content"); // Находим существующий контейнер
 
-      const shouldShowTopNav = scrollPosition >= windowHeight / 2;
+    const handleScroll = () => {
+      if (!container) return;
+
+      const scrollTop = container.scrollTop;
+      const scrollHeight = container.scrollHeight;
+      const containerHeight = container.clientHeight;
+
+      // Логика отображения кнопок
+      const shouldShowTopNav = scrollTop > containerHeight / 2;
       const shouldShowBottomNav =
-        scrollPosition <= Math.round(windowHeight / 2);
+        scrollTop + containerHeight < scrollHeight - containerHeight / 2;
 
       setShowTopNav(shouldShowTopNav);
       setShowBottomNav(shouldShowBottomNav);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    if (container) {
+      container.addEventListener("scroll", handleScroll); // Привязка события
+      handleScroll(); // Инициализация при монтировании
+    }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (container) {
+        container.removeEventListener("scroll", handleScroll); // Очистка события
+      }
     };
   }, []);
 
@@ -33,7 +43,7 @@ export const FastNavigation = () => {
     {
       type: "button",
       title: "Наверх",
-      url: "#main",
+      url: "#content",
       svg: <IconChevronsUp stroke={2} />,
     },
   ];

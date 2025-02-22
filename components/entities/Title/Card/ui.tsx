@@ -20,7 +20,6 @@ export function ClientTitleCard({ details }: { readonly details: any }) {
           width={256}
           height={400}
           quality={25}
-          loading={"lazy"}
           src={details.poster}
           alt={details.name}
         />
