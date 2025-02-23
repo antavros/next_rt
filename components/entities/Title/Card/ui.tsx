@@ -13,13 +13,18 @@ export function ClientTitleCard({ details }: { readonly details: any }) {
   return (
     <article className="title_card" id={details.id}>
       {!imageLoaded && <Preloader />}
-      <TitleRate rt={{ kp: details.average_kp, imdb: details.average_imdb }} personal={details?.userRating} titleId={details?.id} />
+      <TitleRate
+        rt={{ kp: details.average_kp, imdb: details.average_imdb }}
+        personal={details?.userRating}
+        titleId={details?.id}
+      />
       <Link href={`/${details.type}/${details.id}`} prefetch={false}>
         <Image
           onLoad={() => setImageLoaded(true)}
           width={256}
-          height={400}
+          height={384}
           quality={25}
+          className="card_poster"
           src={details.poster}
           alt={details.name}
         />

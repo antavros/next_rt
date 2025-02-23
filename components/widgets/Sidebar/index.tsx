@@ -9,12 +9,12 @@ import { NavMenu } from "./NavMenu";
 export async function Sidebar() {
   return (
     <header>
-      <section className="sidebar">
+      <aside className="sidebar">
         <Logo />
         <NavMenu />
         <Togglers />
         <UserCard />
-      </section>
+      </aside>
     </header>
   );
 }

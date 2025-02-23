@@ -31,8 +31,7 @@ export const UserCard: React.FC = async () => {
 
   return (
     <section className="userBlock">
-            <UserAvatar />
-
+      <UserAvatar />
       <div className="userButtons">
         <Button items={buttonItems} />
         <SignButton />

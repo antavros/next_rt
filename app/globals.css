@@ -27,10 +27,9 @@
   --hover-scale : 1.1;
   --active-scale: 0.9;
 
-  --header_z-index : 99;
-  --sidebar_z-index: 100;
-  --footer_z-index : 99;
   --main_z-index   : 1;
+  --sidebar_z-index: 100;
+  --modal_z-index  : 999;
 
   --header-height: 80px;
   --sidebar-width: auto;
@@ -65,7 +64,7 @@
   padding-inline          : 0;
   padding-inline-start    : 0;
   padding-inline-end      : 0;
-  transition              : all 2ms ease-in-out;
+  transition              : all 0.2s ease-in-out;
   border-radius           : var(--border-radius);
   scroll-behavior         : smooth;
   transition-behavior     : allow-discrete;

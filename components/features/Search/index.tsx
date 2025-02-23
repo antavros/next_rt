@@ -1,70 +1,52 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { SearchForm } from "@/components/features/Search/Form";
 import { IconSearch, IconX } from "@tabler/icons-react";
 import { Button, Item } from "@/components/features/Button";
 
 import "./style.css";
 
-interface SearchProps {
-  onSearch?: (value: string) => void;
-}
+export function Search() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export function Search({ onSearch }: SearchProps) {
-  const [searchValue, setSearchValue] = useState("");
-  const router = useRouter();
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsModalOpen(false);
+      }
+    };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (onSearch) {
-      onSearch(searchValue);
+    if (isModalOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      window.removeEventListener("keydown", handleKeyDown);
     }
-    router.push(`/search?page=1&query=${searchValue}`);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModalOpen]);
+
+  const handleSearch = () => {
+    setIsModalOpen(false);
   };
 
-  const handleReset = () => {
-    setSearchValue("");
-  };
-
-  const buttonItemsSubmit: Item[] = [
+  const buttonItemsSearch: Item[] = [
     {
-      type: "submit",
-      svg: <IconSearch stroke={2} />,
+      name: isModalOpen ? "Закрыть" : "Поиск",
+      className: "buttonISearch",
+      svg: isModalOpen ? <IconX stroke={2} /> : <IconSearch stroke={2} />,
+      onClick: () => setIsModalOpen(!isModalOpen),
     },
   ];
 
-  const buttonItemsReset: Item[] = [
-    {
-      type: "reset",
-      svg: <IconX stroke={2} />,
-    },
-  ];
   return (
     <div className="searchContainer">
-      <form
-        className="search"
-        id="search"
-        onSubmit={handleSubmit}
-        onReset={handleReset}
-      >
-        <Button items={buttonItemsSubmit} />
-        <input
-          className="search_input"
-          type="text"
-          id="search_input"
-          name="search"
-          placeholder="Поиск"
-          autoComplete="on"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          required
-          minLength={1}
-          maxLength={99}
-          size={10}
-        />
-        <Button items={buttonItemsReset} />
-      </form>
+      <Button items={buttonItemsSearch} />
+      <dialog className="searchModal" open={isModalOpen}>
+        <SearchForm onSearch={handleSearch} />
+      </dialog>
     </div>
   );
 }
