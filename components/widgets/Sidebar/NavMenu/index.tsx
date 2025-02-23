@@ -1,11 +1,11 @@
 "use client";
+import React from "react";
 
 import { usePathname } from "next/navigation";
 import { Search } from "@/components/features/Search";
 import { Button } from "@/components/features/Button";
 
 import {
-  IconHome,
   IconMovie,
   IconDeviceTvOld,
   IconMickey,
@@ -14,9 +14,6 @@ import {
   IconUsers,
   IconCards,
   IconHeartDollar,
-  IconSpeakerphone,
-  IconChevronDown,
-  IconChevronRight,
 } from "@tabler/icons-react";
 
 import "./style.css";

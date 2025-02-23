@@ -4,13 +4,13 @@ import Image from "next/image";
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
 import { SwiperWatchability } from "./Swiper/watchability";
+import { TitleCardWidgets } from "@/components/entities/User/widgets/Card/title";
 
 import "./style.css";
 
 export function TitlePageHead({ details }: { readonly details: any }) {
   return (
     <div className="head">
-
       {details?.backdrop ? (
         <Image
           width={640}
@@ -60,7 +60,9 @@ export function TitlePageHead({ details }: { readonly details: any }) {
           <h1>{details?.name}</h1>
           <h2>{details?.enName}</h2>
           <p>{details?.countries}</p>
-          <p>{details?.year}г {details?.length}</p>
+          <p>
+            {details?.year}г {details?.length}
+          </p>
           <p>{details?.genres}</p>
           <TitleRate
             rt={{ kp: details.average_kp, imdb: details.average_imdb }}
@@ -69,6 +71,7 @@ export function TitlePageHead({ details }: { readonly details: any }) {
             personal={details?.userRating}
             titleId={details?.id}
           />
+          <TitleCardWidgets details={details} />
         </section>
 
         {details?.watchability.length > 0 ? (
@@ -78,6 +81,6 @@ export function TitlePageHead({ details }: { readonly details: any }) {
           </section>
         ) : null}
       </div>
-    </div >
+    </div>
   );
 }

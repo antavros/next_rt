@@ -3,16 +3,22 @@
   place-content: center center;
   place-items  : center center;
   place-self   : center center;
+  flex-flow    : column nowrap;
   position     : relative;
   width        : 16rem;
-  height       : 24rem;
-  min-width    : 16rem;
-  min-height   : 24rem;
   max-width    : 16rem;
-  max-height   : 24rem;
+  height       : max-content;
   cursor       : pointer;
   overflow     : hidden;
   z-index      : 2;
+  background   : var(--color-button-hover);
+}
+
+.title_card a {
+  width     : 16rem;
+  height    : 24rem;
+  max-width : 16rem;
+  max-height: 24rem;
 }
 
 .card_poster {
@@ -29,10 +35,13 @@
   top            : 0;
   left           : 0;
   right          : 0;
-  bottom         : 0;
   display        : flex;
   flex-direction : column;
-  place-content  : center center;
+  width          : 16rem;
+  height         : 24rem;
+  max-width      : 16rem;
+  max-height     : 24rem;
+  place-content  : start center;
   place-items    : center center;
   place-self     : center center;
   width          : 100%;
@@ -89,3 +98,17 @@
   -ms-hyphens    : auto;
   hyphens        : auto;
 }
+
+/* .tableTitles .title_rate {
+  position     : absolute;
+  place-content: center end;
+  place-items  : center center;
+  place-self   : center center;
+  padding      : var(--element-gap);
+  top          : 0.2rem;
+}
+
+
+.tableTitles .title_rate article:last-child {
+  margin-left: auto;
+} */

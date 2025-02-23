@@ -5,10 +5,11 @@ import { TitleRate } from "@/components/entities/Title/Rate/";
 import { CustomSwiper } from "@/components/entities/Swiper/CustomSwiper";
 import { Details } from "@/components/shared/api/next-title";
 import style from "./style.module.css";
+import { TitleCard } from "@/components/entities/Title/Card/";
 
 export function SwiperCardTitle({ details }: Details) {
   if (!details || !Array.isArray(details)) {
-    return null; // обработка пустого состояния или некорректных данных
+    return null;
   }
 
   const renderSlide = (item: any) => (

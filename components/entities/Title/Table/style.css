@@ -25,16 +25,3 @@
   gap          : 0.5rem;
 }
 
-.tableTitles .title_rate {
-  position     : absolute;
-  place-content: center end;
-  place-items  : center center;
-  place-self   : center center;
-  padding      : var(--element-gap);
-  top          : 0.2rem;
-}
-
-
-.tableTitles .title_rate article:last-child {
-  margin-left: auto;
-}
