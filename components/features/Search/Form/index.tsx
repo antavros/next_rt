@@ -26,11 +26,11 @@ export function SearchForm({ onSearch }: SearchProps) {
     setSearchValue("");
   };
   const buttonItemsSubmit: Item[] = [
-    { type: "submit", svg: <IconSearch stroke={2} /> },
+    { className:"submit",type: "submit", svg: <IconSearch stroke={2} /> },
   ];
 
   const buttonItemsReset: Item[] = [
-    { type: "reset", svg: <IconX stroke={2} /> },
+    { className:"reset",type: "reset", svg: <IconX stroke={2} /> },
   ];
 
   return (

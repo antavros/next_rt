@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-import { TitleRate } from "@/components/entities/Title/Rate/";
 import { SwiperWatchability } from "./Swiper/watchability";
 import { TitleCardWidgets } from "@/components/entities/User/widgets/Card/title";
 
@@ -64,14 +63,7 @@ export function TitlePageHead({ details }: { readonly details: any }) {
             {details?.year}г {details?.length}
           </p>
           <p>{details?.genres}</p>
-          <TitleRate
-            rt={{ kp: details.average_kp, imdb: details.average_imdb }}
-            kp={details.average_kp}
-            imdb={details.average_imdb}
-            personal={details?.userRating}
-            titleId={details?.id}
-          />
-          <TitleCardWidgets details={details} />
+          <TitleCardWidgets details={details} rateAll={true} />
         </section>
 
         {details?.watchability.length > 0 ? (

@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 
 import { TitleRate } from "@/components/entities/Title/Rate/";
 import { Preloader } from "@/components/features/PreLoader";
-import { Swiper as SwiperType } from 'swiper';
+import { Swiper as SwiperType } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -15,7 +15,7 @@ import {
   Autoplay,
   Keyboard,
   Navigation,
-  Pagination
+  Pagination,
 } from "swiper/modules";
 
 import "swiper/css";
@@ -23,8 +23,9 @@ import "swiper/css/keyboard";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/virtual";
-import 'swiper/css/thumbs';
-import 'swiper/css/free-mode';
+import "swiper/css/thumbs";
+import "swiper/css/free-mode";
+import { TitleCardWidgets } from "@/components/entities/User/widgets/Card/title";
 
 import "../style.css";
 import style from "./style.module.css";
@@ -92,15 +93,11 @@ export function SwiperMain({ details }: any) {
                 <h1>{details.name}</h1>
                 <h2>{details.enName}</h2>
                 <p>{details.countries}</p>
-                <p>{details.year}г {details.length}</p>
+                <p>
+                  {details.year}г {details.length}
+                </p>
                 <p>{details.genres}</p>
-                <TitleRate
-                  rt={{ kp: details.average_kp, imdb: details.average_imdb }}
-                  kp={details.average_kp}
-                  imdb={details.average_imdb}
-                  personal={details?.userRating}
-                  titleId={details?.id}
-                />
+                <TitleCardWidgets details={details} rateAll={true} />
               </section>
             </Link>
           </SwiperSlide>

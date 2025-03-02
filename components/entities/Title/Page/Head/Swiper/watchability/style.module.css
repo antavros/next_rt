@@ -9,3 +9,35 @@
   height : 3rem;
   z-index: -1;
 }
+
+.similar {
+  display         : flex;
+  width           : auto !important;
+  max-width       : 100%;
+  height          : auto !important;
+  max-height      : 100%;
+  background-color: transparent;
+}
+
+
+@media (max-width: 1200px) {
+  .details span {
+    place-content: center center;
+    place-items  : center center;
+    place-self   : center center;
+  }
+
+  .details span span {
+    flex-flow: column nowrap;
+  }
+
+  .details span span span {
+    place-content: center center;
+    place-items  : center center;
+    place-self   : center center;
+  }
+
+  .player {
+    width: 100%;
+  }
+}

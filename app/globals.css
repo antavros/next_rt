@@ -35,7 +35,7 @@
   --sidebar-width: auto;
 
   --color-light      : white;
-  --color-dark       : rgb(21, 24, 34);
+  --color-dark       : rgb(16, 18, 24);
   /* --color-dark    : rgb(255, 221, 221); */
   color-scheme       : light dark;
   --theme-back       : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
@@ -165,7 +165,7 @@ main {
   display          : flex;
   -webkit-flex-flow: column nowrap;
   flex-flow        : column nowrap;
-  gap              : 1rem;
+  gap              : 1.5rem;
   padding          : 1rem;
   width            : 100%;
   height           : 100%;

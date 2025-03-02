@@ -1,15 +1,35 @@
 .userWidgets {
-  width        : max-content;
-  height       : max-content;
   display      : flex;
   position     : relative;
-  place-content: start space-between;
+  width        : 100%;
+  height       : max-content;
+  place-content: center center;
   place-items  : center center;
   place-self   : center center;
   flex-flow    : row nowrap;
   z-index      : 66;
+  gap          : 1rem;
   padding      : 0.5rem;
   border-radius: 0 0 0 0;
+}
+
+.favourite,
+.viewed,
+.bookmark {
+  cursor : pointer;
+  padding: 0.2rem;
+}
+
+.favourite.active {
+  color: var(--color-orangered);
+}
+
+.viewed.active {
+  color: var(--color-purple);
+}
+
+.bookmark.active {
+  color: orange;
 }
 
 .userWidgets .controls {

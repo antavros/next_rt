@@ -29,7 +29,7 @@ export default async function categoryRender({
     "animated-series",
     "anime",
     "person",
-    "announced"
+    "announced",
   ];
   const category = params.category;
 

@@ -1,8 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { IconUserCircle, IconStarFilled, IconStarHalfFilled, IconStar, IconX } from "@tabler/icons-react";
-import { saveUserRating } from "./serverActions";
+import {
+  IconUserCircle,
+  IconStarFilled,
+  IconStarHalfFilled,
+  IconStar,
+  IconX,
+} from "@tabler/icons-react";
+import { saveUserRating } from "@/components/entities/User/shared";
 import { getClassByRate } from "@/components/entities/Title/Rate";
 import { useSession } from "next-auth/react";
 import "./style.css";
@@ -50,7 +56,11 @@ export function UserRate({ personal, titleId }: any) {
         <span
           key={i}
           className="star-container"
-          style={{ position: "relative", display: "inline-block", cursor: "pointer" }}
+          style={{
+            position: "relative",
+            display: "inline-block",
+            cursor: "pointer",
+          }}
           onMouseLeave={() => setHoverValue(0)} // Сбрасываем наведение
         >
           <span
@@ -93,7 +103,10 @@ export function UserRate({ personal, titleId }: any) {
   };
 
   return (
-    <article className="personal" style={getClassByRate({ vote: hoverValue || rating || 0 })}>
+    <article
+      className="personal"
+      style={getClassByRate({ vote: hoverValue || rating || 0 })}
+    >
       {session?.user?.image ? (
         <Image
           width={75}
@@ -111,16 +124,28 @@ export function UserRate({ personal, titleId }: any) {
         onClick={() => setShowStars((prev) => !prev)} // Открываем или закрываем выбор звезд
         style={{ cursor: "pointer" }}
       >
-        {hoverValue
-          ? (Number.isInteger(hoverValue) ? hoverValue : hoverValue.toFixed(1))
-          : rating
-            ? (Number.isInteger(rating) ? rating : rating.toFixed(1))
-            : <IconStar className="gray-Star" />}
+        {hoverValue ? (
+          Number.isInteger(hoverValue) ? (
+            hoverValue
+          ) : (
+            hoverValue.toFixed(1)
+          )
+        ) : rating ? (
+          Number.isInteger(rating) ? (
+            rating
+          ) : (
+            rating.toFixed(1)
+          )
+        ) : (
+          <IconStar className="gray-Star" />
+        )}
       </span>
 
-      {showStars &&
-        <div className="personal-container" style={getClassByRate({ vote: hoverValue || rating || 0 })}>
-
+      {showStars && (
+        <div
+          className="personal-container"
+          style={getClassByRate({ vote: hoverValue || rating || 0 })}
+        >
           <span
             className="main-Star"
             onClick={() => setShowStars((prev) => !prev)}
@@ -138,19 +163,29 @@ export function UserRate({ personal, titleId }: any) {
             ) : (
               <IconUserCircle stroke={2} />
             )}
-            {hoverValue
-              ? (Number.isInteger(hoverValue) ? hoverValue : hoverValue.toFixed(1))
-              : rating
-                ? (Number.isInteger(rating) ? rating : rating.toFixed(1))
-                : <IconStar className="gray-Star" />}
+            {hoverValue ? (
+              Number.isInteger(hoverValue) ? (
+                hoverValue
+              ) : (
+                hoverValue.toFixed(1)
+              )
+            ) : rating ? (
+              Number.isInteger(rating) ? (
+                rating
+              ) : (
+                rating.toFixed(1)
+              )
+            ) : (
+              <IconStar className="gray-Star" />
+            )}
           </span>
 
           {renderStars()}
-          <span
-            onClick={handleRemoveRating}>
+          <span onClick={handleRemoveRating}>
             <IconX className="gray-Star" />
           </span>
-        </div>}
+        </div>
+      )}
     </article>
   );
 }

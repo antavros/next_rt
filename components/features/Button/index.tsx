@@ -38,15 +38,15 @@ export const Button = ({ items }: ButtonProps) => {
         {createButtonElement(item)}
       </Link>
     ) : (
-      <React.Fragment key={item.id || item.name}>
-        {createButtonElement(item)}
-      </React.Fragment>
+      <div key={item.id || item.name}>{createButtonElement(item)}</div>
     );
 
   return items.length > 1 ? (
     <ul>
-      {items.map((item) => (
-        <li key={item.id || item.name}>{renderButton(item)}</li>
+      {items.map((item, index) => (
+        <li key={item.id || item.name || `item-${index}`}>
+          {renderButton(item)}
+        </li>
       ))}
     </ul>
   ) : (

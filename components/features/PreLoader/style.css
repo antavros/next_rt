@@ -11,10 +11,10 @@
   background-color: rgb(11, 11, 16);
   overflow        : hidden;
   z-index         : 999999999;
-  border-radius   : 0;
-  place-content   : center center;
-  place-items     : center center;
-  place-self      : center center;
+
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
 }
 
 .loader::before {

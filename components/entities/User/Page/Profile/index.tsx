@@ -9,50 +9,87 @@ import { SwiperCardTitle } from "@/components/entities/User/widgets/History";
 
 import "./style.css";
 
-export async function getVisitedTitles() {
+export async function getTitlesList(type) {
   const session = await auth();
   if (!session?.user?.id) {
     return [];
   }
 
-  const visitedTitles = await prisma.userTitle.findMany({
+  const filter = {};
+  switch (type) {
+    case "visited":
+      filter.visited = true;
+      break;
+    case "viewed":
+      filter.viewed = true;
+      break;
+    case "favourite":
+      filter.favourite = true;
+      break;
+    case "bookmark":
+      filter.bookmark = true;
+      break;
+    default:
+      return [];
+  }
+
+  const titles = await prisma.userTitle.findMany({
     where: {
       userId: session.user.id,
-      visited: true,
+      ...filter,
     },
     include: {
       title: true,
     },
     orderBy: {
-      updatedAt: "desc", // Сортируем по полю updatedAt в порядке убывания (от новых к старым)
+      updatedAt: "desc",
     },
   });
 
-  return visitedTitles.map((userTitle) => userTitle.title);
+  return titles.map((userTitle) => userTitle.title);
 }
 
 export async function ProfilePage() {
   const session = await auth();
-  const visitedTitles = await getVisitedTitles();
   if (!session) {
     redirect(`/signin`);
     return null;
   }
 
+  const [visitedTitles, viewedTitles, favouriteTitles, bookmarkedTitles] =
+    await Promise.all([
+      getTitlesList("visited"),
+      getTitlesList("viewed"),
+      getTitlesList("favourite"),
+      getTitlesList("bookmark"),
+    ]);
+
   return (
-    <section className="profile">
+    <>
       {visitedTitles.length > 0 && (
         <section className="history block">
-          <h3>История</h3>
+          <h1>История</h1>
           <SwiperCardTitle details={visitedTitles} />
         </section>
       )}
-      <section className="viewed block">
-        <h3>Просмотрено</h3>
-      </section>
-      <section className="favourite block">
-        <h3>Избранное</h3>
-      </section>
-    </section>
+      {viewedTitles.length > 0 && (
+        <section className="viewed  block">
+          <h1>Просмотрено</h1>
+          <SwiperCardTitle details={viewedTitles} />
+        </section>
+      )}
+      {favouriteTitles.length > 0 && (
+        <section className="favourite  block">
+          <h1>Избранное</h1>
+          <SwiperCardTitle details={favouriteTitles} />
+        </section>
+      )}
+      {bookmarkedTitles.length > 0 && (
+        <section className="bookmarked  block">
+          <h1>Закладки</h1>
+          <SwiperCardTitle details={bookmarkedTitles} />
+        </section>
+      )}
+    </>
   );
 }

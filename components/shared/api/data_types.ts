@@ -2,81 +2,71 @@ import { Details } from "./next-title";
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
-const convertMinutesToHours = ({ minutes }: { minutes: number }): string => {
-  const hours = Math.floor(minutes / 60);
-  const remainingMinutes = minutes % 60;
+const convertMinutesToHours = ({ minutes }: { minutes: number }): string =>
+  minutes
+    ? `${Math.floor(minutes / 60)}ч${minutes % 60 ? `${minutes % 60}м` : ""}`
+    : "";
 
-  if (hours > 0 && remainingMinutes > 0) {
-    return `${hours}ч${remainingMinutes}м`;
-  } else if (hours > 0) {
-    return `${hours}ч`;
-  } else if (remainingMinutes > 0) {
-    return `${remainingMinutes}м`;
-  } else {
-    return "";
-  }
+const convertDateFormat = (dateString: string): string => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return `${date.getDate().toString().padStart(2, "0")}.${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}.${date.getFullYear()}`;
 };
 
-function convertDateFormat(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, "0");
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const year = date.getFullYear();
+const convertValueFormat = (value: any): string =>
+  value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") : "";
 
-  return `${day}.${month}.${year}`;
-}
-
-function convertValueFormat(value: any): string {
-  if (value === undefined || value === null) {
-    console.warn("convertValueFormat: received undefined or null value", value); // Логирование для отладки
-    return ""; // Возвращаем пустую строку по умолчанию
-  }
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
-
-export async function getUserRatings({
+export async function getUserMovieData({
   movieIds,
 }: {
   movieIds: string[];
-}): Promise<{ [key: string]: number }> {
+}): Promise<{
+  [key: string]: {
+    rating?: number;
+    viewed?: boolean;
+    favourite?: boolean;
+    bookmark?: boolean;
+  };
+}> {
   const session = await auth();
   const userId = session?.user?.id;
 
-  if (!userId) {
-    console.warn("getUserRatings: User is not authenticated");
-    return {};
-  }
-
-  if (!Array.isArray(movieIds) || movieIds.length === 0) {
-    console.warn("getUserRatings: movieIds is empty or invalid", movieIds);
+  if (!userId || !Array.isArray(movieIds) || movieIds.length === 0) {
+    console.warn("getUserMovieData: Invalid input", { userId, movieIds });
     return {};
   }
 
   try {
-    const stringMovieIds = movieIds.map((id) => id.toString());
-    const ratings = await prisma.userTitle.findMany({
-      where: {
-        userId,
-        titleId: {
-          in: stringMovieIds,
-        },
-      },
+    const stringMovieIds = movieIds.map((id) => String(id));
+    const movieData = await prisma.userTitle.findMany({
+      where: { userId, titleId: { in: stringMovieIds } },
       select: {
         titleId: true,
         rating: true,
+        viewed: true,
+        favourite: true,
+        bookmark: true, // Добавлен bookmark
       },
     });
 
-    const ratingsMap: { [key: string]: number } = {};
-    ratings.forEach(({ titleId, rating }) => {
-      if (rating !== null) {
-        ratingsMap[titleId] = rating;
+    return movieData.reduce(
+      (acc, { titleId, rating, viewed, favourite, bookmark }) => {
+        acc[titleId] = { rating, viewed, favourite, bookmark };
+        return acc;
+      },
+      {} as {
+        [key: string]: {
+          rating?: number;
+          viewed?: boolean;
+          favourite?: boolean;
+          bookmark?: boolean;
+        };
       }
-    });
-    console.log(ratingsMap);
-    return ratingsMap;
+    );
   } catch (error: any) {
-    console.error("Ошибка получения пользовательских рейтингов:", {
+    console.error("Ошибка получения данных пользователя:", {
       userId,
       movieIds,
       error: error.message || error,
@@ -95,39 +85,18 @@ export async function getDetails({
 }> {
   try {
     const docs = Array.isArray(details?.docs) ? details.docs : [details];
-    const movieIds = docs.map((doc: any) => doc.id);
+    const movieIds = docs.map((doc: any) => String(doc?.id)).filter(Boolean);
 
-    // Получаем пользовательские рейтинги для всех фильмов на странице
-    const userRatings = await getUserRatings({ movieIds });
+    // Получаем пользовательские данные
+    const userMovieData = await getUserMovieData({ movieIds });
 
     const transformMovie = (doc: any) => {
-      const person = Array.isArray(doc?.persons) ? doc.persons : [];
-      const similar = Array.isArray(doc?.similarMovies)
-        ? doc.similarMovies
-        : [];
-      const trailers = Array.isArray(doc?.videos?.trailers)
-        ? doc.videos.trailers
-        : [];
-      const chapters = Array.isArray(doc?.sequelsAndPrequels)
-        ? doc.sequelsAndPrequels
-        : [];
-      const watchability = Array.isArray(doc?.watchability?.items)
-        ? doc.watchability.items
-        : [];
-      const audience = Array.isArray(doc?.audience)
-        ? doc.audience.map((audience: any) => ({
-            count: convertValueFormat(audience?.count),
-            country: audience?.country,
-          }))
-        : [];
+      if (!doc?.id) return null;
 
-      const profession = Array.isArray(doc?.profession)
-        ? doc.profession.map((p: any) => p?.value).join(" ")
-        : "";
+      const userData = userMovieData[String(doc?.id)] || {};
 
       return {
-        id: doc?.id,
-        movieIds: Array.isArray(doc) ? doc.map((d: any) => d.id) : [],
+        id: String(doc?.id),
         type: doc?.type,
         name: doc?.name ?? doc?.alternativeName ?? doc?.enName ?? "",
         enName: doc?.enName ?? doc?.alternativeName ?? "",
@@ -139,25 +108,19 @@ export async function getDetails({
         ageRating: doc?.ageRating ?? "",
         ageMpaa: doc?.ratingMpaa ?? "",
         year: doc?.year ?? "...",
-        length: doc?.movieLength
-          ? convertMinutesToHours({ minutes: doc.movieLength })
-          : "",
-        countries: Array.isArray(doc?.countries)
-          ? doc.countries.map((c: any) => c?.name).join(" ")
-          : "",
-        genres: Array.isArray(doc?.genres)
-          ? doc.genres.map((g: any) => g?.name).join(" ")
-          : "",
+        length: convertMinutesToHours({ minutes: doc?.movieLength }),
+        countries: doc?.countries?.map((c: any) => c?.name).join(" ") ?? "",
+        genres: doc?.genres?.map((g: any) => g?.name).join(" ") ?? "",
         sDescription: doc?.shortDescription ?? "",
         description: doc?.description ?? "",
         logo: doc?.logo?.url ?? doc?.logo?.previewUrl ?? "",
         poster: doc?.poster?.previewUrl ?? doc?.poster?.url ?? "",
         backdrop: doc?.backdrop?.url ?? "",
-        person,
-        similar,
-        chapters,
-        trailers,
-        watchability,
+        person: doc?.persons ?? [],
+        similar: doc?.similarMovies ?? [],
+        chapters: doc?.sequelsAndPrequels ?? [],
+        trailers: doc?.videos?.trailers ?? [],
+        watchability: doc?.watchability?.items ?? [],
         average_kp: doc?.rating?.kp ?? "",
         votes_kp: doc?.votes?.kp ?? "",
         average_imdb: doc?.rating?.imdb ?? "",
@@ -177,39 +140,35 @@ export async function getDetails({
               doc.fees.world.currency
             }`
           : "",
-        premiereWorld: doc?.premiere?.world
-          ? convertDateFormat(doc.premiere.world)
-          : "",
-        premiereRussia: doc?.premiere?.russia
-          ? convertDateFormat(doc.premiere.russia)
-          : "",
-        premiereBluray: doc?.premiere?.digital
-          ? convertDateFormat(doc.premiere.digital)
-          : "",
-        premiereUSA: doc?.premiere?.usa
-          ? convertDateFormat(doc.premiere.usa)
-          : "",
-        audience,
+        premiereWorld: convertDateFormat(doc?.premiere?.world),
+        premiereRussia: convertDateFormat(doc?.premiere?.russia),
+        premiereBluray: convertDateFormat(doc?.premiere?.digital),
+        premiereUSA: convertDateFormat(doc?.premiere?.usa),
+        audience: doc?.audience
+          ? doc.audience.map((audience: any) => ({
+              count: convertValueFormat(audience?.count),
+              country: audience?.country,
+            }))
+          : [],
         sex: doc?.sex ?? "",
         age: doc?.age ?? "",
-        profession,
+        profession: doc?.profession
+          ? doc.profession.map((p: any) => p?.value).join(" ")
+          : "",
         hasPosters: !!(doc?.poster?.url || doc?.poster?.previewUrl),
-        userRating: userRatings[doc.id] || null, // Добавляем пользовательский рейтинг
+        userRating: userData.rating || null,
+        viewed: userData.viewed || false,
+        favourite: userData.favourite || false,
+        bookmark: userData.bookmark || false, // Добавлен bookmark
       };
     };
 
-    const detailData = docs.map(transformMovie);
-    const filteredData = detailData.filter((movie) => movie.hasPosters);
+    const detailData = docs.map(transformMovie).filter(Boolean); // Убираем `null`
     const { total, limit, page, pages } = details;
 
-    return {
-      data: filteredData,
-      pagination: { total, limit, page, pages },
-    };
+    return { data: detailData, pagination: { total, limit, page, pages } };
   } catch (error: any) {
-    console.error("getDetailsWithUserRatings error:", error);
-    throw new Error(
-      `Failed to get details with user ratings: ${error.message}`
-    );
+    console.error("Ошибка getDetails:", error);
+    throw new Error(`Не удалось получить детали: ${error.message}`);
   }
 }

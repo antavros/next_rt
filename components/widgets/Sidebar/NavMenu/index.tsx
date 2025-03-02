@@ -14,6 +14,7 @@ import {
   IconUsers,
   IconCards,
   IconHeartDollar,
+  IconHome,
 } from "@tabler/icons-react";
 
 import "./style.css";
@@ -39,10 +40,10 @@ export function NavMenu() {
 
   const menuConfig: Item[] = [
     {
-      name: "Популярно",
+      name: "Главная",
       url: "/",
       className: isActive("/", true),
-      svg: <IconHeartDollar />,
+      svg: <IconHome />,
     },
     {
       name: "Фильмы",
