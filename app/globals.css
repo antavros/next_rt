@@ -1,5 +1,5 @@
 :root {
-  --color-white    : white;
+  --color-white    : #fff;
   --color-black    : black;
   --color-yellow   : yellow;
   --color-orange   : orange;
@@ -8,7 +8,7 @@
   --color-gray     : rgba(153, 153, 153);
   --color-gray_dark: rgba(71, 71, 71);
 
-  --color-text           : rgb(143, 143, 143);
+  --color-text           : rgb(186, 186, 186);
   --color-border         : rgba(255, 255, 255, 0.2);
   --color-block_back     : rgba(0, 0, 0, 0.15);
   --color-button-active  : rgba(77, 24, 199, 0.3);

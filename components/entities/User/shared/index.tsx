@@ -148,14 +148,27 @@ export async function markTitle(payload: {
       });
     }
 
-    // Обновляем статус пользователя
-    await prisma.userTitle.upsert({
+    // Проверяем, существует ли запись о связи пользователя с тайтлом
+    const userTitle = await prisma.userTitle.findUnique({
       where: { userId_titleId: { userId, titleId } },
-      update: { [mark]: true },
-      create: { userId, titleId, [mark]: true },
     });
 
-    console.log(`Тайтл (${titleId}) успешно помечен как ${mark}`);
+    if (userTitle && userTitle[mark]) {
+      // Если метка уже установлена, снимаем её
+      await prisma.userTitle.update({
+        where: { userId_titleId: { userId, titleId } },
+        data: { [mark]: false },
+      });
+      console.log(`Метка ${mark} снята с тайтла (${titleId})`);
+    } else {
+      // Если метки нет, устанавливаем её
+      await prisma.userTitle.upsert({
+        where: { userId_titleId: { userId, titleId } },
+        update: { [mark]: true },
+        create: { userId, titleId, [mark]: true },
+      });
+      console.log(`Тайтл (${titleId}) успешно помечен как ${mark}`);
+    }
   } catch (error) {
     console.error("Ошибка при обновлении статуса тайтла:", error);
     throw new Error("Не удалось обновить статус тайтла");

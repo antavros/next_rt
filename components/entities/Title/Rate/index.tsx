@@ -7,12 +7,22 @@ import { useSession } from "next-auth/react";
 import { UserRate } from "@/components/entities/User/features/rate";
 import "./style.css";
 
-export function getClassByRate({ vote }: { vote: number }) {
+export function getClassByRate({ vote }: { vote: number | "none" }) {
+  if (vote === 0 || vote === "none") {
+    return {
+      border: "0 solid gray",
+      boxShadow: "0rem 0rem 0.3rem 0.15rem gray",
+      color: "gray",
+      transition: "all 1ms ease",
+    };
+  }
+
   const hue = (vote / 10) * 110;
   const saturation = 100;
   const lightness = 50;
   const transparent = 11;
   const rateColor = `hsla(${hue}, ${saturation}%, ${lightness}%, ${transparent})`;
+
   return {
     border: `0 solid ${rateColor}`,
     boxShadow: `0rem 0rem 0.3rem 0.15rem ${rateColor}`,
@@ -34,7 +44,7 @@ export const TitleRate: React.FC<RatingProps> = ({
   imdb,
   rt,
   personal,
-  titleId
+  titleId,
 }) => {
   const { data: session } = useSession();
 
@@ -48,8 +58,10 @@ export const TitleRate: React.FC<RatingProps> = ({
 
   const averageRating =
     rt && (rt.kp || rt.imdb)
-      ? [rt.kp, rt.imdb].filter((rating) => rating !== undefined).reduce((sum, rating) => sum + (rating || 0), 0) /
-      [rt.kp, rt.imdb].filter((rating) => rating !== undefined).length
+      ? [rt.kp, rt.imdb]
+          .filter((rating) => rating !== undefined)
+          .reduce((sum, rating) => sum + (rating || 0), 0) /
+        [rt.kp, rt.imdb].filter((rating) => rating !== undefined).length
       : null;
 
   return (
@@ -60,7 +72,11 @@ export const TitleRate: React.FC<RatingProps> = ({
           style={getClassByRate({ vote: averageRating })}
         >
           <Image fill={true} src="/images/RT.webp" alt="RT" priority={true} />
-          <span>{Number.isInteger(averageRating) ? averageRating : averageRating.toFixed(1)}</span>
+          <span>
+            {Number.isInteger(averageRating)
+              ? averageRating
+              : averageRating.toFixed(1)}
+          </span>
         </article>
       )}
 

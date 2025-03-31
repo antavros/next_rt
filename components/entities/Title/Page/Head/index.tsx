@@ -32,17 +32,28 @@ export function TitlePageHead({ details }: { readonly details: any }) {
         />
       )}
       <div className="head_Info">
-        <section className="block1">
-          <Image
-            width={640}
-            height={360}
-            quality={1}
-            className="title_logo"
-            src={details?.logo || details?.poster}
-            alt={details?.name}
-            priority={true}
-          />
-
+        <span>
+          {details?.logo ? (
+            <Image
+              width={640}
+              height={360}
+              quality={1}
+              className="title_logo"
+              src={details?.logo}
+              alt={details?.name}
+              priority={true}
+            />
+          ) : (
+            <Image
+              width={256}
+              height={384}
+              quality={25}
+              className="title_poster"
+              src={details?.poster}
+              alt={details?.name}
+              priority={true}
+            />
+          )}
           {details?.ageMpaa.length || details?.ageRating.length > 0 ? (
             <section className="age">
               <h6>
@@ -55,23 +66,21 @@ export function TitlePageHead({ details }: { readonly details: any }) {
               </h6>
             </section>
           ) : null}
-
-          <h1>{details?.name}</h1>
-          <h2>{details?.enName}</h2>
-          <p>{details?.countries}</p>
-          <p>
-            {details?.year}г {details?.length}
-          </p>
-          <p>{details?.genres}</p>
-          <TitleCardWidgets details={details} rateAll={true} />
-        </section>
-
+        </span>
+        <h1>{details?.name}</h1>
+        <h2>{details?.enName}</h2>
+        <p>{details?.countries}</p>
+        <p>
+          {details?.year}г {details?.length}
+        </p>
+        <p>{details?.genres}</p>
         {details?.watchability.length > 0 ? (
-          <section className="block2">
+          <section className="watchability">
             <h3>Где смотреть?</h3>
             <SwiperWatchability details={details?.watchability} />
           </section>
         ) : null}
+        <TitleCardWidgets details={details} rateAll={true} />
       </div>
     </div>
   );

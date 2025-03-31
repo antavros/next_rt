@@ -17,13 +17,18 @@
   left    : 0;
   right   : 0;
   bottom  : 0;
-  background-image: radial-gradient(circle farthest-side at 85% 0%,
-      transparent 50%,
-      rgba(0, 0, 0, 0.7) 63%,
-      rgba(0, 0, 0, 0.75) 79%,
-      rgba(0, 0, 0, 0.8) 89%,
-      rgba(0, 0, 0, 0.85) 99%,
-      rgba(0, 0, 0, 9) 109%);
+  width   : 100%;
+  height  : 100%;
+  background: radial-gradient(circle farthest-side at 90% 0%,
+      transparent 45%,
+      rgba(0, 0, 0, 0.65) 65%,
+      rgba(0, 0, 0, 0.70) 70%,
+      rgba(0, 0, 0, 0.75) 75%,
+      rgba(0, 0, 0, 0.80) 80%,
+      rgba(0, 0, 0, 0.85) 85%,
+      rgba(0, 0, 0, 0.90) 90%,
+      rgba(0, 0, 0, 0.95) 95%,
+      rgba(0, 0, 0, 1) 109%);
   z-index: 0;
 }
 
@@ -36,12 +41,12 @@
   position      : absolute;
   display       : flex;
   flex-direction: column;
-  place-content : center center;
-  place-items   : center center;
-  place-self    : center center;
+  place-content : center end;
+  place-items   : start start;
+  place-self    : start start;
   text-align    : center;
   padding       : 1rem;
-  width         : 40%;
+  width         : 38%;
   height        : 100%;
   bottom        : 0;
   left          : 0;
@@ -53,28 +58,53 @@
   width        : 100% !important;
   height       : auto !important;
   object-fit   : cover;
-  max-width    : 60%;
+  max-width    : 100%;
   border-radius: 0 !important;
 }
 
 .swiper_home_Info h1 {
-  padding-top  : 1rem;
-  font-size    : 1rem;
-  text-overflow: ellipsis;
-  color        : var(--color-white);
+  place-self    : center center;
+  padding-top   : 1rem;
+  padding-bottom: 0.5rem;
+  font-style    : normal;
+  font-weight   : 900;
+  line-height   : 28px;
+  font-size     : 1.2rem;
+  text-overflow : ellipsis;
+  color         : var(--color-white);
 }
 
 .swiper_home_Info h2 {
-  font-size     : 100%;
-  padding-bottom: 0.5rem;
+  place-self    : center center;
+  font-size     : 1rem;
+  padding-bottom: 1rem;
   color         : var(--color-text);
 }
 
+.swiper_home_Info h3 {
+  place-self     : center center;
+  width          : 100%;
+  color          : var(--color-white);
+  padding-bottom : 1rem;
+  padding-top    : 1rem;
+  text-overflow  : ellipsis;
+  text-wrap      : pretty;
+  text-align     : left;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
+  font-size      : 1.2rem;
+  font-style     : normal;
+  font-weight    : 900;
+  line-height    : 28px;
+}
+
 .swiper_home_Info p {
-  place-self   : center center;
-  font-size    : 90%;
-  text-overflow: ellipsis;
-  color        : var(--color-text);
+  place-self    : center center;
+  font-size     : 1rem;
+  text-overflow : ellipsis;
+  padding-bottom: 0.3rem;
+  color         : var(--color-text);
 }
 
 @media (max-width: 1200px) {

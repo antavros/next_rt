@@ -80,26 +80,27 @@ export function SwiperMain({ details }: any) {
                 className={style.title_back}
                 alt={details.name}
               />
-              <section className={style.swiper_home_Info}>
-                <Image
-                  width={640}
-                  height={360}
-                  quality={1}
-                  priority={true}
-                  className={style.title_logo}
-                  src={details.logo}
-                  alt={details.name}
-                />
-                <h1>{details.name}</h1>
-                <h2>{details.enName}</h2>
-                <p>{details.countries}</p>
-                <p>
-                  {details.year}г {details.length}
-                </p>
-                <p>{details.genres}</p>
-                <TitleCardWidgets details={details} rateAll={true} />
-              </section>
             </Link>
+            <section className={style.swiper_home_Info}>
+              <Image
+                width={640}
+                height={360}
+                quality={1}
+                priority={true}
+                className={style.title_logo}
+                src={details.logo}
+                alt={details.name}
+              />
+              <h1>{details.name}</h1>
+              <h2>{details.enName}</h2>
+              <p>{details.countries}</p>
+              <p>
+                {details.year}г {details.length}
+              </p>
+              <p>{details.genres}</p>
+              <h3>{details.sDescription}</h3>
+              <TitleCardWidgets details={details} rateAll={true} />
+            </section>
           </SwiperSlide>
         ))}
       </Swiper>
