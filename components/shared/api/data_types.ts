@@ -107,15 +107,18 @@ export async function getDetails({
         status: doc?.status ?? "",
         ageRating: doc?.ageRating ?? "",
         ageMpaa: doc?.ratingMpaa ?? "",
-        year: doc?.year ?? "...",
+        year: doc?.year ?? "",
         length: convertMinutesToHours({ minutes: doc?.movieLength }),
         countries: doc?.countries?.map((c: any) => c?.name).join(" ") ?? "",
         genres: doc?.genres?.map((g: any) => g?.name).join(" ") ?? "",
         sDescription: doc?.shortDescription ?? "",
         description: doc?.description ?? "",
         logo: doc?.logo?.url ?? doc?.logo?.previewUrl ?? "",
-        poster: doc?.poster?.previewUrl ?? doc?.poster?.url ?? "",
-        backdrop: doc?.backdrop?.url ?? "",
+        posters:
+          doc?.poster?.previewUrl ??
+          doc?.poster?.url ??
+          "/images/placeholder.webp",
+        backdrop: doc?.backdrop?.url ?? "/images/placeholder.webp",
         person: doc?.persons ?? [],
         similar: doc?.similarMovies ?? [],
         chapters: doc?.sequelsAndPrequels ?? [],

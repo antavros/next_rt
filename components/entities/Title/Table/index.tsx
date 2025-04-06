@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TitleCard } from "@/components/entities/Title/Card";
+import { TitleCardSmall } from "@/components/entities/Title/Card/Small";
 import { PersonCard } from "@/components/entities/Person/Card";
 
 import { Pagination } from "@/components/features/Pagination";
@@ -24,7 +24,7 @@ export const TitleTable: React.FC<Details> = ({
             TableTitle === "Персоны" ? (
               <PersonCard key={detail.id} details={detail} />
             ) : (
-              <TitleCard key={detail.id} details={detail} />
+              <TitleCardSmall key={detail.id} details={detail} />
             )
           )
         ) : (

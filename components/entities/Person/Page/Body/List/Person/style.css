@@ -1,0 +1,72 @@
+.persons_list {
+  display        : flex;
+  flex-direction : column;
+  justify-content: start;
+  align-items    : start;
+  align-self     : start;
+  width          : 100%;
+  max-width      : 390px;
+}
+
+.persons_list article {
+  display        : flex;
+  flex-direction : column;
+  justify-content: start;
+  align-items    : start;
+  align-self     : start;
+  width          : max-content !important;
+  max-width      : 390px;
+}
+
+.persons_list article span {
+  display        : flex;
+  flex-direction : row;
+  justify-content: flex-start;
+  width          : 100%;
+}
+
+.persons_list article span button {
+  width: max-content;
+}
+
+.persons_list article span button h6 {
+  font-size  : 1.2rem;
+  color      : white;
+  text-align : right;
+  align-items: center;
+  align-self : flex-start;
+}
+
+.persons_list article span h4 {
+  font-size  : 1.2rem;
+  color      : white;
+  text-align : center;
+  align-items: center;
+  align-self : flex-start;
+  padding    : 0 2.5rem;
+}
+
+.persons_list article h4:first-letter,
+h6:first-letter {
+  text-transform: uppercase;
+}
+
+.persons_list article ul {
+  width  : 100%;
+  padding: 0rem 0 0.5rem 2.5rem;
+}
+
+.persons_list article ul li {
+  width  : 100%;
+  padding: 0.2rem 0;
+}
+
+.persons_list a h6 {
+  font-size: 1rem;
+  color    : var(--color-text);
+}
+
+.persons_list a h6:hover {
+  color: white;
+  scale: 105%;
+}

@@ -5,7 +5,7 @@ import { TitleRate } from "@/components/entities/Title/Rate/";
 import { CustomSwiper } from "@/components/entities/Swiper/CustomSwiper";
 import { Details } from "@/components/shared/api/next-title";
 import style from "./style.module.css";
-import { TitleCard } from "@/components/entities/Title/Card/";
+import { TitleCard } from "@/components/entities/Title/Card/Small";
 
 export function SwiperCardTitle({ details }: Details) {
   if (!details || !Array.isArray(details)) {

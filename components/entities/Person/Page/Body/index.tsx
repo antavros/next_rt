@@ -5,9 +5,9 @@ import { useSession } from "next-auth/react";
 import { ExpandableListPerson } from "./List/Person";
 import { DetailsList } from "./List/Info";
 
-import { SwiperCardTrailer } from "@/components/entities/Title/Swiper/Trailer";
-import { SwiperCardPerson } from "@/components/entities/Title/Swiper/Person";
-import { SwiperCardTitle } from "@/components/entities/Title/Swiper/Titles";
+import { SwiperCardTrailer } from "./Swiper/Trailer";
+import { SwiperCardPerson } from "./Swiper/Person";
+import { SwiperCardTitle } from "./Swiper/Titles";
 
 import { Player } from "@/components/entities/Player";
 
@@ -67,8 +67,13 @@ export function TitlePageBody({ details }: Details) {
   }
   return (
     <div className={style.body}>
+
+
+
       <section className={`${style.details}`}>
+
         <span className={style.details_block_1}>
+
           <span className={style.details_block_2}>
             <section className={`${style.block} ${style.detailsList}`}>
               <h3>О {typeName2}</h3>
@@ -93,6 +98,7 @@ export function TitlePageBody({ details }: Details) {
             <SwiperCardTrailer details={details} />
           </section>
         )}
+
       </section>
 
       <section className={`${style.block} ${style.actors}`}>
