@@ -68,7 +68,7 @@ export async function fetchDetailsAndMetadata(
   const data = await getData({ url: `${apiUrl}${id}` });
   const details = data?.data[0];
   const previousImages = (await parent).openGraph?.images || [];
-  const poster = details?.poster ?? "";
+  const poster = details?.posters ?? "";
 
   const metadata: Metadata = {
     title: details?.name,

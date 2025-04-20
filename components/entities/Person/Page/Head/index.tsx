@@ -49,7 +49,7 @@ export function TitlePageHead({ details }: { readonly details: any }) {
               height={384}
               quality={25}
               className="title_poster"
-              src={details?.poster}
+              src={details?.posters}
               alt={details?.name}
               priority={true}
             />

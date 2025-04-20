@@ -23,15 +23,23 @@ export function TitleCardWidgets({
   details: any;
   rateAll?: boolean;
 }) {
-  const [favourite, setFavourite] = useState(details?.favourite || false);
-  const [viewed, setViewed] = useState(details?.viewed || false);
-  const [bookmark, setBookmark] = useState(details?.bookmark || false);
-  const { id, type, name, enName, sDescription, poster } = details;
+  const [favourite, setFavourite] = useState(details?.favourite ?? false);
+  const [viewed, setViewed] = useState(details?.viewed ?? false);
+  const [bookmark, setBookmark] = useState(details?.bookmark ?? false);
+  const { id, type, name, enName, sDescription, posters } = details;
   const { data: session } = useSession();
 
   const handleMarkTitle = async (mark: "favourite" | "viewed" | "bookmark") => {
     try {
-      await markTitleAction(mark, id, type, name, enName, sDescription, poster);
+      await markTitleAction(
+        mark,
+        id,
+        type,
+        name,
+        enName,
+        sDescription,
+        posters
+      );
 
       if (mark === "favourite") {
         setFavourite((prev: any) => !prev);

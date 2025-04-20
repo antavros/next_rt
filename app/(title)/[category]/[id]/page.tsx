@@ -4,17 +4,14 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { redirect } from "next/navigation";
 import { TitlePage } from "@/components/entities/Title/Page";
 import { fetchDetailsAndMetadata } from "@/components/shared/api/serverUtils";
-import {
-  markTitleVisited,
-} from "@/components/entities/User/shared";
+import { markTitleVisited } from "@/components/entities/User/shared";
 
 // Генерация метаданных
 export async function generateMetadata(
   { params }: { params: { category: string; id: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { category, id } = await params;
-
+  const { category, id } = params;
   const { metadata } = await fetchDetailsAndMetadata(category, id, parent);
   return metadata;
 }
@@ -23,9 +20,9 @@ export async function generateMetadata(
 export default async function TitlePageRender({
   params,
 }: {
-  params: { category: string; id: string };
+  readonly params: { category: string; id: string };
 }) {
-  const { category, id } = await params;
+  const { category, id } = params;
 
   const allowedCategories = new Set([
     "movie",
@@ -50,15 +47,15 @@ export default async function TitlePageRender({
 
   // Проверка совпадения типа данных и категории
   if (!details || (category !== "person" && details.type !== category)) {
-    redirect(`/${details?.type || "error"}`);
+    redirect(`/${details?.type ?? "error"}`);
     return;
   }
 
   // Получение данных из базы или добавление нового заголовка
   if (category !== "person") {
-    const { type, name, enName, sDescription, poster } = details;
+    const { type, name, enName, sDescription, posters } = details;
     // Обновление статуса посещения
-    await markTitleVisited(id, type, name, enName, sDescription, poster);
+    await markTitleVisited(id, type, name, enName, sDescription, posters);
   }
 
   // Рендер страницы

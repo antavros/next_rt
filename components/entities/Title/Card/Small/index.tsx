@@ -25,6 +25,7 @@ export function TitleCardSmall({ details }: { readonly details: any }) {
           loading="lazy"
           src={
             details?.posters ??
+            details?.image ??
             details?.poster?.previewUrl ??
             details?.poster?.url ??
             "/images/placeholder.webp"

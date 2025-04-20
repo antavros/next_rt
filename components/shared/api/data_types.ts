@@ -2,10 +2,15 @@ import { Details } from "./next-title";
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
-const convertMinutesToHours = ({ minutes }: { minutes: number }): string =>
-  minutes
-    ? `${Math.floor(minutes / 60)}ч${minutes % 60 ? `${minutes % 60}м` : ""}`
-    : "";
+const convertMinutesToHours = ({ minutes }: { minutes: number }): string => {
+  let result = "";
+  if (minutes) {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    result = hours + "ч" + (remainingMinutes ? remainingMinutes + "м" : "");
+  }
+  return result;
+};
 
 const convertDateFormat = (dateString: string): string => {
   if (!dateString) return "";
@@ -47,7 +52,7 @@ export async function getUserMovieData({
         rating: true,
         viewed: true,
         favourite: true,
-        bookmark: true, // Добавлен bookmark
+        bookmark: true,
       },
     });
 
@@ -69,7 +74,7 @@ export async function getUserMovieData({
     console.error("Ошибка получения данных пользователя:", {
       userId,
       movieIds,
-      error: error.message || error,
+      error: error.message ?? error,
     });
     return {};
   }
@@ -115,10 +120,14 @@ export async function getDetails({
         description: doc?.description ?? "",
         logo: doc?.logo?.url ?? doc?.logo?.previewUrl ?? "",
         posters:
-          doc?.poster?.previewUrl ??
+          doc?.photo ??
           doc?.poster?.url ??
+          doc?.poster?.previewUrl ??
           "/images/placeholder.webp",
-        backdrop: doc?.backdrop?.url ?? "/images/placeholder.webp",
+        backdrop:
+          doc?.backdrop?.url ??
+          doc?.backdrop?.previewUrl ??
+          "/images/placeholder.webp",
         person: doc?.persons ?? [],
         similar: doc?.similarMovies ?? [],
         chapters: doc?.sequelsAndPrequels ?? [],
@@ -158,8 +167,8 @@ export async function getDetails({
         profession: doc?.profession
           ? doc.profession.map((p: any) => p?.value).join(" ")
           : "",
-        hasPosters: !!(doc?.poster?.url || doc?.poster?.previewUrl),
-        userRating: userData.rating || null,
+        hasPosters: !!(doc?.poster?.url ?? doc?.poster?.previewUrl),
+        userRating: userData.rating ?? null,
         viewed: userData.viewed || false,
         favourite: userData.favourite || false,
         bookmark: userData.bookmark || false, // Добавлен bookmark

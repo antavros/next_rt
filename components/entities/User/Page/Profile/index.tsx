@@ -1,69 +1,24 @@
-"use server";
+"use client";
 
 import React from "react";
-import { redirect } from "next/navigation";
-import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
-import { auth } from "@/app/api/auth/[...nextauth]/auth";
-import { SwiperCardTitle } from "@/components/entities/User/widgets/History";
+import { SwiperCardTitle } from "@/components/entities/Title/Swiper/Titles";
 
 import "./style.css";
 
-export async function getTitlesList(type) {
-  const session = await auth();
-  if (!session?.user?.id) {
-    return [];
-  }
-
-  const filter = {};
-  switch (type) {
-    case "visited":
-      filter.visited = true;
-      break;
-    case "viewed":
-      filter.viewed = true;
-      break;
-    case "favourite":
-      filter.favourite = true;
-      break;
-    case "bookmark":
-      filter.bookmark = true;
-      break;
-    default:
-      return [];
-  }
-
-  const titles = await prisma.userTitle.findMany({
-    where: {
-      userId: session.user.id,
-      ...filter,
-    },
-    include: {
-      title: true,
-    },
-    orderBy: {
-      updatedAt: "desc",
-    },
-  });
-
-  return titles.map((userTitle) => userTitle.title);
+interface ProfilePageProps {
+  visitedTitles: any[];
+  viewedTitles: any[];
+  favouriteTitles: any[];
+  bookmarkedTitles: any[];
 }
 
-export async function ProfilePage() {
-  const session = await auth();
-  if (!session) {
-    redirect(`/signin`);
-    return null;
-  }
-
-  const [visitedTitles, viewedTitles, favouriteTitles, bookmarkedTitles] =
-    await Promise.all([
-      getTitlesList("visited"),
-      getTitlesList("viewed"),
-      getTitlesList("favourite"),
-      getTitlesList("bookmark"),
-    ]);
-
+export function ProfilePage({
+  visitedTitles,
+  viewedTitles,
+  favouriteTitles,
+  bookmarkedTitles,
+}: Readonly<ProfilePageProps>) {
   return (
     <>
       {visitedTitles.length > 0 && (
