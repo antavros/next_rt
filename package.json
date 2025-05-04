@@ -44,8 +44,10 @@
     "@types/react-dom": "^19.0.1",
     "@types/react-google-recaptcha": "^2.1.9",
     "autoprefixer": "^10.4.19",
+    "babel-plugin-react-compiler": "^19.1.0-rc.1",
     "eslint": "^8",
     "eslint-config-next": "15.0.0-rc.0",
+    "eslint-plugin-react-hooks": "^6.0.0-rc.1",
     "prisma": "^5.16.0",
     "typescript": "^5.5.3"
   }

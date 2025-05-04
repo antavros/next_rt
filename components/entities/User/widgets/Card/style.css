@@ -11,6 +11,7 @@
   place-self      : center center;
   place-items     : center center;
   border-radius   : var(--border-radius);
+  font-size       : 2rem;
   background-color: var(--color-block_back);
   background-image: var(--color-block_back);
   backdrop-filter : var(--blur);

@@ -19,18 +19,17 @@ export function TitleCardBig({ details }: { readonly details: any }) {
         {details?.backdrop ? (
           <Image
             onLoad={() => setImageLoaded(true)}
-            width={640}
-            height={360}
-            quality={1}
+            width={1920}
+            height={1080}
+            quality={10}
             src={details.backdrop}
             className="card_big_back"
             alt={details.name}
-            priority={true}
           />
         ) : details?.trailers?.[0]?.url ? (
           <iframe
-            width="100%"
-            height="100%"
+            width={1920}
+            height={1080}
             className="card_big_back"
             src={details?.trailers[0]?.url}
             title={details?.trailers?.name}
@@ -49,7 +48,7 @@ export function TitleCardBig({ details }: { readonly details: any }) {
               priority={true}
               width={640}
               height={360}
-              quality={1}
+              quality={25}
             />
           ) : (
             <Image

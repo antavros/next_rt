@@ -5,6 +5,7 @@
   place-self    : center center;
   place-items   : center center;
   width         : 100%;
+  font-size     : 2rem;
   height        : auto;
   gap           : var(--element-gap);
 }

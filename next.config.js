@@ -10,7 +10,7 @@ module.exports = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // unoptimized: true,
     remotePatterns: [
       {
         hostname: "avatars.mds.yandex.net",
@@ -23,6 +23,9 @@ module.exports = {
       },
       {
         hostname: "st.kp.yandex.net",
+      },
+      {
+        hostname: "yastatic.net",
       },
       {
         protocol: "https",

@@ -20,11 +20,10 @@ export function TitleCardSmall({ details }: { readonly details: any }) {
           onLoad={() => setImageLoaded(true)}
           width={256}
           height={384}
-          quality={1}
+          quality={25}
           className="card_small_poster"
-          loading="lazy"
           src={
-            details?.posters ??
+            details?.prevPosters ??
             details?.image ??
             details?.poster?.previewUrl ??
             details?.poster?.url ??

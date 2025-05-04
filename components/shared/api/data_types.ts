@@ -119,6 +119,8 @@ export async function getDetails({
         sDescription: doc?.shortDescription ?? "",
         description: doc?.description ?? "",
         logo: doc?.logo?.url ?? doc?.logo?.previewUrl ?? "",
+        prevPosters:
+          doc?.photo ?? doc?.poster?.previewUrl ?? "/images/placeholder.webp",
         posters:
           doc?.photo ??
           doc?.poster?.url ??
