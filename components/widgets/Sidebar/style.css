@@ -13,6 +13,7 @@ header {
   width         : max-content;
   height        : 100%;
   padding       : 1rem;
+  gap           : 1rem;
 }
 
 .sidebar_hide {

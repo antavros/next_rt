@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useSession, signOut } from "next-auth/react";
-import { Button, Item } from "@/components/features/Button";
+import { Button, Item } from "@/components/Features/Button";
 
 import { IconLogin, IconLogout } from "@tabler/icons-react";
 import "./style.css";

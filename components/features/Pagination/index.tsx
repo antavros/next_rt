@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { IconChevronRight, IconChevronLeft } from '@tabler/icons-react';
+import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { IconChevronRight, IconChevronLeft } from "@tabler/icons-react";
 
 import "./style.css";
 
@@ -24,7 +24,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
     return null;
   }
 
-  const page = parseInt(searchParams.get('page') ?? '1', 10);
+  const page = parseInt(searchParams.get("page") ?? "1", 10);
 
   const getPageNumbers = () => {
     const pageNumbers = [];
@@ -34,7 +34,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
     if (startPage > 1) {
       pageNumbers.push(1);
       if (startPage > 2) {
-        pageNumbers.push('...');
+        pageNumbers.push("...");
       }
     }
 
@@ -44,7 +44,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
 
     if (endPage < pagination.pages) {
       if (endPage < pagination.pages - 1) {
-        pageNumbers.push('...');
+        pageNumbers.push("...");
       }
       pageNumbers.push(pagination.pages);
     }
@@ -55,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
   const handlePageChange = (pageNum: number) => {
     if (pageNum !== page && pageNum > 0 && pageNum <= pagination.pages) {
       const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('page', pageNum.toString());
+      urlParams.set("page", pageNum.toString());
       router.push(`${window.location.pathname}?${urlParams.toString()}`);
     }
   };
@@ -63,25 +63,33 @@ export const Pagination: React.FC<PaginationProps> = ({ pagination }) => {
   const pageNumbers = getPageNumbers();
   return (
     <div className="pagination">
-      <button className="pagNavButton" onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
+      <button
+        className="pagNavButton"
+        onClick={() => handlePageChange(page - 1)}
+        disabled={page === 1}
+      >
         <IconChevronLeft stroke={2} />
       </button>
       {pageNumbers.map((pageNum, index) =>
-        typeof pageNum === 'number' ? (
+        typeof pageNum === "number" ? (
           <button
             key={pageNum}
             onClick={() => handlePageChange(pageNum)}
-            className={page === pageNum ? 'active' : ''}
+            className={page === pageNum ? "active" : ""}
           >
-            {pageNum}
+            <h6>{pageNum}</h6>
           </button>
         ) : (
-          <span key={`p${index}`} className="ellipsis">
+          <h6 key={`p${index}`} className="ellipsis">
             {pageNum}
-          </span>
+          </h6>
         )
       )}
-      <button className="pagNavButton" onClick={() => handlePageChange(page + 1)} disabled={page === pagination.pages}>
+      <button
+        className="pagNavButton"
+        onClick={() => handlePageChange(page + 1)}
+        disabled={page === pagination.pages}
+      >
         <IconChevronRight stroke={2} />
       </button>
     </div>

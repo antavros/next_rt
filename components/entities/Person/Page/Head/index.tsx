@@ -2,9 +2,6 @@
 
 import Image from "next/image";
 
-import { SwiperWatchability } from "./Swiper/watchability";
-import { TitleCardWidgets } from "@/components/entities/User/widgets/Card/title";
-
 import "./style.css";
 
 export function TitlePageHead({ details }: { readonly details: any }) {
@@ -74,13 +71,6 @@ export function TitlePageHead({ details }: { readonly details: any }) {
           {details?.year}г {details?.length}
         </p>
         <p>{details?.genres}</p>
-        {details?.watchability.length > 0 ? (
-          <section className="watchability">
-            <h3>Где смотреть?</h3>
-            <SwiperWatchability details={details?.watchability} />
-          </section>
-        ) : null}
-        <TitleCardWidgets details={details} rateAll={true} />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { markTitleAction } from "./serverActions";
 import { useSession } from "next-auth/react";
-import { Button } from "@/components/features/Button";
+import { Button } from "@/components/Features/Button";
 import {
   IconHeart,
   IconHeartFilled,
@@ -12,7 +12,7 @@ import {
   IconBookmarkFilled,
   IconBookmark,
 } from "@tabler/icons-react";
-import { TitleRate } from "@/components/entities/Title/Rate";
+import { TitleRate } from "@/components/Entities/Title/Features/Rate";
 
 import "./style.css";
 

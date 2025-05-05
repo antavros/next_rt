@@ -2,18 +2,18 @@
 
 import { useSession } from "next-auth/react";
 
-import { ExpandableListPerson } from "./List/Person";
-import { DetailsList } from "./List/Info";
+import { ExpandableListPerson } from "../../Features/List/Person";
+import { DetailsList } from "../../Features/List/Info";
 
-import { SwiperCardTrailer } from "@/components/entities/Title/Swiper/Trailer";
-import { SwiperCardPerson } from "@/components/entities/Title/Swiper/Person";
-import { SwiperCardTitle } from "@/components/entities/Title/Swiper/Titles";
+import { SwiperCardTrailer } from "@/components/Entities/Title/Features/Swiper/Trailer";
+import { SwiperCardPerson } from "@/components/Entities/Title/Features/Swiper/Person";
+import { SwiperCardTitle } from "@/components/Entities/Title/Features/Swiper/Titles";
 
-import { Player } from "@/components/entities/Player";
+import { Player } from "@/components/Widgets/Player";
 
 import style from "./style.module.css";
 
-import { Details } from "@/components/shared/api/next-title";
+import { Details } from "@/components/Shared/Api/next-title";
 
 export function TitlePageBody({ details }: Details) {
   const { data: session } = useSession();

@@ -5,15 +5,14 @@ import { redirect } from "next/navigation";
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 
-import { ProfilePage } from "@/components/entities/User/Page/Profile";
+import { ProfilePage } from "@/components/Entities/User/Page/Profile";
 
 export async function getTitlesList(type: string) {
   const session = await auth();
   if (!session?.user?.id) {
     return [];
   }
-
-  const filter = {};
+  const filter: { [key: string]: boolean } = {};
   switch (type) {
     case "visited":
       filter.visited = true;

@@ -1,4 +1,4 @@
-import { ErrorPage } from '@/components/widgets/Error';
+import { ErrorPage } from '@/components/Widgets/Error';
 
 export default function ErrorRender({ reset }: { reset: () => void }) {
 

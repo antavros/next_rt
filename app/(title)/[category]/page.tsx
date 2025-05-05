@@ -1,8 +1,8 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { TitleTable } from "@/components/entities/Title/Table";
-import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
+import { TitleTable } from "@/components/Entities/Title/Features/Table";
+import { fetchCategoryDetailsAndMetadata } from "@/components/Shared/Api/serverUtils";
 import type { Metadata, ResolvingMetadata } from "next";
 
 // Генерация метаданных для страниц категорий

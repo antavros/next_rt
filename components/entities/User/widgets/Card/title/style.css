@@ -8,7 +8,7 @@
   place-self   : center center;
   flex-flow    : row nowrap;
   z-index      : 66;
-  gap          : 1rem;
+  gap          : 0.3rem;
   padding      : 0.5rem;
   border-radius: 0 0 0 0;
   font-size    : 1.5rem;
@@ -21,15 +21,15 @@
   padding: 0.2rem;
 }
 
-.favourite.active {
+.favourite.active svg {
   color: var(--color-orangered);
 }
 
-.viewed.active {
+.viewed.active svg {
   color: var(--color-purple);
 }
 
-.bookmark.active {
+.bookmark.active svg {
   color: orange;
 }
 

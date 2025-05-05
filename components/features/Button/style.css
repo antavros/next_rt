@@ -1,24 +1,31 @@
 button {
   display         : flex;
-  align-items     : center;
-  justify-content : center;
+  place-content   : center center;
+  place-self      : center center;
+  place-items     : center center;
   border          : none;
-  border-radius   : 5rem;
+  border-radius   : 50%;
   color           : var(--color-text);
   cursor          : pointer;
   gap             : 0.2rem;
-  font-size       : 1.5rem;
   background-color: var(--color-button-inactive);
   backdrop-filter : var(--blur);
   user-select     : none;
 }
 
 
-
 button svg {
-  width  : 1.5cap;
-  height : 1.5cap;
-  padding: 0.1cap;
+  /* --size      : 1.5rem;
+  font-size   : var(--size);
+  width       : calc(var(--size) + 0.4rem);
+  height      : calc(var(--size) + 0.4rem);
+  padding     : 0.2rem; */
+  width       : 2.5rem;
+  height      : 2.5rem;
+  font-size   : 1rem;
+  padding     : 0.3rem;
+  stroke-width: 7%;
+  color       : var(--color-text);
 }
 
 button h6 {
@@ -27,6 +34,8 @@ button h6 {
   text-align   : center;
   white-space  : nowrap;
   overflow     : hidden;
+  font-size    : 1.25rem;
+  font-weight  : 550;
 }
 
 button:hover {

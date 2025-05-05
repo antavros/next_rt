@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { SwiperCardTitle } from "@/components/entities/Title/Swiper/Titles";
+import { SwiperCardTitle } from "@/components/Entities/Title/Features/Swiper/Titles";
 
 import "./style.css";
 

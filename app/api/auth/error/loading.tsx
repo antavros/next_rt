@@ -1,4 +1,4 @@
-import { Preloader } from "@/components/features/PreLoader";
+import { Preloader } from "@/components/Widgets/PreLoader";
 
 export default function Loading() {
   return <Preloader />;

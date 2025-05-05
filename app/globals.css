@@ -10,7 +10,7 @@
 
   --color-text           : rgb(186, 186, 186);
   --color-border         : rgba(255, 255, 255, 0.2);
-  --color-block_back     : rgba(0, 0, 0, 0.15);
+  --color-block_back     : rgba(0, 0, 0, 0.2);
   --color-button-active  : rgba(77, 24, 199, 0.3);
   --color-button-inactive: rgba(0, 0, 0, 0.4);
   --color-button-hover   : rgba(0, 0, 0, 0.8);
@@ -34,11 +34,11 @@
   --header-height: 80px;
   --sidebar-width: auto;
 
-  --color-light      : white;
-  --color-dark       : rgb(16, 18, 24);
-  /* --color-dark    : rgb(255, 221, 221); */
-  color-scheme       : light dark;
-  --theme-back       : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
+  --color-light         : white;
+  --color-dark          : rgb(16, 18, 24);
+  /* --color-dark       : rgb(255, 221, 221); */
+  /* color-scheme       : light dark; */
+  --theme-back          : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
 }
 
 * {
@@ -127,13 +127,14 @@ a:visited {
 
 body {
   font-size: 1rem;
-
   background: light-dark(var(--color-light),
       var(--color-dark));
   background-color: light-dark(var(--color-light),
       var(--color-dark));
   background-image: light-dark(var(--color-light),
       var(--color-dark));
+
+  background       : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
   position         : relative;
   display          : -webkit-flex;
   display          : flex;
@@ -145,7 +146,6 @@ body {
   max-height       : 100dvh;
   overflow         : hidden;
   backdrop-filter  : var(--blur);
-
 }
 
 main {
@@ -165,7 +165,6 @@ main {
   display          : flex;
   -webkit-flex-flow: column nowrap;
   flex-flow        : column nowrap;
-  gap              : 1.5rem;
   padding          : 1rem;
   width            : 100%;
   height           : 100%;

@@ -1,6 +1,6 @@
 "use server";
 
-import { getData } from "@/components/shared/api/api";
+import { getData } from "@/components/Shared/Api/api";
 import {
   ApiUrl_Title_Movie,
   ApiUrl_Title_TvSeries,
@@ -11,7 +11,7 @@ import {
   ApiUrl_Title_Announced,
   ApiUrl_Title_Page,
   ApiUrl_Person_Page,
-} from "@/components/shared/api/url";
+} from "@/components/Shared/Api/url";
 import type { Metadata, ResolvingMetadata } from "next";
 
 export async function getCategoryDetails(
@@ -59,7 +59,7 @@ export async function fetchCategoryDetailsAndMetadata(
 }
 
 export async function fetchDetailsAndMetadata(
-    category: string,
+  category: string,
   id: string,
   parent: ResolvingMetadata
 ): Promise<{ details: any; metadata: Metadata }> {

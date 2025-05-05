@@ -1,6 +1,6 @@
 "use server";
 
-import { markTitle } from "@/components/entities/User/shared";
+import { markTitle } from "@/components/Entities/User/Shared";
 
 export async function markTitleAction(
   mark: "favourite" | "viewed" | "bookmark",

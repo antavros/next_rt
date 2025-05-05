@@ -1,0 +1,70 @@
+.swiper {
+  width   : 100%;
+  height  : 100%;
+  overflow: visible;
+}
+
+.swiper-wrapper {
+  place-items: center center;
+  overflow   : visible;
+}
+
+.swiper-slide {
+  width           : auto;
+  height          : 100%;
+  background-color: var(--color-block_back);
+  z-index         : -2;
+  border-radius   : var(--border-radius);
+  overflow        : visible;
+  /* обязательно */
+}
+
+.swiper-slide img {
+  display        : block;
+  width          : 100%;
+  height         : 100%;
+  object-fit     : cover;
+  object-position: center center;
+  place-content  : center;
+  place-self     : center;
+  place-items    : center;
+  border-radius  : var(--border-radius);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  place-content   : center center;
+  display         : flex;
+  width           : 3rem;
+  height          : 4rem;
+  overflow        : hidden;
+  background-color: var(--color-border);
+  z-index         : 3;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size  : 1.5rem;
+  font-weight: bold;
+  color      : rgb(255, 255, 255, 0.6);
+}
+
+.hideSwiperButton {
+  display: none;
+}
+
+.swiper-pagination-horizontal {
+  display         : flex;
+  place-self      : center center;
+  width           : auto !important;
+  right           : 0 !important;
+  background-color: var(--color-block_back);
+  padding         : var(--element-gap);
+  z-index         : 3;
+}
+
+
+.swiper-pagination-horizontal span {
+  background-color: var(--color-white);
+  cursor          : pointer;
+}

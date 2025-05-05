@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
+import * as JSX from "react";
 
 import { usePathname } from "next/navigation";
-import { Search } from "@/components/features/Search";
+import { Search } from "@/components/Widgets/Search";
 import { Button } from "@/components/features/Button";
 
 import {

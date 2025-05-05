@@ -1,10 +1,10 @@
 "use server";
 
-import { TitleTable } from "@/components/entities/Title/Table";
-import { Pagination } from "@/components/features/Pagination";
-import { getData } from "@/components/shared/api/api";
-import { ApiUrl_Title_Search } from "@/components/shared/api/url";
-import { SearchForm } from "@/components/features/Search/Form";
+import { TitleTable } from "@/components/Entities/Title/Features/Table";
+import { Pagination } from "@/components/Features/Pagination";
+import { getData } from "@/components/Shared/Api/api";
+import { ApiUrl_Title_Search } from "@/components/Shared/Api/url";
+import { SearchForm } from "@/components/Widgets/Search/Form";
 import type { Metadata, ResolvingMetadata } from "next";
 
 // Функция для извлечения данных и генерации метаданных

@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
-import './style.css';
+import "./style.css";
 
 export function Logo() {
   return (
@@ -10,7 +10,6 @@ export function Logo() {
         width={200}
         height={70}
         quality={25}
-        priority={true}
         id="logo1"
         alt="RATETABLE"
         src="/images/LOGO.webp"
@@ -19,7 +18,6 @@ export function Logo() {
         width={200}
         height={200}
         quality={25}
-        priority={true}
         id="logo2"
         alt="RATETABLE"
         src="/images/LOGO2.webp"

@@ -1,0 +1,25 @@
+.titles {
+  display   : flex;
+  flex-flow : column wrap;
+  max-width : 100%;
+  box-sizing: border-box;
+  gap       : 1rem;
+}
+
+.titles h1 {
+  width      : 100%;
+  text-align : left;
+  font-weight: bold;
+  font-size  : 1.5rem;
+}
+
+.tableTitles {
+  display      : flex;
+  flex-wrap    : wrap;
+  place-content: center space-evenly;
+  place-items  : center center;
+  place-self   : center center;
+  min-height   : 100dvh;
+  width        : auto;
+  gap          : 0.5rem;
+}

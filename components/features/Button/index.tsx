@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import * as JSX from "react";
+
 import Link from "next/link";
 import "./style.css";
 

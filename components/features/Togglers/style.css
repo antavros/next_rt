@@ -5,9 +5,17 @@
   place-self    : center center;
   place-items   : center center;
   width         : 100%;
-  font-size     : 2rem;
+  font-size     : 3rem;
   height        : auto;
   gap           : var(--element-gap);
+}
+
+.togglers button svg {
+  width       : 2.5rem;
+  height      : 2.5rem;
+  font-size   : 1rem;
+  padding     : 0.3rem;
+  stroke-width: 7%;
 }
 
 .flipped {
