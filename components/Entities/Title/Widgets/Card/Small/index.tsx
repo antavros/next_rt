@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { PreLoader } from "@/components/Widgets/PreLoader";
-import { TitleCardWidgets } from "@/components/Entities/User/Widgets/Card/Title";
+import { PreLoader } from "@/components/widgets/preLoader";
+import { TitleCardWidgets } from "@/components/entities/user/widgets/card/title";
 
 import "./style.css";
 

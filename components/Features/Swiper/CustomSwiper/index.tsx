@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/keyboard";
 import "swiper/css/navigation";
 
-import "@/components/Features/Swiper/style.css";
+import "../style.css";
 
 interface CustomSwiper {
   style: any;

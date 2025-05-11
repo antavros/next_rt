@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { IconChevronsUp, IconChevronsDown } from "@tabler/icons-react";
-import { Button, Item } from "@/components/Features/Button";
+import { Button, Item } from "@/components/features/button";
 
 export const FastNavigation = () => {
   const [showTopNav, setShowTopNav] = useState(false);

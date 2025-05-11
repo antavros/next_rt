@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 
-import { Details } from "@/components/Shared/Api/next-title";
+import { Details } from "@/components/shared/api/next-title";
 
 import "./style.css";
 

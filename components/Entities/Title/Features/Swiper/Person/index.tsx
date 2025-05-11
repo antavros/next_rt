@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { CustomSwiper } from "@/components/Features/Swiper/CustomSwiper";
-import { Details } from "@/components/Shared/Api/next-title";
+import { CustomSwiper } from "@/components/features/swiper/customSwiper";
+import { Details } from "@/components/shared/api/next-title";
 
 import style from "./style.module.css";
 

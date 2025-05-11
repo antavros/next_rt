@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Details } from "@/components/Shared/Api/next-title";
-import { CustomSwiper } from "@/components/Features/Swiper/CustomSwiper";
-import { TitleCardSmall } from "@/components/Entities/Title/Widgets/Card/Small";
+import { Details } from "@/components/shared/api/next-title";
+import { CustomSwiper } from "@/components/features/swiper/customSwiper";
+import { TitleCardSmall } from "@/components/entities/title/widgets/card/small";
 
 import style from "./style.module.css";
 

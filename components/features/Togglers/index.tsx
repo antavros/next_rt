@@ -10,9 +10,9 @@ import {
 import {
   ThemeContext,
   SidebarHideContext,
-} from "@/components/Shared/Context/Theme";
-import { FastNavigation } from "@/components/Features/NavArrow";
-import "@/components/Features/Button/style.css";
+} from "@/components/shared/context/theme";
+import { FastNavigation } from "@/components/features/navArrow";
+import "@/components/features/button/style.css";
 import "./style.css";
 
 // Компонент для переключения темы

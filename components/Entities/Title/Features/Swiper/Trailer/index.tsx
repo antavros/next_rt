@@ -1,13 +1,13 @@
 "use client";
 
-import { CustomSwiper } from "@/components/Features/Swiper/CustomSwiper";
+import { CustomSwiper } from "@/components/features/swiper/customSwiper";
 import { YouTubeEmbed } from "@next/third-parties/google";
-import { Details } from "@/components/Shared/Api/next-title";
+import { Details } from "@/components/shared/api/next-title";
 
 import style from "./style.module.css";
 
 export function SwiperCardTrailer({ details }: Details) {
-  const trailers = details?.trailers || [];
+  const trailers = details?.trailers ?? [];
 
   const object = trailers.filter(
     (trailer: any, index: any, self: any) =>

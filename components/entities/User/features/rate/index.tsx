@@ -8,8 +8,8 @@ import {
   IconStar,
   IconX,
 } from "@tabler/icons-react";
-import { saveUserRating } from "@/components/Entities/User/Shared";
-import { getClassByRate } from "@/components/Entities/Title/Features/Rate";
+import { saveUserRating } from "@/components/entities/user/shared";
+import { getClassByRate } from "@/components/entities/title/features/rate";
 import { useSession } from "next-auth/react";
 import "./style.css";
 

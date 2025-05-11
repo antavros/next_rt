@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { TitleCardBig } from "@/components/Entities/Title/Widgets/Card/Big";
+import { TitleCardBig } from "@/components/entities/title/widgets/card/big";
 
 import "./style.css";
 

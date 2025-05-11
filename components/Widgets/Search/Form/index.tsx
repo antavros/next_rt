@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IconSearch, IconX } from "@tabler/icons-react";
-import { Button, Item } from "@/components/Features/Button";
+import { Button, Item } from "@/components/features/button";
 import "./style.css";
 
 interface SearchProps {

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { SearchForm } from "@/components/Widgets/Search/Form";
+import { SearchForm } from "@/components/widgets/search/form";
 import { IconSearch, IconX } from "@tabler/icons-react";
-import { Button, Item } from "@/components/Features/Button";
+import { Button, Item } from "@/components/features/button";
 
 import "./style.css";
 

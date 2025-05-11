@@ -3,8 +3,8 @@ import React from "react";
 import * as JSX from "react";
 
 import { usePathname } from "next/navigation";
-import { Search } from "@/components/Widgets/Search";
-import { Button } from "@/components/Features/Button";
+import { Search } from "@/components/widgets/search";
+import { Button } from "@/components/features/button";
 
 import {
   IconMovie,
@@ -36,8 +36,8 @@ export function NavMenu() {
         ? "active"
         : ""
       : pathname.startsWith(href)
-      ? "active"
-      : "";
+        ? "active"
+        : "";
 
   const menuConfig: Item[] = [
     {

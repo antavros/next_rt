@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { Button } from "@/components/Features/Button";
+import { Button } from "@/components/features/button";
 
 import { IconHome, IconRefreshAlert } from "@tabler/icons-react";
 import "./style.css";

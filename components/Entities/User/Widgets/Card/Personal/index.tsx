@@ -4,10 +4,10 @@ import React from "react";
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
 import { IconSettings } from "@tabler/icons-react";
-import { Button } from "@/components/Features/Button";
-import { SignButton } from "@/components/Entities/User/Features/SignButton";
+import { Button } from "@/components/features/button";
+import { SignButton } from "@/components/entities/user/features/signButton";
 
-import { UserAvatar } from "@/components/Entities/User/Features/Avatar";
+import { UserAvatar } from "@/components/entities/user/features/avatar";
 import "./style.css";
 
 export const UserCard: React.FC = async () => {

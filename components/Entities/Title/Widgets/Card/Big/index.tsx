@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { PreLoader } from "@/components/Widgets/PreLoader";
-import { TitleCardWidgets } from "@/components/Entities/User/Widgets/Card/Title";
-import { SwiperWatchability } from "@/components/Entities/Title/Features/Swiper/Watchability";
+import { PreLoader } from "@/components/widgets/preLoader";
+import { TitleCardWidgets } from "@/components/entities/user/widgets/card/title";
+import { SwiperWatchability } from "@/components/entities/title/features/swiper/watchability";
 
 import "./style.css";
 

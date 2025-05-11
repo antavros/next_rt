@@ -17,7 +17,7 @@ import "swiper/css/virtual";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
 
-import { TitleCardBig } from "@/components/Entities/Title/Widgets/Card/Big";
+import { TitleCardBig } from "@/components/entities/title/widgets/card/big";
 
 import "../style.css";
 import style from "./style.module.css";

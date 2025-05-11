@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
-import { UserRate } from "@/components/Entities/User/Features/Rate";
+import { UserRate } from "@/components/entities/user/features/rate";
 import "./style.css";
 
 export function getClassByRate({ vote }: { vote: number | "none" }) {

@@ -1,11 +1,11 @@
 import React from "react";
 
-import { TitleCardSmall } from "@/components/Entities/Title/Widgets/Card/Small";
-import { PersonCard } from "@/components/Entities/Person/Widgets/Card";
+import { TitleCardSmall } from "@/components/entities/title/widgets/card/small";
+import { PersonCard } from "@/components/entities/person/widgets/card";
 
-import { Pagination } from "@/components/Features/Pagination";
+import { Pagination } from "@/components/features/pagination";
 
-import { Details } from "@/components/Shared/Api/next-title";
+import { Details } from "@/components/shared/api/next-title";
 import "./style.css";
 
 export const TitleTable: React.FC<Details> = ({

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { PreLoader } from "@/components/Widgets/PreLoader";
+import { PreLoader } from "@/components/widgets/preLoader";
 
 import "./style.css";
 

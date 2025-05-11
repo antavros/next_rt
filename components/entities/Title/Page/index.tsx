@@ -1,7 +1,7 @@
 "use server";
 
-import { TitlePageHead } from "./Head";
-import { TitlePageBody } from "./Body";
+import { TitlePageHead } from "./head";
+import { TitlePageBody } from "./body";
 import "./style.css";
 
 export async function TitlePage({ details }: { readonly details: any }) {

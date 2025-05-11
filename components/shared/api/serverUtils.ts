@@ -1,6 +1,6 @@
 "use server";
 
-import { getData } from "@/components/Shared/Api/api";
+import { getData } from "@/components/shared/api/api";
 import {
   ApiUrl_Title_Movie,
   ApiUrl_Title_TvSeries,
@@ -11,7 +11,7 @@ import {
   ApiUrl_Title_Announced,
   ApiUrl_Title_Page,
   ApiUrl_Person_Page,
-} from "@/components/Shared/Api/url";
+} from "@/components/shared/api/url";
 import type { Metadata, ResolvingMetadata } from "next";
 
 export async function getCategoryDetails(

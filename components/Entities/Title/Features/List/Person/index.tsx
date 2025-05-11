@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Details, Person } from "@/components/Shared/Api/next-title";
+import { Details, Person } from "@/components/shared/api/next-title";
 import { IconChevronRight, IconChevronDown } from "@tabler/icons-react";
 import "./style.css";
 
