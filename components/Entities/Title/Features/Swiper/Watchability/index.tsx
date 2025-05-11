@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { CustomSwiper } from "@/components/Features/Swiper/CustomSwiper";
 import { Details } from "@/components/Shared/Api/next-title";
@@ -13,10 +14,11 @@ export function SwiperWatchability({ details }: Details) {
   const renderSlide = (item: any) => (
     <Link href={`${item?.url}`} prefetch={false}>
       <div className="swiper_title_wrapper" title={item?.name}>
-        <img
+        <Image
+          quality={25}
+          className="slide_logo"
           src={item?.logo?.url ?? "/images/placeholder.webp"}
           alt={item?.name}
-          className="slide_logo"
         />
       </div>
     </Link>

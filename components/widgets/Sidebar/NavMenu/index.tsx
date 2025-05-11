@@ -4,7 +4,7 @@ import * as JSX from "react";
 
 import { usePathname } from "next/navigation";
 import { Search } from "@/components/Widgets/Search";
-import { Button } from "@/components/features/Button";
+import { Button } from "@/components/Features/Button";
 
 import {
   IconMovie,

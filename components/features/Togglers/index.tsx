@@ -12,7 +12,7 @@ import {
   SidebarHideContext,
 } from "@/components/Shared/Context/Theme";
 import { FastNavigation } from "@/components/Features/NavArrow";
-import "@/components/features/Button/style.css";
+import "@/components/Features/Button/style.css";
 import "./style.css";
 
 // Компонент для переключения темы

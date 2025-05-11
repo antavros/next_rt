@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { SearchForm } from "@/components/Widgets/Search/Form";
 import { IconSearch, IconX } from "@tabler/icons-react";
-import { Button, Item } from "@/components/features/Button";
+import { Button, Item } from "@/components/Features/Button";
 
 import "./style.css";
 

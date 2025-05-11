@@ -1,4 +1,4 @@
-import prisma from "@/app/api/auth/[...nextauth]/prismadb";
+import prisma from "../auth/[...nextauth]/prismadb";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
