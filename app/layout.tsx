@@ -45,7 +45,7 @@ const ubuntu = Ubuntu({
 
 import Providers from "./providers";
 
-import { Sidebar } from "@/components/Widgets/Sidebar";
+import { Sidebar } from "@/components/widgets/sideBar";
 import "./globals.css";
 
 export default function RootLayout({

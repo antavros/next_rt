@@ -1,11 +1,11 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { TitleTable } from "@/components/Entities/Title/Features/Table";
-import { fetchCategoryDetailsAndMetadata } from "@/components/Shared/Api/serverUtils";
+import { TitleTable } from "@/components/entities/title/features/table";
+import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata, ResolvingMetadata } from "next";
 
-// Генерация метаданных для страниц категорий
+// Генерация метаданных для страниц категорий:
 export async function generateMetadata(
   { params }: { readonly params: { readonly category: string } },
   parent: ResolvingMetadata

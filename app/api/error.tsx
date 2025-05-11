@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ErrorPage } from "@/components/Widgets/Error";
+import { ErrorPage } from "@/components/widgets/error";
 import { redirect } from "next/navigation";
 
 export default function Error({

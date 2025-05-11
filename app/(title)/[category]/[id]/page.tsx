@@ -2,9 +2,9 @@
 
 import type { Metadata, ResolvingMetadata } from "next";
 import { redirect } from "next/navigation";
-import { TitlePage } from "@/components/Entities/Title/Page";
-import { fetchDetailsAndMetadata } from "@/components/Shared/Api/serverUtils";
-import { markTitleVisited } from "@/components/Entities/User/Shared";
+import { TitlePage } from "@/components/entities/title/page";
+import { fetchDetailsAndMetadata } from "@/components/shared/api/serverUtils";
+import { markTitleVisited } from "@/components/entities/user/shared";
 
 // Генерация метаданных
 export async function generateMetadata(

@@ -1,9 +1,9 @@
 "use server";
 
-import { TitleTable } from "@/components/Entities/Title/Features/Table";
-import { SwiperMain } from "@/components/Features/Swiper/Main";
-import { ApiUrl_Title_Popular } from "@/components/Shared/Api/url";
-import { getData } from "@/components/Shared/Api/api";
+import { TitleTable } from "@/components/entities/title/features/table";
+import { SwiperMain } from "@/components/features/swiper/main";
+import { ApiUrl_Title_Popular } from "@/components/shared/api/url";
+import { getData } from "@/components/shared/api/api";
 import type { Metadata } from "next";
 
 // Функция для извлечения данных и генерации метаданных

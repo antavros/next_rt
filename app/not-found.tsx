@@ -1,8 +1,5 @@
-import { ErrorPage } from '@/components/Widgets/Error';
+import { ErrorPage } from "@/components/widgets/error";
 
 export default function ErrorRender({ reset }: { reset: () => void }) {
-
-  return (
-    <ErrorPage onClick={reset} />
-  );
+  return <ErrorPage onClick={reset} />;
 }
