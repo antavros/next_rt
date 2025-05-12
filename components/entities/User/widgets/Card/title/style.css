@@ -8,8 +8,8 @@
   place-self   : center center;
   flex-flow    : row nowrap;
   z-index      : 66;
-  gap          : 0.3rem;
-  padding      : 0.5rem;
+  gap          : 0.5rem;
+  padding      : 0 !important;
   font-size    : 1.5rem;
 }
 

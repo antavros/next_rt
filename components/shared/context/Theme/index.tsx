@@ -29,7 +29,9 @@ const getInitialTheme = () => {
   return false;
 };
 
-const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider: FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);
   const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
   const [themeInitialized, setThemeInitialized] = useState<boolean>(false);
@@ -102,5 +104,3 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-
-export default ThemeProvider;

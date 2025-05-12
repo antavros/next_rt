@@ -18,8 +18,8 @@ export function TitleCardSmall({ details }: { readonly details: any }) {
       <Link href={`/${details?.type}/${details?.id}`} prefetch={false}>
         <Image
           onLoad={() => setImageLoaded(true)}
-          width={256}
-          height={384}
+          width={248}
+          height={368}
           quality={25}
           className="card_small_poster"
           src={
