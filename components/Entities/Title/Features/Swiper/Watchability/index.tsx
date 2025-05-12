@@ -15,6 +15,8 @@ export function SwiperWatchability({ details }: Details) {
     <Link href={`${item?.url}`} prefetch={false}>
       <div className="swiper_title_wrapper" title={item?.name}>
         <Image
+          width={54}
+          height={54}
           quality={25}
           className="slide_logo"
           src={item?.logo?.url ?? "/images/placeholder.webp"}

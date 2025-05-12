@@ -6,7 +6,29 @@ import { TitlePage } from "@/components/entities/title/page";
 import { fetchDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import { markTitleVisited } from "@/components/entities/user/shared";
 
-// Генерация метаданных
+// ✅ Список допустимых категорий
+const allowedCategories = [
+  "movie",
+  "tv-series",
+  "cartoon",
+  "animated-series",
+  "anime",
+  "person",
+];
+
+// ✅ Проверка, допустима ли категория
+function isAllowedCategory(category: string): boolean {
+  return allowedCategories.includes(category);
+}
+
+// ✅ Проверка, соответствует ли тип деталей категории
+function isValidDetailsForCategory(details: any, category: string): boolean {
+  if (!details) return false;
+  if (category === "person") return true;
+  return details.type === category;
+}
+
+// ✅ Генерация метаданных
 export async function generateMetadata(
   { params }: { params: { category: string; id: string } },
   parent: ResolvingMetadata
@@ -16,7 +38,7 @@ export async function generateMetadata(
   return metadata;
 }
 
-// Главный компонент страницы
+// ✅ Главный компонент страницы
 export default async function TitlePageRender({
   params,
 }: {
@@ -24,19 +46,8 @@ export default async function TitlePageRender({
 }) {
   const { category, id } = params;
 
-  const allowedCategories = new Set([
-    "movie",
-    "tv-series",
-    "cartoon",
-    "animated-series",
-    "anime",
-    "person",
-  ]);
-
-  // Проверка категории и перенаправление
-  if (!allowedCategories.has(category)) {
+  if (!isAllowedCategory(category)) {
     redirect(`/`);
-    return;
   }
 
   const { details } = await fetchDetailsAndMetadata(
@@ -45,19 +56,14 @@ export default async function TitlePageRender({
     {} as ResolvingMetadata
   );
 
-  // Проверка совпадения типа данных и категории
-  if (!details || (category !== "person" && details.type !== category)) {
+  if (!isValidDetailsForCategory(details, category)) {
     redirect(`/${details?.type ?? "error"}`);
-    return;
   }
 
-  // Получение данных из базы или добавление нового заголовка
   if (category !== "person") {
     const { type, name, enName, sDescription, posters } = details;
-    // Обновление статуса посещения
     await markTitleVisited(id, type, name, enName, sDescription, posters);
   }
 
-  // Рендер страницы
   return <TitlePage details={details} />;
 }

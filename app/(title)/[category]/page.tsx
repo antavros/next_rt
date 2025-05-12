@@ -7,21 +7,21 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 // Генерация метаданных для страниц категорий:
 export async function generateMetadata(
-  { params }: { readonly params: { readonly category: string } },
+  props: { readonly params: Promise<{ readonly category: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const params = await props.params;
   const { metadata } = await fetchCategoryDetailsAndMetadata(params.category);
   return metadata;
 }
 
 // Рендеринг страницы категорий
-export default async function categoryRender({
-  searchParams,
-  params,
-}: {
-  readonly params: any;
-  searchParams: { [key: string]: string };
+export default async function categoryRender(props: {
+  readonly params: Promise<any>;
+  searchParams: Promise<{ [key: string]: string }>;
 }) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
   const allowedCategories = [
     "movie",
     "tv-series",

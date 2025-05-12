@@ -2,6 +2,8 @@ import React, { ReactNode } from "react";
 
 import type { Metadata, Viewport } from "next";
 
+
+
 export const viewport: Viewport = {
   themeColor: "black",
   colorScheme: "dark",
@@ -48,6 +50,7 @@ import Providers from "./providers";
 import { Sidebar } from "@/components/widgets/sideBar";
 import "./globals.css";
 
+
 export default function RootLayout({
   children,
 }: {
@@ -59,9 +62,9 @@ export default function RootLayout({
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
           <Sidebar />
-          <main >
+          <main>
             <hr />
-            <div className="content" >
+            <div className="content">
               {children}
               <span id="footer" />
             </div>

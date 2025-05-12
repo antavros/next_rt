@@ -61,7 +61,11 @@ export function TitleCardBig({ details }: { readonly details: any }) {
               quality={25}
             />
           )}
-          {details?.ageMpaa.length || details?.ageRating.length > 0 ? (
+
+        </span>
+        <h5>{details.name}</h5>
+        <h6>{details.enName || details?.alternativeName}</h6>
+                  {details?.ageMpaa.length || details?.ageRating.length > 0 ? (
             <section className="card_big_age">
               <h6>
                 {details?.ageMpaa?.length > 0 && (
@@ -73,9 +77,6 @@ export function TitleCardBig({ details }: { readonly details: any }) {
               </h6>
             </section>
           ) : null}
-        </span>
-        <h5>{details.name}</h5>
-        <h6>{details.enName || details?.alternativeName}</h6>
         <p>{details.countries}</p>
         <p>
           {details?.year?.length > 0 ? `${details.year} г` : ""}

@@ -67,18 +67,22 @@ export async function fetchDetailsAndMetadata(
 
   const data = await getData({ url: `${apiUrl}${id}` });
   const details = data?.data[0];
-  const previousImages = (await parent).openGraph?.images || [];
+  const previousImages = (await parent).openGraph?.images ?? [];
   const poster = details?.posters ?? "";
 
   const metadata: Metadata = {
     title: details?.name,
+
     metadataBase: new URL("https://ratetable.vercel.app"),
+
     description: details?.sDescription ?? details?.description ?? "",
+
     openGraph: {
       title: details?.name,
       images: [poster, ...previousImages],
       description: details?.sDescription ?? details?.description ?? "",
     },
+
     twitter: {
       card: "summary_large_image",
       title: details?.name,
@@ -86,6 +90,16 @@ export async function fetchDetailsAndMetadata(
       description: details?.sDescription ?? details?.description ?? "",
     },
   };
+
+  if (!details) {
+    return {
+      details: null,
+      metadata: {
+        title: "Not found",
+        description: "The requested content was not found.",
+      },
+    };
+  }
 
   return { details, metadata };
 }

@@ -15,8 +15,7 @@
   background-color: var(--color-block_back);
   z-index         : -2;
   border-radius   : var(--border-radius);
-  overflow        : visible;
-  /* обязательно */
+  overflow        : hidden;
 }
 
 .swiper-slide img {

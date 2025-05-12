@@ -30,22 +30,23 @@ async function fetchDetailsAndMetadata(
   return { details, metadata };
 }
 
-// Используем асинхронную функцию для генерации метаданных
 export async function generateMetadata(
-  { searchParams }: { readonly searchParams: { [key: string]: string } },
+  props: { readonly searchParams: Promise<{ [key: string]: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const searchParams = await props.searchParams;
   const page = searchParams["page"] ?? "1";
   const searchValue = searchParams["query"] ?? "5";
   const { metadata } = await fetchDetailsAndMetadata(searchValue, page, parent);
   return metadata;
 }
 
-export default async function SearchRender({
-  searchParams,
-}: {
-  readonly searchParams: { [key: string]: string };
-}) {
+export default async function SearchRender(
+  props: {
+    readonly searchParams: Promise<{ [key: string]: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const page = searchParams["page"] ?? "1";
   const searchValue = searchParams["query"] ?? "5";
 

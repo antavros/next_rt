@@ -125,6 +125,20 @@ a:visited {
   scrollbar-gutter: stable;
 }
 
+#nprogress .bar {
+  background: red;
+  height    : 33px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 110px red, 0 0 511px red;
+}
+
+#nprogress .spinner {
+  display: none;
+  /* Убираем спиннер */
+}
+
 body {
   font-size: 16px;
   background: light-dark(var(--color-light),
@@ -133,9 +147,9 @@ body {
       var(--color-dark));
   background-image: light-dark(var(--color-light),
       var(--color-dark));
+  background: rgb(16, 18, 24);
+  background: linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
 
-  background       : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
-  position         : relative;
   display          : -webkit-flex;
   display          : flex;
   -webkit-flex-flow: row nowrap;

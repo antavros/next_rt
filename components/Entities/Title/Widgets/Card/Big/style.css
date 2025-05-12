@@ -11,11 +11,13 @@
   place-self    : center center;
   cursor        : pointer;
   pointer-events: auto;
-  overflow      : hidden;
   z-index       : 1;
+  overflow      : hidden;
 }
 
 .card_big a {
+  width  : 100% !important;
+  height : 100% !important;
   z-index: 1;
 }
 
@@ -48,7 +50,6 @@
   object-fit    : cover;
   z-index       : -1;
   pointer-events: none;
-  border        : none;
 }
 
 .card_big_logo {
@@ -154,9 +155,9 @@
   gap          : 0.3rem;
   font-size    : 1rem;
   padding      : 0.3rem;
-  place-content: end end;
-  place-items  : end end;
-  place-self   : end end;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
 }
 
 .card_big_age h6 {

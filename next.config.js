@@ -10,42 +10,19 @@ module.exports = withPWA({
   //   reactCompiler: true,
   // },
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
     ignoreBuildErrors: true,
   },
   images: {
-    // unoptimized: true,
-    remotePatterns: [
-      {
-        hostname: "avatars.mds.yandex.net",
-      },
-      {
-        hostname: "imagetmdb.com",
-      },
-      {
-        hostname: "image.openmoviedb.com",
-      },
-      {
-        hostname: "st.kp.yandex.net",
-      },
-      {
-        hostname: "yastatic.net",
-      },
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-      },
-      {
-        protocol: "https",
-        hostname: "avatar.vercel.sh",
-      },
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
-      },
+    dangerouslyAllowSVG: true, // Разрешение SVG-изображений
+    domains: [
+      "avatars.mds.yandex.net", // Разрешаем этот домен для изображений
+      "imagetmdb.com",
+      "image.openmoviedb.com",
+      "st.kp.yandex.net",
+      "yastatic.net",
+      "avatars.githubusercontent.com",
+      "avatar.vercel.sh",
+      "lh3.googleusercontent.com",
     ],
   },
 });

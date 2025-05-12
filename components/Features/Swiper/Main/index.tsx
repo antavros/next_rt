@@ -38,10 +38,10 @@ export function SwiperMain({ details }: any) {
         }}
         modules={[Autoplay, Keyboard, Navigation, Pagination, Virtual]}
         className={style.swiper_home}
-        slidesPerView={"auto"}
+        slidesPerView={1}
         centeredSlides={true}
         navigation={true}
-        spaceBetween={30}
+        spaceBetween={35}
         loop={true}
         grabCursor={true}
         keyboard={true}
