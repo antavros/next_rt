@@ -1,10 +1,4 @@
-const withPWA = require("next-pwa")({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-});
-
-module.exports = withPWA({
+module.exports = {
   reactStrictMode: true,
   // experimental: {
   //   reactCompiler: true,
@@ -25,4 +19,4 @@ module.exports = withPWA({
       "lh3.googleusercontent.com",
     ],
   },
-});
+};

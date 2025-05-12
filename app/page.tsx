@@ -1,58 +1,22 @@
-"use server";
-
 import { TitleTable } from "@/components/entities/title/features/table";
 import { SwiperMain } from "@/components/features/swiper/main";
-import { ApiUrl_Title_Popular } from "@/components/shared/api/url";
-import { getData } from "@/components/shared/api/api";
+import { fetchMainPageDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata } from "next";
 
-// Функция для извлечения данных и генерации метаданных
-async function fetchDetailsAndMetadata(): Promise<{
-  details: any[];
-  metadata: Metadata;
-}> {
-  const data = await getData({ url: ApiUrl_Title_Popular });
-  const details = data?.data;
+// Установка принудительной динамической генерации страницы
+export const dynamic = "force-dynamic";
 
-  const metadata: Metadata = {
-    title: "ГЛАВНАЯ",
-    openGraph: {
-      title: "ГЛАВНАЯ",
-      images: "/images/LOGO.webp",
-    },
-    twitter: {
-      title: "ГЛАВНАЯ",
-      images: "/images/LOGO.webp",
-    },
-  };
-
-  return { details: details ?? [], metadata };
-}
-
-// Используем асинхронную функцию для генерации метаданных
+// Генерация метаданных
 export async function generateMetadata(): Promise<Metadata> {
-  const { metadata } = await fetchDetailsAndMetadata();
+  const { metadata } = await fetchMainPageDetailsAndMetadata();
   return metadata;
 }
 
-// Главная страница компонента
+// Главная страница
 export default async function Home() {
-  let details = [];
+  const { details } = await fetchMainPageDetailsAndMetadata();
 
-  try {
-    const { details: fetchedDetails } = await fetchDetailsAndMetadata();
-    details = fetchedDetails;
-  } catch (error) {
-    console.error("Failed to fetch data:", error);
-    return (
-      <div>
-        <h1>Ошибка загрузки данных</h1>
-        <p>Не удалось загрузить данные. Попробуйте позже.</p>
-      </div>
-    );
-  }
-
-  if (!details.length) {
+  if (!details?.length) {
     return (
       <div>
         <h1>Нет данных</h1>
@@ -68,7 +32,7 @@ export default async function Home() {
   return (
     <>
       <SwiperMain details={topTenTitlesWithLogo} />
-      <TitleTable TableTitle={"Популярные новинки"} details={details} />
+      <TitleTable TableTitle="Популярные новинки" details={details} />
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { getData } from "@/components/shared/api/api";
 import {
+  ApiUrl_Title_Popular,
   ApiUrl_Title_Movie,
   ApiUrl_Title_TvSeries,
   ApiUrl_Title_Cartoon,
@@ -100,6 +101,28 @@ export async function fetchDetailsAndMetadata(
       },
     };
   }
+
+  return { details, metadata };
+}
+
+export async function fetchMainPageDetailsAndMetadata(): Promise<{
+  details: any[];
+  metadata: Metadata;
+}> {
+  const data = await getData({ url: ApiUrl_Title_Popular });
+  const details = data?.data ?? [];
+
+  const metadata: Metadata = {
+    title: "ГЛАВНАЯ",
+    openGraph: {
+      title: "ГЛАВНАЯ",
+      images: "/images/LOGO.webp",
+    },
+    twitter: {
+      title: "ГЛАВНАЯ",
+      images: "/images/LOGO.webp",
+    },
+  };
 
   return { details, metadata };
 }
