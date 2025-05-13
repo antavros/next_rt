@@ -1,8 +1,15 @@
 import React, { ReactNode } from "react";
+import Providers from "./providers";
+import { SideBar } from "@/components/widgets/sideBar";
 
+import "./globals.css";
 import type { Metadata, Viewport } from "next";
 
-
+import { Ubuntu } from "next/font/google";
+const ubuntu = Ubuntu({
+  weight: ["400", "700"],
+  subsets: ["latin", "cyrillic"],
+});
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -39,18 +46,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { Ubuntu } from "next/font/google";
-const ubuntu = Ubuntu({
-  weight: ["400", "700"],
-  subsets: ["latin", "cyrillic"],
-});
-
-import Providers from "./providers";
-
-import { Sidebar } from "@/components/widgets/sideBar";
-import "./globals.css";
-
-
 export default function RootLayout({
   children,
 }: {
@@ -58,10 +53,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <meta name="yandex-verification" content="7d219569f9075bd9" />
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
         <Providers>
-          <Sidebar />
+          <SideBar />
           <main>
             <hr />
             <div className="content">
