@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Providers from "./providers";
+// import Providers from "./providers";
 import { SideBar } from "@/components/widgets/sideBar";
 
 import "./globals.css";
@@ -54,17 +54,17 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body id="body" className={`not_initialized ${ubuntu.className}`}>
-        <Providers>
-          <SideBar />
-          <main>
-            <hr />
-            <div className="content">
-              {children}
-              <span id="footer" />
-            </div>
-            <hr />
-          </main>
-        </Providers>
+        {/* <Providers> */}
+        <SideBar />
+        <main>
+          <hr />
+          <div className="content">
+            {children}
+            <span id="footer" />
+          </div>
+          <hr />
+        </main>
+        {/* </Providers> */}
       </body>
     </html>
   );
