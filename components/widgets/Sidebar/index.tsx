@@ -12,8 +12,8 @@ export function SideBar() {
       <aside className="sidebar">
         <Logo />
         <NavMenu />
-        <Togglers />
-        <UserCard />
+        {/* <Togglers />
+        <UserCard /> */}
       </aside>
     </header>
   );

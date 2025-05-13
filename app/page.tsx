@@ -31,8 +31,8 @@ export default async function Home() {
 
   return (
     <>
-      <SwiperMain details={topTenTitlesWithLogo} />
-      <TitleTable TableTitle="Популярные новинки" details={details} />
+      {/* <SwiperMain details={topTenTitlesWithLogo} />
+      <TitleTable TableTitle="Популярные новинки" details={details} /> */}
     </>
   );
 }
