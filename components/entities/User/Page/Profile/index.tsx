@@ -20,7 +20,7 @@ export function ProfilePage({
   bookmarkedTitles,
 }: Readonly<ProfilePageProps>) {
   return (
-    <>
+    <section className="profile">
       {visitedTitles.length > 0 && (
         <section className="history block">
           <h1>История</h1>
@@ -45,6 +45,6 @@ export function ProfilePage({
           <SwiperCardTitle details={bookmarkedTitles} />
         </section>
       )}
-    </>
+    </section>
   );
 }

@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "UserTitle" ALTER COLUMN "rating" SET DATA TYPE DOUBLE PRECISION;
