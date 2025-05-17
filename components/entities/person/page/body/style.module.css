@@ -1,0 +1,150 @@
+.body {
+  display      : flex;
+  flex-flow    : column nowrap;
+  width        : 100%;
+  height       : auto;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  gap          : 1rem;
+}
+
+.block {
+  display       : flex;
+  flex-direction: column;
+  height        : 100%;
+  place-self    : center center;
+  border-radius : 0;
+}
+
+.block h3 {
+  width        : max-content;
+  text-align   : left;
+  font-weight  : bold;
+  font-size    : 1.5rem;
+  padding      : 0 0 1rem 0;
+  border-radius: 0;
+}
+
+.actors,
+.trailers,
+.chapters,
+.watchability,
+.similar {
+  display         : flex;
+  max-width       : 100%;
+  height          : auto !important;
+  max-height      : 100%;
+  background-color: transparent;
+}
+
+.trailers {
+  display  : flex;
+  width    : auto;
+  max-width: 817px;
+  overflow : hidden;
+}
+
+
+.trailers h2 {
+  width        : auto;
+  padding      : 0 1rem 1rem 1rem;
+  font-size    : 1rem;
+  text-wrap    : nowrap;
+  text-overflow: ellipsis;
+  overflow     : hidden;
+}
+
+.trailers button {
+  backdrop-filter: none;
+  border-radius  : 0;
+}
+
+.details {
+  display      : flex;
+  flex-flow    : column nowrap;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  width        : 100%;
+  gap          : 1rem;
+}
+
+.details_block_1 {
+  display      : flex;
+  flex-flow    : row nowrap;
+  width        : max-content;
+  gap          : 1rem;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+}
+
+.details_block_2 {
+  display      : flex;
+  flex-flow    : column nowrap;
+  width        : 50%;
+  height       : msx-content;
+  gap          : 1rem;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : start center;
+}
+
+.person {
+  width : 50%;
+  height: msx-content;
+}
+
+.description {
+  display  : flex;
+  flex-flow: column wrap;
+  width    : 390px;
+  height   : max-content;
+}
+
+.description p {
+  font-size      : medium;
+  text-indent    : 1rem;
+  text-overflow  : ellipsis;
+  text-align     : auto;
+  text-wrap      : pretty;
+  color          : white;
+  -webkit-hyphens: auto;
+  -ms-hyphens    : auto;
+  hyphens        : auto;
+}
+
+
+.player {
+  width : max-content;
+  height: auto;
+}
+
+@media (max-width: 1200px) {
+  .trailers {
+    max-width: 390px;
+  }
+
+
+  .details span {
+    flex-flow    : column nowrap;
+    place-content: center center;
+    place-items  : center center;
+    place-self   : center center;
+  }
+
+  .details span span {
+    flex-flow: column nowrap;
+  }
+
+  .details span span span {
+    place-content: center center;
+    place-items  : center center;
+    place-self   : center center;
+  }
+
+  .player {
+    width: 100%;
+  }
+}

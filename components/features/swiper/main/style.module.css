@@ -1,0 +1,14 @@
+.swiperContainer {
+  display         : flex;
+  position        : relative;
+  flex-flow       : column nowrap;
+  width           : 100%;
+  height          : calc(100dvh - 4rem);
+  padding         : 1rem;
+  /* отступы, чтобы боковые слайды были видны */
+  /* place-content: center center;
+  place-items     : center center;
+  place-self      : center center;
+  overflow        : visible; */
+  /* обязательно */
+}

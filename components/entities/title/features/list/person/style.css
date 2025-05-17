@@ -1,0 +1,75 @@
+.persons_list {
+  display         : flex;
+  flex-direction  : column;
+  place-content   : center center;
+  place-self      : center center;
+  place-items     : center center;
+  width           : 100% !important;
+  max-width       : 390px;
+  padding         : 1rem;
+  background-color: var(--color-block_back);
+}
+
+.persons_list article {
+  width         : 100% !important;
+  display       : flex;
+  flex-direction: column;
+  place-content : start start;
+  place-self    : start start;
+  place-items   : start start;
+}
+
+.persons_list article button {
+  width        : max-content;
+  height       : 2.5rem;
+  font-size    : 1.2rem;
+  color        : white;
+  align-self   : start;
+  border-radius: 50rem;
+}
+
+.persons_list article button h6 {
+  font-size    : 1rem;
+  color        : white;
+  text-align   : center;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
+  padding      : 1rem;
+}
+
+.persons_list article button svg {
+  width        : 1.5rem;
+  height       : 1.5rem;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
+  color        : white;
+  stroke-width : 9%;
+  padding      : 0.1rem;
+  margin       : 0 0 0 1rem;
+}
+
+.persons_list article h6:first-letter {
+  text-transform: uppercase;
+}
+
+.persons_list article ul {
+  width  : 100%;
+  padding: 0rem 0 0.5rem 2.5rem;
+}
+
+.persons_list article ul li {
+  width  : 100%;
+  padding: 0.2rem 0;
+}
+
+.persons_list a h6 {
+  font-size: 1rem;
+  color    : white;
+}
+
+.persons_list a h6:hover {
+  color: white;
+  scale: 105%;
+}

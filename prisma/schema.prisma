@@ -1,0 +1,131 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "./generated/client"
+}
+
+enum Role {
+  USER
+  ADMIN
+  OWNER
+}
+
+model User {
+  id            String      @id @default(cuid())
+  role          Role        @default(USER)
+  name          String?     @unique
+  email         String      @unique
+  password      String?
+  emailVerified DateTime?
+  image         String?
+  bio           String?
+  lists         List[]
+  userTitles    UserTitle[]
+  sessions      Session[]
+  accounts      Account[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model List {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  ownerId     String
+  owner       User        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  titles      ListTitle[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Title {
+  id          String      @unique
+  type        String
+  name        String
+  engname     String?
+  description String?
+  image       String?
+  userTitles  UserTitle[]
+  listTitles  ListTitle[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserTitle {
+  id        String   @id @default(cuid())
+  userId    String
+  titleId   String
+  rating    Float?
+  visited   Boolean  @default(false)
+  bookmark  Boolean? @default(false)
+  viewed    Boolean  @default(false)
+  favourite Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     Title    @relation(fields: [titleId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, titleId])
+}
+
+model ListTitle {
+  id      String @id @default(cuid())
+  listId  String
+  titleId String
+  list    List   @relation(fields: [listId], references: [id], onDelete: Cascade)
+  title   Title  @relation(fields: [titleId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([listId, titleId])
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}

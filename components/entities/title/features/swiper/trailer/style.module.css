@@ -1,0 +1,14 @@
+.swiper_slide_trailer {
+  width   : 368px;
+  height  : auto;
+  padding : 1rem 0 0 0;
+  overflow: hidden;
+}
+
+ .swiper {
+  overflow: hidden !important;
+}
+
+.trailer {
+  border: none !important;
+}

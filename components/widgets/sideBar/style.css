@@ -1,0 +1,175 @@
+header {
+  display      : flex;
+  width        : max-content;
+  border-radius: 0;
+  z-index      : var(--sidebar_z-index);
+}
+
+.sidebar {
+  display       : flex;
+  flex-direction: column;
+  place-content : center start;
+  place-self    : start center;
+  width         : max-content;
+  height        : 100%;
+  padding       : 1rem;
+  gap           : 1rem;
+}
+
+.sidebar_hide {
+  width: max-content;
+}
+
+.sidebar_hide #logo1 {
+  display: none;
+}
+
+.sidebar_hide #logo2 {
+  display: flex;
+}
+
+.sidebar_hide nav ul li button {
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
+}
+
+.sidebar_hide nav button h6 {
+  font-size: 0;
+  display  : none;
+}
+
+.sidebar_hide .togglers {
+  flex-direction: column;
+}
+
+.sidebar_hide .userBlock {
+  flex-flow    : column nowrap;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
+}
+
+.sidebar_hide .userBlock h6 {
+  display: none;
+}
+
+.sidebar_hide .userButtons {
+  flex-flow    : column nowrap;
+  place-content: center center;
+  place-self   : center center;
+  place-items  : center center;
+}
+
+.sidebar_hide .searchContainer button h6 {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .pagination {
+    bottom    : 5rem !important;
+    flex-flow : column nowrap !important;
+    place-self: end end !important;
+  }
+
+  body {
+    flex-flow: column nowrap;
+  }
+
+  main {
+    padding: 1rem;
+
+  }
+
+  header,
+  .sidebar_hide {
+    position  : relative;
+    order     : 5;
+    width     : 100dvw;
+    height    : 5rem !important;
+    overflow-y: hidden;
+  }
+
+  .sidebar {
+    display         : flex;
+    flex-flow       : row wrap;
+    width           : 100dvw;
+    height          : auto;
+    padding         : 0rem;
+    place-content   : center center;
+    place-self      : center center;
+    place-items     : center center;
+    border-radius   : var(--border-radius) var(--border-radius) 0 0;
+    background-color: var(--color-block_back);
+    background-image: var(--color-block_back);
+    backdrop-filter : var(--blur);
+  }
+
+  .userBlock {
+    position        : relative;
+    width           : max-content;
+    height          : 100%;
+    flex-flow       : row nowrap;
+    order           : 1;
+    margin-top      : 0;
+    padding         : 0.5;
+    background-color: transparent !important;
+    background-image: none;
+    backdrop-filter : none;
+    place-content   : center center;
+    place-self      : center center;
+    place-items     : center center;
+  }
+
+  .userBlock .userButtons {
+    display: none !important;
+  }
+
+  .userBlock .userAvatar {
+    width : 2rem;
+    height: auto;
+  }
+
+  .userBlock h6 {
+    display: none !important;
+  }
+
+  .sidebar .logo {
+    display: none;
+  }
+
+  .sidebar .togglers {
+    display: none;
+  }
+
+  .sidebar .togglers button:nth-child(2) {
+    display: none;
+  }
+
+  .sidebar nav {
+    display      : flex;
+    flex-flow    : row nowrap;
+    width        : max-content;
+    height       : auto;
+    order        : 1;
+    place-content: center center;
+    place-self   : center center;
+    place-items  : center center;
+  }
+
+  .sidebar nav ul {
+    flex-flow: row nowrap;
+  }
+
+  .sidebar nav button {
+    padding      : 0;
+    border-radius: var(--border-radius);
+  }
+
+  .sidebar nav button h6 {
+    display: none !important;
+    width  : 100%;
+    height : 100% !important;
+  }
+
+}

@@ -1,0 +1,75 @@
+.table_card {
+  display      : flex;
+  place-content: center center;
+  place-items  : center center;
+  place-self   : center center;
+  position     : relative;
+  width        : 16rem;
+  height       : 25rem;
+  cursor       : pointer;
+  overflow     : hidden;
+  z-index      : 2;
+}
+
+.table_card img {
+  border-radius: 0;
+}
+
+.table_card:hover img {
+  -webkit-user-select: none;
+  -moz-user-select   : none;
+  -ms-user-select    : none;
+  user-select        : none;
+  scale              : 1.2;
+}
+
+.table_card:is(:active, :focus) {
+  scale: 0.9;
+  color: var(--color-purple) !important;
+}
+
+
+
+.table_card_person_Info {
+  position      : absolute !important;
+  display       : flex;
+  flex-direction: column;
+  place-content : center end;
+  place-items   : center center;
+  bottom        : var(--block-gap);
+  left          : 0;
+  right         : 0;
+  z-index       : 2;
+}
+
+.table_card::after {
+  content         : "";
+  position        : absolute;
+  top             : 0;
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 40%);
+}
+
+.table_card_person_Info h3,
+.table_card_person_Info h4,
+.table_card_person_Info p {
+  font-size    : 0.8rem;
+  text-align   : center;
+  text-overflow: ellipsis;
+  word-spacing : 0.2rem;
+  color        : var(--color-text);
+}
+
+.table_card_person_Info h3 {
+  color         : var(--color-white);
+  font-size     : 1rem;
+  padding-top   : 3rem;
+  padding-bottom: 0.2rem;
+}
+
+.table_card_person_Info h4 {
+  font-weight   : bold;
+  padding-bottom: 0.5rem;
+}

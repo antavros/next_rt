@@ -1,0 +1,34 @@
+.searchContainer {
+  width        : 100%;
+  height       : auto;
+  border       : none;
+  border-radius: 0;
+}
+
+.searchModal {
+  position        : absolute;
+  top             : 0;
+  right           : 0;
+  left            : 0;
+  width           : 100%;
+  height          : 100%;
+  padding         : 1rem;
+  place-content   : start center;
+  place-self      : center center;
+  place-items     : center center;
+  border          : none;
+  border-radius   : 0;
+  order           : 0;
+  background-color: var(--color-button-hover);
+  z-index         : var(--modal_z-index);
+}
+
+.buttonISearch {
+  width        : 100%;
+  height       : 100%;
+  border       : none;
+  border-radius: 0;
+  position     : relative;
+  z-index      : 9999;
+}
+
