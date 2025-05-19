@@ -30,7 +30,7 @@
 
   --main_z-index   : 1;
   --sidebar_z-index: 100;
-  --modal_z-index  : 999;
+  --modal_z-index  : 9999;
 
   --header-height: 80px;
   --sidebar-width: auto;
@@ -126,9 +126,11 @@ a:visited {
   scrollbar-gutter: stable;
 }
 
+html {
+  font-size: 1dvw;
+}
 
 body {
-  font-size: 16px;
   background: light-dark(var(--color-light),
       var(--color-dark));
   background-color: light-dark(var(--color-light),
@@ -151,7 +153,6 @@ body {
 }
 
 main {
-  padding          : 1rem 1rem 1rem 0;
   display          : -webkit-flex;
   display          : flex;
   -webkit-flex-flow: column nowrap;
@@ -159,6 +160,7 @@ main {
   width            : 100dvw;
   height           : 100dvh;
   overflow         : hidden;
+  padding          : 1rem 1rem 1rem 0;
   z-index          : 0;
 }
 

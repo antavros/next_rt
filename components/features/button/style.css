@@ -8,22 +8,17 @@ button {
   color           : var(--color-text);
   cursor          : pointer;
   gap             : 0.2rem;
+  padding         : 0.2rem;
   background-color: var(--color-button-inactive);
   backdrop-filter : var(--blur);
   user-select     : none;
 }
 
-
 button svg {
-  /* --size      : 1.5rem;
-  font-size   : var(--size);
-  width       : calc(var(--size) + 0.4rem);
-  height      : calc(var(--size) + 0.4rem);
-  padding     : 0.2rem; */
-  width       : 1.7rem;
-  height      : 1.7rem;
-  font-size   : 1rem;
-  padding     : 0.1rem;
+  --size      : 1.7rem;
+  width       : var(--size);
+  height      : var(--size);
+  padding     : 0.2rem;
   stroke-width: 7%;
   color       : var(--color-text);
 }

@@ -36,22 +36,22 @@ export const Button = ({ items }: ButtonProps) => {
 
   const renderButton = (item: Item) =>
     item.url ? (
-      <Link href={item.url} prefetch={false} key={item.id || item.name}>
+      <Link href={item.url} prefetch={false} key={item.id ?? item.name}>
         {createButtonElement(item)}
       </Link>
     ) : (
-      <div key={item.id || item.name}>{createButtonElement(item)}</div>
+      <div key={item.id ?? item.name}>{createButtonElement(item)}</div>
     );
 
   return items.length > 1 ? (
     <ul>
       {items.map((item, index) => (
-        <li key={item.id || item.name || `item-${index}`}>
+        <li key={item.id ?? item.name ?? `item-${index}`}>
           {renderButton(item)}
         </li>
       ))}
     </ul>
-  ) : (
+  ) : items.length === 1 ? (
     <>{renderButton(items[0])}</>
-  );
+  ) : null;
 };
