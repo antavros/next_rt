@@ -1,106 +1,74 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, createContext, FC } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useMemo,
+  ReactNode,
+  FC,
+} from "react";
 
-interface ThemeContextProps {
+interface AppContextProps {
   isDarkMode: boolean;
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface SidebarHideContextProps {
   isSidebarHidden: boolean;
   setIsSidebarHidden: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// Создание контекстов
-export const ThemeContext = createContext<ThemeContextProps | undefined>(
-  undefined
-);
-export const SidebarHideContext = createContext<
-  SidebarHideContextProps | undefined
->(undefined);
+export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
-// Функция для получения начальной темы
-const getInitialTheme = () => {
+const getInitial = (key: string, defaultValue: boolean): boolean => {
   if (typeof window !== "undefined") {
-    const savedDarkMode = localStorage.getItem("darkMode");
-    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : false;
+    const saved = localStorage.getItem(key);
+    return saved !== null ? JSON.parse(saved) : defaultValue;
   }
-  return false;
+  return defaultValue;
 };
 
-export const ThemeProvider: FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);
-  const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
-  const [themeInitialized, setThemeInitialized] = useState<boolean>(false);
+export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() =>
+    getInitial("darkMode", false)
+  );
+  const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(() =>
+    getInitial("sidebarHidden", false)
+  );
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedSidebarHidden = localStorage.getItem("sidebarHidden");
-      if (savedSidebarHidden !== null)
-        setIsSidebarHidden(JSON.parse(savedSidebarHidden));
-      setThemeInitialized(true); // Установка флага завершения инициализации темы
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+    document.documentElement.style.setProperty(
+      "--theme-back",
+      isDarkMode
+        ? " rgb(16, 18, 24)"
+        : "linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%)"
+    );
+  }, [isDarkMode]);
 
-      // Снятие класса not_initialized после инициализации темы
-      const bodyElement = document.querySelector("body");
-      if (bodyElement) {
-        bodyElement.classList.remove("not_initialized");
-      }
+  useEffect(() => {
+    localStorage.setItem("sidebarHidden", JSON.stringify(isSidebarHidden));
+
+    const header = document.querySelector("header");
+    const toggle = document.querySelector(".toggle_sidebar");
+
+    if (header) {
+      header.classList.toggle("sidebar_hide", isSidebarHidden);
     }
+    if (toggle) {
+      toggle.classList.toggle("flipped", isSidebarHidden);
+    }
+  }, [isSidebarHidden]);
+
+  // Удаляем класс инициализации при первом рендере
+  useEffect(() => {
+    document.body.classList.remove("not_initialized");
   }, []);
 
-  useEffect(() => {
-    if (themeInitialized && typeof window !== "undefined") {
-      localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-      const rootElement = document.documentElement;
-      if (rootElement) {
-        rootElement.style.setProperty(
-          "--theme-back",
-          isDarkMode
-            ? "#000"
-            : "linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%)"
-        );
-      }
-    }
-  }, [isDarkMode, themeInitialized]);
-
-  useEffect(() => {
-    if (themeInitialized && typeof window !== "undefined") {
-      localStorage.setItem("sidebarHidden", JSON.stringify(isSidebarHidden));
-      const headerElement = document.querySelector("header");
-      const toggleElement = document.querySelector(".toggle_sidebar");
-      if (headerElement) {
-        if (isSidebarHidden) {
-          headerElement.classList.add("sidebar_hide");
-          if (toggleElement) toggleElement.classList.add("flipped");
-        } else {
-          headerElement.classList.remove("sidebar_hide");
-          if (toggleElement) toggleElement.classList.remove("flipped");
-        }
-      }
-    }
-  }, [isSidebarHidden, themeInitialized]);
-
-  const themeContextValue = useMemo(
-    () => ({ isDarkMode, setIsDarkMode }),
-    [isDarkMode]
+  const contextValue = useMemo(
+    () => ({ isDarkMode, setIsDarkMode, isSidebarHidden, setIsSidebarHidden }),
+    [isDarkMode, isSidebarHidden]
   );
-  const sidebarHideContextValue = useMemo(
-    () => ({ isSidebarHidden, setIsSidebarHidden }),
-    [isSidebarHidden]
-  );
-
-  if (!themeInitialized) {
-    return null; // Не рендерим контент до завершения инициализации темы
-  }
 
   return (
-    <ThemeContext.Provider value={themeContextValue}>
-      <SidebarHideContext.Provider value={sidebarHideContextValue}>
-        {children}
-      </SidebarHideContext.Provider>
-    </ThemeContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };

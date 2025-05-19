@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IconSearch, IconX } from "@tabler/icons-react";
@@ -8,9 +6,10 @@ import "./style.css";
 
 interface SearchProps {
   onSearch?: (value: string) => void;
+  inputRef?: React.RefObject<HTMLInputElement>; // добавлено
 }
 
-export function SearchForm({ onSearch }: SearchProps) {
+export function SearchForm({ onSearch, inputRef }: SearchProps) {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
@@ -25,12 +24,13 @@ export function SearchForm({ onSearch }: SearchProps) {
   const handleReset = () => {
     setSearchValue("");
   };
+
   const buttonItemsSubmit: Item[] = [
-    { className:"submit",type: "submit", svg: <IconSearch stroke={2} /> },
+    { className: "submit", type: "submit", svg: <IconSearch stroke={2} /> },
   ];
 
   const buttonItemsReset: Item[] = [
-    { className:"reset",type: "reset", svg: <IconX stroke={2} /> },
+    { className: "reset", type: "reset", svg: <IconX stroke={2} /> },
   ];
 
   return (
@@ -42,6 +42,7 @@ export function SearchForm({ onSearch }: SearchProps) {
     >
       <Button items={buttonItemsSubmit} />
       <input
+        ref={inputRef} // применяем ref
         className="search_input"
         type="text"
         id="search_input"

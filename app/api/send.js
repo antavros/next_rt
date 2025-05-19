@@ -11,7 +11,6 @@ export default function handler(req, res) {
     })
       .then(r => r.json())
       .then(d => {
-        console.log({ d })
         if (!d.success) {
           res.status(500).json({ ok: false, message: 'Возможно вы робот!' })
         } else {

@@ -4,8 +4,6 @@ import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
 export const getTitleFromDb = async (id: string) => {
-  console.log("Получение тайтла с ID:", id);
-
   try {
     const title = await prisma.title.findFirst({
       where: { id: String(id) }, // Убеждаемся, что id — строка

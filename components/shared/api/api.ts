@@ -26,7 +26,6 @@ export async function getData({ url }: { url: string }) {
   };
 
   try {
-    console.log(`Fetching data from URL: ${url}`);
     const response = await fetch(url, options);
 
     // Проверка статуса ответа

@@ -7,25 +7,20 @@ import {
   IconLayoutSidebarRightExpand,
 } from "@tabler/icons-react";
 
-import {
-  ThemeContext,
-  SidebarHideContext,
-} from "@/components/shared/context/theme";
+import { AppContext } from "@/components/shared/context/theme";
 import { FastNavigation } from "@/components/features/navArrow";
 import "@/components/features/button/style.css";
 import "./style.css";
 
 // Компонент для переключения темы
 const ThemeToggle: FC = () => {
-  const themeContext = useContext(ThemeContext);
-  if (!themeContext)
-    throw new Error("ThemeToggle must be used within a ThemeProvider");
+  const context = useContext(AppContext);
+  if (!context)
+    throw new Error("ThemeToggle must be used within ThemeProvider");
 
-  const { isDarkMode, setIsDarkMode } = themeContext;
+  const { isDarkMode, setIsDarkMode } = context;
 
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
+  const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
   return (
     <button className="toggle_theme" onClick={toggleTheme}>
@@ -36,15 +31,13 @@ const ThemeToggle: FC = () => {
 
 // Компонент для переключения боковой панели
 const SidebarToggle: FC = () => {
-  const sidebarHideContext = useContext(SidebarHideContext);
-  if (!sidebarHideContext)
-    throw new Error("SidebarToggle must be used within a SidebarHideProvider");
+  const context = useContext(AppContext);
+  if (!context)
+    throw new Error("SidebarToggle must be used within ThemeProvider");
 
-  const { setIsSidebarHidden } = sidebarHideContext;
+  const { setIsSidebarHidden } = context;
 
-  const toggleSidebar = () => {
-    setIsSidebarHidden((prevHidden) => !prevHidden);
-  };
+  const toggleSidebar = () => setIsSidebarHidden((prev) => !prev);
 
   return (
     <button className="toggle_sidebar" onClick={toggleSidebar}>
@@ -53,7 +46,7 @@ const SidebarToggle: FC = () => {
   );
 };
 
-// Компонент обертка для всех переключателей
+// Компонент обёртка для всех переключателей
 export const Togglers: FC = () => {
   return (
     <section className="togglers">

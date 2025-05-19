@@ -34,12 +34,6 @@
 
   --header-height: 80px;
   --sidebar-width: auto;
-
-  --color-light         : white;
-  --color-dark          : rgb(16, 18, 24);
-  /* --color-dark       : rgb(255, 221, 221); */
-  /* color-scheme       : light dark; */
-  --theme-back          : linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
 }
 
 * {
@@ -127,19 +121,11 @@ a:visited {
 }
 
 html {
-  font-size: 1dvw;
+  font-size: 16px;
 }
 
 body {
-  background: light-dark(var(--color-light),
-      var(--color-dark));
-  background-color: light-dark(var(--color-light),
-      var(--color-dark));
-  background-image: light-dark(var(--color-light),
-      var(--color-dark));
-  background: rgb(16, 18, 24);
-  background: linear-gradient(270deg, rgb(0, 0, 0) -7%, var(--color-purple) 15%, var(--color-orangered) 50%, var(--color-purple) 85%, rgb(0, 0, 0) 107%);
-
+  background       : var(--theme-back);
   display          : -webkit-flex;
   display          : flex;
   -webkit-flex-flow: row nowrap;

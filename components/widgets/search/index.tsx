@@ -1,14 +1,12 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SearchForm } from "@/components/widgets/search/form";
 import { IconSearch, IconX } from "@tabler/icons-react";
 import { Button, Item } from "@/components/features/button";
-
 import "./style.css";
 
 export function Search() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null); // создаём ref
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -19,6 +17,10 @@ export function Search() {
 
     if (isModalOpen) {
       window.addEventListener("keydown", handleKeyDown);
+      // Ставим фокус на input после рендера модалки
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
     } else {
       window.removeEventListener("keydown", handleKeyDown);
     }
@@ -42,11 +44,13 @@ export function Search() {
   ];
 
   return (
-    <div className="searchContainer">
-      <Button items={buttonItemsSearch} />
+    <>
       <dialog className="searchModal" open={isModalOpen}>
-        <SearchForm onSearch={handleSearch} />
+        <SearchForm onSearch={handleSearch} inputRef={inputRef} />
       </dialog>
-    </div>
+      <div className="searchContainer">
+        <Button items={buttonItemsSearch} />
+      </div>
+    </>
   );
 }

@@ -11,7 +11,6 @@ import "./style.css";
 
 export function TitleCardSmall({ details }: { readonly details: any }) {
   const [imageLoaded, setImageLoaded] = useState(false);
-  console.log(details);
   return (
     <article className="title_card_small" id={details?.id}>
       {!imageLoaded && <PreLoader />}

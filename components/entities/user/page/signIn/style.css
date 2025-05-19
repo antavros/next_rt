@@ -1,12 +1,17 @@
+.content {
+  background-color: none !important;
+  background-image: none !important;
+}
+
 .signin {
   display         : flex;
   flex-direction  : column;
   place-content   : center center;
   place-self      : center center;
   place-items     : center center;
-  width           : 400px;
+  width           : max-content;
   background-color: var(--color-block_back);
-  padding         : 2rem;
+  padding         : 1rem;
   gap             : 1rem;
 }
 
@@ -54,7 +59,7 @@
   place-content   : center center;
   place-self      : center center;
   place-items     : center center;
-  padding         : 1rem 2rem;
+  padding         : 1rem;
   gap             : 1rem;
   background-color: var(--color-block_back);
 }
