@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import { SearchForm } from "@/components/widgets/search/form";
 import { IconSearch, IconX } from "@tabler/icons-react";
