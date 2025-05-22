@@ -1,8 +1,11 @@
 .searchContainer {
-  width        : 100%;
   height       : auto;
   border       : none;
   border-radius: 0;
+  place-content: center center;
+  place-self   : center start;
+  place-items  : center center;
+  width        : 100%;
 }
 
 .searchModal {
@@ -23,8 +26,8 @@
 }
 
 .buttonISearch {
-  place-content: center start;
-  place-self   : center center;
+  place-content: center center;
+  place-self   : center start;
   place-items  : center center;
   width        : 100%;
   height       : 100%;
@@ -32,4 +35,6 @@
   border-radius: 0;
   z-index      : 9999;
   position     : relative;
+  display      : flex;
+
 }

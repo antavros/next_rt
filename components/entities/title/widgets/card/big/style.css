@@ -53,19 +53,20 @@
 }
 
 .card_big_logo {
-  display      : block;
+  display      : flex;
   padding      : 1rem;
-  width        : 100%;
-  height       : auto;
+  width        : 100% !important;
+  height       : auto !important;
+  max-height   : 25% !important;
   object-fit   : cover;
   border-radius: 0;
 }
 
 .card_big_poster {
-  width        : auto;
-  height       : 25rem;
-  object-fit   : cover;
-  border       : none;
+  width        : auto !important;
+  height       : 25rem !important;
+  object-fit   : cover !important;
+  border       : none !important;
   border-radius: 0 !important;
 }
 
@@ -77,11 +78,11 @@
   right          : 0;
   display        : flex;
   flex-flow      : column nowrap;
-  width          : 40%;
-  height         : 100%;
+  width          : clamp(400px, 100%, 40%);
+  height         : auto;
   place-content  : center center;
-  place-items    : start start;
-  place-self     : start start;
+  place-items    : center center;
+  place-self     : center start;
   padding        : 1rem;
   text-align     : center;
   pointer-events : auto !important;
@@ -226,32 +227,47 @@
         rgba(0, 0, 0, 1) 109%);
   }
 
+  .card_big_back {
+    object-position: 50%;
+  }
+
+  .card_big_info {
+    width        : 100%;
+    overflow     : hidden;
+    place-content: end end;
+  }
+}
+
+/* 
+@media (max-width: 800px) {
+  .title_card_big::after {
+    background: gradient(top to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.5) 69%,
+        rgba(0, 0, 0, 0.6) 79%,
+        rgba(0, 0, 0, 0.8) 89%,
+        rgba(0, 0, 0, 0.9) 99%,
+        rgba(0, 0, 0, 1) 109%);
+  }
+
   .title_back {
     object-position: 70%;
   }
 
   .card_big_info {
-    overflow     : hidden;
-    place-content: end end;
-    width        : 100%;
+    width         : 100%;
+    padding-bottom: 2rem;
+    overflow      : hidden;
+    place-content : end end;
   }
 }
-
 @media (max-width: 1200px) {
 
   .card_big_info {
     width         : 100%;
-    place-content : center end;
     padding-bottom: 2rem;
-  }
-
-  .title_logo {
-    display   : block;
-    width     : auto !important;
-    height    : auto !important;
-    object-fit: cover;
-    max-width : auto;
-    max-height: 20%;
+    overflow      : hidden;
+    place-content : end end;
   }
 }
 
@@ -259,17 +275,8 @@
 
   .card_big_info {
     width         : 100%;
-    place-content : center end;
     padding-bottom: 2rem;
+    overflow      : hidden;
+    place-content : end end;
   }
-
-
-  .title_logo {
-    display   : block;
-    width     : auto !important;
-    height    : auto !important;
-    object-fit: cover;
-    max-width : auto;
-    max-height: 20%;
-  }
-}
+} */
