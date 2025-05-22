@@ -71,7 +71,7 @@ header {
     place-self: end end !important;
   }
 
-  body {
+  .layout {
     flex-flow: column nowrap !important;
 
   }

@@ -3,8 +3,8 @@
   border       : none;
   border-radius: 0;
   place-content: center center;
-  place-self   : center start;
-  place-items  : center center;
+  place-self   : center center;
+  place-items  : center start;
   width        : 100%;
 }
 

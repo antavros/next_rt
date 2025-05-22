@@ -4,12 +4,12 @@
   width           : 100%;
   height          : max-content;
   min-height      : 3rem;
-  margin-top      : auto;
-  gap             : 0.3rem;
-  padding         : 1rem;
   place-content   : center space-between;
   place-self      : center center;
   place-items     : center center;
+  margin-top      : auto;
+  gap             : 0.3rem;
+  padding         : 1rem;
   border-radius   : var(--border-radius);
   font-size       : 2rem;
   background-color: var(--color-block_back);
@@ -24,19 +24,9 @@
 }
 
 .userButtons {
-  display      : flex;
-  flex-flow    : column nowrap;
-  width        : max-content;
-  gap          : var(--element-gap);
-  place-content: end end;
-  place-items  : end end;
-  place-self   : center end;
-}
-
-.userButtons svg {
-  width  : 2rem;
-  height : 2rem;
-  padding: 0.2rem;
+  display  : flex;
+  flex-flow: column nowrap;
+  gap      : var(--element-gap);
 }
 
 .userButtons h6 {
