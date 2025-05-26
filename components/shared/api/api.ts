@@ -50,8 +50,9 @@ export async function getData({ url }: { url: string }) {
     return details;
   } catch (error: unknown) {
     console.error("Error in getData:", error);
-
-    // Редирект в случае ошибки
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
     redirect(`/`);
     return;
   }

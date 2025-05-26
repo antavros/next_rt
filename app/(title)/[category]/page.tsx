@@ -15,13 +15,16 @@ export async function generateMetadata(
   return metadata;
 }
 
-// Рендеринг страницы категорий
-export default async function categoryRender(props: {
-  readonly params: Promise<any>;
-  searchParams: Promise<{ [key: string]: string }>;
+// app/[category]/page.tsx
+export default async function categoryRender({
+  params,
+  searchParams,
+}: {
+  params: { category: string };
+  searchParams: { [key: string]: string };
 }) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
+  // params и searchParams уже распакованы, можно сразу читать свойства
+  const { category } = params;
   const allowedCategories = [
     "movie",
     "tv-series",
@@ -31,44 +34,35 @@ export default async function categoryRender(props: {
     "person",
     "announced",
   ];
-  const category = params.category;
-
-  // Проверка, является ли категория допустимой
   if (!allowedCategories.includes(category)) {
     redirect(`/`);
   }
 
-  const page = searchParams["page"] ?? "1";
-  const { details } = await fetchCategoryDetailsAndMetadata(
-    params.category,
-    page
+  // Поскольку searchParams — plain object, читаем сразу
+  const page = searchParams.page ?? "1";
+  const filters = {
+    genre: searchParams.genre,
+    year: searchParams.year,
+    rating: searchParams.rating,
+  };
+
+  const { details, metadata } = await fetchCategoryDetailsAndMetadata(
+    category,
+    page,
+    filters
   );
 
-  // Определение заголовка таблицы в зависимости от категории
-  let tableTitle = "RATETABLE";
-  switch (category) {
-    case "movie":
-      tableTitle = "Фильмы";
-      break;
-    case "tv-series":
-      tableTitle = "Сериалы";
-      break;
-    case "cartoon":
-      tableTitle = "Мультфильмы";
-      break;
-    case "animated-series":
-      tableTitle = "Анимационные сериалы";
-      break;
-    case "anime":
-      tableTitle = "Аниме";
-      break;
-    case "person":
-      tableTitle = "Персоны";
-      break;
-    case "announced":
-      tableTitle = "Анонсированные";
-      break;
-  }
+  // Определение заголовка таблицы
+  const titlesMap: Record<string, string> = {
+    movie: "Фильмы",
+    "tv-series": "Сериалы",
+    cartoon: "Мультфильмы",
+    "animated-series": "Анимационные сериалы",
+    anime: "Аниме",
+    person: "Персоны",
+    announced: "Анонсированные",
+  };
+  const tableTitle = titlesMap[category] ?? "RATETABLE";
 
   return (
     <TitleTable
