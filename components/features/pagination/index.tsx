@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IconChevronRight, IconChevronLeft } from "@tabler/icons-react";
-
 import "./style.css";
 
 interface PaginationProps {
@@ -25,7 +24,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [currentPage, setCurrentPage] = useState<number>(pagination?.page ?? 1);
+  const [currentPage, setCurrentPage] = useState(pagination.page);
 
   useEffect(() => {
     setCurrentPage(pagination.page);
@@ -50,9 +49,9 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const handlePageChange = (pageNum: number) => {
     if (mode === "classic") {
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set("page", pageNum.toString());
-      router.push(`${window.location.pathname}?${urlParams.toString()}`);
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("page", pageNum.toString());
+      router.push(`?${params.toString()}`);
     } else if (mode === "load-more") {
       setCurrentPage(pageNum);
       onLoadMore?.(pageNum);
@@ -68,15 +67,13 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   const getPageNumbers = () => {
-    const pageNumbers = [];
+    const pageNumbers: (number | string)[] = [];
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(pagination.pages, currentPage + 2);
 
     if (startPage > 1) {
       pageNumbers.push(1);
-      if (startPage > 2) {
-        pageNumbers.push("...");
-      }
+      if (startPage > 2) pageNumbers.push("...");
     }
 
     for (let i = startPage; i <= endPage; i++) {
@@ -84,17 +81,16 @@ export const Pagination: React.FC<PaginationProps> = ({
     }
 
     if (endPage < pagination.pages) {
-      if (endPage < pagination.pages - 1) {
-        pageNumbers.push("...");
-      }
+      if (endPage < pagination.pages - 1) pageNumbers.push("...");
       pageNumbers.push(pagination.pages);
     }
 
     return pageNumbers;
   };
 
-  if (!pagination) return null;
+  if (!pagination || pagination.pages <= 1) return null;
 
+  // --- Classic Pagination ---
   if (mode === "classic") {
     const pageNumbers = getPageNumbers();
     return (
@@ -106,6 +102,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         >
           <IconChevronLeft stroke={2} />
         </button>
+
         {pageNumbers.map((pageNum, index) =>
           typeof pageNum === "number" ? (
             <button
@@ -116,11 +113,12 @@ export const Pagination: React.FC<PaginationProps> = ({
               <h6>{pageNum}</h6>
             </button>
           ) : (
-            <h6 key={`p${index}`} className="ellipsis">
+            <h6 key={`ellipsis-${index}`} className="ellipsis">
               {pageNum}
             </h6>
           )
         )}
+
         <button
           className="pagNavButton"
           onClick={() => handlePageChange(currentPage + 1)}
@@ -132,14 +130,18 @@ export const Pagination: React.FC<PaginationProps> = ({
     );
   }
 
+  // --- Load More Button ---
   if (mode === "load-more") {
     return currentPage < pagination.pages ? (
       <div className="pagination">
-        <button onClick={handleLoadMore}>Показать ещё</button>
+        <button onClick={handleLoadMore} className="load-more-button">
+          Показать ещё
+        </button>
       </div>
     ) : null;
   }
 
+  // --- Infinite Scroll ---
   if (mode === "infinite-scroll") {
     return currentPage < pagination.pages ? (
       <div id="scroll-sentinel" style={{ height: "1px" }} />

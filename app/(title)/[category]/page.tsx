@@ -1,74 +1,92 @@
+// app/[category]/page.tsx
 "use server";
 
 import { redirect } from "next/navigation";
-import { TitleTable } from "@/components/entities/title/features/table";
-import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata, ResolvingMetadata } from "next";
 
-// Генерация метаданных для страниц категорий:
+// Ваша утилита, возвращающая { details, metadata }
+import { fetchCategoryDetailsAndMetadata } from "@/components/shared/api/serverUtils";
+import { TitleTable } from "@/components/entities/title/features/table";
+
+// 1) Список категорий и тайпинг
+const allowedCategories = [
+  "movie",
+  "tv-series",
+  "cartoon",
+  "animated-series",
+  "anime",
+  "person",
+  "announced",
+] as const;
+type AllowedCategory = typeof allowedCategories[number];
+
+// 2) Генерация метаданных — params приходит как Promise<...>
 export async function generateMetadata(
-  props: { readonly params: Promise<{ readonly category: string }> },
+  props: {
+    params: Promise<{ category: string }>;
+    // если нужны метаданные, которые зависят от query:
+    // searchParams: Promise<{ [key: string]: string | undefined }>;
+  },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const params = await props.params;
-  const { metadata } = await fetchCategoryDetailsAndMetadata(params.category);
+  const { category } = await props.params;
+  if (!allowedCategories.includes(category as AllowedCategory)) {
+    return {
+      title: "Категория не найдена",
+      description: "Указанная категория не поддерживается.",
+    };
+  }
+  const { metadata } = await fetchCategoryDetailsAndMetadata(category);
   return metadata;
 }
 
-// app/[category]/page.tsx
-export default async function categoryRender({
-  params,
-  searchParams,
-}: {
-  params: { category: string };
-  searchParams: { [key: string]: string };
+// 3) Асинхронная страница
+export default async function CategoryPage(props: {
+  params: Promise<{ category: string }>;
+  searchParams: Promise<{
+    page?: string;
+    genre?: string;
+    year?: string;
+    rating?: string;
+  }>;
 }) {
-  // params и searchParams уже распакованы, можно сразу читать свойства
-  const { category } = params;
-  const allowedCategories = [
-    "movie",
-    "tv-series",
-    "cartoon",
-    "animated-series",
-    "anime",
-    "person",
-    "announced",
-  ];
+  // 4) await params и searchParams
+  const { category: rawCategory } = await props.params;
+  const { page: rawPage, genre, year, rating } = await props.searchParams;
+
+  const category = rawCategory as AllowedCategory;
   if (!allowedCategories.includes(category)) {
-    redirect(`/`);
+    redirect("/"); // некорректная категория
   }
 
-  // Поскольку searchParams — plain object, читаем сразу
-  const page = searchParams.page ?? "1";
-  const filters = {
-    genre: searchParams.genre,
-    year: searchParams.year,
-    rating: searchParams.rating,
-  };
+  // 5) Собираем фильтры и номер страницы
+  const page = rawPage ?? "1";
+  const filters = { genre, year, rating };
 
-  const { details, metadata } = await fetchCategoryDetailsAndMetadata(
+  // 6) Получаем данные
+  const { details, pagination } = await fetchCategoryDetailsAndMetadata(
     category,
     page,
     filters
   );
 
-  // Определение заголовка таблицы
-  const titlesMap: Record<string, string> = {
+  // 7) Заголовок таблицы
+  const titlesMap: Record<AllowedCategory, string> = {
     movie: "Фильмы",
     "tv-series": "Сериалы",
     cartoon: "Мультфильмы",
-    "animated-series": "Анимационные сериалы",
+    "animated-series": "Мультсериалы",
     anime: "Аниме",
     person: "Персоны",
     announced: "Анонсированные",
   };
-  const tableTitle = titlesMap[category] ?? "RATETABLE";
+  const tableTitle = titlesMap[category];
 
   return (
     <TitleTable
       TableTitle={tableTitle}
-      details={details?.data}
-      pagination={details?.pagination}
+      details={details}
+      pagination={pagination}
     />
   );
 }

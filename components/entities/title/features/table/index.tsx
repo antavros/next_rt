@@ -1,52 +1,111 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
 import { TitleCardSmall } from "@/components/entities/title/widgets/card/small";
 import { PersonCard } from "@/components/entities/person/widgets/card";
 import { Pagination } from "@/components/features/pagination";
 import { TitleFilter } from "@/components/features/filter";
+
 import "./style.css";
 
-export const TitleTable = ({ TableTitle, details, pagination }) => {
-  const [items, setItems] = useState(details ?? []);
-  const [currentPagination, setCurrentPagination] = useState(pagination);
+interface PaginationMeta {
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
 
-  // 1) При изменении details/pagination сбрасываем стейт
+interface RawDetails {
+  docs?: any[];
+  data?: any[];
+  pagination?: PaginationMeta;
+}
+
+interface TitleTableProps {
+  TableTitle: string;
+  details: any[] | RawDetails;
+  pagination?: PaginationMeta;
+  paginationMode?: "classic" | "load-more" | "infinite-scroll";
+}
+
+export const TitleTable: React.FC<TitleTableProps> = ({
+  TableTitle,
+  details,
+  pagination,
+  paginationMode = "classic",
+}) => {
+  // Универсальное извлечение массива элементов
+  const extractItems = (d: any[] | RawDetails): any[] => {
+    if (Array.isArray(d)) return d;
+    if (d.docs) return d.docs;
+    if (d.data) return d.data;
+    return [];
+  };
+
+  const [items, setItems] = useState<any[]>(extractItems(details));
+  const [currentPagination, setCurrentPagination] = useState<
+    PaginationMeta | undefined
+  >(
+    // при передаче pagination пропсом отдаём его, иначе из details.pagination
+    pagination ?? (details as RawDetails).pagination
+  );
+
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    setItems(details ?? []);
-    setCurrentPagination(pagination);
+    setItems(extractItems(details));
+    setCurrentPagination(pagination ?? (details as RawDetails).pagination);
   }, [details, pagination]);
 
-  // 2) Функция загрузки «load-more» для обоих режимов
-  const loadMoreData = async (page) => {
+  const loadMoreData = async (page: number) => {
+    if (!currentPagination) return;
     try {
-      // Создаём новый набор query-параметров, меняем только page
-      const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(searchParams.toString());
       params.set("page", page.toString());
-      const url = `${window.location.pathname}/api/load-more?${params.toString()}`;
 
-      const response = await fetch(url);
-      const json = await response.json();
+      const url = `${
+        window.location.pathname
+      }/api/load-more?${params.toString()}`;
+      const res = await fetch(url);
+      const json = await res.json();
 
-      if (json.details && json.details.length > 0) {
-        setItems((prev) => [...prev, ...json.details]);
-        setCurrentPagination((prev) => ({ ...prev, page }));
+      const newDocs: any[] = Array.isArray(json.details)
+        ? json.details
+        : Array.isArray(json.docs)
+        ? json.docs
+        : [];
+
+      if (newDocs.length > 0) {
+        const existingIds = new Set(items.map((it) => String(it.id)));
+        const newItems = newDocs.filter(
+          (it) => !existingIds.has(String(it.id))
+        );
+
+        if (newItems.length) {
+          setItems((prev) => [...prev, ...newItems]);
+          setCurrentPagination((prev) =>
+            prev ? { ...prev, page } : { ...prev!, page }
+          );
+        }
       }
-    } catch (error) {
-      console.error("Ошибка при загрузке дополнительных данных", error);
+    } catch (err) {
+      console.error("Ошибка при загрузке данных:", err);
     }
   };
 
   return (
     <section className="titles">
       <h1>{TableTitle}</h1>
+
       <div className="tableTitles">
         {items.length > 0 ? (
-          items.map((detail) =>
+          items.map((item) =>
             TableTitle === "Персоны" ? (
-              <PersonCard key={detail.id} details={detail} />
+              <PersonCard key={item.id} details={item} />
             ) : (
-              <TitleCardSmall key={detail.id} details={detail} />
+              <TitleCardSmall key={item.id} details={item} />
             )
           )
         ) : (
@@ -55,25 +114,20 @@ export const TitleTable = ({ TableTitle, details, pagination }) => {
       </div>
 
       <div className="config">
-        {/* Фильтры */}
         <TitleFilter />
 
-        {/* Классическая пагинация */}
-        <Pagination pagination={currentPagination} mode="classic" />
-
-        {/* Кнопка «Показать ещё» */}
-        <Pagination
-          pagination={currentPagination}
-          mode="load-more"
-          onLoadMore={loadMoreData}
-        />
-
-        {/* Бесконечная прокрутка */}
-        <Pagination
-          pagination={currentPagination}
-          mode="infinite-scroll"
-          onLoadMore={loadMoreData}
-        />
+        {currentPagination && (
+          <Pagination
+            pagination={currentPagination}
+            mode={paginationMode}
+            onLoadMore={
+              paginationMode === "load-more" ||
+              paginationMode === "infinite-scroll"
+                ? loadMoreData
+                : undefined
+            }
+          />
+        )}
       </div>
     </section>
   );

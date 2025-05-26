@@ -3,63 +3,75 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
 import { getData } from "@/components/shared/api/api";
-import { ApiUrl_Title_Search } from "@/components/shared/api/url";
+import { ApiFactory } from "@/components/shared/api/urlFactory";
 import { TitleTable } from "@/components/entities/title/features/table";
-import { Pagination } from "@/components/features/pagination";
 import { SearchForm } from "@/components/widgets/search/form";
 
-// Функция для извлечения данных и генерации метаданных
-async function fetchDetailsAndMetadata(
-  searchValue: string,
+// Получение данных и метаданных для поиска
+async function fetchSearchDetailsAndMetadata(
+  query: string,
   page: string,
   parent: ResolvingMetadata
 ): Promise<{ details: any; metadata: Metadata }> {
-  const details = await getData({
-    url: `${ApiUrl_Title_Search}${searchValue}&page=${page}`,
-  });
+  const url = ApiFactory.search(query, page);
+  const response = await getData({ url });
+
   const metadata: Metadata = {
-    title: `поиск: ${searchValue}`,
-    openGraph: {
-      title: `поиск: ${searchValue}`,
-    },
-    twitter: {
-      title: `поиск: ${searchValue}`,
-    },
+    title: `Поиск: ${query}`,
+    openGraph: { title: `Поиск: ${query}` },
+    twitter: { title: `Поиск: ${query}` },
   };
 
-  return { details, metadata };
+  return { details: response, metadata };
 }
 
+// Генерация метаданных
 export async function generateMetadata(
-  props: { readonly searchParams: Promise<{ [key: string]: string }> },
+  { searchParams }: { searchParams: { [key: string]: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const searchParams = await props.searchParams;
-  const page = searchParams["page"] ?? "1";
-  const searchValue = searchParams["query"] ?? "5";
-  const { metadata } = await fetchDetailsAndMetadata(searchValue, page, parent);
+  const query = searchParams.query ?? "";
+  const page = searchParams.page ?? "1";
+
+  const { metadata } = await fetchSearchDetailsAndMetadata(query, page, parent);
   return metadata;
 }
 
-export default async function SearchRender(
-  props: {
-    readonly searchParams: Promise<{ [key: string]: string }>;
-  }
-) {
-  const searchParams = await props.searchParams;
-  const page = searchParams["page"] ?? "1";
-  const searchValue = searchParams["query"] ?? "5";
+// Компонент страницы поиска
+export default async function SearchRender({
+  searchParams,
+}: {
+  readonly searchParams: { [key: string]: string };
+}) {
+  const query = searchParams.query ?? "";
+  const page = searchParams.page ?? "1";
 
-  const { details } = await fetchDetailsAndMetadata(
-    searchValue,
+  const { details } = await fetchSearchDetailsAndMetadata(
+    query,
     page,
     {} as ResolvingMetadata
   );
+
+  const results = details?.data ?? [];
+  const hasResults = results.length > 0;
+
   return (
     <>
       <SearchForm />
-      <TitleTable details={details?.data} />
-      <Pagination pagination={details?.pagination} />
+      <h1 className="text-xl font-semibold mt-4 mb-2">
+        Результаты по запросу: &quot;{query}&quot;
+      </h1>
+      {hasResults ? (
+        <TitleTable
+          TableTitle={`Поиск – "${query}"`}
+          details={results}
+          pagination={details?.pagination}
+        />
+      ) : (
+        <div className="text-gray-500 mt-6">
+          Ничего не найдено по запросу <strong>&quot;{query}&quot;</strong>.
+        </div>
+      )}
     </>
   );
 }

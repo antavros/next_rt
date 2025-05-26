@@ -3,10 +3,10 @@ import { SwiperMain } from "@/components/features/swiper/main";
 import { fetchMainPageDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata } from "next";
 
-// Установка принудительной динамической генерации страницы
+// Принудительная динамическая генерация страницы (SSR)
 export const dynamic = "force-dynamic";
 
-// Генерация метаданных
+// Генерация метаданных для главной
 export async function generateMetadata(): Promise<Metadata> {
   const { metadata } = await fetchMainPageDetailsAndMetadata();
   return metadata;
@@ -18,21 +18,30 @@ export default async function Home() {
 
   if (!details?.length) {
     return (
-      <div>
-        <h1>Нет данных</h1>
-        <p>На данный момент нет доступных данных.</p>
+      <div className="p-4 text-center">
+        <h1 className="text-xl font-bold">Нет данных</h1>
+        <p className="text-muted-foreground">
+          На данный момент нет доступных данных.
+        </p>
       </div>
     );
   }
 
-  const titlesWithLogo = details.filter((item) => item.logo);
-  const titlesWithBackDrop = titlesWithLogo.filter((item) => item.backdrop);
-  const topTenTitlesWithLogo = titlesWithBackDrop.slice(0, 10);
+  // Фильтруем данные для Swiper — только с логотипами и фонами
+  const topTenTitlesWithLogo = details
+    .filter((item) => item.logo?.url && item.backdrop?.url)
+    .slice(0, 10);
 
   return (
     <>
-      <SwiperMain details={topTenTitlesWithLogo} />
-      <TitleTable TableTitle="Популярные новинки" details={details} />
+      {topTenTitlesWithLogo.length > 0 && (
+        <SwiperMain details={topTenTitlesWithLogo} />
+      )}
+      <TitleTable
+        TableTitle="Популярные новинки"
+        details={details?.data ?? []}
+        pagination={details?.pagination}
+      />
     </>
   );
 }

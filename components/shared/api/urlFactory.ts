@@ -1,57 +1,56 @@
 const BASE_URL = "https://api.kinopoisk.dev/v1.4";
+const defaultLimit = 1;
 
-const currentYear = new Date().getFullYear();
-const nextYear = currentYear + 1;
-const pastYear = currentYear - 2;
-
-const defaultLimit = 48;
-
-type MovieType =
+export type MovieType =
   | "movie"
   | "anime"
   | "cartoon"
   | "tv-series"
   | "animated-series";
-type SortField =
+
+export type SortField =
   | "year"
   | "votes.kp"
   | "rating.kp"
   | "countAwards"
-  | "movies.rating";
-type SortType = 1 | -1;
+  | "movies.rating"
+  | "updatedAt";
 
-interface MovieQueryParams {
-  type?: MovieType;
-  year?: string;
-  lists?: string;
+export type SortType = 1 | -1;
+
+export interface MovieQueryParams {
+  limit?: number;
   sortFields?: SortField[];
   sortTypes?: SortType[];
   notNullFields?: string[];
-  limit?: number;
+  type?: MovieType;
+  year?: string;
+  lists?: string;
 }
 
-interface PersonQueryParams {
+export interface PersonQueryParams {
+  limit?: number;
   sortFields?: SortField[];
   sortTypes?: SortType[];
-  limit?: number;
   notNullFields?: string[];
   selectFields?: string[];
 }
 
-function toQueryString(obj: Record<string, any>) {
-  const params = [];
+function toQueryString(params: Record<string, any>): string {
+  const parts: string[] = [];
 
-  for (const [key, value] of Object.entries(obj)) {
+  Object.entries(params).forEach(([key, value]) => {
     if (Array.isArray(value)) {
-      for (const val of value) {
-        params.push(`${key}=${encodeURIComponent(val)}`);
+      for (const v of value) {
+        // для булевых и числовых приводим к строке
+        parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(v))}`);
       }
-    } else if (value !== undefined && value !== null) {
-      params.push(`${key}=${encodeURIComponent(value)}`);
+    } else if (value !== undefined && value !== null && value !== "") {
+      parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`);
     }
-  }
+  });
 
-  return params.join("&");
+  return parts.join("&");
 }
 
 export const ApiFactory = {
@@ -89,9 +88,16 @@ export const ApiFactory = {
     return `${BASE_URL}/person?${query}`;
   },
 
-  searchMovie: (query: string) =>
-    `${BASE_URL}/movie/search?limit=${defaultLimit}&query=${encodeURIComponent(query)}`,
+  search: (queryString: string, page: string = "1") => {
+    // В API поиск работает через /movie/search
+    return `${BASE_URL}/movie/search?limit=${defaultLimit}&query=${encodeURIComponent(
+      queryString
+    )}&page=${page}`;
+  },
 
   listPopular: () =>
     `${BASE_URL}/list?limit=${defaultLimit}&sortField=updatedAt&sortType=-1`,
+
+  details: (category: "movie" | "person", id: string) =>
+    `${BASE_URL}/${category}/${id}`,
 };
