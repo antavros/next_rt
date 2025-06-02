@@ -9,6 +9,8 @@ export async function getData<T = any>({
   cacheMode?: RequestCache;
   revalidate?: number;
 }): Promise<T | null> {
+  console.log("Запросим URL:", url);
+
   const API_KEY = process.env.API_TOKEN;
 
   if (!API_KEY) {
@@ -16,7 +18,7 @@ export async function getData<T = any>({
     redirect(`/error`);
     return null;
   }
-console.log(url)
+  console.log(url);
   const options: RequestInit = {
     method: "GET",
     headers: {
@@ -44,7 +46,6 @@ console.log(url)
     const json = await response.json();
 
     if (!json) throw new Error("Empty response");
-
     return json as T;
   } catch (error: unknown) {
     console.error("Error in getData:", error);

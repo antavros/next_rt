@@ -1,20 +1,23 @@
-import { TitleTable } from "@/components/entities/title/features/table";
+// app/page.tsx
+import React from "react";
 import { SwiperMain } from "@/components/features/swiper/main";
-import { fetchMainPageDetailsAndMetadata } from "@/components/shared/api/serverUtils";
+import { TitleTable } from "@/components/entities/title/features/table";
+import { fetchPopularMoviesAndMetadata } from "@/components/shared/api/serverUtils";
 import type { Metadata } from "next";
 
-// Принудительная динамическая генерация страницы (SSR)
+// 1. Принудительная динамическая генерация страницы (SSR)
 export const dynamic = "force-dynamic";
 
-// Генерация метаданных для главной
+// 2. Генерация метаданных для главной страницы
 export async function generateMetadata(): Promise<Metadata> {
-  const { metadata } = await fetchMainPageDetailsAndMetadata();
+  const { metadata } = await fetchPopularMoviesAndMetadata();
   return metadata;
 }
 
-// Главная страница
-export default async function Home() {
-  const { details } = await fetchMainPageDetailsAndMetadata();
+// 3. Главный компонент страницы
+export default async function HomePage(): Promise<JSX.Element> {
+  // Запрашиваем список популярных фильмов
+  const { details, pagination } = await fetchPopularMoviesAndMetadata();
 
   if (!details?.length) {
     return (
@@ -27,21 +30,69 @@ export default async function Home() {
     );
   }
 
-  // Фильтруем данные для Swiper — только с логотипами и фонами
-  const topTenTitlesWithLogo = details
-    .filter((item) => item.logo?.url && item.backdrop?.url)
+  // Фильтрация для Swiper: первые 10 с logo.url и backdrop.url
+  const topTenWithAssets = details
+    .filter((item) => Boolean(item.backdrop?.url) && Boolean(item.logo?.url))
     .slice(0, 10);
+
+  // Фильтрация по жанрам (русские названия жанров из API)
+  const ComedyDetails = details.filter(
+    (item) =>
+      Array.isArray(item.genres) &&
+      item.genres.some((g: any) => g.name === "комедия")
+  );
+  const DramaDetails = details.filter(
+    (item) =>
+      Array.isArray(item.genres) &&
+      item.genres.some((g: any) => g.name === "драма")
+  );
+
+  const FantasyDetails = details.filter(
+    (item) =>
+      Array.isArray(item.genres) &&
+      item.genres.some((g: any) => g.name === "фантастика")
+  );
+
+  const HorrorDetails = details.filter(
+    (item) =>
+      Array.isArray(item.genres) &&
+      item.genres.some((g: any) => g.name === "ужасы")
+  );
 
   return (
     <>
-      {topTenTitlesWithLogo.length > 0 && (
-        <SwiperMain details={topTenTitlesWithLogo} />
+      {/* Слайдер популярных фильмов */}
+      {topTenWithAssets.length > 0 && <SwiperMain details={topTenWithAssets} />}
+
+      {/* Таблицы по жанрам */}
+      {ComedyDetails.length > 0 && (
+        <TitleTable
+          TableTitle="Комедия"
+          details={ComedyDetails}
+          pagination={pagination}
+        />
       )}
-      <TitleTable
-        TableTitle="Популярные новинки"
-        details={details?.data ?? []}
-        pagination={details?.pagination}
-      />
+      {DramaDetails.length > 0 && (
+        <TitleTable
+          TableTitle="Драма"
+          details={DramaDetails}
+          pagination={pagination}
+        />
+      )}
+      {FantasyDetails.length > 0 && (
+        <TitleTable
+          TableTitle="Фантастика"
+          details={FantasyDetails}
+          pagination={pagination}
+        />
+      )}
+      {HorrorDetails.length > 0 && (
+        <TitleTable
+          TableTitle="Ужасы"
+          details={HorrorDetails}
+          pagination={pagination}
+        />
+      )}
     </>
   );
 }

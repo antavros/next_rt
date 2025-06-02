@@ -36,7 +36,7 @@ export const TitleTable: React.FC<TitleTableProps> = ({
   pagination,
   paginationMode = "classic",
 }) => {
-  // Универсальное извлечение массива элементов
+  // Вспомогательная функция для извлечения массива объектов
   const extractItems = (d: any[] | RawDetails): any[] => {
     if (Array.isArray(d)) return d;
     if (d.docs) return d.docs;
@@ -47,51 +47,50 @@ export const TitleTable: React.FC<TitleTableProps> = ({
   const [items, setItems] = useState<any[]>(extractItems(details));
   const [currentPagination, setCurrentPagination] = useState<
     PaginationMeta | undefined
-  >(
-    // при передаче pagination пропсом отдаём его, иначе из details.pagination
-    pagination ?? (details as RawDetails).pagination
-  );
+  >(pagination ?? (details as RawDetails).pagination);
 
   const searchParams = useSearchParams();
 
+  // При изменении incoming пропсов пересчитываем стейт
   useEffect(() => {
     setItems(extractItems(details));
     setCurrentPagination(pagination ?? (details as RawDetails).pagination);
   }, [details, pagination]);
 
-  const loadMoreData = async (page: number) => {
+  // Функция для загрузки следующей страницы (load more / infinite scroll)
+  const loadMoreData = async (nextPage: number) => {
     if (!currentPagination) return;
     try {
       const params = new URLSearchParams(searchParams.toString());
-      params.set("page", page.toString());
+      params.set("page", nextPage.toString());
 
-      const url = `${
-        window.location.pathname
-      }/api/load-more?${params.toString()}`;
+      const url = `${window.location.pathname}/api/load-more?${params.toString()}`;
       const res = await fetch(url);
       const json = await res.json();
 
       const newDocs: any[] = Array.isArray(json.details)
         ? json.details
         : Array.isArray(json.docs)
-        ? json.docs
-        : [];
+          ? json.docs
+          : [];
 
-      if (newDocs.length > 0) {
+      if (newDocs.length) {
         const existingIds = new Set(items.map((it) => String(it.id)));
-        const newItems = newDocs.filter(
+        const uniqueNewItems = newDocs.filter(
           (it) => !existingIds.has(String(it.id))
         );
 
-        if (newItems.length) {
-          setItems((prev) => [...prev, ...newItems]);
+        if (uniqueNewItems.length) {
+          setItems((prev) => [...prev, ...uniqueNewItems]);
           setCurrentPagination((prev) =>
-            prev ? { ...prev, page } : { ...prev!, page }
+            prev
+              ? { ...prev, page: nextPage }
+              : { ...currentPagination!, page: nextPage }
           );
         }
       }
     } catch (err) {
-      console.error("Ошибка при загрузке данных:", err);
+      console.error("Ошибка при загрузке дополнительных данных:", err);
     }
   };
 

@@ -1,83 +1,115 @@
-import { Details } from "./next-title";
+// components/entities/user/shared.ts
 import prisma from "@/app/api/auth/[...nextauth]/prismadb";
 import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
-// Утилиты для форматирования
-const convertMinutesToHours = (minutes: number): string => {
-  if (!minutes) return "";
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
-  return `${hours}ч${mins ? mins + "м" : ""}`;
-};
-
-const convertDate = (dateString?: string): string => {
-  if (!dateString) return "";
-  const d = new Date(dateString);
-  return [
-    d.getDate().toString().padStart(2, "0"),
-    (d.getMonth() + 1).toString().padStart(2, "0"),
-    d.getFullYear(),
-  ].join(".");
-};
-
-const formatNumber = (value?: number): string =>
-  value != null ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") : "";
-
-export async function getUserMovieData(
-  movieIds: string[]
-): Promise<Record<string, {
+export interface UserTitleData {
   rating?: number;
   viewed: boolean;
   favourite: boolean;
   bookmark: boolean;
-}>> {
+}
+// Преобразует минуты в формат "XчYм"
+export function convertMinutesToHours(minutes: number | undefined): string {
+  if (!minutes) return "";
+  const hrs = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return `${hrs}ч${mins ? `${mins}м` : ""}`;
+}
+
+// Преобразует дату из ISO-строки в "DD.MM.YYYY"
+export function convertDate(dateString?: string): string {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
+}
+
+// Форматирует число с разделителем тысяч (например, 1000000 → "1 000 000")
+export function formatNumber(value: number | undefined): string {
+  if (value == null) return "";
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+// Получение пользовательских данных по списку ID фильмов/сериалов
+export async function getUserMovieData(
+  movieIds: string[]
+): Promise<Record<string, UserTitleData>> {
+  // Проверяем авторизацию
   const session = await auth();
   const userId = session?.user?.id;
-  if (!userId || !movieIds.length) return {};
+
+  if (!userId || movieIds.length === 0) {
+    return {};
+  }
 
   try {
     const records = await prisma.userTitle.findMany({
-      where: { userId, titleId: { in: movieIds } },
-      select: { titleId: true, rating: true, viewed: true, favourite: true, bookmark: true },
+      where: {
+        userId,
+        titleId: { in: movieIds },
+      },
+      select: {
+        titleId: true,
+        rating: true,
+        viewed: true,
+        favourite: true,
+        bookmark: true,
+      },
     });
 
-    return records.reduce((acc, rec) => {
-      acc[rec.titleId] = {
-        rating: rec.rating ?? undefined,
-        viewed: rec.viewed,
-        favourite: rec.favourite,
-        bookmark: rec.bookmark,
-      };
-      return acc;
-    }, {} as Record<string, { rating?: number; viewed: boolean; favourite: boolean; bookmark: boolean }>);
-  } catch (err: any) {
-    console.error("getUserMovieData error:", err);
+    // Преобразуем массив в объект вида { [titleId]: { rating, viewed, favourite, bookmark } }
+    return records.reduce(
+      (acc, rec) => {
+        acc[rec.titleId] = {
+          rating: rec.rating ?? undefined,
+          viewed: rec.viewed,
+          favourite: rec.favourite,
+          bookmark: rec.bookmark,
+        };
+        return acc;
+      },
+      {} as Record<string, UserTitleData>
+    );
+  } catch (err) {
+    console.error("Ошибка getUserMovieData:", err);
     return {};
   }
 }
 
-export async function getDetails(
-  raw: any
-): Promise<{
-  data: Details[];
+// Преобразование “сырых” данных API в формат для компонента TitlePage
+export async function parseDetails(raw: any): Promise<{
+  data: any[];
   pagination: { total: number; limit: number; page: number; pages: number };
 }> {
   try {
-    const docs = Array.isArray(raw.docs) ? raw.docs : raw.docs ? [raw.docs] : [];
-    const ids = docs.map((d) => String(d.id)).filter(Boolean);
+    // raw может содержать .docs (из person API) или .data (из movie API)
+    const docsArray = Array.isArray(raw.docs)
+      ? raw.docs
+      : raw.docs
+        ? [raw.docs]
+        : [];
+    const ids = docsArray.map((d: any) => String(d.id)).filter(Boolean);
+
+    // Получаем данные пользователя (рейтинги и пр.)
     const userData = await getUserMovieData(ids);
 
-    const data: Details[] = docs.map((d: any) => {
+    const data = docsArray.map((d: any) => {
       const id = String(d.id);
-      const u = userData[id] ?? { viewed: false, favourite: false, bookmark: false };
-      console.log(data);
+      const u = userData[id] ?? {
+        viewed: false,
+        favourite: false,
+        bookmark: false,
+      };
 
       return {
         id,
         type: d.type,
         name: d.name ?? d.alternativeName ?? d.enName ?? "",
         enName: d.enName ?? "",
-        names: Array.isArray(d.names) ? d.names.map((n: any) => n.name).join(", ") : "",
+        names: Array.isArray(d.names)
+          ? d.names.map((n: any) => n.name).join(", ")
+          : "",
         slogan: d.slogan ?? "",
         status: d.status ?? "",
         ageRating: d.ageRating ?? 0,
@@ -98,11 +130,19 @@ export async function getDetails(
         watchability: d.watchability?.items ?? [],
         ratingKP: d.rating?.kp ?? 0,
         votesKP: d.votes?.kp ?? 0,
-        budget: d.budget?.value ? `${formatNumber(d.budget.value)} ${d.budget.currency}` : "",
+        budget: d.budget?.value
+          ? `${formatNumber(d.budget.value)} ${d.budget.currency}`
+          : "",
         fees: {
-          russia: d.fees?.russia ? `${formatNumber(d.fees.russia.value)} ${d.fees.russia.currency}` : "",
-          usa: d.fees?.usa ? `${formatNumber(d.fees.usa.value)} ${d.fees.usa.currency}` : "",
-          world: d.fees?.world ? `${formatNumber(d.fees.world.value)} ${d.fees.world.currency}` : "",
+          russia: d.fees?.russia
+            ? `${formatNumber(d.fees.russia.value)} ${d.fees.russia.currency}`
+            : "",
+          usa: d.fees?.usa
+            ? `${formatNumber(d.fees.usa.value)} ${d.fees.usa.currency}`
+            : "",
+          world: d.fees?.world
+            ? `${formatNumber(d.fees.world.value)} ${d.fees.world.currency}`
+            : "",
         },
         premiere: {
           world: convertDate(d.premiere?.world),
@@ -110,7 +150,12 @@ export async function getDetails(
           digital: convertDate(d.premiere?.digital),
           usa: convertDate(d.premiere?.usa),
         },
-        audience: d.audience?.map((a: any) => ({ count: formatNumber(a.count), country: a.country })) ?? [],
+        audience: Array.isArray(d.audience)
+          ? d.audience.map((a: any) => ({
+              count: formatNumber(a.count),
+              country: a.country,
+            }))
+          : [],
         sex: d.sex ?? "",
         age: d.age ?? 0,
         profession: d.profession?.map((p: any) => p.value).join(", ") ?? "",
@@ -121,10 +166,16 @@ export async function getDetails(
       };
     });
 
-    const { total, limit, page, pages } = raw;
-    return { data, pagination: { total, limit, page, pages } };
-  } catch (err: any) {
-    console.error("getDetails error:", err);
+    const pagination = {
+      total: raw.total ?? raw.pagination?.total ?? 0,
+      limit: raw.limit ?? raw.pagination?.limit ?? 0,
+      page: raw.page ?? raw.pagination?.page ?? 0,
+      pages: raw.pages ?? raw.pagination?.pages ?? 0,
+    };
+
+    return { data, pagination };
+  } catch (err) {
+    console.error("Ошибка parseDetails:", err);
     throw err;
   }
 }

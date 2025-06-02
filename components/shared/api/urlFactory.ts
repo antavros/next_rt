@@ -1,5 +1,6 @@
+// components/shared/api/urlFactory.ts
 const BASE_URL = "https://api.kinopoisk.dev/v1.4";
-const defaultLimit = 1;
+const defaultLimit = 48;
 
 export type MovieType =
   | "movie"
@@ -36,17 +37,23 @@ export interface PersonQueryParams {
   selectFields?: string[];
 }
 
+// Преобразует объект параметров в строку query
 function toQueryString(params: Record<string, any>): string {
   const parts: string[] = [];
 
   Object.entries(params).forEach(([key, value]) => {
     if (Array.isArray(value)) {
-      for (const v of value) {
-        // для булевых и числовых приводим к строке
-        parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(v))}`);
-      }
+      value.forEach((v) => {
+        if (v !== undefined && v !== null && v !== "") {
+          parts.push(
+            `${encodeURIComponent(key)}=${encodeURIComponent(String(v))}`
+          );
+        }
+      });
     } else if (value !== undefined && value !== null && value !== "") {
-      parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`);
+      parts.push(
+        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`
+      );
     }
   });
 
@@ -54,8 +61,9 @@ function toQueryString(params: Record<string, any>): string {
 }
 
 export const ApiFactory = {
-  movie: (params: MovieQueryParams = {}) => {
-    const query = toQueryString({
+  // Генерация URL для movie (по умолчанию сортировка по году и голосам)
+  movie: (params: MovieQueryParams = {}): string => {
+    const queryObj: Record<string, any> = {
       limit: params.limit ?? defaultLimit,
       sortField: params.sortFields ?? ["year", "votes.kp"],
       sortType: params.sortTypes ?? [-1, -1],
@@ -63,13 +71,15 @@ export const ApiFactory = {
       type: params.type,
       year: params.year,
       lists: params.lists,
-    });
+    };
 
+    const query = toQueryString(queryObj);
     return `${BASE_URL}/movie?${query}`;
   },
 
-  person: (params: PersonQueryParams = {}) => {
-    const query = toQueryString({
+  // Генерация URL для person (сортировка по количеству наград и рейтингу фильмов)
+  person: (params: PersonQueryParams = {}): string => {
+    const queryObj: Record<string, any> = {
       limit: params.limit ?? defaultLimit,
       sortField: params.sortFields ?? ["countAwards", "movies.rating"],
       sortType: params.sortTypes ?? [-1, -1],
@@ -83,21 +93,25 @@ export const ApiFactory = {
         "id",
         "photo",
       ],
-    });
+    };
 
+    const query = toQueryString(queryObj);
     return `${BASE_URL}/person?${query}`;
   },
 
-  search: (queryString: string, page: string = "1") => {
-    // В API поиск работает через /movie/search
+  // Поиск фильма по запросу
+  search: (queryString: string, page: string = "1"): string => {
     return `${BASE_URL}/movie/search?limit=${defaultLimit}&query=${encodeURIComponent(
       queryString
-    )}&page=${page}`;
+    )}&page=${encodeURIComponent(page)}`;
   },
 
-  listPopular: () =>
-    `${BASE_URL}/list?limit=${defaultLimit}&sortField=updatedAt&sortType=-1`,
+  listPopular: (): string => {
+    return `${BASE_URL}/list?limit=${defaultLimit}&sortField=updatedAt&sortType=-1`;
+  },
 
-  details: (category: "movie" | "person", id: string) =>
-    `${BASE_URL}/${category}/${id}`,
+  // Получение детальной информации (movie или person) по ID
+  details: (category: "movie" | "person", id: string): string => {
+    return `${BASE_URL}/${category}/${encodeURIComponent(id)}`;
+  },
 };

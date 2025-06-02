@@ -1,13 +1,15 @@
+// app/[category]/[id]/page.tsx
 "use server";
 
-import type { Metadata, ResolvingMetadata } from "next";
+import React from "react";
 import { redirect } from "next/navigation";
+import type { Metadata, ResolvingMetadata } from "next";
 
 import { TitlePage } from "@/components/entities/title/page";
 import { fetchDetailsAndMetadata } from "@/components/shared/api/serverUtils";
 import { markTitleVisited } from "@/components/entities/user/shared";
 
-// Допустимые категории
+// Список допустимых категорий для просмотра тайтла
 const allowedCategories = [
   "movie",
   "tv-series",
@@ -16,27 +18,27 @@ const allowedCategories = [
   "anime",
   "person",
 ] as const;
+type AllowedCategory = (typeof allowedCategories)[number];
 
-type AllowedCategory = typeof allowedCategories[number];
-
-// Проверка допустимости категории
+// Проверка, что категория из params допустима
 function isAllowedCategory(category: string): category is AllowedCategory {
-  return allowedCategories.includes(category as AllowedCategory);
+  return (allowedCategories as readonly string[]).includes(category);
 }
 
-// Проверка валидности данных
+// Валидация того, что пришедшие детали соответствуют ожидаемой категории
 function isValidDetails(details: any, category: AllowedCategory): boolean {
   if (!details) return false;
-  if (category === "person") return true;
-  return details?.type === category;
+  // Для "person" всегда true, иначе проверяем совпадение типа
+  return category === "person" || details.type === category;
 }
 
-// Генерация метаданных
+// --- 1) Генерация метаданных для страницы тайтла ---
 export async function generateMetadata(
-  { params }: { params: { category: string; id: string } },
+  props: { params: Promise<{ category: string; id: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { category, id } = params;
+  // 1.1. Await params, чтобы получить category и id
+  const { category, id } = await props.params;
   if (!isAllowedCategory(category)) {
     return {
       title: "Неизвестная категория",
@@ -44,34 +46,38 @@ export async function generateMetadata(
     };
   }
 
+  // 1.2. Запрашиваем детали и метаданные
   const { metadata } = await fetchDetailsAndMetadata(category, id, parent);
   return metadata;
 }
 
-// Рендер страницы
-export default async function TitlePageRender({
-  params,
-}: {
-  readonly params: { category: string; id: string };
-}) {
-  const { category, id } = params;
+export default async function TitlePageRender(props: {
+  params: Promise<{ category: string; id: string }>;
+}): Promise<JSX.Element> {
+  const { category, id } = await props.params;
 
   if (!isAllowedCategory(category)) {
     redirect("/");
   }
 
+  const categoryKey = category as AllowedCategory;
+  const idNum = parseInt(id, 10);
+
+  if (isNaN(idNum) || idNum < 250 || idNum > 10_000_000) {
+    redirect("/");
+  }
+
   const { details } = await fetchDetailsAndMetadata(
-    category,
-    id,
+    categoryKey,
+    idNum,
     {} as ResolvingMetadata
   );
 
-  if (!isValidDetails(details, category)) {
-    redirect(`/${details?.type ?? "error"}`);
+  if (!isValidDetails(details, categoryKey)) {
+    redirect("/");
   }
 
-  // Отметка о просмотре только если это не персона
-  if (category !== "person") {
+  if (categoryKey !== "person" && details) {
     const { type, name, enName, sDescription, posters } = details;
     await markTitleVisited(id, type, name, enName, sDescription, posters);
   }
